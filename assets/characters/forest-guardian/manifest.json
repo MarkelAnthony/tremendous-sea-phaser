@@ -1,0 +1,129 @@
+{
+  "id": "forest-guardian",
+  "name": "Forest Guardian",
+  "group_id": "cbde480e-4a1f-4592-9781-c36dd4d1cbb0",
+  "atlas_key": "char-forest-guardian",
+  "states": [
+    {
+      "id": "cc0c7ba1-72a9-4f47-b5a3-bc08aa590342",
+      "name": "Idle",
+      "folder": "idle",
+      "directions": [
+        "south",
+        "south-east",
+        "east",
+        "north-east",
+        "north",
+        "north-west",
+        "west",
+        "south-west"
+      ],
+      "animations": [
+        {
+          "name": "The_hooded_figure_bobs_rhythmically_up_and_down_wh",
+          "frame_count": 17,
+          "directions": [
+            "east",
+            "west"
+          ],
+          "loop": true,
+          "aliases": [
+            "breathe"
+          ],
+          "fps": 12
+        },
+        {
+          "name": "The_figure_begins_the_wind-up_by_pulling_both_hand",
+          "frame_count": 13,
+          "directions": [
+            "west",
+            "east"
+          ],
+          "loop": false,
+          "aliases": [
+            "heavy"
+          ],
+          "fps": 12
+        },
+        {
+          "name": "The_figure_winds_up_by_pulling_its_right_hand_back",
+          "frame_count": 17,
+          "directions": [
+            "east",
+            "west"
+          ],
+          "loop": false,
+          "aliases": [
+            "flourish"
+          ],
+          "fps": 12
+        },
+        {
+          "name": "Running",
+          "frame_count": 6,
+          "directions": [
+            "east",
+            "west"
+          ],
+          "loop": true,
+          "aliases": [
+            "run"
+          ],
+          "fps": 12
+        },
+        {
+          "name": "The_cloaked_figure_winds_up_by_pulling_its_right_a",
+          "frame_count": 9,
+          "directions": [
+            "west",
+            "east"
+          ],
+          "loop": false,
+          "aliases": [
+            "attack"
+          ],
+          "fps": 12
+        },
+        {
+          "name": "Backflip",
+          "frame_count": 10,
+          "directions": [
+            "west",
+            "east"
+          ],
+          "loop": false,
+          "aliases": [
+            "dodge"
+          ],
+          "fps": 12
+        },
+        {
+          "name": "Falling_Back_Death",
+          "frame_count": 7,
+          "directions": [
+            "west",
+            "east"
+          ],
+          "loop": false,
+          "aliases": [
+            "death"
+          ],
+          "fps": 12
+        },
+        {
+          "name": "Sad_Walk",
+          "frame_count": 8,
+          "directions": [
+            "west",
+            "east"
+          ],
+          "loop": true,
+          "aliases": [
+            "walk"
+          ],
+          "fps": 12
+        }
+      ]
+    }
+  ]
+}

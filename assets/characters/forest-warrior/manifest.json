@@ -1,0 +1,211 @@
+{
+  "id": "forest-warrior",
+  "name": "Forest Warrior",
+  "group_id": "a821bdd2-57f5-4114-aa96-5ba8587f2420",
+  "atlas_key": "char-forest-warrior",
+  "states": [
+    {
+      "id": "5e8fffb6-058e-406d-83be-b19a9323b3ea",
+      "name": "Idle",
+      "folder": "idle",
+      "directions": [
+        "south",
+        "south-east",
+        "east",
+        "north-east",
+        "north",
+        "north-west",
+        "west",
+        "south-west"
+      ],
+      "animations": [
+        {
+          "name": "Taking_Punch",
+          "frame_count": 6,
+          "directions": [
+            "west",
+            "east"
+          ],
+          "loop": false,
+          "aliases": [
+            "hurt"
+          ],
+          "fps": 12
+        },
+        {
+          "name": "Falling_Back_Death",
+          "frame_count": 7,
+          "directions": [
+            "west",
+            "east"
+          ],
+          "loop": false,
+          "aliases": [
+            "death"
+          ],
+          "fps": 12
+        },
+        {
+          "name": "Front_Flip",
+          "frame_count": 6,
+          "directions": [
+            "west",
+            "east"
+          ],
+          "loop": false,
+          "aliases": [
+            "jump"
+          ],
+          "fps": 12
+        },
+        {
+          "name": "Running",
+          "frame_count": 8,
+          "directions": [
+            "west",
+            "east"
+          ],
+          "loop": true,
+          "aliases": [
+            "run"
+          ],
+          "fps": 12
+        },
+        {
+          "name": "Walk",
+          "frame_count": 6,
+          "directions": [
+            "east",
+            "west"
+          ],
+          "loop": true,
+          "aliases": [
+            "walk"
+          ],
+          "fps": 12
+        },
+        {
+          "name": "breathing",
+          "frame_count": 9,
+          "directions": [
+            "south-west",
+            "south-east"
+          ],
+          "loop": true,
+          "aliases": [
+            "breathe"
+          ],
+          "fps": 12
+        }
+      ]
+    },
+    {
+      "id": "6b2e1cbf-fe19-4612-92f8-4432218bb9cb",
+      "name": "Axe out, combat stance",
+      "folder": "axe-out-combat-stance",
+      "directions": [
+        "south",
+        "south-east",
+        "east",
+        "north-east",
+        "north",
+        "north-west",
+        "west",
+        "south-west"
+      ],
+      "animations": [
+        {
+          "name": "walk",
+          "frame_count": 9,
+          "directions": [
+            "east",
+            "west"
+          ],
+          "loop": true,
+          "aliases": [
+            "walk"
+          ],
+          "fps": 12
+        },
+        {
+          "name": "throws_axe_up_grabs_and_slashes",
+          "frame_count": 17,
+          "directions": [
+            "south-east",
+            "south-west"
+          ],
+          "loop": false,
+          "aliases": [
+            "flourish"
+          ],
+          "fps": 12
+        },
+        {
+          "name": "frontflip_with_axe_out",
+          "frame_count": 9,
+          "directions": [
+            "west",
+            "east"
+          ],
+          "loop": false,
+          "aliases": [
+            "jump"
+          ],
+          "fps": 12
+        },
+        {
+          "name": "Idle_wih_axe_out",
+          "frame_count": 8,
+          "directions": [
+            "west",
+            "east"
+          ],
+          "loop": true,
+          "aliases": [
+            "breathe"
+          ],
+          "fps": 12
+        },
+        {
+          "name": "fire_axe_attack_double",
+          "frame_count": 21,
+          "directions": [
+            "west",
+            "east"
+          ],
+          "loop": false,
+          "aliases": [
+            "heavy"
+          ],
+          "fps": 12
+        },
+        {
+          "name": "The_warrior_reels_backward_as_he_is_struck_his_bod",
+          "frame_count": 17,
+          "directions": [
+            "west",
+            "east"
+          ],
+          "loop": false,
+          "aliases": [
+            "hurt"
+          ],
+          "fps": 12
+        },
+        {
+          "name": "one_hit_axe_attack",
+          "frame_count": 13,
+          "directions": [
+            "east",
+            "west"
+          ],
+          "loop": false,
+          "aliases": [
+            "attack"
+          ],
+          "fps": 12
+        }
+      ]
+    }
+  ]
+}

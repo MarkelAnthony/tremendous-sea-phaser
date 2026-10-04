@@ -1,0 +1,143 @@
+{
+  "version": "1.0.0",
+  "layers": [
+    {
+      "id": "layer-spawns",
+      "name": "player spawn",
+      "geometryType": "point",
+      "visible": true,
+      "locked": false,
+      "color": "#ec4899",
+      "tags": [
+        "spawn",
+        "player"
+      ],
+      "defaultProperties": {},
+      "points": [
+        {
+          "id": "spawn-player",
+          "x": 64,
+          "y": 280,
+          "name": "player spawn",
+          "direction": "east"
+        }
+      ]
+    },
+    {
+      "id": "layer-goal",
+      "name": "goal",
+      "geometryType": "rectArea",
+      "visible": true,
+      "locked": false,
+      "color": "#22c55e",
+      "tags": [
+        "goal",
+        "trigger"
+      ],
+      "defaultProperties": {},
+      "rects": [
+        {
+          "id": "forest-exit",
+          "x": 2496,
+          "y": 224,
+          "width": 48,
+          "height": 72
+        }
+      ]
+    },
+    {
+      "id": "layer-hazards",
+      "name": "hazard",
+      "geometryType": "rectArea",
+      "visible": true,
+      "locked": false,
+      "color": "#ef4444",
+      "tags": [
+        "hazard"
+      ],
+      "defaultProperties": {
+        "damage": 1
+      },
+      "rects": [
+        {
+          "id": "ravine-floor",
+          "x": -64,
+          "y": 370,
+          "width": 2700,
+          "height": 100
+        }
+      ]
+    },
+    {
+      "id": "forest-enemies",
+      "name": "enemy spawn",
+      "geometryType": "point",
+      "tags": [
+        "enemy",
+        "spawn"
+      ],
+      "points": [
+        {
+          "id": "enemy-0",
+          "x": 340,
+          "y": 280,
+          "properties": {
+            "characterId": "forest-wolf",
+            "patrolMin": 240,
+            "patrolMax": 416
+          }
+        },
+        {
+          "id": "enemy-1",
+          "x": 720,
+          "y": 280,
+          "properties": {
+            "characterId": "forest-guardian",
+            "patrolMin": 544,
+            "patrolMax": 880
+          }
+        },
+        {
+          "id": "enemy-2",
+          "x": 1150,
+          "y": 280,
+          "properties": {
+            "characterId": "forest-wolf",
+            "patrolMin": 1020,
+            "patrolMax": 1328
+          }
+        },
+        {
+          "id": "enemy-3",
+          "x": 1660,
+          "y": 248,
+          "properties": {
+            "characterId": "forest-guardian",
+            "patrolMin": 1584,
+            "patrolMax": 1760
+          }
+        },
+        {
+          "id": "enemy-4",
+          "x": 1900,
+          "y": 280,
+          "properties": {
+            "characterId": "forest-wolf",
+            "patrolMin": 1824,
+            "patrolMax": 2016
+          }
+        },
+        {
+          "id": "enemy-5",
+          "x": 2310,
+          "y": 280,
+          "properties": {
+            "characterId": "forest-guardian",
+            "patrolMin": 2144,
+            "patrolMax": 2464
+          }
+        }
+      ]
+    }
+  ]
+}

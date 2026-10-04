@@ -1,0 +1,67 @@
+{
+  "version": "1.0.0",
+  "name": "The Verdant Crossing",
+  "exportDate": "2026-09-18T03:48:02.031104Z",
+  "engine": "pixellab-map-editor",
+  "mapConfig": {
+    "tileSize": 16,
+    "dimensions": {
+      "width": 160,
+      "height": 40,
+      "pixelWidth": 2560,
+      "pixelHeight": 640
+    },
+    "boundingBox": {
+      "minX": 0,
+      "minY": 0,
+      "maxX": 159,
+      "maxY": 39
+    }
+  },
+  "terrains": [
+    {
+      "id": 1,
+      "name": "thin amazonian grass strip capping the top surface with moderate blade texture and soft medium shading",
+      "color": "#22c55e",
+      "baseTileId": "c8f57d69-9053-4965-ac32-58f0b7ff74a9",
+      "walkable": null
+    }
+  ],
+  "tilesets": [
+    {
+      "id": "160f6bbf-c316-4011-a69c-692f583daa5c",
+      "filename": "thin amazonian grass strip capping the top surface with moderate blade texture and soft med-aa1889c8.png",
+      "lowerTerrain": "thin amazonian grass strip capping the top surface with moderate blade texture and soft medium shading",
+      "upperTerrain": "Empty",
+      "lowerTerrainId": 1,
+      "upperTerrainId": 0,
+      "transitionSize": 0,
+      "transitionDescription": null,
+      "tileSize": 16,
+      "gridLayout": "4x4",
+      "wangIndexMapping": "standard",
+      "view": "side",
+      "tilesetType": "sidescroller"
+    }
+  ],
+  "overlays": [],
+  "background": {
+    "type": "custom",
+    "name": "Ancient forest",
+    "filename": "backgrounds/forest.png",
+    "dimensions": {
+      "width": 462,
+      "height": 256
+    },
+    "worldCoordinates": {
+      "x": 0,
+      "y": 32
+    },
+    "repeatX": true,
+    "repeatY": false
+  },
+  "gameplayAnnotations": {
+    "version": "1.0.0",
+    "file": "annotations.json"
+  }
+}

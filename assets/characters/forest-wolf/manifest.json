@@ -1,0 +1,70 @@
+{
+  "id": "forest-wolf",
+  "name": "Forest Wolf",
+  "group_id": "eaa35d76-a4f2-57f5-82a4-af4b8bb1cc67",
+  "atlas_key": "char-forest-wolf",
+  "states": [
+    {
+      "id": "e05c95db-f2b4-5b34-bdd3-599ac18fd6db",
+      "name": "default",
+      "folder": "default",
+      "directions": [
+        "east"
+      ],
+      "animations": [
+        {
+          "name": "death",
+          "frame_count": 13,
+          "directions": [
+            "east"
+          ],
+          "loop": false,
+          "aliases": [],
+          "fps": 12
+        },
+        {
+          "name": "attack",
+          "frame_count": 13,
+          "directions": [
+            "east"
+          ],
+          "loop": false,
+          "aliases": [],
+          "fps": 12
+        },
+        {
+          "name": "hurt",
+          "frame_count": 9,
+          "directions": [
+            "east"
+          ],
+          "loop": false,
+          "aliases": [],
+          "fps": 12
+        },
+        {
+          "name": "breathing",
+          "frame_count": 9,
+          "directions": [
+            "east"
+          ],
+          "loop": true,
+          "aliases": [
+            "breathe"
+          ],
+          "fps": 12
+        },
+        {
+          "name": "walk",
+          "frame_count": 13,
+          "directions": [
+            "east"
+          ],
+          "loop": true,
+          "aliases": [],
+          "fps": 12
+        }
+      ]
+    }
+  ]
+}
