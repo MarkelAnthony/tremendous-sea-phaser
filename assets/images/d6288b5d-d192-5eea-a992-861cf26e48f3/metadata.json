@@ -1,0 +1,11 @@
+{
+  "id": "d6288b5d-d192-5eea-a992-861cf26e48f3",
+  "name": "Repair ONLY the forward outstretched hand at the end of Rile",
+  "prompt": "Repair ONLY the forward outstretched hand at the end of Riley's straight extended arm. Clearly readable tightly CLENCHED CLOSED FIST, compact squared silhouette with a strong row of curled knuckles, thumb firmly tucked across curled fingers. Slightly exaggerate fist thickness for small battle sprite readability, bright warm peach knuckle plane, dark brown crisp outline, clear dark crease separating wrapped thumb from curled fingers, shadow underneath; no outstretched fingers, no open palm. Keep wrist connected at exactly same position and preserve straight forward arm pose. Match existing pixel art palette and pixel size. Transparent surroundings.",
+  "width": 128,
+  "height": 128,
+  "model": "generate_inpainting_v3",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
