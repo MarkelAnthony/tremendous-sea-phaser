@@ -183,6 +183,24 @@
       "idle_atlas_frame_pattern": "entropy/rotations/{direction}",
       "animations": [
         {
+          "name": "attack",
+          "id": "363db91a-6d32-4bf1-a07e-5c049070bb3b",
+          "source_name": "custom-An explosive forward projectil",
+          "display_name": "Entropy RGB Giant Sword Attack",
+          "description": "An explosive forward projectile sword ATTACK facing right. Brief anticipation: pull the floating swords inward. They rapidly fuse into ONE giant ethereal sword whose entire blade simultaneously swirls with interwoven RED, GREEN and BLUE light, translucent multicolored core and bright sparkling aura. Riley snaps her arm forcefully forward to the RIGHT, launching the giant sword point-first horizontally to the RIGHT ahead of her body with a long RGB motion trail. Clear aggressive thrust, huge forward displacement of the sword away from Riley, brilliant impact burst on the RIGHT. The sword disappears after impact. Riley recoils then recovers to her initial stance. This is a forceful attack, NOT idle levitation or a stationary merge pose. Blade tip always points RIGHT toward the target, never backward. Keep original robe, body and character design unchanged. All three colors mixed together throughout the single sword, not separate colored swords.",
+          "generation_model": "v3",
+          "frame_count": 8,
+          "directions": [
+            "east"
+          ],
+          "loop": false,
+          "aliases": [
+            "attack"
+          ],
+          "path_pattern": "entropy/animations/attack/{direction}/frame_{frame}.png",
+          "atlas_frame_pattern": "entropy/animations/attack/{direction}/frame_{frame}"
+        },
+        {
           "name": "idle",
           "id": "f9ff8d35-b8b4-43b9-8a10-81567aba24cf",
           "source_name": "custom-Gentle looping idle holding th",
