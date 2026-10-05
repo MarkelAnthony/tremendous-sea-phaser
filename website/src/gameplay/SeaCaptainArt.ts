@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import { preloadCharacterAtlas, characterManifest, characterAtlasKey, selectCharacterState, characterRotationFrameName } from "../shared/animation";
+import { preloadCharacterAtlas, characterManifest, characterAtlasKey, selectCharacterState } from "../shared/animation";
 
 const RILEY = "b872b214-8d45-4f34-b202-a5ca77f2e210";
 export function preloadSeaCaptain(scene: Phaser.Scene): void {
@@ -23,7 +23,7 @@ export function createSeaCaptain(scene: Phaser.Scene, captain: string): Phaser.G
   sprite.setData("stance", "FourSword");
   return sprite;
 }
-/** New stances are deliberate static approval poses; Four Swords retains its idle clip. */
+/** Play each approved stance's own idle loop; Four Swords retains its original clip. */
 export function updateSeaCaptainStance(scene: Phaser.Scene, sprite: Phaser.GameObjects.Sprite, stance: string): void {
   if (sprite.getData("stance") === stance) return;
   const manifest = characterManifest(scene, RILEY);
@@ -32,9 +32,20 @@ export function updateSeaCaptainStance(scene: Phaser.Scene, sprite: Phaser.GameO
   if (!state) return;
   if (stateId === RILEY) sprite.play(`${characterAtlasKey(RILEY)}-sea-idle`);
   else {
-    const frame = characterRotationFrameName(state.folder, "east");
-    if (!scene.textures.get(characterAtlasKey(RILEY)).has(frame)) return;
-    sprite.stop().setTexture(characterAtlasKey(RILEY), frame);
+    const clipName = stance === "FistBlade" ? "Fist Blade idle" : "Entropy idle";
+    const selection = selectCharacterState(manifest, { state: state.id, preferredClips: [clipName] });
+    const clip = selection.state.animations.find((candidate) =>
+      (candidate as typeof candidate & { display_name?: string }).display_name === clipName && candidate.directions.includes("east"));
+    if (!clip) return;
+    const key = characterAtlasKey(RILEY);
+    const pattern = (clip as typeof clip & { atlas_frame_pattern: string }).atlas_frame_pattern;
+    const frames = Array.from({ length: clip.frame_count }, (_, index) => ({
+      key, frame: pattern.replace("{direction}", "east").replace("{frame}", String(index).padStart(3, "0")),
+    }));
+    if (frames.some(({ frame }) => !scene.textures.get(key).has(frame))) return;
+    const animationKey = `${key}-sea-${stance}-idle`;
+    if (!scene.anims.exists(animationKey)) scene.anims.create({ key: animationKey, frames, frameRate: 6, repeat: -1 });
+    sprite.play(animationKey);
   }
   sprite.setData("stance", stance);
   sprite.setData("swords", stance === "FourSword" ? { held: ["red", "green"], floating: ["blue"] } : { held: [], floating: stance === "Entropy" ? ["gold", "gold", "gold"] : ["red", "green", "blue"] });
