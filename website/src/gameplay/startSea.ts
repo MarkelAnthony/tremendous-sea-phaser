@@ -6,9 +6,9 @@ export async function startSea(): Promise<void> {
   globals.Phaser = Phaser;
   document.body.classList.add("sea-game");
   for (const name of ["data", "engine", "ui", "phaser-scene"]) {
+    if (name === "phaser-scene") document.getElementById("app")!.replaceChildren();
     await new Promise<void>((resolve, reject) => {
       const script = document.createElement("script");
-      script.src = new URL(`../../public/legacy/${name}.js`, import.meta.url).href;
       // Public files are copied as-is; use the deployment-relative root.
       script.src = new URL(`legacy/${name}.js`, document.baseURI).href;
       script.onload = () => resolve();

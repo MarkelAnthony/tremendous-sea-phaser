@@ -105,6 +105,7 @@ class MainScene extends Phaser.Scene {
     };
 
     render();
+    window.gameReady = true;
   }
 
   showFatalError(err){
