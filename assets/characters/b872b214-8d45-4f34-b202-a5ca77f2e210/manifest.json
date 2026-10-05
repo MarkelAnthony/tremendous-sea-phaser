@@ -39,7 +39,26 @@
       ],
       "rotation_path_pattern": "idle/rotations/{direction}.png",
       "idle_atlas_frame_pattern": "idle/rotations/{direction}",
-      "animations": []
+      "animations": [
+        {
+          "name": "idle",
+          "id": "0a4b1d4b-6319-4e7d-9bfa-89e927117c50",
+          "source_name": "breathing-idle",
+          "display_name": "Riley idle",
+          "description": "animating",
+          "generation_model": "template",
+          "frame_count": 4,
+          "directions": [
+            "east"
+          ],
+          "loop": true,
+          "aliases": [
+            "idle"
+          ],
+          "path_pattern": "idle/animations/idle/{direction}/frame_{frame}.png",
+          "atlas_frame_pattern": "idle/animations/idle/{direction}/frame_{frame}"
+        }
+      ]
     }
   ]
 }
