@@ -99,6 +99,28 @@ class MainScene extends Phaser.Scene {
       try {
         if (G && !G.over) saveGame();
         if (G && G.over) clearSave();
+        // Resolve combat immediately, but keep the finishing hit on screen until
+        // its actual clip completes. Never rebuild/destroy its sprite mid-strike.
+        if (G?.combat?.over && scene.playerBody?.active && scene.playerBody.getData?.("clarityAttackPlaying")) {
+          if (!scene.finishingAttackPending) {
+            scene.finishingAttackPending = true;
+            scene.updateCombatDisplay(true);
+            const disableControls = (object) => {
+              if (object.input) object.disableInteractive();
+              if (Array.isArray(object.list)) object.list.forEach(disableControls);
+            };
+            disableControls(scene.uiRoot);
+            scene.playerBody.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
+              // Let the impact burst's final sparks fade before showing results.
+              scene.time.delayedCall(180, () => {
+                scene.finishingAttackPending = false;
+                render();
+              });
+            });
+          }
+          return;
+        }
+        if (scene.finishingAttackPending) return;
         if (!G || !G.combat || G.combat.over) scene.combatBuilt = false;
         scene.syncFromState();
       } catch(err){
