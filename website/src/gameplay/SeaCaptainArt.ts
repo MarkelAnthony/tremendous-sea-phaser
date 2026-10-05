@@ -30,9 +30,29 @@ export function updateSeaCaptainStance(scene: Phaser.Scene, sprite: Phaser.GameO
   const stateId = stance === "FistBlade" ? "b15bd612-59f4-4175-915d-0b777cfb835b" : stance === "Entropy" ? "86587070-efce-4ef8-b513-e5a10a41dc6c" : RILEY;
   const state = manifest.states.find((candidate) => candidate.id === stateId);
   if (!state) return;
-  if (stateId === RILEY) sprite.play(`${characterAtlasKey(RILEY)}-sea-idle`);
+  // Preserve the approved closed-fist silhouette instead of letting generated frames open her hand.
+  const previousSway = sprite.getData("fistSway") as Phaser.Tweens.Tween | undefined;
+  if (previousSway) {
+    previousSway.stop();
+    sprite.setX(sprite.getData("fistRestX") as number).setAngle(sprite.getData("fistRestAngle") as number);
+    sprite.setData("fistSway", undefined);
+  }
+  if (stance === "FistBlade") {
+    const pose = state.idle_atlas_frame_pattern.replace("{direction}", "east");
+    const key = characterAtlasKey(RILEY);
+    if (!scene.textures.get(key).has(pose)) return;
+    sprite.anims.stop();
+    sprite.setTexture(key, pose);
+    sprite.setData("fistRestX", sprite.x);
+    sprite.setData("fistRestAngle", sprite.angle);
+    sprite.setData("fistSway", scene.tweens.add({
+      targets: sprite, x: sprite.x + 0.7, angle: sprite.angle + 0.45,
+      duration: 1300, ease: "Sine.easeInOut", yoyo: true, repeat: -1,
+    }));
+  }
+  else if (stateId === RILEY) sprite.play(`${characterAtlasKey(RILEY)}-sea-idle`);
   else {
-    const clipName = stance === "FistBlade" ? "Fist Blade raised-fist idle" : "Entropy idle";
+    const clipName = "Entropy idle";
     const selection = selectCharacterState(manifest, { state: state.id, preferredClips: [clipName] });
     const clip = selection.state.animations.find((candidate) =>
       (candidate as typeof candidate & { display_name?: string }).display_name === clipName && candidate.directions.includes("east"));
