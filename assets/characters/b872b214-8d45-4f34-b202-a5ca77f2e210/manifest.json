@@ -77,6 +77,24 @@
       "rotation_path_pattern": "fist-blade/rotations/{direction}.png",
       "idle_atlas_frame_pattern": "fist-blade/rotations/{direction}",
       "animations": []
+    },
+    {
+      "id": "86587070-efce-4ef8-b513-e5a10a41dc6c",
+      "name": "Entropy",
+      "folder": "entropy",
+      "directions": [
+        "south",
+        "east",
+        "north",
+        "west",
+        "south-east",
+        "north-east",
+        "north-west",
+        "south-west"
+      ],
+      "rotation_path_pattern": "entropy/rotations/{direction}.png",
+      "idle_atlas_frame_pattern": "entropy/rotations/{direction}",
+      "animations": []
     }
   ]
 }
