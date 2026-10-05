@@ -76,7 +76,26 @@
       ],
       "rotation_path_pattern": "fist-blade/rotations/{direction}.png",
       "idle_atlas_frame_pattern": "fist-blade/rotations/{direction}",
-      "animations": []
+      "animations": [
+        {
+          "name": "idle",
+          "id": "8e258c49-19a7-4696-b8c8-a96befeed104",
+          "source_name": "custom-Gentle looping idle in this ex",
+          "display_name": "Fist Blade idle",
+          "description": "Gentle looping idle in this exact side-facing fist-raised stance. Keep the clenched fist raised and both hands empty throughout. Subtle breathing and hair sway. Three separate red, green and blue swords hover behind her back with a slow tiny telekinetic bob. Preserve all three swords and their colors, outfit, silhouette and pose. No attack or walking.",
+          "generation_model": "v3",
+          "frame_count": 8,
+          "directions": [
+            "east"
+          ],
+          "loop": true,
+          "aliases": [
+            "idle"
+          ],
+          "path_pattern": "fist-blade/animations/idle/{direction}/frame_{frame}.png",
+          "atlas_frame_pattern": "fist-blade/animations/idle/{direction}/frame_{frame}"
+        }
+      ]
     },
     {
       "id": "86587070-efce-4ef8-b513-e5a10a41dc6c",
