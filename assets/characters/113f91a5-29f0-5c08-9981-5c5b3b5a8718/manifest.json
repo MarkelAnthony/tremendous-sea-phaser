@@ -1,11 +1,11 @@
 {
-  "id": "forest-guardian",
+  "id": "113f91a5-29f0-5c08-9981-5c5b3b5a8718",
   "name": "Forest Guardian",
-  "group_id": "cbde480e-4a1f-4592-9781-c36dd4d1cbb0",
-  "atlas_key": "char-forest-guardian",
+  "group_id": "6786275a-05a0-5c73-bbb3-e44575915d8e",
+  "atlas_key": "char-113f91a5-29f0-5c08-9981-5c5b3b5a8718",
   "states": [
     {
-      "id": "cc0c7ba1-72a9-4f47-b5a3-bc08aa590342",
+      "id": "113f91a5-29f0-5c08-9981-5c5b3b5a8718",
       "name": "Idle",
       "folder": "idle",
       "directions": [

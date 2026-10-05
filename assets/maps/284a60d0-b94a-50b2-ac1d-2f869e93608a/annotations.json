@@ -82,7 +82,7 @@
           "x": 340,
           "y": 280,
           "properties": {
-            "characterId": "forest-wolf",
+            "characterId": "36e5db22-bb07-5f4f-9eb6-75b915d82f4c",
             "patrolMin": 240,
             "patrolMax": 416
           }
@@ -92,7 +92,7 @@
           "x": 720,
           "y": 280,
           "properties": {
-            "characterId": "forest-guardian",
+            "characterId": "113f91a5-29f0-5c08-9981-5c5b3b5a8718",
             "patrolMin": 544,
             "patrolMax": 880
           }
@@ -102,7 +102,7 @@
           "x": 1150,
           "y": 280,
           "properties": {
-            "characterId": "forest-wolf",
+            "characterId": "36e5db22-bb07-5f4f-9eb6-75b915d82f4c",
             "patrolMin": 1020,
             "patrolMax": 1328
           }
@@ -112,7 +112,7 @@
           "x": 1660,
           "y": 248,
           "properties": {
-            "characterId": "forest-guardian",
+            "characterId": "113f91a5-29f0-5c08-9981-5c5b3b5a8718",
             "patrolMin": 1584,
             "patrolMax": 1760
           }
@@ -122,7 +122,7 @@
           "x": 1900,
           "y": 280,
           "properties": {
-            "characterId": "forest-wolf",
+            "characterId": "36e5db22-bb07-5f4f-9eb6-75b915d82f4c",
             "patrolMin": 1824,
             "patrolMax": 2016
           }
@@ -132,7 +132,7 @@
           "x": 2310,
           "y": 280,
           "properties": {
-            "characterId": "forest-guardian",
+            "characterId": "113f91a5-29f0-5c08-9981-5c5b3b5a8718",
             "patrolMin": 2144,
             "patrolMax": 2464
           }

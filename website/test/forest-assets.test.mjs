@@ -7,7 +7,7 @@ const assets = resolve(import.meta.dirname, "../../assets");
 const read = path => JSON.parse(readFileSync(path, "utf8"));
 
 test("all supplied animation clips have complete contiguous frames and gameplay roles", () => {
-  const counts = { "forest-warrior": 13, "forest-guardian": 8, "forest-wolf": 5 };
+  const counts = { "476945d1-f351-5034-b0af-5a3e362e53ee": 13, "113f91a5-29f0-5c08-9981-5c5b3b5a8718": 8, "36e5db22-bb07-5f4f-9eb6-75b915d82f4c": 5 };
   for (const [id, count] of Object.entries(counts)) {
     const root = `${assets}/characters/${id}`;
     const manifest = read(`${root}/manifest.json`);
@@ -24,7 +24,7 @@ test("all supplied animation clips have complete contiguous frames and gameplay 
       }
       const roles = new Set(state.animations.flatMap(animation => [animation.name, ...(animation.aliases ?? [])]));
       for (const role of ["walk", "breathe"]) assert.ok(roles.has(role), `${id}/${state.folder}: missing ${role}`);
-      if (id === "forest-warrior") {
+      if (id === "476945d1-f351-5034-b0af-5a3e362e53ee") {
         for (const role of ["jump", "hurt"]) assert.ok(roles.has(role));
       }
     }
@@ -32,7 +32,7 @@ test("all supplied animation clips have complete contiguous frames and gameplay 
 });
 
 test("forest encounters and exit are supported by painted ground", () => {
-  const root = `${assets}/maps/verdant-crossing`;
+  const root = `${assets}/maps/284a60d0-b94a-50b2-ac1d-2f869e93608a`;
   const annotations = read(`${root}/annotations.json`);
   const map = read(`${root}/map.json`);
   const cells = new Set(read(`${root}/terrain-map.json`).cells.map(cell => `${cell.x},${cell.y}`));

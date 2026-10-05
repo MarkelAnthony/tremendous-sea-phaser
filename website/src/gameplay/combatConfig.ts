@@ -31,11 +31,11 @@ export interface EnemyProfile {
 }
 
 export const ENEMY_PROFILES: Record<string, EnemyProfile> = {
-  "forest-wolf": {
+  "36e5db22-bb07-5f4f-9eb6-75b915d82f4c": {
     health: 3, chaseSpeed: 64, chaseClip: "walk", footPadding: 17,
     mirrorWest: true, reaction: "hurt", attacks: ["attack"],
   },
-  "forest-guardian": {
+  "113f91a5-29f0-5c08-9981-5c5b3b5a8718": {
     health: 5, chaseSpeed: 78, chaseClip: "run", footPadding: 18,
     mirrorWest: false, reaction: "dodge", attacks: ["attack", "heavy", "flourish"],
   },

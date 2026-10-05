@@ -19,7 +19,7 @@ Everything under `assets/` (map.json, terrain-map.json, annotations.json, backgr
 - Gravity is +y (x right, y down); coordinates are exported world pixels with dual-grid terrain (see `pixellab/AGENTS.md`) — don't half-shift them.
 
 ## Bundled forest starter
-Ships `forest-warrior` (13 clips, two stances), `forest-wolf`, `forest-guardian`, and the `verdant-crossing` map, registered as project assets at bootstrap. `ForestEnemy.ts` drives terrain-aware patrols, timed attacks, and deaths; enemy annotation points carry `characterId`/`patrolMin`/`patrolMax` (read via `findEnemySpawns`). Combat keys J/K/L select attacks, Shift runs, Space double-jumps; tuning in `gameplay/combatConfig.ts`, camera in `config.ts`.
+Ships `476945d1-f351-5034-b0af-5a3e362e53ee` (13 clips, two stances), `36e5db22-bb07-5f4f-9eb6-75b915d82f4c`, `113f91a5-29f0-5c08-9981-5c5b3b5a8718`, and the `284a60d0-b94a-50b2-ac1d-2f869e93608a` map, registered as project assets at bootstrap. `ForestEnemy.ts` drives terrain-aware patrols, timed attacks, and deaths; enemy annotation points carry `characterId`/`patrolMin`/`patrolMax` (read via `findEnemySpawns`). Combat keys J/K/L select attacks, Shift runs, Space double-jumps; tuning in `gameplay/combatConfig.ts`, camera in `config.ts`.
 
 ## The handful of things that bite
 - **A map swap is one line:** `MAP_FOLDER` in `pixellab/templateAssetPaths.ts`; a character swap is the relevant ID in that file. (Warps → `pixellab/AGENTS.md`.)

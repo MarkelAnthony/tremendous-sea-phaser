@@ -1,11 +1,11 @@
 {
-  "id": "forest-warrior",
+  "id": "476945d1-f351-5034-b0af-5a3e362e53ee",
   "name": "Forest Warrior",
-  "group_id": "a821bdd2-57f5-4114-aa96-5ba8587f2420",
-  "atlas_key": "char-forest-warrior",
+  "group_id": "61521895-7c3a-5e7e-92b6-fc0a8115dd7e",
+  "atlas_key": "char-476945d1-f351-5034-b0af-5a3e362e53ee",
   "states": [
     {
-      "id": "5e8fffb6-058e-406d-83be-b19a9323b3ea",
+      "id": "476945d1-f351-5034-b0af-5a3e362e53ee",
       "name": "Idle",
       "folder": "idle",
       "directions": [
@@ -100,7 +100,7 @@
       ]
     },
     {
-      "id": "6b2e1cbf-fe19-4612-92f8-4432218bb9cb",
+      "id": "0ce95af2-e954-5aed-9c46-11ba706b224f",
       "name": "Axe out, combat stance",
       "folder": "axe-out-combat-stance",
       "directions": [

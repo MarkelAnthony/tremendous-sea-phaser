@@ -5,10 +5,10 @@ background and 16px tileset. New projects register project-owned character group
 a map, and a Creator image with persistent IDs. Bootstrap patches source and asset
 folders together; regular asset sync preserves the imported clip roles/timing.
 
-- `maps/verdant-crossing`: new 160 × 40 terrain grid, spawn, ravines and exit.
-- `characters/forest-warrior`: both stances, all 13 clips.
-- `characters/forest-wolf`: all five clips; west mirrors the supplied east frames.
-- `characters/forest-guardian`: all eight clips, including three attacks and dodge.
+- `maps/284a60d0-b94a-50b2-ac1d-2f869e93608a`: new 160 × 40 terrain grid, spawn, ravines and exit.
+- `characters/476945d1-f351-5034-b0af-5a3e362e53ee`: both stances, all 13 clips.
+- `characters/36e5db22-bb07-5f4f-9eb6-75b915d82f4c`: all five clips; west mirrors the supplied east frames.
+- `characters/113f91a5-29f0-5c08-9981-5c5b3b5a8718`: all eight clips, including three attacks and dodge.
 
 Manifest aliases describe gameplay roles. Original frame pixels and dimensions
 are preserved; atlas trimming only removes transparent padding and Phaser

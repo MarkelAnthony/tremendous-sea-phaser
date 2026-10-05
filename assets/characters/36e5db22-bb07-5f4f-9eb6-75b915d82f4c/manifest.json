@@ -1,11 +1,11 @@
 {
-  "id": "forest-wolf",
+  "id": "36e5db22-bb07-5f4f-9eb6-75b915d82f4c",
   "name": "Forest Wolf",
-  "group_id": "eaa35d76-a4f2-57f5-82a4-af4b8bb1cc67",
-  "atlas_key": "char-forest-wolf",
+  "group_id": "96aca805-7cf5-5751-9253-45b0d0966a7b",
+  "atlas_key": "char-36e5db22-bb07-5f4f-9eb6-75b915d82f4c",
   "states": [
     {
-      "id": "e05c95db-f2b4-5b34-bdd3-599ac18fd6db",
+      "id": "36e5db22-bb07-5f4f-9eb6-75b915d82f4c",
       "name": "default",
       "folder": "default",
       "directions": [

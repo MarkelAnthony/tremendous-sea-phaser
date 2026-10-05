@@ -1,5 +1,5 @@
-export const MAP_FOLDER = "verdant-crossing";
-export const PLAYER_CHARACTER_ID = "forest-warrior";
+export const MAP_FOLDER = "284a60d0-b94a-50b2-ac1d-2f869e93608a";
+export const PLAYER_CHARACTER_ID = "476945d1-f351-5034-b0af-5a3e362e53ee";
 
 export const ASSET_ROOT = "assets";
 
