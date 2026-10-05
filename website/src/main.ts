@@ -2,6 +2,7 @@ import Phaser from "phaser";
 import { BootScene } from "./scenes/BootScene";
 import { GameScene } from "./scenes/GameScene";
 import "./styles.css";
+import { startSea } from "./gameplay/startSea";
 
 // Global error handler: surfaces ALL runtime errors visibly on-screen
 // so the agent's smoke test (screenshot + console check) always catches them.
@@ -38,6 +39,7 @@ window.onunhandledrejection = (event: PromiseRejectionEvent) => {
   showFatalError(`Unhandled promise rejection\n${message}`);
 };
 
+function startPlatformer(): void {
 const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
   parent: "app",
@@ -83,3 +85,7 @@ const game = new Phaser.Game(config);
     errors: collectedErrors.length,
   };
 };
+}
+
+if (new URLSearchParams(location.search).get("mode") === "platformer") startPlatformer();
+else void startSea();
