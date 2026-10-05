@@ -109,3 +109,41 @@ globals.createSeaCaptain = createSeaCaptain;
 globals.updateSeaCaptainStance = updateSeaCaptainStance;
 
 globals.playSeaClarityAttack = playSeaClarityAttack;
+
+/** Play the approved punch when a Fist Blade attack receives its home-stance boost. */
+export function playSeaFistBladeAttack(scene: Phaser.Scene, sprite: Phaser.GameObjects.Sprite): void {
+  if (sprite.getData("clarityAttackPlaying")) return;
+  const manifest = characterManifest(scene, RILEY);
+  const selection = selectCharacterState(manifest, {
+    state: "b15bd612-59f4-4175-915d-0b777cfb835b", preferredClips: ["Fist Blade Punch"],
+  });
+  const clip = selection.state.animations.find((candidate) =>
+    (candidate as typeof candidate & { display_name?: string }).display_name === "Fist Blade Punch" && candidate.directions.includes("east"));
+  if (!clip) return;
+  const key = characterAtlasKey(RILEY);
+  const pattern = (clip as typeof clip & { atlas_frame_pattern: string }).atlas_frame_pattern;
+  const frames = Array.from({ length: clip.frame_count }, (_, index) => ({
+    key, frame: pattern.replace("{direction}", "east").replace("{frame}", String(index).padStart(3, "0")),
+  }));
+  if (frames.some(({ frame }) => !scene.textures.get(key).has(frame))) return;
+  const animationKey = `${key}-sea-fist-blade-attack`;
+  if (!scene.anims.exists(animationKey)) scene.anims.create({ key: animationKey, frames, frameRate: 10, repeat: 0 });
+  const sway = sprite.getData("fistSway") as Phaser.Tweens.Tween | undefined;
+  if (sway) {
+    sway.stop();
+    sprite.setX(sprite.getData("fistRestX") as number).setAngle(sprite.getData("fistRestAngle") as number);
+    sprite.setData("fistSway", undefined);
+  }
+  sprite.setData("clarityAttackPlaying", true);
+  sprite.setData("fistAttackCount", (Number(sprite.getData("fistAttackCount")) || 0) + 1);
+  sprite.setData("afterAttackStance", "FistBlade");
+  sprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
+    if (!sprite.active) return;
+    sprite.setData("clarityAttackPlaying", false);
+    const stance = String(sprite.getData("afterAttackStance") || "FistBlade");
+    sprite.setData("stance", undefined);
+    updateSeaCaptainStance(scene, sprite, stance);
+  });
+  sprite.play(animationKey);
+}
+globals.playSeaFistBladeAttack = playSeaFistBladeAttack;
