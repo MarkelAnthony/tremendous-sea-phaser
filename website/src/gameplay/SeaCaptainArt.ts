@@ -26,6 +26,10 @@ export function createSeaCaptain(scene: Phaser.Scene, captain: string): Phaser.G
 }
 /** Play each approved stance's own idle loop; Four Swords retains its original clip. */
 export function updateSeaCaptainStance(scene: Phaser.Scene, sprite: Phaser.GameObjects.Sprite, stance: string): void {
+  if (sprite.getData("clarityAttackPlaying")) {
+    sprite.setData("afterAttackStance", stance);
+    return;
+  }
   if (sprite.getData("stance") === stance) return;
   const manifest = characterManifest(scene, RILEY);
   const stateId = stance === "FistBlade" ? "b15bd612-59f4-4175-915d-0b777cfb835b" : stance === "Entropy" ? "86587070-efce-4ef8-b513-e5a10a41dc6c" : RILEY;
@@ -70,7 +74,38 @@ export function updateSeaCaptainStance(scene: Phaser.Scene, sprite: Phaser.GameO
   sprite.setData("stance", stance);
   sprite.setData("swords", stance === "FourSword" ? { held: ["red", "green"], floating: ["blue"] } : { held: [], floating: stance === "Entropy" ? ["gold", "gold", "gold"] : ["red", "green", "blue"] });
 }
+/** A damage-based Clarity gain is the shared trigger for every Four Sword attack. */
+export function playSeaClarityAttack(scene: Phaser.Scene, sprite: Phaser.GameObjects.Sprite): void {
+  const manifest = characterManifest(scene, RILEY);
+  const selection = selectCharacterState(manifest, { state: RILEY, preferredClips: ["Four Sword Swipe"] });
+  const clip = selection.state.animations.find((candidate) =>
+    (candidate as typeof candidate & { display_name?: string }).display_name === "Four Sword Swipe" && candidate.directions.includes("east"));
+  if (!clip) return;
+  const key = characterAtlasKey(RILEY);
+  const pattern = (clip as typeof clip & { atlas_frame_pattern: string }).atlas_frame_pattern;
+  const frames = Array.from({ length: clip.frame_count }, (_, index) => ({
+    key, frame: pattern.replace("{direction}", "east").replace("{frame}", String(index).padStart(3, "0")),
+  }));
+  if (frames.some(({ frame }) => !scene.textures.get(key).has(frame))) return;
+  const animationKey = `${key}-sea-four-sword-attack`;
+  if (!scene.anims.exists(animationKey)) scene.anims.create({ key: animationKey, frames, frameRate: 10, repeat: 0 });
+  // Area attacks and multi-hit cards can grant Clarity repeatedly in one resolution.
+  if (sprite.getData("clarityAttackPlaying")) return;
+  sprite.setData("clarityAttackPlaying", true);
+  sprite.setData("clarityAttackCount", (Number(sprite.getData("clarityAttackCount")) || 0) + 1);
+  sprite.setData("afterAttackStance", "FourSword");
+  sprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
+    if (!sprite.active) return;
+    sprite.setData("clarityAttackPlaying", false);
+    const stance = String(sprite.getData("afterAttackStance") || "FourSword");
+    sprite.setData("stance", undefined);
+    updateSeaCaptainStance(scene, sprite, stance);
+  });
+  sprite.play(animationKey);
+}
 const globals = window as unknown as Record<string, unknown>;
 globals.preloadSeaCaptain = preloadSeaCaptain;
 globals.createSeaCaptain = createSeaCaptain;
 globals.updateSeaCaptainStance = updateSeaCaptainStance;
+
+globals.playSeaClarityAttack = playSeaClarityAttack;

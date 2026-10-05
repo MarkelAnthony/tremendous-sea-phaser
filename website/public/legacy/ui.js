@@ -859,7 +859,7 @@ function playCard(idx, target, isRepeatedPlay){
           pushLogQuiet(`The Wishing Gumball finishes off ${hitTarget.name}!`);
         }
         totalDealt += dealt;
-        if (isRiley() && (G.player.stance === "FourSword" || G.player.unbrokenFocusActive) && dealt > 0){ gainClarity(1); }
+        if (isRiley() && (G.player.stance === "FourSword" || G.player.unbrokenFocusActive) && dealt > 0){ gainClarity(1, true); }
         if (isBroderick() && (card.isClaw || (card.fullMoonBecomesClaw && G.player.fullMoonActive)) && dealt > 0){
           G.combat.clawCount = (G.combat.clawCount||0)+1;
           const triggersNow = (G.combat.clawCount % 2 === 0) || (G.combat.clawCount === 1 && hasRelicHook("pocketMoon"));
@@ -2402,8 +2402,12 @@ function healPlayer(amount){
   if (G.player.hp > before && G.combat){ G.combat.healedThisTurn = true; }
   return G.player.hp - before;
 }
-function gainClarity(n){
+function gainClarity(n, fromAttack = false){
   if (!isRiley() || !G.combat) return;
+  if (fromAttack && n > 0 && G.player.stance === "FourSword"){
+    const scene = window.game?.scene.getScenes(true)[0];
+    if (scene?.playerBody) window.playSeaClarityAttack(scene, scene.playerBody);
+  }
   if (G.player.stance === "Entropy" && !G.player.unbrokenFocusActive) return; // no generation in Entropy unless Unbroken Focus is active (Moment of Clarity is the other exception, handled separately)
   G.player.clarity += n;
   G.combat.clarityGeneratedThisTurn = true;
