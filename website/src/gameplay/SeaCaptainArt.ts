@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import { preloadCharacterAtlas, characterManifest, characterAtlasKey, selectCharacterState } from "../shared/animation";
+import { preloadCharacterAtlas, characterManifest, characterAtlasKey, characterRotationFrameName, selectCharacterState } from "../shared/animation";
 
 const RILEY = "b872b214-8d45-4f34-b202-a5ca77f2e210";
 export function preloadSeaCaptain(scene: Phaser.Scene): void {
@@ -38,7 +38,7 @@ export function updateSeaCaptainStance(scene: Phaser.Scene, sprite: Phaser.GameO
     sprite.setData("fistSway", undefined);
   }
   if (stance === "FistBlade") {
-    const pose = state.idle_atlas_frame_pattern.replace("{direction}", "east");
+    const pose = characterRotationFrameName(state.folder, "east");
     const key = characterAtlasKey(RILEY);
     if (!scene.textures.get(key).has(pose)) return;
     sprite.anims.stop();
