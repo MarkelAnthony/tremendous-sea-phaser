@@ -221,6 +221,26 @@
           "atlas_frame_pattern": "entropy/animations/slash/{direction}/frame_{frame}"
         },
         {
+          "name": "slash-6201f2d1",
+          "id": "6201f2d1-52b2-4fb0-bf91-f58b11dd4faf",
+          "source_name": "custom-Keep Riley's original robe, bo",
+          "display_name": "Entropy RGB Ethereal Giant Sword",
+          "description": "Keep Riley's original robe, body, face and pose design unchanged. Floating swords converge and merge into ONE enormous ethereal magical sword IN FRONT of Riley, pointing forward to the RIGHT (east), then launch forward to the RIGHT. The giant sword is made from RED, GREEN AND BLUE magical energy ALL MIXED TOGETHER throughout the blade: intertwined vivid crimson ribbons, emerald green wisps and electric blue streams, translucent prismatic overlapping layers, brilliant white-hot highlights, flashy sparkling red green blue particles and luminous trails. All THREE colors visibly coexist across the sword, not a single-color blade and not separate solid color swords. Readable pointed giant sword silhouette with hilt, not a curved slash arc. Brief charge, swords converge, spectacular RGB giant blade appears, shoots right, disperses into colorful sparkling wisps, recover original stance. Riley remains readable and unchanged. Side-view east facing.",
+          "generation_model": "v3",
+          "frame_count": 8,
+          "directions": [
+            "east"
+          ],
+          "loop": false,
+          "aliases": [
+            "slash",
+            "spell",
+            "attack"
+          ],
+          "path_pattern": "entropy/animations/slash-6201f2d1/{direction}/frame_{frame}.png",
+          "atlas_frame_pattern": "entropy/animations/slash-6201f2d1/{direction}/frame_{frame}"
+        },
+        {
           "name": "slash-9ecfe3eb",
           "id": "9ecfe3eb-c07c-4774-8d96-581c040eab03",
           "source_name": "custom-Hold the original stance brief",
