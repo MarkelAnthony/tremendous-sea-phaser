@@ -59,6 +59,24 @@
           "atlas_frame_pattern": "idle/animations/idle/{direction}/frame_{frame}"
         }
       ]
+    },
+    {
+      "id": "b15bd612-59f4-4175-915d-0b777cfb835b",
+      "name": "Fist Blade",
+      "folder": "fist-blade",
+      "directions": [
+        "south",
+        "east",
+        "north",
+        "west",
+        "south-east",
+        "north-east",
+        "north-west",
+        "south-west"
+      ],
+      "rotation_path_pattern": "fist-blade/rotations/{direction}.png",
+      "idle_atlas_frame_pattern": "fist-blade/rotations/{direction}",
+      "animations": []
     }
   ]
 }
