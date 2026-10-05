@@ -198,6 +198,33 @@
           ],
           "path_pattern": "entropy/animations/idle/{direction}/frame_{frame}.png",
           "atlas_frame_pattern": "entropy/animations/idle/{direction}/frame_{frame}"
+        },
+        {
+          "name": "slash",
+          "id": "f78b3fc2-750b-49b6-bc52-4c62aec4b3ed",
+          "source_name": "custom-Gather magical energy, unleash",
+          "display_name": "Entropy Magical Slash",
+          "description": "Gather magical energy, unleash a flashy sweeping magical slash with a luminous crescent and sparkling energy trail in her existing palette, then let the effect dissipate and recover. Keep Riley readable and preserve her original design.",
+          "generation_model": "v3",
+          "frame_count": 8,
+          "directions": [
+            "south",
+            "east",
+            "north",
+            "west",
+            "south-east",
+            "north-east",
+            "north-west",
+            "south-west"
+          ],
+          "loop": false,
+          "aliases": [
+            "slash",
+            "spell",
+            "attack"
+          ],
+          "path_pattern": "entropy/animations/slash/{direction}/frame_{frame}.png",
+          "atlas_frame_pattern": "entropy/animations/slash/{direction}/frame_{frame}"
         }
       ]
     }
