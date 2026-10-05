@@ -32,7 +32,7 @@ export function updateSeaCaptainStance(scene: Phaser.Scene, sprite: Phaser.GameO
   if (!state) return;
   if (stateId === RILEY) sprite.play(`${characterAtlasKey(RILEY)}-sea-idle`);
   else {
-    const clipName = stance === "FistBlade" ? "Fist Blade idle" : "Entropy idle";
+    const clipName = stance === "FistBlade" ? "Fist Blade raised-fist idle" : "Entropy idle";
     const selection = selectCharacterState(manifest, { state: state.id, preferredClips: [clipName] });
     const clip = selection.state.animations.find((candidate) =>
       (candidate as typeof candidate & { display_name?: string }).display_name === clipName && candidate.directions.includes("east"));
