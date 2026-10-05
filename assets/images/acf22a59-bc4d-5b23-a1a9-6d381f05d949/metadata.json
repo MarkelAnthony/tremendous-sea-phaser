@@ -1,0 +1,11 @@
+{
+  "id": "acf22a59-bc4d-5b23-a1a9-6d381f05d949",
+  "name": "Subtly refine ONLY Riley's torso waist and hip silhouette to",
+  "prompt": "Subtly refine ONLY Riley's torso waist and hip silhouette to be a little more feminine while keeping her strong athletic muscular build. Slightly more defined waist and softly fuller hip contour, restrained natural proportions. Preserve her exact outfit, colors, face, hair, pose, straight extended arm, clearly clenched fist, legs and floating swords in their exact positions. Do not alter arm or hand. Same pixel art style and transparent canvas.",
+  "width": 128,
+  "height": 128,
+  "model": "edit_image_pixen",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
