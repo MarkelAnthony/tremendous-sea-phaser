@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "name": "The Verdant Crossing",
-  "exportDate": "2026-09-18T03:48:02.031104Z",
+  "exportDate": "2026-10-05T08:41:45.008870Z",
   "engine": "pixellab-map-editor",
   "mapConfig": {
     "tileSize": 16,
@@ -12,10 +12,10 @@
       "pixelHeight": 640
     },
     "boundingBox": {
-      "minX": 0,
-      "minY": 0,
       "maxX": 159,
-      "maxY": 39
+      "maxY": 39,
+      "minX": 0,
+      "minY": 0
     }
   },
   "terrains": [
@@ -23,7 +23,7 @@
       "id": 1,
       "name": "thin amazonian grass strip capping the top surface with moderate blade texture and soft medium shading",
       "color": "#22c55e",
-      "baseTileId": "c8f57d69-9053-4965-ac32-58f0b7ff74a9",
+      "baseTileId": "5d4c84f8-1ec5-5573-ba5d-0c9f677c5f99",
       "walkable": null
     }
   ],
@@ -48,18 +48,26 @@
   "background": {
     "type": "custom",
     "name": "Ancient forest",
-    "filename": "backgrounds/forest.png",
-    "dimensions": {
-      "width": 462,
-      "height": 256
-    },
+    "repeatX": true,
+    "repeatY": false,
     "worldCoordinates": {
       "x": 0,
       "y": 32
     },
-    "repeatX": true,
-    "repeatY": false
+    "dimensions": {
+      "width": 462,
+      "height": 256
+    },
+    "presetId": null,
+    "assetPath": "https://backblaze.pixellab.ai/file/pixellab-generations/production/creator/df7cccb5-c579-4252-af7b-a8153cfb8aaf/ccee019a-1fe4-51e9-9d0f-6c0159113355/image.png",
+    "verticalExtend": {
+      "enabled": false,
+      "topHeight": 0,
+      "bottomHeight": 0
+    },
+    "filename": "backgrounds/forest.png"
   },
+  "mapId": "284a60d0-b94a-50b2-ac1d-2f869e93608a",
   "gameplayAnnotations": {
     "version": "1.0.0",
     "file": "annotations.json"

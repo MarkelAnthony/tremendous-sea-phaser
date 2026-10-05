@@ -72,19 +72,23 @@
       "id": "forest-enemies",
       "name": "enemy spawn",
       "geometryType": "point",
+      "visible": true,
+      "locked": false,
+      "color": "#ef4444",
       "tags": [
         "enemy",
         "spawn"
       ],
+      "defaultProperties": {},
       "points": [
         {
           "id": "enemy-0",
           "x": 340,
           "y": 280,
           "properties": {
-            "characterId": "36e5db22-bb07-5f4f-9eb6-75b915d82f4c",
+            "patrolMax": 416,
             "patrolMin": 240,
-            "patrolMax": 416
+            "characterId": "36e5db22-bb07-5f4f-9eb6-75b915d82f4c"
           }
         },
         {
@@ -92,9 +96,9 @@
           "x": 720,
           "y": 280,
           "properties": {
-            "characterId": "113f91a5-29f0-5c08-9981-5c5b3b5a8718",
+            "patrolMax": 880,
             "patrolMin": 544,
-            "patrolMax": 880
+            "characterId": "113f91a5-29f0-5c08-9981-5c5b3b5a8718"
           }
         },
         {
@@ -102,9 +106,9 @@
           "x": 1150,
           "y": 280,
           "properties": {
-            "characterId": "36e5db22-bb07-5f4f-9eb6-75b915d82f4c",
+            "patrolMax": 1328,
             "patrolMin": 1020,
-            "patrolMax": 1328
+            "characterId": "36e5db22-bb07-5f4f-9eb6-75b915d82f4c"
           }
         },
         {
@@ -112,9 +116,9 @@
           "x": 1660,
           "y": 248,
           "properties": {
-            "characterId": "113f91a5-29f0-5c08-9981-5c5b3b5a8718",
+            "patrolMax": 1760,
             "patrolMin": 1584,
-            "patrolMax": 1760
+            "characterId": "113f91a5-29f0-5c08-9981-5c5b3b5a8718"
           }
         },
         {
@@ -122,9 +126,9 @@
           "x": 1900,
           "y": 280,
           "properties": {
-            "characterId": "36e5db22-bb07-5f4f-9eb6-75b915d82f4c",
+            "patrolMax": 2016,
             "patrolMin": 1824,
-            "patrolMax": 2016
+            "characterId": "36e5db22-bb07-5f4f-9eb6-75b915d82f4c"
           }
         },
         {
@@ -132,9 +136,9 @@
           "x": 2310,
           "y": 280,
           "properties": {
-            "characterId": "113f91a5-29f0-5c08-9981-5c5b3b5a8718",
+            "patrolMax": 2464,
             "patrolMin": 2144,
-            "patrolMax": 2464
+            "characterId": "113f91a5-29f0-5c08-9981-5c5b3b5a8718"
           }
         }
       ]

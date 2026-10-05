@@ -3,47 +3,64 @@
   "name": "Forest Wolf",
   "group_id": "96aca805-7cf5-5751-9253-45b0d0966a7b",
   "atlas_key": "char-36e5db22-bb07-5f4f-9eb6-75b915d82f4c",
+  "runtime_helper": "website/src/shared/animation.ts",
+  "usage": [
+    "Read this file before choosing character states or animation clip names.",
+    "Animation name is the exact physical clip key. display_name and source_name describe it; aliases are semantic role hints only.",
+    "Use resolveCharacterAnimation(manifest, candidates, { state?, direction? }) to resolve the exact stateFolder and clipName across every state.",
+    "Prefer an exact user-requested display name or clip name before generic roles such as idle, walk, run, jump, or attack.",
+    "CharacterAgent resolves idle, movement, and attack clips across the full manifest and switches state folders automatically.",
+    "Rotations are static poses only. Use animator.setPose(...) or characterRotationFrameName(...) for a deliberate static pose; setClip('idle', ...) always means a real animated idle clip.",
+    "resolveCharacterAnimation(...) and chooseClip(...) return undefined when no clip matches. Handle that explicitly; never silently replace a missing animation with rotations.",
+    "For simple roaming/walking NPCs, use CharacterAgent instead of custom straight-line movement. Its built-in roaming picks walkable targets and follows A* paths around blockers.",
+    "For autonomous movement, update movement/pathing before choosing the animation direction. Direction should come from actual movement after collision/sliding, not only the intended path target. Do not cache a facing direction before followPath/collision movement and reuse it for setClip.",
+    "If using setDirection as a temporary facing lock, do not call it again after releasing movement/facing control in the same update branch.",
+    "CharacterAgent owns the visible sprite as agent.sprite. Do not create a separate scene.add.sprite for the same character.",
+    "Keep each character controller or agent in the scene update loop for any movement or animation changes.",
+    "When adding behavior to a specific NPC, use explicit references or agent.role/agent.id. Do not infer identity from array position or agent.atlasKey.includes(name); atlas keys are UUID-based.",
+    "For dialogue portraits, use states[].portrait.path when present. Build the URL with characterAssetUrl(characterId, path) from the runtime helper.",
+    "For portrait lip-sync/vocal animation, use states[].vocal_animation.path when present. It is a grid with moods as rows and visemes as columns.",
+    "Use SpriteAnimator(sprite, atlasKey, animations, stateFolder) and animator.setClip(clipName, direction, stateFolder) for resolved clips."
+  ],
   "states": [
     {
       "id": "36e5db22-bb07-5f4f-9eb6-75b915d82f4c",
       "name": "default",
       "folder": "default",
       "directions": [
-        "east"
+        "south",
+        "east",
+        "north",
+        "west"
       ],
+      "rotation_path_pattern": "default/rotations/{direction}.png",
+      "idle_atlas_frame_pattern": "default/rotations/{direction}",
       "animations": [
         {
-          "name": "death",
-          "frame_count": 13,
-          "directions": [
-            "east"
-          ],
-          "loop": false,
-          "aliases": [],
-          "fps": 12
-        },
-        {
           "name": "attack",
+          "fps": 12,
+          "id": "2b9085bd-bd3b-501f-a905-ee38e00ebeb1",
+          "source_name": "attack",
+          "display_name": "attack",
+          "description": "attack",
+          "generation_model": "imported",
           "frame_count": 13,
           "directions": [
             "east"
           ],
           "loop": false,
           "aliases": [],
-          "fps": 12
-        },
-        {
-          "name": "hurt",
-          "frame_count": 9,
-          "directions": [
-            "east"
-          ],
-          "loop": false,
-          "aliases": [],
-          "fps": 12
+          "path_pattern": "default/animations/attack/{direction}/frame_{frame}.png",
+          "atlas_frame_pattern": "default/animations/attack/{direction}/frame_{frame}"
         },
         {
           "name": "breathing",
+          "fps": 12,
+          "id": "f9565917-4b37-51e6-8e6c-d12ce51e61af",
+          "source_name": "breathing",
+          "display_name": "breathing",
+          "description": "breathing",
+          "generation_model": "imported",
           "frame_count": 9,
           "directions": [
             "east"
@@ -52,17 +69,59 @@
           "aliases": [
             "breathe"
           ],
-          "fps": 12
+          "path_pattern": "default/animations/breathing/{direction}/frame_{frame}.png",
+          "atlas_frame_pattern": "default/animations/breathing/{direction}/frame_{frame}"
+        },
+        {
+          "name": "death",
+          "fps": 12,
+          "id": "73f22091-8763-530b-83ec-38ddc69661db",
+          "source_name": "death",
+          "display_name": "death",
+          "description": "death",
+          "generation_model": "imported",
+          "frame_count": 13,
+          "directions": [
+            "east"
+          ],
+          "loop": false,
+          "aliases": [],
+          "path_pattern": "default/animations/death/{direction}/frame_{frame}.png",
+          "atlas_frame_pattern": "default/animations/death/{direction}/frame_{frame}"
+        },
+        {
+          "name": "hurt",
+          "fps": 12,
+          "id": "17705fac-a62f-5b00-94d9-2aea72088b6a",
+          "source_name": "hurt",
+          "display_name": "hurt",
+          "description": "hurt",
+          "generation_model": "imported",
+          "frame_count": 9,
+          "directions": [
+            "east"
+          ],
+          "loop": false,
+          "aliases": [],
+          "path_pattern": "default/animations/hurt/{direction}/frame_{frame}.png",
+          "atlas_frame_pattern": "default/animations/hurt/{direction}/frame_{frame}"
         },
         {
           "name": "walk",
+          "fps": 12,
+          "id": "621cf0ee-caa0-5770-9fa2-ce52b98f111f",
+          "source_name": "walk",
+          "display_name": "walk",
+          "description": "walk",
+          "generation_model": "imported",
           "frame_count": 13,
           "directions": [
             "east"
           ],
           "loop": true,
           "aliases": [],
-          "fps": 12
+          "path_pattern": "default/animations/walk/{direction}/frame_{frame}.png",
+          "atlas_frame_pattern": "default/animations/walk/{direction}/frame_{frame}"
         }
       ]
     }

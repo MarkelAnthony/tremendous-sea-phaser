@@ -1,0 +1,108 @@
+{
+  "characters": {
+    "113f91a5-29f0-5c08-9981-5c5b3b5a8718": {
+      "updated_at": "2026-10-05T08:41:24.135066+00:00",
+      "animation_ids": [
+        "022e54be-12fe-5257-99c4-ace9524192e1",
+        "0ae7af8b-27b2-59e2-b879-4e6073ba0079",
+        "37d2b499-a2d8-515e-ae88-854ea10a261c",
+        "3e46ac41-076b-5b0a-9856-272e19799ae6",
+        "44f922cc-eb79-5e9b-8f88-5cf2ec0418d6",
+        "4f1fc1fa-f22d-59a8-a38c-7c5728f786f7",
+        "4f92a55c-a12c-571d-b409-7f5438a7e2be",
+        "6119758e-abf2-5cf5-85d9-fe462a724cc4",
+        "870114f0-1b96-5329-8380-e0353722d782",
+        "ab8de87d-5d5b-543e-8a7a-df7c0a11284f",
+        "b13de909-a767-5816-b404-cf44c84ac429",
+        "bae42b49-375d-5f09-95e9-906370eb4b73",
+        "bf2b40fb-6ee9-5303-89a7-625929eb9486",
+        "e58e92e3-b56e-5445-abf7-164ac70c6998",
+        "f07a693b-8161-5a0b-8374-4fa56151ffdb",
+        "f65c311e-2110-58b1-b40c-f17eb3e4fbbe"
+      ],
+      "animation_fingerprint": "587e1c8e703ad5a77a1be050564d5c9594b3fe6e3e4df27d2e410f80454cfcff",
+      "name": "Forest Guardian",
+      "member_ids": [
+        "113f91a5-29f0-5c08-9981-5c5b3b5a8718"
+      ],
+      "sync_version": 12
+    },
+    "36e5db22-bb07-5f4f-9eb6-75b915d82f4c": {
+      "updated_at": "2026-10-05T08:41:24.135066+00:00",
+      "animation_ids": [
+        "315bf2c5-a3d5-59e1-9f03-6e36564ddc6e",
+        "4c570f87-dbd4-57d2-acc2-0714303b80f4",
+        "677140fa-598b-54bf-9bd3-a81f9afb7a1b",
+        "68d0dadd-28fb-5fed-af09-a031340099a5",
+        "f60afc5c-5ca2-5727-bff1-f602ed95ec1b"
+      ],
+      "animation_fingerprint": "63e03699047f947c017d5edca19b79f040f228af8375a6a30f6ad0ebe5d3db3b",
+      "name": "Forest Wolf",
+      "member_ids": [
+        "36e5db22-bb07-5f4f-9eb6-75b915d82f4c"
+      ],
+      "sync_version": 12
+    },
+    "476945d1-f351-5034-b0af-5a3e362e53ee": {
+      "updated_at": "2026-10-05T08:41:24.135066+00:00|2026-10-05T08:41:24.135066+00:00",
+      "animation_ids": [
+        "000971f6-e285-5573-899d-39ca8cec054a",
+        "0e715795-0566-5262-b981-4efc7a9fec95",
+        "0f13eb84-6041-5ac2-a6fd-b0fbce805c6c",
+        "1d17ee41-c4c8-5f0c-9c76-7dbced475c0c",
+        "2666a290-e0e6-59c3-a0a3-96ced0dfe6a4",
+        "35399335-2421-5a3c-a455-359683ddf242",
+        "39e42bec-a6f5-5bc8-a177-11d7684433e0",
+        "3c4619f1-73ec-586d-b503-1212274a8fac",
+        "41da2346-8c9a-5869-a5bd-ecb4abb06b1f",
+        "549496e9-9004-5627-a53a-609fb864ab1d",
+        "5af7f79d-e607-5928-9525-5b3b8db04a3f",
+        "5ed68922-94fa-5ef4-ab6f-e2ddf4415f01",
+        "60c00ff0-f740-5621-80bd-47f1d4d6804b",
+        "637ba96b-c475-53ef-b170-caa7af1982a8",
+        "70f3008e-cc40-5a71-a23f-99d165135831",
+        "72e714be-1c81-5705-aa3e-09d60621f11a",
+        "767dcf9c-ec6c-528a-b9ab-0d648d231d2e",
+        "774afd24-cc4e-5059-ab64-343590bb2c93",
+        "77685523-be78-5cd9-9972-bcc38400b6d9",
+        "7c27384e-31ef-528f-a120-99a449febe48",
+        "9fbebbfe-e940-56da-8758-fcde5fac6891",
+        "a68c4c29-d1b1-5ff0-baa0-96591a6f2bed",
+        "d36965f8-85f9-59c0-9176-737986b1bd54",
+        "dd5505b0-6f67-548a-8032-fb5ac0431461",
+        "e2e355e0-9c06-5619-a2ec-d9686d548e78",
+        "f130b36a-018d-5ede-8d0a-4d4e1b7f7695"
+      ],
+      "animation_fingerprint": "14e65a8dfe58848326d55a1102af7d409b277ba575e0ce4242be84d2af14dd9a",
+      "name": "Forest Warrior",
+      "member_ids": [
+        "476945d1-f351-5034-b0af-5a3e362e53ee",
+        "0ce95af2-e954-5aed-9c46-11ba706b224f"
+      ],
+      "sync_version": 12
+    }
+  },
+  "images": {
+    "ccee019a-1fe4-51e9-9d0f-6c0159113355": {
+      "updated_at": "2026-10-05T08:41:24.135066+00:00",
+      "image_url": "https://backblaze.pixellab.ai/file/pixellab-generations/production/creator/df7cccb5-c579-4252-af7b-a8153cfb8aaf/ccee019a-1fe4-51e9-9d0f-6c0159113355/image.png",
+      "frame_urls": [],
+      "sync_version": 3
+    }
+  },
+  "maps": {
+    "284a60d0-b94a-50b2-ac1d-2f869e93608a": {
+      "updated_at": "2026-10-05T08:41:24.135066+00:00",
+      "name": "The Verdant Crossing",
+      "export_version": 13
+    }
+  },
+  "objects": {},
+  "tilesets": {
+    "98033b10-af32-513d-a10d-4175e7370594": {
+      "updated_at": "2026-10-05T08:41:24.135066+00:00",
+      "name": "Forest grass and stone"
+    }
+  },
+  "ui_assets": {}
+}
