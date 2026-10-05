@@ -1,4 +1,5 @@
 import Phaser from "phaser";
+import { queueSeaAttackImpact } from "./SeaAttackImpact";
 import { preloadCharacterAtlas, characterManifest, characterAtlasKey, selectCharacterState } from "../shared/animation";
 
 const RILEY = "b872b214-8d45-4f34-b202-a5ca77f2e210";
@@ -94,6 +95,7 @@ export function playSeaClarityAttack(scene: Phaser.Scene, sprite: Phaser.GameObj
   sprite.setData("clarityAttackPlaying", true);
   sprite.setData("clarityAttackCount", (Number(sprite.getData("clarityAttackCount")) || 0) + 1);
   sprite.setData("afterAttackStance", "FourSword");
+  queueSeaAttackImpact(scene, sprite, "swords", clip.frame_count);
   sprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
     if (!sprite.active) return;
     sprite.setData("clarityAttackPlaying", false);
@@ -137,6 +139,7 @@ export function playSeaFistBladeAttack(scene: Phaser.Scene, sprite: Phaser.GameO
   sprite.setData("clarityAttackPlaying", true);
   sprite.setData("fistAttackCount", (Number(sprite.getData("fistAttackCount")) || 0) + 1);
   sprite.setData("afterAttackStance", "FistBlade");
+  queueSeaAttackImpact(scene, sprite, "fist", clip.frame_count);
   sprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
     if (!sprite.active) return;
     sprite.setData("clarityAttackPlaying", false);
