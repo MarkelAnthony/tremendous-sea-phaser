@@ -79,6 +79,24 @@
       "animations": [
         {
           "name": "idle",
+          "id": "61ba5ef2-46d1-4cd5-81aa-7eb11763d1ec",
+          "source_name": "custom-Hold this exact raised clenche",
+          "display_name": "Fist Blade raised-fist idle",
+          "description": "Hold this exact raised clenched-fist guard pose continuously. Keep the forward elbow bent and the tightly CLOSED fist raised at face height in EVERY frame, fingers curled into palm, thumb wrapped across fingers, compact visible knuckles. Never open the hand, extend fingers, punch, lower the fist or reach forward. Only a very slight slow torso sway and subtle breathing, feet planted, arm and clenched fist remain locked in the guard pose. The red green and blue swords stay separate floating behind her back, very gentle hovering. Preserve side-view facing east, outfit, face, sword colors, proportions. Seamless quiet idle loop.",
+          "generation_model": "v3_custom_frames",
+          "frame_count": 8,
+          "directions": [
+            "east"
+          ],
+          "loop": true,
+          "aliases": [
+            "idle"
+          ],
+          "path_pattern": "fist-blade/animations/idle/{direction}/frame_{frame}.png",
+          "atlas_frame_pattern": "fist-blade/animations/idle/{direction}/frame_{frame}"
+        },
+        {
+          "name": "idle-8e258c49",
           "id": "8e258c49-19a7-4696-b8c8-a96befeed104",
           "source_name": "custom-Gentle looping idle in this ex",
           "display_name": "Fist Blade idle",
@@ -92,8 +110,8 @@
           "aliases": [
             "idle"
           ],
-          "path_pattern": "fist-blade/animations/idle/{direction}/frame_{frame}.png",
-          "atlas_frame_pattern": "fist-blade/animations/idle/{direction}/frame_{frame}"
+          "path_pattern": "fist-blade/animations/idle-8e258c49/{direction}/frame_{frame}.png",
+          "atlas_frame_pattern": "fist-blade/animations/idle-8e258c49/{direction}/frame_{frame}"
         }
       ]
     },
