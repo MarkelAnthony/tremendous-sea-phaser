@@ -202,6 +202,26 @@
         },
         {
           "name": "slash",
+          "id": "1ab421f9-b86a-4111-a6ac-a200f7ebc458",
+          "source_name": "custom-Hold original stance briefly, ",
+          "display_name": "Entropy Giant Sword Launch",
+          "description": "Hold original stance briefly, then all floating swords fly together and visibly merge into ONE giant straight magical sword in front of the character. The combined sword has a clearly defined long straight blade, sharp pointed tip, crossguard and hilt, twice the character's height in length. Launch this single giant sword forward horizontally to the right, point first, with a short luminous trail in the character's existing magic palette. The giant sword must remain clearly recognizable as one solid sword, NOT a crescent, curved slash, light arc, or multiple separate swords. Preserve character identity, original robe, athletic build and original pose style. Character stays readable and stationary while commanding the swords, then recovers to starting stance. Anticipation, visible convergence, giant sword formation, forward launch, recovery.",
+          "generation_model": "v3",
+          "frame_count": 8,
+          "directions": [
+            "east"
+          ],
+          "loop": false,
+          "aliases": [
+            "slash",
+            "spell",
+            "attack"
+          ],
+          "path_pattern": "entropy/animations/slash/{direction}/frame_{frame}.png",
+          "atlas_frame_pattern": "entropy/animations/slash/{direction}/frame_{frame}"
+        },
+        {
+          "name": "slash-9ecfe3eb",
           "id": "9ecfe3eb-c07c-4774-8d96-581c040eab03",
           "source_name": "custom-Hold the original stance brief",
           "display_name": "Entropy Forward Sword Volley",
@@ -217,8 +237,8 @@
             "spell",
             "attack"
           ],
-          "path_pattern": "entropy/animations/slash/{direction}/frame_{frame}.png",
-          "atlas_frame_pattern": "entropy/animations/slash/{direction}/frame_{frame}"
+          "path_pattern": "entropy/animations/slash-9ecfe3eb/{direction}/frame_{frame}.png",
+          "atlas_frame_pattern": "entropy/animations/slash-9ecfe3eb/{direction}/frame_{frame}"
         },
         {
           "name": "slash-f78b3fc2",
