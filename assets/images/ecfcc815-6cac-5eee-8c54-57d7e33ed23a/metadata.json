@@ -1,0 +1,11 @@
+{
+  "id": "ecfcc815-6cac-5eee-8c54-57d7e33ed23a",
+  "name": "Very subtle feminine athletic silhouette adjustment ONLY: sl",
+  "prompt": "Very subtle feminine athletic silhouette adjustment ONLY: slightly define her waist and soften hip contour beneath the EXISTING robe. Preserve the original robe design exactly: same cut, hem, folds, trim, colors, coverage and details. Keep athletic shoulders, face, hair, extended straight arm, readable clenched fist, pose and all three floating swords unchanged. Minimal pixel changes; do not redesign clothing or expose skin.",
+  "width": 128,
+  "height": 128,
+  "model": "edit_image_pixen",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
