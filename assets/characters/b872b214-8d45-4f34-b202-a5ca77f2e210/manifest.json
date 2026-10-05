@@ -202,6 +202,26 @@
         },
         {
           "name": "slash",
+          "id": "9ecfe3eb-c07c-4774-8d96-581c040eab03",
+          "source_name": "custom-Hold the original stance brief",
+          "display_name": "Entropy Forward Sword Volley",
+          "description": "Hold the original stance briefly, then command the existing floating swords to launch straight forward in the facing direction, points first, away from the body. The swords themselves perform the attack: clearly readable separate blades travel forward together in a fast coordinated volley, leaving bright magical streaks and sparkling trails behind them in the character's existing palette. Keep the body mostly planted with a small commanding gesture. No handheld sword swing, no arm slash, no large crescent-shaped energy slash. Then the swords return to their original hovering positions and the character recovers the original stance. Preserve original robe, character design, and existing sword designs.",
+          "generation_model": "v3",
+          "frame_count": 8,
+          "directions": [
+            "east"
+          ],
+          "loop": false,
+          "aliases": [
+            "slash",
+            "spell",
+            "attack"
+          ],
+          "path_pattern": "entropy/animations/slash/{direction}/frame_{frame}.png",
+          "atlas_frame_pattern": "entropy/animations/slash/{direction}/frame_{frame}"
+        },
+        {
+          "name": "slash-f78b3fc2",
           "id": "f78b3fc2-750b-49b6-bc52-4c62aec4b3ed",
           "source_name": "custom-Gather magical energy, unleash",
           "display_name": "Entropy Magical Slash",
@@ -224,8 +244,8 @@
             "spell",
             "attack"
           ],
-          "path_pattern": "entropy/animations/slash/{direction}/frame_{frame}.png",
-          "atlas_frame_pattern": "entropy/animations/slash/{direction}/frame_{frame}"
+          "path_pattern": "entropy/animations/slash-f78b3fc2/{direction}/frame_{frame}.png",
+          "atlas_frame_pattern": "entropy/animations/slash-f78b3fc2/{direction}/frame_{frame}"
         }
       ]
     }
