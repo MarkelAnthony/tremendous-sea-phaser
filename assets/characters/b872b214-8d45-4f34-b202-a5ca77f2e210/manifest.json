@@ -57,6 +57,30 @@
           ],
           "path_pattern": "idle/animations/idle/{direction}/frame_{frame}.png",
           "atlas_frame_pattern": "idle/animations/idle/{direction}/frame_{frame}"
+        },
+        {
+          "name": "slash",
+          "id": "1f63395d-3371-4614-9db2-813696bc1c9e",
+          "source_name": "custom-Quick anticipation, decisive s",
+          "display_name": "Four Sword Swipe",
+          "description": "Quick anticipation, decisive sweeping sword swipe with her four floating swords following a coordinated arc, then return to the original stance. Preserve original robe and appearance.",
+          "generation_model": "v3",
+          "frame_count": 8,
+          "directions": [
+            "east",
+            "north",
+            "west",
+            "south-east",
+            "north-east",
+            "north-west",
+            "south-west"
+          ],
+          "loop": false,
+          "aliases": [
+            "slash"
+          ],
+          "path_pattern": "idle/animations/slash/{direction}/frame_{frame}.png",
+          "atlas_frame_pattern": "idle/animations/slash/{direction}/frame_{frame}"
         }
       ]
     },
