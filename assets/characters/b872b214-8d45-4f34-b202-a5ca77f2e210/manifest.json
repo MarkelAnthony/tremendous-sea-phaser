@@ -94,7 +94,26 @@
       ],
       "rotation_path_pattern": "entropy/rotations/{direction}.png",
       "idle_atlas_frame_pattern": "entropy/rotations/{direction}",
-      "animations": []
+      "animations": [
+        {
+          "name": "idle",
+          "id": "f9ff8d35-b8b4-43b9-8a10-81567aba24cf",
+          "source_name": "custom-Gentle looping idle holding th",
+          "display_name": "Entropy idle",
+          "description": "Gentle looping idle holding this exact side-facing stance with empty hands. Subtle breathing and hair sway. All three separate golden swords float around and behind her with a slow tiny telekinetic bob and softly shimmering golden energy. Preserve exactly three golden swords clearly separated, outfit, silhouette and pose. No attack or walking.",
+          "generation_model": "v3",
+          "frame_count": 8,
+          "directions": [
+            "east"
+          ],
+          "loop": true,
+          "aliases": [
+            "idle"
+          ],
+          "path_pattern": "entropy/animations/idle/{direction}/frame_{frame}.png",
+          "atlas_frame_pattern": "entropy/animations/idle/{direction}/frame_{frame}"
+        }
+      ]
     }
   ]
 }
