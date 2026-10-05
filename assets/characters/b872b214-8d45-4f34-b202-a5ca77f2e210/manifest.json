@@ -67,6 +67,7 @@
           "generation_model": "v3",
           "frame_count": 8,
           "directions": [
+            "south",
             "east",
             "north",
             "west",
@@ -101,6 +102,30 @@
       "rotation_path_pattern": "fist-blade/rotations/{direction}.png",
       "idle_atlas_frame_pattern": "fist-blade/rotations/{direction}",
       "animations": [
+        {
+          "name": "attack",
+          "id": "9bfabe0d-e57c-48f9-a983-6218ed3de6e6",
+          "source_name": "custom-Brief arm draw-back, sharp str",
+          "display_name": "Fist Blade Punch",
+          "description": "Brief arm draw-back, sharp straight punch with a clearly closed fist and tucked thumb, strong impact pose, then recover to her original extended-arm stance. Preserve original robe, build, and floating swords.",
+          "generation_model": "v3",
+          "frame_count": 8,
+          "directions": [
+            "south",
+            "east",
+            "north",
+            "west",
+            "south-east",
+            "north-east",
+            "north-west"
+          ],
+          "loop": false,
+          "aliases": [
+            "attack"
+          ],
+          "path_pattern": "fist-blade/animations/attack/{direction}/frame_{frame}.png",
+          "atlas_frame_pattern": "fist-blade/animations/attack/{direction}/frame_{frame}"
+        },
         {
           "name": "idle",
           "id": "61ba5ef2-46d1-4cd5-81aa-7eb11763d1ec",

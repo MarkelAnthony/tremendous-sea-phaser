@@ -84,19 +84,27 @@
     "b872b214-8d45-4f34-b202-a5ca77f2e210": {
       "updated_at": "2026-10-05T09:48:03.847414+00:00|2026-10-05T12:07:43.327555+00:00|2026-10-05T10:38:39.316035+00:00",
       "animation_ids": [
+        "0d4bd492-f645-4dd6-bd30-b0046ad8ab9d",
+        "0ed5a011-c189-4996-a7bc-89ce6c060eaf",
         "1184d170-21fb-4d8a-a83a-a5082138c9a8",
         "1d3b3393-5043-4d66-94a8-ceccb569d8cc",
+        "22bf555b-594f-481b-a8ae-cb50e6bcf32a",
         "4423b0da-b3f4-4134-8ddd-cbb3524e5791",
         "4b5c5891-e2aa-4c2b-ad7f-8096a303a38b",
         "67423d99-9e56-49c7-af2f-27e41263832b",
+        "70be75b0-419f-4c0a-981b-62360e54c820",
         "7f54a905-dc2c-4f46-80b9-56e4c3332414",
+        "8aa0e045-4e23-4fb9-a991-b0b9ee2f72d6",
+        "8ff59206-e070-4c78-8d93-0dd38296f6f5",
         "9ebee03e-3ee9-4628-a79e-0c19635dd8d1",
         "b4b7e8f5-bd8e-4fe1-bb85-6f7daa00b48d",
         "b7a40844-7c4d-45ad-ba1b-e849865aacc8",
+        "c2b2cdc9-b584-4e25-a117-f1b7a5de234d",
         "c57e1b0d-9131-4a5f-a802-2ec620271c05",
-        "c7e61411-b395-4438-bf2e-dce696eb03cd"
+        "c7e61411-b395-4438-bf2e-dce696eb03cd",
+        "eeaca794-5445-456e-afdc-0f96f4dcd049"
       ],
-      "animation_fingerprint": "74cec9924def55f4126f36feceb0daa26f4361a68bb868d57b7b38fea9180cf5",
+      "animation_fingerprint": "65f911b7a8b970e022922bedca3c17d3f76fe492883cfcd5fb0851bbd39d4d09",
       "name": "Riley",
       "member_ids": [
         "b872b214-8d45-4f34-b202-a5ca77f2e210",
