@@ -1,4 +1,5 @@
 import Phaser from "phaser";
+import "./SeaCaptainArt";
 
 /** Keep the handoff's renderer-agnostic rules untouched and load in their original order. */
 export async function startSea(): Promise<void> {
@@ -10,7 +11,7 @@ export async function startSea(): Promise<void> {
     await new Promise<void>((resolve, reject) => {
       const script = document.createElement("script");
       // Public files are copied as-is; use the deployment-relative root.
-      script.src = new URL(`legacy/${name}.js`, document.baseURI).href;
+      script.src = new URL(`legacy/${name}.js?v=${Date.now()}`, document.baseURI).href;
       script.onload = () => resolve();
       script.onerror = () => reject(new Error(`Could not load ${name}`));
       document.head.appendChild(script);

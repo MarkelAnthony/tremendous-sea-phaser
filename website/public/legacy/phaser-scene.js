@@ -52,6 +52,8 @@ function statusChipList(c){
 class MainScene extends Phaser.Scene {
   constructor(){ super("MainScene"); }
 
+  preload(){ window.preloadSeaCaptain(this); }
+
   makeBar(x, y, w, h, pct, fillColor, bgColor){
     bgColor = bgColor !== undefined ? bgColor : 0x1a2733;
     const container = this.add.container(x, y);
@@ -499,7 +501,7 @@ class MainScene extends Phaser.Scene {
     const combatY = 280;
     this.playerContainer = this.add.container(150, combatY);
     const capColor = PALETTE.captain[G.captainKey] || PALETTE.accent;
-    this.playerBody = this.add.rectangle(0, 0, 110, 150, capColor).setStrokeStyle(3, 0xffffff);
+    this.playerBody = window.createSeaCaptain(this, G.captainKey) || this.add.rectangle(0, 0, 110, 150, capColor).setStrokeStyle(3, 0xffffff);
     this.playerLabel = this.add.text(0, -100, G.cap.name, {fontFamily:"sans-serif", fontSize:16, fontStyle:"bold", color:"#eef3f7"}).setOrigin(0.5);
     this.playerHpBarBg = this.makeBar(0, 90, 130, 16, 1, 0x6fbf6f);
     this.playerHpText = this.add.text(0, 90, "", {fontFamily:"sans-serif", fontSize:12, fontStyle:"bold", color:"#ffffff"}).setOrigin(0.5);
@@ -675,8 +677,13 @@ class MainScene extends Phaser.Scene {
   // ---- animation helpers ----
   flashAndShake(container, body){
     const origColor = body.fillColor;
-    body.setFillStyle(0xffffff);
-    this.time.delayedCall(100, ()=>body.setFillStyle(origColor));
+    if (body.setTintFill) body.setTintFill(0xffffff);
+    else body.setFillStyle(0xffffff);
+    this.time.delayedCall(100, () => {
+      if (!body.active) return;
+      if (body.clearTint) body.clearTint();
+      else body.setFillStyle(origColor);
+    });
     this.tweens.add({ targets: container, x: container.x+8, duration:40, yoyo:true, repeat:3 });
   }
   lungeAttack(container, targetX, targetY){
