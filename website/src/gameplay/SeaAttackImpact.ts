@@ -15,9 +15,9 @@ export function queueSeaAttackImpact(scene: Phaser.Scene, sprite: Phaser.GameObj
     const flash = scene.add.graphics();
     flash.fillStyle(0xffffff, 0.95);
     flash.fillPoints([
-      new Phaser.Geom.Point(0, -17), new Phaser.Geom.Point(4, -5), new Phaser.Geom.Point(17, 0),
-      new Phaser.Geom.Point(4, 5), new Phaser.Geom.Point(0, 17), new Phaser.Geom.Point(-4, 5),
-      new Phaser.Geom.Point(-17, 0), new Phaser.Geom.Point(-4, -5),
+      new Phaser.Math.Vector2(0, -17), new Phaser.Math.Vector2(4, -5), new Phaser.Math.Vector2(17, 0),
+      new Phaser.Math.Vector2(4, 5), new Phaser.Math.Vector2(0, 17), new Phaser.Math.Vector2(-4, 5),
+      new Phaser.Math.Vector2(-17, 0), new Phaser.Math.Vector2(-4, -5),
     ], true);
     burst.add(flash);
     scene.tweens.add({ targets: flash, alpha: 0, scale: 1.8, duration: 160 });
