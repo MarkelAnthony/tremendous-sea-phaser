@@ -30,7 +30,7 @@ export function updateSeaCaptainStance(scene: Phaser.Scene, sprite: Phaser.GameO
   const stateId = stance === "FistBlade" ? "b15bd612-59f4-4175-915d-0b777cfb835b" : stance === "Entropy" ? "86587070-efce-4ef8-b513-e5a10a41dc6c" : RILEY;
   const state = manifest.states.find((candidate) => candidate.id === stateId);
   if (!state) return;
-  // Preserve the approved closed-fist silhouette instead of letting generated frames open her hand.
+  // Preserve Fist Blade's extended-arm, closed-fist pose throughout the gentle sway.
   const previousSway = sprite.getData("fistSway") as Phaser.Tweens.Tween | undefined;
   if (previousSway) {
     previousSway.stop();
