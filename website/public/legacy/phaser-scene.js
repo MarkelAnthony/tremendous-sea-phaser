@@ -555,7 +555,8 @@ class MainScene extends Phaser.Scene {
 
     let captainInfo = G.cap.name;
     if (isRiley()){
-      const stanceName = G.player.stance === "FourSword" ? "Four Sword" : G.player.stance === "FistBlade" ? "Fist Blade" : "One With Entropy";
+      window.updateSeaCaptainStance(this, this.playerBody, G.player.stance);
+      const stanceName = G.player.stance === "FourSword" ? "Four Swords" : G.player.stance === "FistBlade" ? "Fist Blade" : "One With Entropy";
       captainInfo = `🗡️ ${stanceName}   ✨ Clarity ${G.player.clarity}/6`;
     } else if (isBroderick()){
       const clipMax = G.player.clipMax || 4;
@@ -748,5 +749,15 @@ window.playtest = () => ({
   saved: hasSavedGame(),
   errors: window.gameErrors.getErrors(),
   sprite: window.game.scene.getScenes(true)[0]?.playerBody?.texture?.key || null,
-  frame: window.game.scene.getScenes(true)[0]?.playerBody?.frame?.name || null
+  frame: window.game.scene.getScenes(true)[0]?.playerBody?.frame?.name || null,
+  stance: G?.player?.stance,
+  artStance: window.game.scene.getScenes(true)[0]?.playerBody?.getData?.("stance")
 });
+// Art-only approval preview: does not change combat rules or the player's stance.
+window.previewRileyStance = (stance) => {
+  if (!["FourSword", "FistBlade", "Entropy"].includes(stance)) return false;
+  const scene = window.game.scene.getScenes(true)[0];
+  if (G?.captainKey !== "Riley" || !scene?.playerBody) return false;
+  window.updateSeaCaptainStance(scene, scene.playerBody, stance);
+  return scene.playerBody.getData("stance") === stance;
+};

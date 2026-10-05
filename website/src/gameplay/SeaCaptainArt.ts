@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import { preloadCharacterAtlas, characterManifest, characterAtlasKey, selectCharacterState } from "../shared/animation";
+import { preloadCharacterAtlas, characterManifest, characterAtlasKey, selectCharacterState, characterRotationFrameName } from "../shared/animation";
 
 const RILEY = "b872b214-8d45-4f34-b202-a5ca77f2e210";
 export function preloadSeaCaptain(scene: Phaser.Scene): void {
@@ -20,8 +20,26 @@ export function createSeaCaptain(scene: Phaser.Scene, captain: string): Phaser.G
   const sprite = scene.add.sprite(0, 75, key, frames[0].frame);
   sprite.setOrigin(0.5, 1).setScale(1.35).play(animationKey);
   sprite.setData("swords", { held: ["red", "green"], floating: "blue" });
+  sprite.setData("stance", "FourSword");
   return sprite;
+}
+/** New stances are deliberate static approval poses; Four Swords retains its idle clip. */
+export function updateSeaCaptainStance(scene: Phaser.Scene, sprite: Phaser.GameObjects.Sprite, stance: string): void {
+  if (sprite.getData("stance") === stance) return;
+  const manifest = characterManifest(scene, RILEY);
+  const stateId = stance === "FistBlade" ? "b15bd612-59f4-4175-915d-0b777cfb835b" : stance === "Entropy" ? "86587070-efce-4ef8-b513-e5a10a41dc6c" : RILEY;
+  const state = manifest.states.find((candidate) => candidate.id === stateId);
+  if (!state) return;
+  if (stateId === RILEY) sprite.play(`${characterAtlasKey(RILEY)}-sea-idle`);
+  else {
+    const frame = characterRotationFrameName(state.folder, "east");
+    if (!scene.textures.get(characterAtlasKey(RILEY)).has(frame)) return;
+    sprite.stop().setTexture(characterAtlasKey(RILEY), frame);
+  }
+  sprite.setData("stance", stance);
+  sprite.setData("swords", stance === "FourSword" ? { held: ["red", "green"], floating: ["blue"] } : { held: [], floating: stance === "Entropy" ? ["gold", "gold", "gold"] : ["red", "green", "blue"] });
 }
 const globals = window as unknown as Record<string, unknown>;
 globals.preloadSeaCaptain = preloadSeaCaptain;
 globals.createSeaCaptain = createSeaCaptain;
+globals.updateSeaCaptainStance = updateSeaCaptainStance;
