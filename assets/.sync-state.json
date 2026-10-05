@@ -80,6 +80,16 @@
         "0ce95af2-e954-5aed-9c46-11ba706b224f"
       ],
       "sync_version": 12
+    },
+    "b872b214-8d45-4f34-b202-a5ca77f2e210": {
+      "updated_at": "2026-10-05T09:29:03.065327+00:00",
+      "animation_ids": [],
+      "animation_fingerprint": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "name": "Riley",
+      "member_ids": [
+        "b872b214-8d45-4f34-b202-a5ca77f2e210"
+      ],
+      "sync_version": 12
     }
   },
   "images": {
