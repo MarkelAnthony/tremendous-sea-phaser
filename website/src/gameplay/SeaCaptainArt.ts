@@ -1,9 +1,10 @@
 import Phaser from "phaser";
-import { preloadCharacterAtlas, characterManifest, characterAtlasKey, characterRotationFrameName, selectCharacterState } from "../shared/animation";
+import { preloadCharacterAtlas, characterManifest, characterAtlasKey, selectCharacterState } from "../shared/animation";
 
 const RILEY = "b872b214-8d45-4f34-b202-a5ca77f2e210";
 export function preloadSeaCaptain(scene: Phaser.Scene): void {
   preloadCharacterAtlas(scene, RILEY);
+  scene.load.image("riley-readable-fist", new URL("art/riley-readable-fist.png", document.baseURI).href);
 }
 export function createSeaCaptain(scene: Phaser.Scene, captain: string): Phaser.GameObjects.Sprite | null {
   if (captain !== "Riley") return null;
@@ -38,11 +39,10 @@ export function updateSeaCaptainStance(scene: Phaser.Scene, sprite: Phaser.GameO
     sprite.setData("fistSway", undefined);
   }
   if (stance === "FistBlade") {
-    const pose = characterRotationFrameName(state.folder, "east");
-    const key = characterAtlasKey(RILEY);
-    if (!scene.textures.get(key).has(pose)) return;
+    // Hand-only pixel repair: squared knuckles and a tucked-thumb crease.
+    if (!scene.textures.exists("riley-readable-fist")) return;
     sprite.anims.stop();
-    sprite.setTexture(key, pose);
+    sprite.setTexture("riley-readable-fist");
     sprite.setData("fistRestX", sprite.x);
     sprite.setData("fistRestAngle", sprite.angle);
     sprite.setData("fistSway", scene.tweens.add({
