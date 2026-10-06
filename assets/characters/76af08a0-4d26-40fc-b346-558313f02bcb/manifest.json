@@ -75,6 +75,24 @@
           ],
           "path_pattern": "idle/animations/idle/{direction}/frame_{frame}.png",
           "atlas_frame_pattern": "idle/animations/idle/{direction}/frame_{frame}"
+        },
+        {
+          "name": "spell",
+          "id": "2b89df8d-4282-4c8a-9adf-1d89e4dd8661",
+          "source_name": "custom-Standing tall facing right, ga",
+          "display_name": "Branch burn",
+          "description": "Standing tall facing right, gather flickering fire between open hands, spread the palms and release a bright forward burst of flame, then lower hands and return to the original fighting guard. A flame casting motion, no punching, no kicking. Keep feet planted and full body height consistent.",
+          "generation_model": "v3",
+          "frame_count": 8,
+          "directions": [
+            "east"
+          ],
+          "loop": false,
+          "aliases": [
+            "spell"
+          ],
+          "path_pattern": "idle/animations/spell/{direction}/frame_{frame}.png",
+          "atlas_frame_pattern": "idle/animations/spell/{direction}/frame_{frame}"
         }
       ]
     },
