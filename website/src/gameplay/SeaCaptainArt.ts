@@ -1,13 +1,26 @@
 import Phaser from "phaser";
 import { queueSeaAttackImpact } from "./SeaAttackImpact";
-import { preloadCharacterAtlas, characterManifest, characterAtlasKey, selectCharacterState } from "../shared/animation";
+import { preloadCharacterAtlas, characterManifest, characterAtlasKey, selectCharacterState, characterRotationFrameName } from "../shared/animation";
 
 const RILEY = "b872b214-8d45-4f34-b202-a5ca77f2e210";
+const BRANCH = "76af08a0-4d26-40fc-b346-558313f02bcb";
 export function preloadSeaCaptain(scene: Phaser.Scene): void {
   preloadCharacterAtlas(scene, RILEY);
+  preloadCharacterAtlas(scene, BRANCH);
   scene.load.image("riley-readable-fist", new URL("art/riley-readable-fist.png", document.baseURI).href);
 }
 export function createSeaCaptain(scene: Phaser.Scene, captain: string): Phaser.GameObjects.Sprite | null {
+  if (captain === "Branch") {
+    const manifest = characterManifest(scene, BRANCH);
+    const state = manifest.states.find((candidate) => candidate.id === BRANCH);
+    if (!state) return null;
+    // The supplied artwork has static poses, not animation clips yet.
+    const sprite = scene.add.sprite(0, 75, characterAtlasKey(BRANCH), characterRotationFrameName(state.folder, "east"));
+    sprite.setOrigin(0.5, 1).setScale(1.35);
+    sprite.setData("captain", "Branch");
+    sprite.setData("artAsset", BRANCH);
+    return sprite;
+  }
   if (captain !== "Riley") return null;
   const manifest = characterManifest(scene, RILEY);
   const selection = selectCharacterState(manifest, { preferredClips: ["Riley idle", "breathing-idle"] });
