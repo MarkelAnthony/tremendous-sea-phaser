@@ -796,6 +796,11 @@ function playCard(idx, target, isRepeatedPlay){
   const aliveEnemies = G.combat.enemies.filter(e=>e.alive);
   const targets = card.aoe ? aliveEnemies : (target ? [target] : []);
 
+  if (G.captainKey === "Branch" && targets.length && card.dmg > 0) {
+    const scene = window.game?.scene.getScenes(true)[0];
+    if (scene?.playerBody) window.playSeaBranchPunch(scene, scene.playerBody, card.name);
+  }
+
   let clarityBasedDmg = card.dmg;
   if (isRiley() && card.scaleWithClarity){
     clarityBasedDmg = card.dmg + G.player.clarity;

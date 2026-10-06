@@ -174,3 +174,38 @@ export function playSeaFistBladeAttack(scene: Phaser.Scene, sprite: Phaser.GameO
   sprite.play(animationKey);
 }
 globals.playSeaFistBladeAttack = playSeaFistBladeAttack;
+
+/** Keyword routing keeps current and future punching cards on Branch's punch clip. */
+export function playSeaBranchPunch(scene: Phaser.Scene, sprite: Phaser.GameObjects.Sprite, attackName: string): boolean {
+  if (sprite.getData("captain") !== "Branch" || !/\b(punch(?:es|ing)?|jabs?|fists?|cross|crosses|uppercuts?|haymakers?|hooks?)\b/i.test(attackName)) return false;
+  if (sprite.getData("clarityAttackPlaying")) return false;
+  const selection = selectCharacterState(characterManifest(scene, BRANCH), { state: BRANCH, preferredClips: ["Branch punch"] });
+  const clip = selection.state.animations.find((candidate) =>
+    (candidate as typeof candidate & { display_name?: string }).display_name === "Branch punch" && candidate.directions.includes("east"));
+  if (!clip) return false;
+  const key = characterAtlasKey(BRANCH);
+  const pattern = (clip as typeof clip & { atlas_frame_pattern: string }).atlas_frame_pattern;
+  const frames = Array.from({ length: clip.frame_count }, (_, index) => ({
+    key, frame: pattern.replace("{direction}", "east").replace("{frame}", String(index).padStart(3, "0")),
+  }));
+  if (frames.some(({ frame }) => !scene.textures.get(key).has(frame))) return false;
+  const animationKey = `${key}-sea-branch-punch`;
+  if (!scene.anims.exists(animationKey)) scene.anims.create({ key: animationKey, frames, frameRate: 10, repeat: 0 });
+  // Reuse the finishing-hit gate so victory cannot interrupt Branch's last punch.
+  sprite.setData("clarityAttackPlaying", true);
+  sprite.setData("branchPunchCount", (Number(sprite.getData("branchPunchCount")) || 0) + 1);
+  sprite.setData("branchPunchCard", attackName);
+  sprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
+    if (!sprite.active) return;
+    sprite.setData("clarityAttackPlaying", false);
+    sprite.play(`${key}-sea-branch-idle`);
+  });
+  sprite.play(animationKey);
+  return true;
+}
+globals.playSeaBranchPunch = playSeaBranchPunch;
+globals.previewBranchAttack = (attackName: string) => {
+  const game = globals.game as Phaser.Game | undefined;
+  const scene = game?.scene.getScenes(true)[0] as (Phaser.Scene & { playerBody?: Phaser.GameObjects.Sprite }) | undefined;
+  return !!scene?.playerBody && playSeaBranchPunch(scene, scene.playerBody, attackName);
+};
