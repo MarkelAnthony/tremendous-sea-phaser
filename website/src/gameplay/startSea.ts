@@ -1,5 +1,6 @@
 import Phaser from "phaser";
 import "./SeaCaptainArt";
+import "./SeaBranchBurn";
 
 /** Keep the handoff's renderer-agnostic rules untouched and load in their original order. */
 export async function startSea(): Promise<void> {

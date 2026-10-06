@@ -796,9 +796,12 @@ function playCard(idx, target, isRepeatedPlay){
   const aliveEnemies = G.combat.enemies.filter(e=>e.alive);
   const targets = card.aoe ? aliveEnemies : (target ? [target] : []);
 
-  if (G.captainKey === "Branch" && targets.length && card.dmg > 0) {
+  if (G.captainKey === "Branch") {
     const scene = window.game?.scene.getScenes(true)[0];
-    if (scene?.playerBody) window.playSeaBranchPunch(scene, scene.playerBody, card.name);
+    if (scene?.playerBody) {
+      const punched = targets.length && card.dmg > 0 && window.playSeaBranchPunch(scene, scene.playerBody, card.name);
+      if (!punched && (targets.length || card.selfEnflame)) window.playSeaBranchBurn(scene, scene.playerBody, card);
+    }
   }
 
   let clarityBasedDmg = card.dmg;

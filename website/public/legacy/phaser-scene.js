@@ -780,7 +780,9 @@ window.playtest = () => ({
   attackCount: window.game.scene.getScenes(true)[0]?.playerBody?.getData?.("clarityAttackCount") || 0,
   fistAttackCount: window.game.scene.getScenes(true)[0]?.playerBody?.getData?.("fistAttackCount") || 0,
   branchPunchCount: window.game.scene.getScenes(true)[0]?.playerBody?.getData?.("branchPunchCount") || 0,
-  branchPunchCard: window.game.scene.getScenes(true)[0]?.playerBody?.getData?.("branchPunchCard") || null
+  branchPunchCard: window.game.scene.getScenes(true)[0]?.playerBody?.getData?.("branchPunchCard") || null,
+  branchBurnCount: window.game.scene.getScenes(true)[0]?.playerBody?.getData?.("branchBurnCount") || 0,
+  branchBurnCard: window.game.scene.getScenes(true)[0]?.playerBody?.getData?.("branchBurnCard") || null
 });
 // Art-only approval preview: does not change combat rules or the player's stance.
 window.previewRileyStance = (stance) => {
