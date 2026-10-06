@@ -240,30 +240,31 @@ class MainScene extends Phaser.Scene {
 
   makeCardPanel(x, y, w, h, name, desc, rarity, priceLabel, onClick){
     const container = this.add.container(x, y);
-    const bg = this.add.rectangle(0, 0, w, h, PALETTE.panel, 0.95).setStrokeStyle(2, rarity ? rarityColor(rarity) : PALETTE.accent);
-    const parts = [bg];
+    const bg = this.add.rectangle(0, 0, w, h, 0x000000, 0).setStrokeStyle(2, 0x79512f, 0);
+    const parchment = window.drawParchmentCard(this, 0, 0, w, h, 0x65422b);
+    const parts = [parchment, bg];
     let cursorY = -h/2 + 14;
     if (rarity){
-      const rarityText = this.add.text(0, cursorY, rarity.toUpperCase(), {fontFamily:"sans-serif", fontSize:10, fontStyle:"bold", color:rarityColor(rarity)}).setOrigin(0.5);
+      const rarityText = this.add.text(0, cursorY, rarity.toUpperCase(), {fontFamily:"Georgia, serif", fontSize:10, fontStyle:"bold", color:({Common:"#645442", Uncommon:"#245568", Rare:"#825c1e", Djinn:"#69386d"}[rarity] || "#645442")}).setOrigin(0.5);
       parts.push(rarityText);
       cursorY += 18;
     }
-    const nameText = this.add.text(0, cursorY, name, {fontFamily:"sans-serif", fontSize:13, fontStyle:"bold", color:"#eef3f7", wordWrap:{width:w-16}, align:"center"}).setOrigin(0.5, 0);
+    const nameText = this.add.text(0, cursorY, name, {fontFamily:"Georgia, serif", fontSize:13, fontStyle:"bold", color:"#362416", wordWrap:{width:w-16}, align:"center"}).setOrigin(0.5, 0);
     parts.push(nameText);
     cursorY += nameText.height + 8;
     const descLen = (desc || "").length;
     const descFontSize = descLen > 100 ? 11 : 12;
-    const descText = this.add.text(0, cursorY, desc || "", {fontFamily:"sans-serif", fontSize:descFontSize, color:"#93a6b8", wordWrap:{width:w-16}, align:"center"}).setOrigin(0.5, 0);
+    const descText = this.add.text(0, cursorY, desc || "", {fontFamily:"Georgia, serif", fontSize:descFontSize, color:"#503a25", wordWrap:{width:w-16}, align:"center"}).setOrigin(0.5, 0);
     parts.push(descText);
     if (priceLabel){
-      const priceText = this.add.text(0, h/2-18, priceLabel, {fontFamily:"sans-serif", fontSize:12, fontStyle:"bold", color:"#e8a33d"}).setOrigin(0.5);
+      const priceText = this.add.text(0, h/2-18, priceLabel, {fontFamily:"Georgia, serif", fontSize:12, fontStyle:"bold", color:"#783c21"}).setOrigin(0.5);
       parts.push(priceText);
     }
     container.add(parts);
     if (onClick){
       bg.setInteractive();
       bg.on("pointerover", ()=>{ bg.setStrokeStyle(3, PALETTE.accent); container.setScale(1.03); });
-      bg.on("pointerout", ()=>{ bg.setStrokeStyle(2, rarity ? rarityColor(rarity) : PALETTE.accent); container.setScale(1); });
+      bg.on("pointerout", ()=>{ bg.setStrokeStyle(2, 0x79512f, 0); container.setScale(1); });
       bg.on("pointerdown", onClick);
     } else {
       container.setAlpha(0.5);
@@ -682,15 +683,16 @@ class MainScene extends Phaser.Scene {
       // a fixed size was overflowing past the card's bottom edge for these.
       const descLen = (card.desc || "").length;
       const descFontSize = descLen > 100 ? 10 : 11;
-      const cardBg = this.add.rectangle(0, 0, cardW, cardH, canPlay ? PALETTE.panel : 0x222b33).setStrokeStyle(2, canPlay ? PALETTE.accent : 0x444444);
-      const costText = this.add.text(-cardW/2+16, -cardH/2+16, `${cc}`, {fontFamily:"sans-serif", fontSize:18, fontStyle:"bold", color: discounted ? "#e8a33d" : "#eef3f7"}).setOrigin(0.5);
-      const rarityText = this.add.text(cardW/2-16, -cardH/2+16, rarityBadgeChar(cardRarity(card)), {fontFamily:"sans-serif", fontSize:13, fontStyle:"bold", color:rarityColor(cardRarity(card))}).setOrigin(0.5);
-      const nameText = this.add.text(0, -cardH/2+42, card.name, {fontFamily:"sans-serif", fontSize:12, fontStyle:"bold", color:"#eef3f7", wordWrap:{width:cardW-16}, align:"center"}).setOrigin(0.5, 0);
-      const descText = this.add.text(0, -cardH/2+76, card.desc, {fontFamily:"sans-serif", fontSize:descFontSize, color:"#c3d2de", wordWrap:{width:cardW-14}, align:"center"}).setOrigin(0.5, 0);
-      const cardTrim = this.add.rectangle(0, -cardH/2+3, cardW-4, 5, canPlay ? PALETTE.accent : 0x465666);
-      const costBadge = this.add.circle(-cardW/2+16, -cardH/2+16, 12, 0x08232f).setStrokeStyle(1, canPlay ? PALETTE.accent : 0x465666);
-      const cardRule = this.add.rectangle(0, -cardH/2+69, cardW-20, 1, PALETTE.accent, 0.35);
-      const cardContainer = this.add.container(x, y, [cardBg, cardTrim, costBadge, cardRule, costText, rarityText, nameText, descText]);
+      const cardBg = this.add.rectangle(0, 0, cardW, cardH, 0x000000, 0);
+      const parchment = window.drawParchmentCard(this, 0, 0, cardW, cardH, canPlay ? 0x65422b : 0x87745c);
+      const costText = this.add.text(-cardW/2+16, -cardH/2+16, `${cc}`, {fontFamily:"Georgia, serif", fontSize:18, fontStyle:"bold", color: discounted ? "#ffdb96" : "#fff0ca"}).setOrigin(0.5);
+      const rarityText = this.add.text(cardW/2-16, -cardH/2+16, rarityBadgeChar(cardRarity(card)), {fontFamily:"Georgia, serif", fontSize:13, fontStyle:"bold", color:({Common:"#645442", Uncommon:"#245568", Rare:"#825c1e", Djinn:"#69386d"}[cardRarity(card)] || "#645442")}).setOrigin(0.5);
+      const nameText = this.add.text(0, -cardH/2+42, card.name, {fontFamily:"Georgia, serif", fontSize:12, fontStyle:"bold", color:"#362416", wordWrap:{width:cardW-16}, align:"center"}).setOrigin(0.5, 0);
+      const descText = this.add.text(0, -cardH/2+76, card.desc, {fontFamily:"Georgia, serif", fontSize:descFontSize, color:"#503a25", wordWrap:{width:cardW-14}, align:"center"}).setOrigin(0.5, 0);
+      const cardTrim = this.add.rectangle(0, -cardH/2+3, cardW-4, 5, canPlay ? 0x79512f : 0x87745c);
+      const costBadge = this.add.circle(-cardW/2+16, -cardH/2+16, 12, 0x65422b).setStrokeStyle(1, canPlay ? 0x79512f : 0x87745c);
+      const cardRule = this.add.rectangle(0, -cardH/2+69, cardW-20, 1, 0x79512f, 0.45);
+      const cardContainer = this.add.container(x, y, [parchment, cardBg, cardTrim, costBadge, cardRule, costText, rarityText, nameText, descText]);
       if (canPlay){
         cardBg.setInteractive();
         cardBg.on("pointerover", ()=>{ cardContainer.setScale(1.08); cardContainer.setDepth(10); });

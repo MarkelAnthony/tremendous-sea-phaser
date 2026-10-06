@@ -2,6 +2,7 @@ import Phaser from "phaser";
 import "./SeaCaptainArt";
 import "./SeaBranchBurn";
 import "./SeaBranchSpecial";
+import "./SeaParchmentCards";
 import { seaButtonStyle } from "./SeaVisualTheme";
 
 /** Keep the handoff's renderer-agnostic rules untouched and load in their original order. */
