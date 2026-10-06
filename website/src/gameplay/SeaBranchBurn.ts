@@ -1,4 +1,5 @@
 import Phaser from "phaser";
+import { queueBranchBurnEffect } from "./SeaBranchBurnEffect";
 import { characterManifest, characterAtlasKey, selectCharacterState } from "../shared/animation";
 
 const BRANCH = "76af08a0-4d26-40fc-b346-558313f02bcb";
@@ -33,6 +34,7 @@ export function playSeaBranchBurn(scene: Phaser.Scene, sprite: Phaser.GameObject
   sprite.setData("clarityAttackPlaying", true);
   sprite.setData("branchBurnCount", (Number(sprite.getData("branchBurnCount")) || 0) + 1);
   sprite.setData("branchBurnCard", card.name);
+  queueBranchBurnEffect(scene, sprite);
   sprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
     if (!sprite.active) return;
     sprite.setData("clarityAttackPlaying", false);
