@@ -42,6 +42,24 @@
       "animations": [
         {
           "name": "attack",
+          "id": "287771df-1a7a-4101-9ebb-c741f9fa5b46",
+          "source_name": "custom-Facing right, standing tall, d",
+          "display_name": "Branch special haymaker",
+          "description": "Facing right, standing tall, draw the flaming fist far back with a strong torso windup, then swing a powerful wide haymaker to the right with a large sweeping arc of orange fire. Brief follow through then return to the original fighting guard. One massive punch, no kicks. Preserve tall full body proportions and planted feet.",
+          "generation_model": "v3",
+          "frame_count": 12,
+          "directions": [
+            "east"
+          ],
+          "loop": false,
+          "aliases": [
+            "attack"
+          ],
+          "path_pattern": "idle/animations/attack/{direction}/frame_{frame}.png",
+          "atlas_frame_pattern": "idle/animations/attack/{direction}/frame_{frame}"
+        },
+        {
+          "name": "attack-d62b3bad",
           "id": "d62b3bad-fe74-47b6-a338-9bd73b7e296f",
           "source_name": "custom-From fighting guard, wind up a",
           "display_name": "Branch punch",
@@ -55,11 +73,47 @@
           "aliases": [
             "attack"
           ],
-          "path_pattern": "idle/animations/attack/{direction}/frame_{frame}.png",
-          "atlas_frame_pattern": "idle/animations/attack/{direction}/frame_{frame}"
+          "path_pattern": "idle/animations/attack-d62b3bad/{direction}/frame_{frame}.png",
+          "atlas_frame_pattern": "idle/animations/attack-d62b3bad/{direction}/frame_{frame}"
         },
         {
           "name": "idle",
+          "id": "56f6d911-43bd-4c77-af2e-5426e8c6d791",
+          "source_name": "custom-Facing right and standing tall",
+          "display_name": "Branch special blast",
+          "description": "Facing right and standing tall, cup both hands near the torso and charge a bright concentrated fire orb, pull hands back then thrust both open palms forward to release an enormous horizontal flame blast. Recoil subtly then return to original fighting guard. No punches or kicks. Keep tall proportions and planted feet.",
+          "generation_model": "v3",
+          "frame_count": 12,
+          "directions": [
+            "east"
+          ],
+          "loop": true,
+          "aliases": [
+            "idle"
+          ],
+          "path_pattern": "idle/animations/idle/{direction}/frame_{frame}.png",
+          "atlas_frame_pattern": "idle/animations/idle/{direction}/frame_{frame}"
+        },
+        {
+          "name": "idle-7a6f2ebd",
+          "id": "7a6f2ebd-1f80-42a5-9705-5fa3dd302da7",
+          "source_name": "custom-Standing tall facing right, be",
+          "display_name": "Branch special eruption",
+          "description": "Standing tall facing right, bend knees slightly gathering flames around both fists, raise both arms outward and upward as a towering crown of fire erupts around the body, then spread the palms releasing the fire outward in a broad fiery wave. Lower arms and return to original fighting guard. No punches or kicks, preserve tall proportions, keep feet anchored.",
+          "generation_model": "v3",
+          "frame_count": 12,
+          "directions": [
+            "east"
+          ],
+          "loop": true,
+          "aliases": [
+            "idle"
+          ],
+          "path_pattern": "idle/animations/idle-7a6f2ebd/{direction}/frame_{frame}.png",
+          "atlas_frame_pattern": "idle/animations/idle-7a6f2ebd/{direction}/frame_{frame}"
+        },
+        {
+          "name": "idle-f24ec95e",
           "id": "f24ec95e-01dd-4773-8c0f-1db9193d5f5b",
           "source_name": "custom-Gentle looping fighting idle, ",
           "display_name": "Branch idle",
@@ -73,8 +127,8 @@
           "aliases": [
             "idle"
           ],
-          "path_pattern": "idle/animations/idle/{direction}/frame_{frame}.png",
-          "atlas_frame_pattern": "idle/animations/idle/{direction}/frame_{frame}"
+          "path_pattern": "idle/animations/idle-f24ec95e/{direction}/frame_{frame}.png",
+          "atlas_frame_pattern": "idle/animations/idle-f24ec95e/{direction}/frame_{frame}"
         },
         {
           "name": "spell",
