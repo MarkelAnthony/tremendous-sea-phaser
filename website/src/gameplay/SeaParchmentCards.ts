@@ -1,7 +1,8 @@
 import Phaser from "phaser";
+import { nauticalIllustration, cardIllustrationKind } from "./SeaNauticalArt";
 
 /** A reusable, deterministic ink-and-parchment face; no gameplay changes. */
-export function drawParchmentCard(scene: Phaser.Scene, x: number, y: number, width: number, height: number, ink: number): Phaser.GameObjects.Graphics {
+export function drawParchmentCard(scene: Phaser.Scene, x: number, y: number, width: number, height: number, ink: number, name = "", type = ""): Phaser.GameObjects.Graphics {
   const g = scene.add.graphics();
   const left = x - width / 2, top = y - height / 2;
   g.fillStyle(0x000000, 0.35); g.fillRoundedRect(left + 3, top + 5, width, height, 7);
@@ -22,6 +23,14 @@ export function drawParchmentCard(scene: Phaser.Scene, x: number, y: number, wid
     g.fillTriangle(cx, cy - 5, cx - 2, cy, cx + 2, cy);
     g.fillTriangle(cx, cy + 5, cx - 2, cy, cx + 2, cy);
     g.lineStyle(1, ink, 0.6); g.lineBetween(cx - 4, cy, cx + 4, cy);
+  }
+  if (name) {
+    const artY = top + height * 0.47;
+    const artScale = Math.min(width / 105, height / 200) * 0.65;
+    g.fillStyle(0x9e6c39, 0.09); g.fillCircle(x, artY, 36 * artScale);
+    nauticalIllustration(g, x, artY, artScale, cardIllustrationKind(name, type), ink, 0.88);
+    g.lineStyle(1, ink, 0.35);
+    g.lineBetween(left + 15, top + height * 0.68, left + width - 15, top + height * 0.68);
   }
   return g;
 }
