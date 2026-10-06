@@ -1,10 +1,12 @@
 import Phaser from "phaser";
 import { queueSeaAttackImpact } from "./SeaAttackImpact";
+import { preloadCaptainShips } from "./SeaShipBackdrop";
 import { preloadCharacterAtlas, characterManifest, characterAtlasKey, selectCharacterState } from "../shared/animation";
 
 const RILEY = "b872b214-8d45-4f34-b202-a5ca77f2e210";
 const BRANCH = "76af08a0-4d26-40fc-b346-558313f02bcb";
 export function preloadSeaCaptain(scene: Phaser.Scene): void {
+  preloadCaptainShips(scene);
   preloadCharacterAtlas(scene, RILEY);
   preloadCharacterAtlas(scene, BRANCH);
   scene.load.image("riley-readable-fist", new URL("art/riley-readable-fist.png", document.baseURI).href);

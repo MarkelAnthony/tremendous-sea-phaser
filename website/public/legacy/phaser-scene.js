@@ -142,7 +142,7 @@ class MainScene extends Phaser.Scene {
   clearRoot(){
     this.uiRoot.removeAll(true);
     this.enemySprites = {};
-    window.decorateSeaScreen(this, this.uiRoot);
+    window.decorateSeaScreen(this, this.uiRoot, G?.captainKey);
   }
 
   // ---- top-level dispatch, mirrors the old renderX() functions in ui.js ----

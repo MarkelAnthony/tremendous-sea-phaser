@@ -1,8 +1,24 @@
 import Phaser from "phaser";
 import { nauticalIllustration } from "./SeaNauticalArt";
+import { drawCaptainShip } from "./SeaShipBackdrop";
 
 /** Decorative scenery only; game rules and hit targets remain unchanged. */
-function decorateSeaScreen(scene: Phaser.Scene, root: Phaser.GameObjects.Container): void {
+function decorateSeaScreen(scene: Phaser.Scene, root: Phaser.GameObjects.Container, captain?: string): void {
+  if (captain) {
+    drawCaptainShip(scene, root, captain);
+    const trim = scene.add.graphics();
+    trim.fillGradientStyle(0x302016, 0x3d291b, 0x100e0c, 0x211a15, 1);
+    trim.fillRect(0, 494, 1000, 206);
+    for (let y = 520; y < 700; y += 35) {
+      trim.lineStyle(1, 0xb18043, 0.18); trim.lineBetween(0, y, 1000, y);
+    }
+    for (let i = 0; i < 144; i++) {
+      trim.lineStyle(3, i % 2 ? 0x907044 : 0xc4a372, 0.9);
+      trim.lineBetween(i * 7, 494, i * 7 + 6, 501);
+    }
+    root.add(trim);
+    return;
+  }
   const g = scene.add.graphics();
   // A captain's chart table: dark timber outside a sea-green engraved atlas.
   g.fillGradientStyle(0x39271c, 0x211a15, 0x100e0c, 0x302016, 1);
