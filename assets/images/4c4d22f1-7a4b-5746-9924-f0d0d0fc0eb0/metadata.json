@@ -1,0 +1,11 @@
+{
+  "id": "4c4d22f1-7a4b-5746-9924-f0d0d0fc0eb0",
+  "name": "Wide side-view pirate ship battle stage background, lush fan",
+  "prompt": "Wide side-view pirate ship battle stage background, lush fantasy pixel art, no people no text no UI. Enormous wooden pirate vessel belonging to a tree spirit captain: broad clear horizontal teak fighting deck across middle at 55 percent canvas height, ornate visible hull below decorated with carved branching golden tree reliefs and living ornamental trees with playful turquoise coral pink purple and amber foliage growing along outer rail and stern. Curving rootlike prow left, elaborate treehouse stern right. Tall masts, ivory sails with tree emblem, braided ropes, brass details. Ship fills width, ocean and turquoise sky behind. Open uncluttered deck center for characters, trees clustered near sides, richly detailed handcrafted adventurous whimsical pirate ship, readable shapes.",
+  "width": 640,
+  "height": 400,
+  "model": "pixen",
+  "no_background": false,
+  "image": "image.png",
+  "spritesheet": null
+}
