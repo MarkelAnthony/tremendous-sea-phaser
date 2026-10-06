@@ -186,5 +186,15 @@
       "name": "Forest grass and stone"
     }
   },
-  "ui_assets": {}
+  "ui_assets": {
+    "2a264bee-245c-45c1-bafe-3fc604f9826c": {
+      "updated_at": "2026-10-06T06:55:16.214178+00:00",
+      "name": "i want a portrait of the character being",
+      "export_version": 2
+    },
+    "__layouts__": {
+      "updated_at": "0",
+      "export_version": 2
+    }
+  }
 }

@@ -19,5 +19,7 @@
   "tilesets": {
     "Forest grass and stone": "assets/tilesets/98033b10-af32-513d-a10d-4175e7370594/"
   },
-  "ui": {}
+  "ui": {
+    "i want a portrait of the character being": "assets/ui/2a264bee-245c-45c1-bafe-3fc604f9826c/ui.png"
+  }
 }

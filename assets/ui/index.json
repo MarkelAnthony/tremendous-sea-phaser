@@ -1,0 +1,15 @@
+{
+  "ui_assets": [
+    {
+      "id": "2a264bee-245c-45c1-bafe-3fc604f9826c",
+      "name": "i want a portrait of the character being",
+      "kind": "template",
+      "file": "assets/ui/2a264bee-245c-45c1-bafe-3fc604f9826c/ui.png",
+      "size": {
+        "width": 344,
+        "height": 192
+      },
+      "group_id": "2a264bee-245c-45c1-bafe-3fc604f9826c"
+    }
+  ]
+}
