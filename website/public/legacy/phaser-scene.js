@@ -515,7 +515,7 @@ class MainScene extends Phaser.Scene {
 
   // ---- COMBAT: the real animation-focused piece ----
   drawCombat(){
-    const isFirstDraw = !this.combatBuilt;
+    const isFirstDraw = !this.combatBuilt || this.uiRoot.getData("shipCaptain") !== G.captainKey;
     if (isFirstDraw){
       this.clearRoot();
       this.buildCombatSkeleton();
