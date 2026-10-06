@@ -87,7 +87,7 @@ const BRANCH_POOL = [
   C("bhh","Hot Hand",2,{dmg:13,dtype:"Fire",requiresTargetEnflamed:true,stun:true,desc:"Deal 13 dmg. If target has Enflame, also Stun."}),
   C("bsuf","Suffocate",2,{dmg:9,dtype:"Fire",requiresTargetEnflamed:true,daze:2,desc:"Deal 9 dmg. If target has Enflame, also apply 2 Daze stacks."}),
   // ===== Powers =====
-  C("bfcpa","Fireball Candy - Phoenix Awakening",2,{fireToMagicalPower:true,exhaust:true,forceRarity:"Rare",desc:"Exhaust. Permanent: your Fire-typed cards deal Magical damage instead."}),
+  C("bfcpa","Fireball Candy - Phoenix Awakening",2,{fireToMagicalPower:true,heal:6,exhaust:true,forceRarity:"Rare",desc:"Heal 6 HP. Exhaust. Permanent: your Fire-typed cards deal Magical damage instead."}),
   C("bfcfo","Fireball Candy - Flame On!",2,{flameOnPower:true,exhaust:true,desc:"★ Exhaust. Permanent: enemy Enflame ticks deal bonus damage equal to your own current Enflame stacks."}),
   C("bfccg","Fireball Candy - Cinderguard",2,{cinderguardPower:true,exhaust:true,desc:"★ Exhaust. Permanent: at the start of each of your turns, gain Block equal to total current Enflame on all enemies."}),
   // ===== Plain fillers =====
@@ -105,7 +105,7 @@ const BRANCH_POOL = [
   C("bme7","Wraith's Grasp",2,{dmg:10,dtype:"Magical",stun:true,desc:"Deal 10 dmg. Stun if it penetrates Block."}),
   C("bme8","Phoenix Rebirth",3,{dmg:14,dtype:"Magical",healPctOfDamage:1.0,desc:"Deal 14 dmg. Heal 100% of damage dealt."}),
   C("bme9","Fireball Candy - Arcane Immolation",3,{dmg:13,dtype:"Magical",enflame:4,aoe:true,desc:"Deal 13 dmg to ALL. Apply 4 Enflame to all."}),
-  C("bme10","Fireball Candy - Phoenix Reckoning",3,{dmg:14,dtype:"Magical",enflame:5,aoe:true,desc:"★ Deal 14 dmg to ALL. Apply 5 (heavy) Enflame to all."}),
+  C("bme10","Fireball Candy - Phoenix Reckoning",3,{dmg:14,dtype:"Magical",enflame:5,aoe:true,heal:6,desc:"★ Deal 14 dmg to ALL. Apply 5 (heavy) Enflame to all. Heal 6 HP."}),
 ];
 
 // ============ RILEY ============
