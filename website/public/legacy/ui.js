@@ -799,8 +799,9 @@ function playCard(idx, target, isRepeatedPlay){
   if (G.captainKey === "Branch") {
     const scene = window.game?.scene.getScenes(true)[0];
     if (scene?.playerBody) {
-      const punched = targets.length && card.dmg > 0 && window.playSeaBranchPunch(scene, scene.playerBody, card.name);
-      if (!punched && (targets.length || card.selfEnflame)) window.playSeaBranchBurn(scene, scene.playerBody, card);
+      const special = (targets.length || card.selfEnflame) && window.playSeaBranchSpecial(scene, scene.playerBody, card);
+      const punched = !special && targets.length && card.dmg > 0 && window.playSeaBranchPunch(scene, scene.playerBody, card.name);
+      if (!special && !punched && (targets.length || card.selfEnflame)) window.playSeaBranchBurn(scene, scene.playerBody, card);
     }
   }
 
