@@ -16,7 +16,7 @@ export function drawCaptainShip(scene: Phaser.Scene, root: Phaser.GameObjects.Co
   g.fillGradientStyle(0x559cae, 0x95cad0, 0x193c58, 0x236680, 1);
   g.fillRect(0, 0, 1000, 494);
   // Distinct silhouette: Riley's blade-edged frigate, Broderick's brass gunship.
-  g.fillStyle(timber); g.fillPoints([{x:0,y:337},{x:1000,y:337},{x:902,y:480},{x:128,y:480}], true);
+  g.fillStyle(timber); g.fillPoints([new Phaser.Math.Vector2(0,337),new Phaser.Math.Vector2(1000,337),new Phaser.Math.Vector2(902,480),new Phaser.Math.Vector2(128,480)], true);
   g.fillStyle(riley ? 0x667f8c : 0x936548); g.fillRect(0, 302, 1000, 43);
   for (let y=348;y<478;y+=22) {g.lineStyle(2,0x111923,0.5);g.lineBetween(65,y,940,y);}
   for (const x of [84, 908]) {
