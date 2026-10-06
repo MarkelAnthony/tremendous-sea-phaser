@@ -1,5 +1,21 @@
 {
   "characters": {
+    "76af08a0-4d26-40fc-b346-558313f02bcb": {
+      "updated_at": "2026-08-16T05:25:56.048046+00:00|2026-10-04T13:05:21.619937+00:00|2026-10-05T08:40:11.359560+00:00",
+      "animation_ids": [
+        "6b4f6542-30de-462c-8c7b-c33bfab7c350",
+        "80b35c6b-5a9b-413e-9646-a1b691df2b30",
+        "92edef41-9d67-4539-a565-cfbe949ffe04"
+      ],
+      "animation_fingerprint": "ac03346130e8bcac0ab920fc0acce3dea09cd020521d839f09a60e7f286c6782",
+      "name": "ace from one piece mixed",
+      "member_ids": [
+        "76af08a0-4d26-40fc-b346-558313f02bcb",
+        "665efdc0-0272-4952-a45d-0230446158ea",
+        "ab54db7c-d449-4000-9255-94ef8ce894fa"
+      ],
+      "sync_version": 12
+    },
     "113f91a5-29f0-5c08-9981-5c5b3b5a8718": {
       "updated_at": "2026-10-05T08:41:24.135066+00:00",
       "animation_ids": [
@@ -123,22 +139,6 @@
         "b872b214-8d45-4f34-b202-a5ca77f2e210",
         "b15bd612-59f4-4175-915d-0b777cfb835b",
         "86587070-efce-4ef8-b513-e5a10a41dc6c"
-      ],
-      "sync_version": 12
-    },
-    "76af08a0-4d26-40fc-b346-558313f02bcb": {
-      "updated_at": "2026-08-16T05:25:56.048046+00:00|2026-10-04T13:05:21.619937+00:00|2026-10-05T08:40:11.359560+00:00",
-      "animation_ids": [
-        "6b4f6542-30de-462c-8c7b-c33bfab7c350",
-        "80b35c6b-5a9b-413e-9646-a1b691df2b30",
-        "92edef41-9d67-4539-a565-cfbe949ffe04"
-      ],
-      "animation_fingerprint": "ac03346130e8bcac0ab920fc0acce3dea09cd020521d839f09a60e7f286c6782",
-      "name": "ace from one piece mixed",
-      "member_ids": [
-        "76af08a0-4d26-40fc-b346-558313f02bcb",
-        "665efdc0-0272-4952-a45d-0230446158ea",
-        "ab54db7c-d449-4000-9255-94ef8ce894fa"
       ],
       "sync_version": 12
     }
