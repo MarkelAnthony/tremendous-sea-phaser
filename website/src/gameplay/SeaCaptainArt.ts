@@ -1,6 +1,6 @@
 import Phaser from "phaser";
 import { queueSeaAttackImpact } from "./SeaAttackImpact";
-import { preloadCharacterAtlas, characterManifest, characterAtlasKey, selectCharacterState, characterRotationFrameName } from "../shared/animation";
+import { preloadCharacterAtlas, characterManifest, characterAtlasKey, selectCharacterState } from "../shared/animation";
 
 const RILEY = "b872b214-8d45-4f34-b202-a5ca77f2e210";
 const BRANCH = "76af08a0-4d26-40fc-b346-558313f02bcb";
@@ -14,9 +14,20 @@ export function createSeaCaptain(scene: Phaser.Scene, captain: string): Phaser.G
     const manifest = characterManifest(scene, BRANCH);
     const state = manifest.states.find((candidate) => candidate.id === BRANCH);
     if (!state) return null;
-    // The supplied artwork has static poses, not animation clips yet.
-    const sprite = scene.add.sprite(0, 75, characterAtlasKey(BRANCH), characterRotationFrameName(state.folder, "east"));
-    sprite.setOrigin(0.5, 1).setScale(1.35);
+    const selection = selectCharacterState(manifest, { state: BRANCH, preferredClips: ["Branch idle"] });
+    const clip = selection.state.animations.find((candidate) =>
+      (candidate as typeof candidate & { display_name?: string }).display_name === "Branch idle" && candidate.directions.includes("east"));
+    if (!clip) return null;
+    const key = characterAtlasKey(BRANCH);
+    const pattern = (clip as typeof clip & { atlas_frame_pattern: string }).atlas_frame_pattern;
+    const frames = Array.from({ length: clip.frame_count }, (_, index) => ({
+      key, frame: pattern.replace("{direction}", "east").replace("{frame}", String(index).padStart(3, "0")),
+    }));
+    const animationKey = `${key}-sea-branch-idle`;
+    if (!scene.anims.exists(animationKey)) scene.anims.create({ key: animationKey, frames, frameRate: 8, repeat: -1 });
+    const sprite = scene.add.sprite(0, 75, key, frames[0].frame);
+    // Branch is a tall captain; keep his feet at the existing combat baseline.
+    sprite.setOrigin(0.5, 1).setScale(2.15).play(animationKey);
     sprite.setData("captain", "Branch");
     sprite.setData("artAsset", BRANCH);
     return sprite;
