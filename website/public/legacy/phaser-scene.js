@@ -10,7 +10,7 @@
 // ============================================================
 
 const PALETTE = {
-  bg: 0x0b1420, panel: 0x16283a, accent: 0xe8a33d,
+  bg: 0x081c29, panel: 0x153c4b, accent: 0xf0c575,
   hp: 0x6fbf6f, enemyHp: 0xd9534f, block: 0x7ea6c9, text: 0xeef3f7, dim: 0x93a6b8,
   captain: { Branch: 0xd9534f, Riley: 0x7ea6c9, Broderick: 0xc9962c },
 };
@@ -142,6 +142,7 @@ class MainScene extends Phaser.Scene {
   clearRoot(){
     this.uiRoot.removeAll(true);
     this.enemySprites = {};
+    window.decorateSeaScreen(this, this.uiRoot);
   }
 
   // ---- top-level dispatch, mirrors the old renderX() functions in ui.js ----
@@ -196,6 +197,7 @@ class MainScene extends Phaser.Scene {
   drawCaptainSelect(){
     this.clearRoot();
     this.addTitle("The Tremendous Sea");
+    this.uiRoot.add(this.add.text(400, 76, "CHOOSE YOUR CAPTAIN  ·  CHART YOUR LEGEND", {fontFamily:"sans-serif", fontSize:11, color:"#8bd5ce", letterSpacing:3}).setOrigin(0.5));
     Object.keys(CAPTAINS).forEach((key, i)=>{
       const cap = CAPTAINS[key];
       const x = 150 + i*250;
@@ -209,7 +211,10 @@ class MainScene extends Phaser.Scene {
       bg.on("pointerover", ()=>bg.setStrokeStyle(4, PALETTE.accent));
       bg.on("pointerout", ()=>bg.setStrokeStyle(3, PALETTE.captain[key]));
       bg.on("pointerdown", ()=>startGame(key));
-      container.add([bg, name, candy, hp, trait]);
+      const crest = this.add.text(0, 94, {Branch:"✦", Riley:"⚔", Broderick:"❖"}[key], {fontFamily:"serif", fontSize:40, color:"#f0c575"}).setOrigin(0.5);
+      const rule = this.add.rectangle(0, -72, 165, 1, PALETTE.accent, 0.4);
+      const foot = this.add.text(0, 128, "SET SAIL  →", {fontFamily:"sans-serif", fontSize:11, fontStyle:"bold", color:"#8bd5ce", letterSpacing:2}).setOrigin(0.5);
+      container.add([bg, name, candy, hp, trait, rule, crest, foot]);
       this.uiRoot.add(container);
     });
     if (hasSavedGame()){
@@ -682,7 +687,10 @@ class MainScene extends Phaser.Scene {
       const rarityText = this.add.text(cardW/2-16, -cardH/2+16, rarityBadgeChar(cardRarity(card)), {fontFamily:"sans-serif", fontSize:13, fontStyle:"bold", color:rarityColor(cardRarity(card))}).setOrigin(0.5);
       const nameText = this.add.text(0, -cardH/2+42, card.name, {fontFamily:"sans-serif", fontSize:12, fontStyle:"bold", color:"#eef3f7", wordWrap:{width:cardW-16}, align:"center"}).setOrigin(0.5, 0);
       const descText = this.add.text(0, -cardH/2+76, card.desc, {fontFamily:"sans-serif", fontSize:descFontSize, color:"#c3d2de", wordWrap:{width:cardW-14}, align:"center"}).setOrigin(0.5, 0);
-      const cardContainer = this.add.container(x, y, [cardBg, costText, rarityText, nameText, descText]);
+      const cardTrim = this.add.rectangle(0, -cardH/2+3, cardW-4, 5, canPlay ? PALETTE.accent : 0x465666);
+      const costBadge = this.add.circle(-cardW/2+16, -cardH/2+16, 12, 0x08232f).setStrokeStyle(1, canPlay ? PALETTE.accent : 0x465666);
+      const cardRule = this.add.rectangle(0, -cardH/2+69, cardW-20, 1, PALETTE.accent, 0.35);
+      const cardContainer = this.add.container(x, y, [cardBg, cardTrim, costBadge, cardRule, costText, rarityText, nameText, descText]);
       if (canPlay){
         cardBg.setInteractive();
         cardBg.on("pointerover", ()=>{ cardContainer.setScale(1.08); cardContainer.setDepth(10); });
@@ -724,15 +732,18 @@ class MainScene extends Phaser.Scene {
 
   // ---- generic helpers ----
   addTitle(text, x){
-    this.uiRoot.add(this.add.text(x !== undefined ? x : 400, 40, text, {fontFamily:"sans-serif", fontSize:26, color:"#e8a33d"}).setOrigin(0.5));
+    this.uiRoot.add(this.add.text(x !== undefined ? x : 400, 40, text, {fontFamily:"Georgia, serif", fontSize:28, fontStyle:"bold", color:"#ffe0a0", shadow:{offsetX:0, offsetY:3, color:"#04101b", blur:5, fill:true}}).setOrigin(0.5));
   }
   makeButton(x, y, w, h, label, color, onClick){
     const container = this.add.container(x, y);
     const bg = this.add.rectangle(0, 0, w, h, color, 0.85).setStrokeStyle(2, 0xffffff);
     const txt = this.add.text(0, 0, label, {fontFamily:"sans-serif", fontSize:14, color:"#0b1420", fontStyle:"bold"}).setOrigin(0.5);
     bg.setInteractive();
-    bg.on("pointerover", ()=>bg.setAlpha(1));
-    bg.on("pointerout", ()=>bg.setAlpha(0.85));
+    bg.setData("seaButton", true);
+    bg.setAlpha(0);
+    txt.setAlpha(0);
+    bg.on("pointerover", ()=>bg.setAlpha(0));
+    bg.on("pointerout", ()=>bg.setAlpha(0));
     bg.on("pointerdown", onClick);
     container.add([bg, txt]);
     return container;

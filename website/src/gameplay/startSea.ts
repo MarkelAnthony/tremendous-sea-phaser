@@ -2,6 +2,7 @@ import Phaser from "phaser";
 import "./SeaCaptainArt";
 import "./SeaBranchBurn";
 import "./SeaBranchSpecial";
+import { seaButtonStyle } from "./SeaVisualTheme";
 
 /** Keep the handoff's renderer-agnostic rules untouched and load in their original order. */
 export async function startSea(): Promise<void> {
@@ -54,6 +55,7 @@ export function mountSeaControls(game: Phaser.Game): void {
       button.title = control.label;
       button.style.cssText = `position:absolute;left:${canvas.left+(control.x-control.w/2)*canvas.width/1000}px;top:${canvas.top+(control.y-control.h/2)*canvas.height/700}px;width:${control.w*canvas.width/1000}px;height:${control.h*canvas.height/700}px;pointer-events:auto;background:transparent;border:0;color:transparent;cursor:pointer;`;
       button.textContent = control.label;
+      if (control.object.getData("seaButton")) seaButtonStyle(button, canvas.width / 1000);
       button.onclick = () => { control.object.emit("pointerdown"); signature = ""; };
       button.onmouseenter = () => control.object.emit("pointerover");
       button.onmouseleave = () => control.object.active && control.object.emit("pointerout");
