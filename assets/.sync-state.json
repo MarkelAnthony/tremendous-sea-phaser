@@ -1,5 +1,17 @@
 {
   "characters": {
+    "76af08a0-4d26-40fc-b346-558313f02bcb": {
+      "updated_at": "2026-08-16T05:25:56.048046+00:00|2026-10-04T13:05:21.619937+00:00|2026-10-05T08:40:11.359560+00:00",
+      "animation_ids": [],
+      "animation_fingerprint": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "name": "ace from one piece mixed",
+      "member_ids": [
+        "76af08a0-4d26-40fc-b346-558313f02bcb",
+        "665efdc0-0272-4952-a45d-0230446158ea",
+        "ab54db7c-d449-4000-9255-94ef8ce894fa"
+      ],
+      "sync_version": 12
+    },
     "113f91a5-29f0-5c08-9981-5c5b3b5a8718": {
       "updated_at": "2026-10-05T08:41:24.135066+00:00",
       "animation_ids": [
@@ -123,18 +135,6 @@
         "b872b214-8d45-4f34-b202-a5ca77f2e210",
         "b15bd612-59f4-4175-915d-0b777cfb835b",
         "86587070-efce-4ef8-b513-e5a10a41dc6c"
-      ],
-      "sync_version": 12
-    },
-    "76af08a0-4d26-40fc-b346-558313f02bcb": {
-      "updated_at": "2026-08-16T05:25:56.048046+00:00|2026-10-04T13:05:21.619937+00:00|2026-10-05T08:40:11.359560+00:00",
-      "animation_ids": [],
-      "animation_fingerprint": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-      "name": "ace from one piece mixed",
-      "member_ids": [
-        "76af08a0-4d26-40fc-b346-558313f02bcb",
-        "665efdc0-0272-4952-a45d-0230446158ea",
-        "ab54db7c-d449-4000-9255-94ef8ce894fa"
       ],
       "sync_version": 12
     }
