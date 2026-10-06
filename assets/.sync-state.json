@@ -129,9 +129,10 @@
     "76af08a0-4d26-40fc-b346-558313f02bcb": {
       "updated_at": "2026-08-16T05:25:56.048046+00:00|2026-10-04T13:05:21.619937+00:00|2026-10-05T08:40:11.359560+00:00",
       "animation_ids": [
-        "6b4f6542-30de-462c-8c7b-c33bfab7c350"
+        "6b4f6542-30de-462c-8c7b-c33bfab7c350",
+        "80b35c6b-5a9b-413e-9646-a1b691df2b30"
       ],
-      "animation_fingerprint": "c259295a8e8049566c5546f51e844629a3e07b8f71ecbd2ec795aa6971b19114",
+      "animation_fingerprint": "13252289653a1927c2f73d6750941af25bd6f1b617911089d8546ba5d6c4a09b",
       "name": "ace from one piece mixed",
       "member_ids": [
         "76af08a0-4d26-40fc-b346-558313f02bcb",

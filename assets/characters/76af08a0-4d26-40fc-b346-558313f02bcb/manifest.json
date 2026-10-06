@@ -41,6 +41,24 @@
       "idle_atlas_frame_pattern": "idle/rotations/{direction}",
       "animations": [
         {
+          "name": "attack",
+          "id": "d62b3bad-fe74-47b6-a338-9bd73b7e296f",
+          "source_name": "custom-From fighting guard, wind up a",
+          "display_name": "Branch punch",
+          "description": "From fighting guard, wind up and throw a strong straight punch toward the right, extending the flaming fist with a brief fiery trail, then retract the arm and return to the original fighting guard. Keep both feet planted and the character's height consistent. One complete punch, no kicks.",
+          "generation_model": "v3",
+          "frame_count": 8,
+          "directions": [
+            "east"
+          ],
+          "loop": false,
+          "aliases": [
+            "attack"
+          ],
+          "path_pattern": "idle/animations/attack/{direction}/frame_{frame}.png",
+          "atlas_frame_pattern": "idle/animations/attack/{direction}/frame_{frame}"
+        },
+        {
           "name": "idle",
           "id": "f24ec95e-01dd-4773-8c0f-1db9193d5f5b",
           "source_name": "custom-Gentle looping fighting idle, ",
