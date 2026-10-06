@@ -36,6 +36,31 @@ export function drawShipDeck(scene: Phaser.Scene, root: Phaser.GameObjects.Conta
   }
   g.fillStyle(wood); g.fillRoundedRect(0, 176, 1000, 12, 3);
   g.lineStyle(3, trim); g.lineBetween(0, 177, 1000, 177);
+  if (branch) {
+    // Recessed wooden frieze: repeated trees carved into the solid aft rail.
+    g.fillStyle(0x513521); g.fillRect(0, 219, 1000, 23);
+    g.lineStyle(1, trim, 0.8); g.lineBetween(0, 220, 1000, 220);
+    g.lineBetween(0, 241, 1000, 241);
+    for (let x = 25; x < 1000; x += 58) {
+      const carving = (offset: number, color: number): void => {
+        g.lineStyle(1.5, color);
+        g.lineBetween(x+offset, 238, x+offset, 224);
+        for (const sign of [-1, 1]) {
+          g.lineBetween(x+offset, 230, x+sign*7+offset, 225);
+          g.lineBetween(x+offset, 233, x+sign*10+offset, 228);
+          g.lineBetween(x+offset, 236, x+sign*8+offset, 239);
+          g.lineBetween(x+sign*7+offset, 225, x+sign*9+offset, 223);
+        }
+      };
+      carving(1, 0x261b13); carving(0, 0xd9a85c);
+      // Leaf-shaped cut-outs decorate the balusters as well as the rail band.
+      g.fillStyle(0x3d291c); g.fillEllipse(x, 202, 5, 16);
+      g.lineStyle(1, trim, 0.7); g.lineBetween(x-1, 208, x-1, 196);
+      g.lineBetween(x-1, 202, x+2, 198);
+      g.lineStyle(1, trim, 0.65);
+      g.lineBetween(x+12, 182, x+25, 179); g.lineBetween(x+25, 179, x+38, 183);
+    }
+  }
   // Masts and sail edges frame the arena rather than depicting a distant hull.
   for (const x of [48, 949]) {
     g.fillStyle(0x39271c); g.fillRect(x - 11, 0, 22, 256);

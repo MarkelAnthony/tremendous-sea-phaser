@@ -43,7 +43,7 @@ export function drawOrnateTrees(g: Phaser.GameObjects.Graphics): void {
     curve([-3, -15, 21, -35, -26, -39, -9, -61], 2, 0xffde94);
     curve([-9, -61, 21, -80, -17, -90, 1, -115], 2, 0xffde94);
     // Distinct sweeping crowns built out of leafy sprays, with dark undersides.
-    const sprays = [[-59,-109,29],[-38,-139,32],[-4,-154,35],[32,-144,33],[60,-122,28],[-22,-112,29],[20,-116,32]];
+    const sprays = [[-65,-135,24],[-39,-164,27],[-4,-182,30],[32,-166,27],[63,-145,24],[-23,-143,22],[20,-146,23]];
     for (const [dx, dy, radius] of sprays) {
       g.fillStyle(tree.dark); g.fillEllipse(x + dx*s, y + (dy+9)*s, radius*2.2*s, radius*1.35*s);
       g.fillStyle(tree.mid); g.fillEllipse(x + dx*s, y + dy*s, radius*2.1*s, radius*1.25*s);
@@ -58,6 +58,30 @@ export function drawOrnateTrees(g: Phaser.GameObjects.Graphics): void {
       }
       g.lineStyle(1, 0xffdd91, 0.4);
       g.lineBetween(x+dx*s, y+(dy+10)*s, x+(dx+14)*s, y+(dy-4)*s);
+    }
+    // Visible tapering boughs bridge the open trunk to the crown.
+    // Draw after the foliage so these read as branches, not ribbons buried in clouds.
+    for (const p of [
+      [-6,-81,-30,-106,-48,-111,-65,-135],
+      [1,-96,26,-113,42,-116,63,-145],
+      [-2,-125,-16,-142,-10,-164,-4,-182],
+      [-7,-119,-30,-131,-33,-150,-39,-164],
+      [0,-130,18,-143,24,-155,32,-166],
+    ]) {
+      curve(p, 7, 0x35251f);
+      curve(p, 4, 0x986442);
+      curve(p.map((n, k) => k % 2 === 0 ? n - 1 : n), 1, 0xe0af64);
+    }
+    // Bark furrows and a dark knot make the exposed trunk unmistakably wooden.
+    curve([3,-9,-13,-31,11,-58,-2,-86], 1.5, 0x422b20);
+    curve([-7,-11,-20,-31,-3,-48,-8,-70], 1.5, 0x422b20);
+    g.fillStyle(0x442b20); g.fillEllipse(x-5*s, y-48*s, 7*s, 12*s);
+    g.lineStyle(1, 0xc48c50); g.strokeEllipse(x-5*s, y-48*s, 9*s, 15*s);
+    // Pointed individual leaves break up the rounded crowns.
+    for (const [dx,dy] of [[-78,-139],[-55,-158],[-19,-188],[17,-185],[48,-164],[77,-143]]) {
+      g.fillStyle(tree.light);
+      g.fillTriangle(x+dx*s,y+dy*s,x+(dx+10)*s,y+(dy-8)*s,x+(dx+13)*s,y+(dy+3)*s);
+      g.lineStyle(1, tree.dark); g.lineBetween(x+dx*s,y+dy*s,x+(dx+10)*s,y+(dy-4)*s);
     }
     // Hanging pearl blossoms and tiny carved brass charms.
     for (const [dx, dy] of [[-52,-96],[42,-104],[13,-94]]) {
