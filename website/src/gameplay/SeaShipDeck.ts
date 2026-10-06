@@ -1,4 +1,5 @@
 import Phaser from "phaser";
+import { drawOrnateTrees } from "./SeaOrnateTrees";
 
 /** The fighting floor fills the arena; scenery sits beyond its back railing. */
 export function drawShipDeck(scene: Phaser.Scene, root: Phaser.GameObjects.Container, captain: string): void {
@@ -45,15 +46,7 @@ export function drawShipDeck(scene: Phaser.Scene, root: Phaser.GameObjects.Conta
     g.lineBetween(x, 75, x < 500 ? 0 : 1000, 245);
   }
   if (branch) {
-    // Root-grown balustrades and ornamental tree crowns retain Branch's identity.
-    for (const [x, color] of [[84, 0xd976a9], [325, 0xc393df], [745, 0xf2a65d], [928, 0x77bfb1]]) {
-      g.lineStyle(9, 0x68402a); g.lineBetween(x, 229, x, 126);
-      g.lineStyle(5, 0xa27340); g.lineBetween(x, 168, x - 23, 137); g.lineBetween(x, 158, x + 26, 127);
-      g.fillStyle(color, 0.94);
-      for (const [dx, dy, r] of [[-23, 0, 22], [19, -8, 26], [0, -24, 27], [0, 6, 26]]) g.fillCircle(x + dx, 125 + dy, r);
-      g.fillStyle(0xffd998, 0.35); g.fillCircle(x - 9, 97, 12);
-      g.lineStyle(4, trim, 0.65); g.lineBetween(x, 224, x - 28, 237); g.lineBetween(x, 224, x + 32, 237);
-    }
+    drawOrnateTrees(g);
     // Tree engraving embedded in the open deck, not a floating UI ornament.
     g.lineStyle(3, trim, 0.24); g.strokeEllipse(420, 371, 150, 62);
     g.lineBetween(420, 387, 420, 343);
