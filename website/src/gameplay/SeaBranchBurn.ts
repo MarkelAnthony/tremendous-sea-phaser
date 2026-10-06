@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import { characterManifest, characterAtlasKey, resolveCharacterAnimation } from "../shared/animation";
+import { characterManifest, characterAtlasKey, selectCharacterState } from "../shared/animation";
 
 const BRANCH = "76af08a0-4d26-40fc-b346-558313f02bcb";
 interface BurnCard {
@@ -18,11 +18,13 @@ export function playSeaBranchBurn(scene: Phaser.Scene, sprite: Phaser.GameObject
   if (sprite.getData("captain") !== "Branch" || sprite.getData("clarityAttackPlaying")) return false;
   if (/\b(punch(?:es|ing)?|jabs?|fists?|cross|crosses|uppercuts?|haymakers?|hooks?|straights?|kicks?|kicking)\b/i.test(card.name)) return false;
   if (!(card.enflame || card.selfEnflame || card.secondTargetEnflame || card.detonateSpreadHalf || card.reapplyOriginalEnflame || card.enflameSpreadHalfIfPresent || card.detonateReapplyAndAgain)) return false;
-  const clip = resolveCharacterAnimation(characterManifest(scene, BRANCH), ["Branch burn"], { state: BRANCH, direction: "east" });
+  const selection = selectCharacterState(characterManifest(scene, BRANCH), { state: BRANCH, preferredClips: ["Branch burn"] });
+  const clip = selection.state.animations.find((candidate) =>
+    (candidate as typeof candidate & { display_name?: string }).display_name === "Branch burn" && candidate.directions.includes("east"));
   if (!clip) return false;
   const key = characterAtlasKey(BRANCH);
-  const pattern = (clip.animation as typeof clip.animation & { atlas_frame_pattern: string }).atlas_frame_pattern;
-  const frames = Array.from({ length: clip.animation.frame_count }, (_, index) => ({
+  const pattern = (clip as typeof clip & { atlas_frame_pattern: string }).atlas_frame_pattern;
+  const frames = Array.from({ length: clip.frame_count }, (_, index) => ({
     key, frame: pattern.replace("{direction}", "east").replace("{frame}", String(index).padStart(3, "0")),
   }));
   if (frames.some(({ frame }) => !scene.textures.get(key).has(frame))) return false;
