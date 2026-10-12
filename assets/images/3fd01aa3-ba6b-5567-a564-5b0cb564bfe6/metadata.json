@@ -1,0 +1,11 @@
+{
+  "id": "3fd01aa3-ba6b-5567-a564-5b0cb564bfe6",
+  "name": "Pixel art battle arena aboard KINDLEROOT, ornate living-wood",
+  "prompt": "Pixel art battle arena aboard KINDLEROOT, ornate living-wood pirate ship. View FROM ON THE DECK, side-on stage, NOT exterior ship at sea. Wide horizontal composition. Bottom half uninterrupted warm timber planks, subtle glowing ember fissures and twisting root inlays, clear open combat floor. Upper half aft railing carved with branching golden trees and roots; beyond railing distant turquoise ocean. At far left and far right spectacular REAL TREES with tall clearly visible woody twisting trunks, forked bare branches supporting layered leafy crowns of emerald teal coral pink amber violet leaves, hanging golden seed ornaments, roots entwined into railings. Giant living tree mast at upper left with leafy emerald sails and rope rigging. Small potted saplings at deck edges. Whimsical intricate pirate fantasy, jewel-toned foliage, handcrafted wood, cohesive crisp pixel art, rich shading. Central arena spacious and readable. No characters, enemies, text, cards, interface or full ship exterior.",
+  "width": 680,
+  "height": 384,
+  "model": "pixen",
+  "no_background": false,
+  "image": "image.png",
+  "spritesheet": null
+}
