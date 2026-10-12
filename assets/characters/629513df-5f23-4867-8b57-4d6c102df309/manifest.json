@@ -39,7 +39,79 @@
       ],
       "rotation_path_pattern": "idle/rotations/{direction}.png",
       "idle_atlas_frame_pattern": "idle/rotations/{direction}",
-      "animations": []
+      "animations": [
+        {
+          "name": "attack",
+          "id": "75d164df-9fb4-438e-99a0-4e4036349740",
+          "source_name": "cross-punch",
+          "display_name": "Branch approved heavy",
+          "description": "Right-facing heavy cross punch from guard, rotate torso and extend rear flaming fist to clear contact pose. Preserve approved white shoes, shorts, tattoo and flames.",
+          "generation_model": "skeleton-v3_template",
+          "frame_count": 6,
+          "directions": [
+            "east"
+          ],
+          "loop": false,
+          "aliases": [
+            "attack"
+          ],
+          "path_pattern": "idle/animations/attack/{direction}/frame_{frame}.png",
+          "atlas_frame_pattern": "idle/animations/attack/{direction}/frame_{frame}"
+        },
+        {
+          "name": "idle",
+          "id": "52a3e6c4-f392-4a88-a749-a98dc6ba62b9",
+          "source_name": "fight-stance-idle-8-frames",
+          "display_name": "Branch approved guard",
+          "description": "Right-facing fighting guard idle, gentle breathing, raised fists, feet planted. Preserve approved white shoes, shorts, tattoo and flames.",
+          "generation_model": "skeleton-v3_template",
+          "frame_count": 8,
+          "directions": [
+            "east"
+          ],
+          "loop": true,
+          "aliases": [
+            "idle"
+          ],
+          "path_pattern": "idle/animations/idle/{direction}/frame_{frame}.png",
+          "atlas_frame_pattern": "idle/animations/idle/{direction}/frame_{frame}"
+        },
+        {
+          "name": "lead-jab",
+          "id": "d648562b-f3f8-46e7-a3ee-87c661c7149f",
+          "source_name": "lead-jab",
+          "display_name": "Branch approved jab",
+          "description": "Right-facing lead jab from fighting guard, extend the lead fist to a clear contact pose. Preserve approved white shoes, shorts, tattoo and flames.",
+          "generation_model": "skeleton-v3_template",
+          "frame_count": 3,
+          "directions": [
+            "east"
+          ],
+          "loop": false,
+          "aliases": [],
+          "path_pattern": "idle/animations/lead-jab/{direction}/frame_{frame}.png",
+          "atlas_frame_pattern": "idle/animations/lead-jab/{direction}/frame_{frame}"
+        },
+        {
+          "name": "spell",
+          "id": "4e03a9d3-6286-43c2-a1a2-9d9e787ab78d",
+          "source_name": "fireball",
+          "display_name": "Branch approved fire",
+          "description": "Right-facing fire attack from guard, wind up and thrust flaming hands toward right to clear fire release pose. Preserve approved white shoes, shorts, tattoo and flames.",
+          "generation_model": "skeleton-v3_template",
+          "frame_count": 6,
+          "directions": [
+            "east"
+          ],
+          "loop": false,
+          "aliases": [
+            "spell",
+            "attack"
+          ],
+          "path_pattern": "idle/animations/spell/{direction}/frame_{frame}.png",
+          "atlas_frame_pattern": "idle/animations/spell/{direction}/frame_{frame}"
+        }
+      ]
     }
   ]
 }
