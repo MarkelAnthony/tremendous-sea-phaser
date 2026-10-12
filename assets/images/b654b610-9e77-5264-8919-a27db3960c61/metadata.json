@@ -1,0 +1,11 @@
+{
+  "id": "b654b610-9e77-5264-8919-a27db3960c61",
+  "name": "Correct this SAME Branch character into a clearly RIGHT-FACI",
+  "prompt": "Correct this SAME Branch character into a clearly RIGHT-FACING fighting guard for a side-view battle. Pose correction is the priority: face and gaze point to the RIGHT, feet planted apart, knees slightly bent, balanced athletic fighting stance, both elbows bent and both flaming fists raised ready to box, lead fist to the right and rear fist near chin. Turn chest slightly toward viewer so torso remains visible; do not let arms obscure entire chest. Preserve his recognizable face, caramel skin, low-cut fade, tall athletic proportions, shirtless torso, combat boots, flames on hands and boot soles, original pixel scale, palette and aesthetic, bold black outer outline, darker inner outlines, dithered shading and top-right lighting. Clarify the existing dark TREE TATTOO: readable trunk down torso, branching limbs across chest, roots toward waist. Shorts must visibly have a predominantly WHITE base with bold irregular PURPLE CAMOUFLAGE patches, not solid purple. Readable fists beneath compact flames. No weapons, coat, shirt, hat, bark skin or leafy hair. Single full-body character only, no text, transparent background. Keep 128x128 canvas.",
+  "width": 128,
+  "height": 128,
+  "model": "edit-image",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
