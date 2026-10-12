@@ -50,7 +50,7 @@ export function createSeaCaptain(scene: Phaser.Scene, captain: string): Phaser.G
       }
     }
     // Atlas frames are trimmed, but sprite origins use the untrimmed canvas.
-    const trim = frame.data.spriteSourceSize;
+    const trim = (frame as Phaser.Textures.Frame & { data: { spriteSourceSize: { x: number; y: number } } }).data.spriteSourceSize;
     sprite.setOrigin((trim.x + frame.cutWidth / 2) / frame.realWidth,
       (trim.y + bottom) / frame.realHeight)
       .setScale(176 / Math.max(1, bottom - top)).play(animationKey);
