@@ -1,5 +1,24 @@
 {
   "characters": {
+    "76af08a0-4d26-40fc-b346-558313f02bcb": {
+      "updated_at": "2026-08-16T05:25:56.048046+00:00|2026-10-04T13:05:21.619937+00:00|2026-10-05T08:40:11.359560+00:00",
+      "animation_ids": [
+        "450ea6de-a292-4338-bb72-fbadf07faeeb",
+        "6b4f6542-30de-462c-8c7b-c33bfab7c350",
+        "7b753490-9461-406c-8e2d-d47f377ee200",
+        "80b35c6b-5a9b-413e-9646-a1b691df2b30",
+        "92edef41-9d67-4539-a565-cfbe949ffe04",
+        "e58a7d31-2998-416e-942a-09aeebd93593"
+      ],
+      "animation_fingerprint": "1ba4e22f7755b0def419b27bc5a27fcf60ec1d5bc0031148bb611ec17ebf2f23",
+      "name": "ace from one piece mixed",
+      "member_ids": [
+        "76af08a0-4d26-40fc-b346-558313f02bcb",
+        "665efdc0-0272-4952-a45d-0230446158ea",
+        "ab54db7c-d449-4000-9255-94ef8ce894fa"
+      ],
+      "sync_version": 12
+    },
     "113f91a5-29f0-5c08-9981-5c5b3b5a8718": {
       "updated_at": "2026-10-05T08:41:24.135066+00:00",
       "animation_ids": [
@@ -126,22 +145,13 @@
       ],
       "sync_version": 12
     },
-    "76af08a0-4d26-40fc-b346-558313f02bcb": {
-      "updated_at": "2026-08-16T05:25:56.048046+00:00|2026-10-04T13:05:21.619937+00:00|2026-10-05T08:40:11.359560+00:00",
-      "animation_ids": [
-        "450ea6de-a292-4338-bb72-fbadf07faeeb",
-        "6b4f6542-30de-462c-8c7b-c33bfab7c350",
-        "7b753490-9461-406c-8e2d-d47f377ee200",
-        "80b35c6b-5a9b-413e-9646-a1b691df2b30",
-        "92edef41-9d67-4539-a565-cfbe949ffe04",
-        "e58a7d31-2998-416e-942a-09aeebd93593"
-      ],
-      "animation_fingerprint": "1ba4e22f7755b0def419b27bc5a27fcf60ec1d5bc0031148bb611ec17ebf2f23",
-      "name": "ace from one piece mixed",
+    "629513df-5f23-4867-8b57-4d6c102df309": {
+      "updated_at": "2026-10-12T21:23:19.120183+00:00",
+      "animation_ids": [],
+      "animation_fingerprint": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "name": "Branch \u00b7 Kindleroot art brief",
       "member_ids": [
-        "76af08a0-4d26-40fc-b346-558313f02bcb",
-        "665efdc0-0272-4952-a45d-0230446158ea",
-        "ab54db7c-d449-4000-9255-94ef8ce894fa"
+        "629513df-5f23-4867-8b57-4d6c102df309"
       ],
       "sync_version": 12
     }
