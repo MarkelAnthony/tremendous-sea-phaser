@@ -532,7 +532,7 @@ class MainScene extends Phaser.Scene {
     if (kindleroot) this.playerContainer.add(this.add.ellipse(0, 75, 84, 14, 0x21170f, 0.32));
     const capColor = PALETTE.captain[G.captainKey] || PALETTE.accent;
     this.playerBody = window.createSeaCaptain(this, G.captainKey) || this.add.rectangle(0, 0, 110, 150, capColor).setStrokeStyle(3, 0xffffff);
-    this.playerLabel = this.add.text(0, -100, G.cap.name, {fontFamily:"sans-serif", fontSize:16, fontStyle:"bold", color:"#eef3f7"}).setOrigin(0.5);
+    this.playerLabel = this.add.text(0, kindleroot ? -126 : -100, G.cap.name, {fontFamily:"sans-serif", fontSize:16, fontStyle:"bold", color:"#eef3f7"}).setOrigin(0.5);
     this.playerHpBarBg = this.makeBar(0, 90, 130, 16, 1, 0x6fbf6f);
     this.playerHpText = this.add.text(0, 90, "", {fontFamily:"sans-serif", fontSize:12, fontStyle:"bold", color:"#ffffff"}).setOrigin(0.5);
     this.playerBlockText = this.add.text(0, 112, "", {fontFamily:"sans-serif", fontSize:13, fontStyle:"bold", color:"#7ea6c9"}).setOrigin(0.5);

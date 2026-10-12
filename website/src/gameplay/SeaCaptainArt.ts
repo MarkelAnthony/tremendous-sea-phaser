@@ -49,7 +49,10 @@ export function createSeaCaptain(scene: Phaser.Scene, captain: string): Phaser.G
         }
       }
     }
-    sprite.setOrigin(0.5, bottom / frame.cutHeight)
+    // Atlas frames are trimmed, but sprite origins use the untrimmed canvas.
+    const trim = frame.data.spriteSourceSize;
+    sprite.setOrigin((trim.x + frame.cutWidth / 2) / frame.realWidth,
+      (trim.y + bottom) / frame.realHeight)
       .setScale(176 / Math.max(1, bottom - top)).play(animationKey);
     sprite.setData("deckFeetY", 355);
     sprite.setData("visibleModelHeight", 176);
