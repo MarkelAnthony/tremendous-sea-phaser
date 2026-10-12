@@ -4,6 +4,21 @@ import { drawOrnateTrees } from "./SeaOrnateTrees";
 /** The fighting floor fills the arena; scenery sits beyond its back railing. */
 export function drawShipDeck(scene: Phaser.Scene, root: Phaser.GameObjects.Container, captain: string): void {
   const branch = captain === "Branch";
+  if (branch && scene.textures.exists("kindleroot-deck")) {
+    const stage = scene.add.image(0, 0, "kindleroot-deck").setOrigin(0).setDisplaySize(1000, 494);
+    root.add(stage);
+    // Contact shadows remain on the same fighting plane as the original arena.
+    const shadows = scene.add.graphics();
+    for (const x of [150, 470, 650, 830]) {
+      shadows.fillStyle(0x21170f, 0.25); shadows.fillEllipse(x, 355, 108, 17);
+    }
+    root.add(shadows);
+    root.setData("shipCaptain", captain);
+    root.setData("shipTheme", "Kindleroot · living tree mast, leafy sails, emberwood deck");
+    root.setData("combatSurface", "Kindleroot timber deck beneath fighters at y=355");
+    root.setData("deckArt", "3fd01aa3-ba6b-5567-a564-5b0cb564bfe6");
+    return;
+  }
   const riley = captain === "Riley";
   const wood = branch ? 0x92613b : riley ? 0x586977 : 0x795136;
   const trim = branch ? 0xe9bf68 : riley ? 0xb1d9df : 0xdba64f;
