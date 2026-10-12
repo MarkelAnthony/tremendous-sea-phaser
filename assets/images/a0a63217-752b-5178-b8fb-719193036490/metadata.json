@@ -1,0 +1,11 @@
+{
+  "id": "a0a63217-752b-5178-b8fb-719193036490",
+  "name": "Change ONLY the character's shoes/boots to clearly WHITE sho",
+  "prompt": "Change ONLY the character's shoes/boots to clearly WHITE shoes with light gray shading and dark outlines. Preserve the existing right-facing fighting pose, face, caramel skin, tree tattoo, white-and-purple shorts, flames at hands and shoe soles, pixel palette and transparent background. Everything except shoe color stays unchanged.",
+  "width": 128,
+  "height": 128,
+  "model": "edit_image_pixen",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
