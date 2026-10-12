@@ -1,5 +1,8 @@
 import Phaser from "phaser";
 import { queueSeaAttackImpact } from "./SeaAttackImpact";
+import { assetUrl } from "../pixellab/templateAssetPaths";
+import { playApprovedBranchAttack } from "./SeaApprovedBranch";
+const APPROVED_BRANCH = "a0a63217-752b-5178-b8fb-719193036490";
 import { preloadCaptainShips } from "./SeaShipBackdrop";
 import { preloadCharacterAtlas, characterManifest, characterAtlasKey, selectCharacterState } from "../shared/animation";
 
@@ -9,25 +12,14 @@ export function preloadSeaCaptain(scene: Phaser.Scene): void {
   preloadCaptainShips(scene);
   preloadCharacterAtlas(scene, RILEY);
   preloadCharacterAtlas(scene, BRANCH);
+  scene.load.image("branch-approved-guard", assetUrl("images", APPROVED_BRANCH, "image.png"));
   scene.load.image("riley-readable-fist", new URL("art/riley-readable-fist.png", document.baseURI).href);
 }
 export function createSeaCaptain(scene: Phaser.Scene, captain: string): Phaser.GameObjects.Sprite | null {
   if (captain === "Branch") {
-    const manifest = characterManifest(scene, BRANCH);
-    const state = manifest.states.find((candidate) => candidate.id === BRANCH);
-    if (!state) return null;
-    const selection = selectCharacterState(manifest, { state: BRANCH, preferredClips: ["Branch idle"] });
-    const clip = selection.state.animations.find((candidate) =>
-      (candidate as typeof candidate & { display_name?: string }).display_name === "Branch idle" && candidate.directions.includes("east"));
-    if (!clip) return null;
-    const key = characterAtlasKey(BRANCH);
-    const pattern = (clip as typeof clip & { atlas_frame_pattern: string }).atlas_frame_pattern;
-    const frames = Array.from({ length: clip.frame_count }, (_, index) => ({
-      key, frame: pattern.replace("{direction}", "east").replace("{frame}", String(index).padStart(3, "0")),
-    }));
-    const animationKey = `${key}-sea-branch-idle`;
-    if (!scene.anims.exists(animationKey)) scene.anims.create({ key: animationKey, frames, frameRate: 8, repeat: -1 });
-    const sprite = scene.add.sprite(0, 75, key, frames[0].frame);
+    if (!scene.textures.exists("branch-approved-guard")) return null;
+    const sprite = scene.add.sprite(0, 75, "branch-approved-guard");
+    sprite.setData("approvedBranchArt", true);
     // Fit the visible model, not its animation canvas: transparent padding used
     // to leave Branch floating above the deck and distort his relative size.
     const frame = sprite.frame;
@@ -53,11 +45,11 @@ export function createSeaCaptain(scene: Phaser.Scene, captain: string): Phaser.G
     const trim = (frame as Phaser.Textures.Frame & { data: { spriteSourceSize: { x: number; y: number } } }).data.spriteSourceSize;
     sprite.setOrigin((trim.x + frame.cutWidth / 2) / frame.realWidth,
       (trim.y + bottom) / frame.realHeight)
-      .setScale(176 / Math.max(1, bottom - top)).play(animationKey);
+      .setScale(176 / Math.max(1, bottom - top));
     sprite.setData("deckFeetY", 355);
     sprite.setData("visibleModelHeight", 176);
     sprite.setData("captain", "Branch");
-    sprite.setData("artAsset", BRANCH);
+    sprite.setData("artAsset", APPROVED_BRANCH);
     return sprite;
   }
   if (captain !== "Riley") return null;
@@ -207,6 +199,7 @@ globals.playSeaFistBladeAttack = playSeaFistBladeAttack;
 export function playSeaBranchPunch(scene: Phaser.Scene, sprite: Phaser.GameObjects.Sprite, attackName: string): boolean {
   if (sprite.getData("captain") !== "Branch" || !/\b(punch(?:es|ing)?|jabs?|fists?|cross|crosses|uppercuts?|haymakers?|hooks?)\b/i.test(attackName)) return false;
   if (sprite.getData("clarityAttackPlaying")) return false;
+  if (sprite.getData("approvedBranchArt")) return playApprovedBranchAttack(scene, sprite, "punch", attackName);
   const selection = selectCharacterState(characterManifest(scene, BRANCH), { state: BRANCH, preferredClips: ["Branch punch"] });
   const clip = selection.state.animations.find((candidate) =>
     (candidate as typeof candidate & { display_name?: string }).display_name === "Branch punch" && candidate.directions.includes("east"));

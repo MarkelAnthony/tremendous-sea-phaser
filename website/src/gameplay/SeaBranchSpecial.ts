@@ -1,4 +1,5 @@
 import Phaser from "phaser";
+import { playApprovedBranchAttack } from "./SeaApprovedBranch";
 import { characterManifest, characterAtlasKey, selectCharacterState } from "../shared/animation";
 
 const BRANCH = "76af08a0-4d26-40fc-b346-558313f02bcb";
@@ -19,6 +20,7 @@ const specials: Record<string, string> = {
 export function playSeaBranchSpecial(scene: Phaser.Scene, sprite: Phaser.GameObjects.Sprite, card: { name: string }): boolean {
   const kind = specials[card.name];
   if (sprite.getData("captain") !== "Branch" || !kind || sprite.getData("clarityAttackPlaying")) return false;
+  if (sprite.getData("approvedBranchArt")) return playApprovedBranchAttack(scene, sprite, kind, card.name);
   const name = `Branch special ${kind}`;
   const selection = selectCharacterState(characterManifest(scene, BRANCH), { state: BRANCH, preferredClips: [name] });
   const clip = selection.state.animations.find((candidate) =>

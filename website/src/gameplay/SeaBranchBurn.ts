@@ -1,5 +1,6 @@
 import Phaser from "phaser";
 import { queueBranchBurnEffect } from "./SeaBranchBurnEffect";
+import { playApprovedBranchAttack } from "./SeaApprovedBranch";
 import { characterManifest, characterAtlasKey, selectCharacterState } from "../shared/animation";
 
 const BRANCH = "76af08a0-4d26-40fc-b346-558313f02bcb";
@@ -19,6 +20,11 @@ export function playSeaBranchBurn(scene: Phaser.Scene, sprite: Phaser.GameObject
   if (sprite.getData("captain") !== "Branch" || sprite.getData("clarityAttackPlaying")) return false;
   if (/\b(punch(?:es|ing)?|jabs?|fists?|cross|crosses|uppercuts?|haymakers?|hooks?|straights?|kicks?|kicking)\b/i.test(card.name)) return false;
   if (!(card.enflame || card.selfEnflame || card.secondTargetEnflame || card.detonateSpreadHalf || card.reapplyOriginalEnflame || card.enflameSpreadHalfIfPresent || card.detonateReapplyAndAgain)) return false;
+  if (sprite.getData("approvedBranchArt")) {
+    const played = playApprovedBranchAttack(scene, sprite, "burn", card.name);
+    if (played) queueBranchBurnEffect(scene, sprite);
+    return played;
+  }
   const selection = selectCharacterState(characterManifest(scene, BRANCH), { state: BRANCH, preferredClips: ["Branch burn"] });
   const clip = selection.state.animations.find((candidate) =>
     (candidate as typeof candidate & { display_name?: string }).display_name === "Branch burn" && candidate.directions.includes("east"));
