@@ -7,7 +7,7 @@
   "usage": [
     "Read this file before choosing character states or animation clip names.",
     "Animation name is the exact physical clip key. display_name and source_name describe it; aliases are semantic role hints only.",
-    "Use resolveCharacterAnimation(manifest, candidates, { state?, direction? }) to resolve the exact stateFolder and clipName across every state.",
+    "Resolve the exact stateFolder and clipName with the resolver this file exports \u2014 resolveCharacterAnimation(manifest, candidates, { state?, direction? }), or selectCharacterState(...) where that is what it exports.",
     "Prefer an exact user-requested display name or clip name before generic roles such as idle, walk, run, jump, or attack.",
     "CharacterAgent resolves idle, movement, and attack clips across the full manifest and switches state folders automatically.",
     "Rotations are static poses only. Use animator.setPose(...) or characterRotationFrameName(...) for a deliberate static pose; setClip('idle', ...) always means a real animated idle clip.",
