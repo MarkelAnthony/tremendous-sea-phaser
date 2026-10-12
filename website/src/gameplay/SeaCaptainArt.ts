@@ -28,8 +28,31 @@ export function createSeaCaptain(scene: Phaser.Scene, captain: string): Phaser.G
     const animationKey = `${key}-sea-branch-idle`;
     if (!scene.anims.exists(animationKey)) scene.anims.create({ key: animationKey, frames, frameRate: 8, repeat: -1 });
     const sprite = scene.add.sprite(0, 75, key, frames[0].frame);
-    // Branch is a tall captain; keep his feet at the existing combat baseline.
-    sprite.setOrigin(0.5, 1).setScale(2.15).play(animationKey);
+    // Fit the visible model, not its animation canvas: transparent padding used
+    // to leave Branch floating above the deck and distort his relative size.
+    const frame = sprite.frame;
+    const canvas = document.createElement("canvas");
+    canvas.width = frame.cutWidth;
+    canvas.height = frame.cutHeight;
+    const context = canvas.getContext("2d", { willReadFrequently: true });
+    let top = 0, bottom = frame.cutHeight;
+    if (context) {
+      context.drawImage(frame.source.image as CanvasImageSource, frame.cutX, frame.cutY,
+        frame.cutWidth, frame.cutHeight, 0, 0, frame.cutWidth, frame.cutHeight);
+      const pixels = context.getImageData(0, 0, canvas.width, canvas.height).data;
+      top = canvas.height;
+      bottom = 0;
+      for (let y = 0; y < canvas.height; y++) for (let x = 0; x < canvas.width; x++) {
+        if (pixels[(y * canvas.width + x) * 4 + 3] > 100) {
+          top = Math.min(top, y);
+          bottom = Math.max(bottom, y + 1);
+        }
+      }
+    }
+    sprite.setOrigin(0.5, bottom / frame.cutHeight)
+      .setScale(176 / Math.max(1, bottom - top)).play(animationKey);
+    sprite.setData("deckFeetY", 355);
+    sprite.setData("visibleModelHeight", 176);
     sprite.setData("captain", "Branch");
     sprite.setData("artAsset", BRANCH);
     return sprite;

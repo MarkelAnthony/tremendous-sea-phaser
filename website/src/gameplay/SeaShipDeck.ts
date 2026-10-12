@@ -7,12 +7,8 @@ export function drawShipDeck(scene: Phaser.Scene, root: Phaser.GameObjects.Conta
   if (branch && scene.textures.exists("kindleroot-deck")) {
     const stage = scene.add.image(0, 0, "kindleroot-deck").setOrigin(0).setDisplaySize(1000, 494);
     root.add(stage);
-    // Contact shadows remain on the same fighting plane as the original arena.
-    const shadows = scene.add.graphics();
-    for (const x of [150, 470, 650, 830]) {
-      shadows.fillStyle(0x21170f, 0.25); shadows.fillEllipse(x, 355, 108, 17);
-    }
-    root.add(shadows);
+    // Contact shadows belong to the fighters so targeting/lunges carry them
+    // along the same plane, rather than leaving empty shadows on the deck.
     root.setData("shipCaptain", captain);
     root.setData("shipTheme", "Kindleroot · living tree mast, leafy sails, emberwood deck");
     root.setData("combatSurface", "Kindleroot timber deck beneath fighters at y=355");

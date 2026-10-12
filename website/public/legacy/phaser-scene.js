@@ -527,7 +527,9 @@ class MainScene extends Phaser.Scene {
   buildCombatSkeleton(){
     this.combatBuilt = false;
     const combatY = 280;
-    this.playerContainer = this.add.container(150, combatY);
+    const kindleroot = G.captainKey === "Branch";
+    this.playerContainer = this.add.container(kindleroot ? 300 : 150, combatY);
+    if (kindleroot) this.playerContainer.add(this.add.ellipse(0, 75, 84, 14, 0x21170f, 0.32));
     const capColor = PALETTE.captain[G.captainKey] || PALETTE.accent;
     this.playerBody = window.createSeaCaptain(this, G.captainKey) || this.add.rectangle(0, 0, 110, 150, capColor).setStrokeStyle(3, 0xffffff);
     this.playerLabel = this.add.text(0, -100, G.cap.name, {fontFamily:"sans-serif", fontSize:16, fontStyle:"bold", color:"#eef3f7"}).setOrigin(0.5);
@@ -602,13 +604,15 @@ class MainScene extends Phaser.Scene {
     const prev = this.prevSnapshot;
 
     const combatY = 280;
-    const zoneStart = 470, zoneEnd = 830;
+    const kindleroot = G.captainKey === "Branch";
+    const zoneStart = kindleroot ? 580 : 470, zoneEnd = kindleroot ? 850 : 830;
     const n = c.enemies.length;
     c.enemies.forEach((e, i)=>{
       let spr = this.enemySprites[i];
       if (!spr){
         const x = n === 1 ? (zoneStart+zoneEnd)/2 : zoneStart + i*(zoneEnd-zoneStart)/(n-1);
         const container = this.add.container(x, combatY);
+        if (kindleroot) container.add(this.add.ellipse(0, 75, 96, 14, 0x21170f, 0.32));
         const body = this.add.rectangle(0, 0, 110, 150, PALETTE.enemyHp).setStrokeStyle(3, 0xffffff);
         const label = this.add.text(0, -100, e.name, {fontFamily:"sans-serif", fontSize:13, fontStyle:"bold", color:"#eef3f7", wordWrap:{width:170}, align:"center"}).setOrigin(0.5);
         const hpBarBg = this.makeBar(0, 90, 130, 16, 1, 0xd9534f);
@@ -781,6 +785,11 @@ window.playtest = () => ({
   hand: G?.deck?.hand?.map((card, index) => ({index, name:card.name, cost:currentCost(card), affordable:affordable(card)})),
   enemies: G?.combat?.enemies.map((e) => ({name:e.name, hp:e.hp, alive:e.alive})),
   pendingCard: G?.combat?.pendingCardIdx,
+  battlePlacement: (() => {
+    const scene = window.game.scene.getScenes(true)[0];
+    return { captain: scene?.playerContainer ? {x:scene.playerContainer.x, feetY:scene.playerContainer.y+75, scale:scene.playerBody.scaleX, originY:scene.playerBody.originY, visibleHeight:scene.playerBody.getData?.("visibleModelHeight")} : null,
+      enemies: Object.values(scene?.enemySprites || {}).map(s => ({x:s.container.x, feetY:s.container.y+75})) };
+  })(),
   saved: hasSavedGame(),
   errors: window.gameErrors.getErrors(),
   sprite: window.game.scene.getScenes(true)[0]?.playerBody?.texture?.key || null,
