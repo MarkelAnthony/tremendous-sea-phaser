@@ -1,0 +1,11 @@
+{
+  "id": "7d0a365d-7661-5699-b914-4a3802b75159",
+  "name": "Create a clearly DIFFERENT jab windup pose: east-facing boxe",
+  "prompt": "Create a clearly DIFFERENT jab windup pose: east-facing boxer, lead elbow bent sharply, lead flaming fist pulled BACK to his chest/ribs, NOT extended ahead. Rear hand guarding chin. Shoulder slightly rotated back, weight on rear leg. Normal close-cropped fade head with NO protrusions. Preserve Branch's caramel skin, tree tattoo, white-purple camo shorts, WHITE shoes, hand/sole fire and pixel palette. Keep his position/size and transparent canvas unchanged.",
+  "width": 144,
+  "height": 144,
+  "model": "edit_image_pixen",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
