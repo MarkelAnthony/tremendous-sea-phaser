@@ -1,7 +1,6 @@
 import Phaser from "phaser";
 
 import { launchApprovedBranchBlast, prepareApprovedBranchClip } from "./SeaBranchApprovedClips";
-import { APPROVED_FIRE_DURATIONS } from "./SeaApprovedBranchTiming";
 
 /** Approved Jab, Heavy and polished Fire playback; combat rules stay untouched. */
 export function playApprovedBranchAttack(scene: Phaser.Scene, sprite: Phaser.GameObjects.Sprite, kind: string, card: string): boolean {
@@ -19,8 +18,14 @@ export function playApprovedBranchAttack(scene: Phaser.Scene, sprite: Phaser.Gam
     prepareApprovedBranchClip(scene, sprite, "idle");
   });
   prepareApprovedBranchClip(scene, sprite, clip);
-  if (clip === "fire") scene.time.delayedCall(APPROVED_FIRE_DURATIONS.slice(0, 8).reduce((a, b) => a + b, 0), () => {
-    if (sprite.active && sprite.getData("clarityAttackPlaying")) launchApprovedBranchBlast(scene, sprite);
-  });
+  if (clip === "fire") {
+    const release = (): void => {
+      if (sprite.texture.key !== "branch-approved-fire-8") return;
+      sprite.off(Phaser.Animations.Events.ANIMATION_UPDATE, release);
+      launchApprovedBranchBlast(scene, sprite);
+    };
+    sprite.on(Phaser.Animations.Events.ANIMATION_UPDATE, release);
+    sprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => sprite.off(Phaser.Animations.Events.ANIMATION_UPDATE, release));
+  }
   return true;
 }
