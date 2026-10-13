@@ -59,6 +59,25 @@
           "atlas_frame_pattern": "idle/animations/attack/{direction}/frame_{frame}"
         },
         {
+          "name": "attack-c9945d33",
+          "id": "c9945d33-5831-4acd-99d1-96709ef9b2e3",
+          "source_name": "custom-One controlled fire-blast atta",
+          "display_name": "Branch Fire rebuild review",
+          "description": "One controlled fire-blast attack facing screen-right throughout. From boxing guard, sink slightly at the knees, draw both hands back toward the right-facing fighter's waist to gather fire, then drive both arms forward toward screen-right with open palms to release a short bright flame burst. Hold the clear extended release for a beat, then retract both arms and rise smoothly back to the starting guard. Head remains in right-facing profile for every frame, torso never turns toward the viewer, feet remain planted at the same ground level. Exactly two arms and two legs with distinct silhouettes. Flames flicker around the hands and white boots, brightest at release, without hiding the limbs. No spin, jump, extra fists, afterimages or camera motion.",
+          "generation_model": "pixminimax_interpolation",
+          "frame_count": 13,
+          "directions": [
+            "east"
+          ],
+          "loop": false,
+          "aliases": [
+            "attack",
+            "jump"
+          ],
+          "path_pattern": "idle/animations/attack-c9945d33/{direction}/frame_{frame}.png",
+          "atlas_frame_pattern": "idle/animations/attack-c9945d33/{direction}/frame_{frame}"
+        },
+        {
           "name": "idle",
           "id": "52a3e6c4-f392-4a88-a749-a98dc6ba62b9",
           "source_name": "fight-stance-idle-8-frames",
