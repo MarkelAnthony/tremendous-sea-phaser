@@ -1,0 +1,11 @@
+{
+  "id": "8e51c87c-e1fb-55e2-808c-ef9241cb91b4",
+  "name": "Repair ONLY the fighter pose for continuity in a fire attack",
+  "prompt": "Repair ONLY the fighter pose for continuity in a fire attack aimed to SCREEN RIGHT. Keep this same character, pixel style, palette, canvas, placement and crouched windup motion. Head nose chest and lead knee clearly face RIGHT, never left or toward viewer. Both hands gather fire in front of torso to the RIGHT, elbows bent in preparation for forward palm thrust. Keep two clean connected arms and two planted feet, no extra limbs or afterimages. Preserve the existing scale and foot baseline.",
+  "width": 144,
+  "height": 144,
+  "model": "edit_image_pixen",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
