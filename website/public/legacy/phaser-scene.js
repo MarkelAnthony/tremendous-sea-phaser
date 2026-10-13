@@ -637,12 +637,12 @@ class MainScene extends Phaser.Scene {
       this.updateBar(spr.hpBarBg, pct, 0xd9534f);
       spr.hpText.setText(`${displayHp}/${displayMax}${isVeiled?" ❓":""}`);
       spr.blockText.setText(e.block>0 ? `🛡️ ${e.block}` : "");
-      spr.typeText.setText(stripTags(typeChips(e)));
+      spr.typeText.setText("").setVisible(false);
+      spr.container.setData("enemyHoverInfo", e.alive ? {name:e.name, text:stripTags(typeChips(e)) || "No resistances or weaknesses.", index:i, width:110, height:150} : null);
       spr.statusContainer.removeAll(true);
-      this.layoutStatusChips(spr.statusContainer, statusChipList(e), 0, 0, 170);
       spr.intentText.setText(e.alive ? getIntent(e) : "💀 Defeated").setVisible(false);
       spr.intentText.setData("readableInfo", null);
-      spr.container.setData("readableInfo", e.alive ? {kind:"intent", name:e.name, text:getIntent(e), width:Math.min(210, n > 1 ? (zoneEnd-zoneStart)/(n-1)-12 : 210), height:68, offsetY:-145} : null);
+      spr.container.setData("readableInfo", e.alive ? {kind:"intent", name:e.name, text:getIntent(e), status:e.status, armored:e.armored, width:Math.min(170, n > 1 ? (zoneEnd-zoneStart)/(n-1)-12 : 170), height:44, offsetY:-145} : null);
       spr.container.setVisible(true);
       spr.container.setAlpha(e.alive ? 1 : 0.3);
 

@@ -8,7 +8,14 @@
 .sea-readable-card:hover, .sea-readable-card:focus-visible { outline:3px solid #ffdf82; z-index:30; }
 .sea-card-inspect { display:none; position:fixed; left:50%; bottom:32%; transform:translateX(-50%); width:340px; max-width:85vw; box-sizing:border-box; padding:16px; border:2px solid #f0c575; border-radius:9px; background:#142d3e; color:#fff6dc; box-shadow:0 8px 24px #000b; font:17px/1.5 Arial,sans-serif; white-space:pre-line; pointer-events:none; text-align:left; }
 .sea-readable-card:hover .sea-card-inspect, .sea-readable-card:focus-visible .sea-card-inspect { display:block; }
-.sea-readable-intent { background:#152c3b; border:2px solid #d9bd78; border-radius:8px; padding:calc(6px * var(--read-scale)); box-shadow:0 3px 9px #0007; color:#fff7db; display:flex; flex-direction:column; justify-content:center; text-align:center; }
+.sea-readable-intent { pointer-events:auto; background:#152c3b; border:2px solid #d9bd78; border-radius:8px; padding:4px; box-shadow:0 3px 9px #0007; color:#fff7db; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; cursor:help; height:auto!important; min-height:36px; }
+.sea-readable-enemy { position:absolute; pointer-events:auto; cursor:help; }
+.sea-readable-intent:hover, .sea-readable-intent:focus-visible, .sea-readable-enemy:hover, .sea-readable-enemy:focus-visible { z-index:40; }
+.sea-readable-intent .sea-intent-symbols { font-size:clamp(18px,calc(25px * var(--read-scale)),32px); overflow:visible; }
+.sea-readable-intent .sea-status-symbols { font-size:clamp(12px,calc(16px * var(--read-scale)),21px); overflow:visible; border-top:1px solid #d9bd7860; margin-top:3px; padding-top:3px; }
+.sea-symbol-tooltip { display:none; position:absolute; top:calc(100% + 8px); left:50%; transform:translateX(-50%); width:260px; max-width:85vw; padding:12px; border:1px solid #e5c880; border-radius:8px; background:#102332; color:#fff6dc; box-shadow:0 6px 18px #000b; font:15px/1.45 Arial,sans-serif; text-align:left; white-space:pre-line; pointer-events:none; }
+.sea-readable-enemy .sea-symbol-tooltip { top:10%; }
+.sea-readable-intent:hover .sea-symbol-tooltip, .sea-readable-intent:focus-visible .sea-symbol-tooltip, .sea-readable-enemy:hover .sea-symbol-tooltip, .sea-readable-enemy:focus-visible .sea-symbol-tooltip { display:block; }
 .sea-readable-intent strong { font-size:clamp(9px,calc(11px * var(--read-scale)),16px); letter-spacing:1px; color:#ffe5a0; }
 .sea-readable-intent span { font-size:clamp(12px,calc(17px * var(--read-scale)),24px); font-weight:bold; line-height:1.2; overflow:auto; }
 .sea-readable-intent[data-attack=true] { background:#421c20; border-color:#ffab87; }

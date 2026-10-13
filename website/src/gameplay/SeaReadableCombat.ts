@@ -1,7 +1,8 @@
 /** Readable DOM card faces and intent labels; the combat rules remain untouched. */
 import Phaser from "phaser";
+import { intentSymbols, statusSymbols } from "./SeaCombatSymbols";
 
-interface ReadableInfo { kind: "card" | "intent"; name: string; text: string; cost?: number; width: number; height: number; offsetY?: number; playable?: boolean; index?: number }
+interface ReadableInfo { kind: "card" | "intent" | "enemy"; name: string; text: string; cost?: number; width: number; height: number; offsetY?: number; playable?: boolean; index?: number; status?: Record<string, number | boolean>; armored?: boolean }
 export function mountSeaReadability(game: Phaser.Game): void {
   const layer = document.createElement("div");
   layer.className = "sea-readability";
@@ -15,6 +16,8 @@ export function mountSeaReadability(game: Phaser.Game): void {
       const x = px + (node.x || 0), y = py + (node.y || 0);
       const info = node.getData("readableInfo") as ReadableInfo | undefined;
       if (info) items.push({info, x, y: y + (info.offsetY || 0)});
+      const enemy = node.getData("enemyHoverInfo") as ReadableInfo | undefined;
+      if (enemy) items.push({info: {...enemy, kind: "enemy"}, x, y});
       if (Array.isArray(node.list)) node.list.forEach(child => visit(child, x, y));
     };
     game.scene.getScenes(true)[0]?.children.list.forEach(child => visit(child));
@@ -30,6 +33,35 @@ export function mountSeaReadability(game: Phaser.Game): void {
       const height = info.kind === "card" ? Math.max(165, info.height * sy) : info.height * sy;
       const top = info.kind === "card" ? Math.min(rect.top+(y-info.height/2)*sy, window.innerHeight-height-8) : rect.top+(y-info.height/2)*sy;
       el.style.cssText = `left:${rect.left+(x-info.width/2)*sx}px;top:${top}px;width:${info.width*sx}px;height:${height}px;--read-scale:${sx};`;
+      if (info.kind !== "card") {
+        el.tabIndex = 0;
+        const detail = document.createElement("div");
+        detail.className = "sea-symbol-tooltip";
+        detail.setAttribute("role", "tooltip");
+        if (info.kind === "intent") {
+          const intents = intentSymbols(info.text);
+          const statuses = statusSymbols(info.status, info.armored);
+          const symbols = document.createElement("span");
+          symbols.className = "sea-intent-symbols";
+          symbols.textContent = intents.map(s => s.icon).join("  ");
+          el.append(symbols);
+          if (statuses.length) {
+            const row = document.createElement("span");
+            row.className = "sea-status-symbols";
+            row.textContent = statuses.map(s => s.icon).join("  ");
+            el.append(row);
+          }
+          detail.textContent = `${info.name} · Next action\n${intents.map(s => `${s.icon}: ${s.label}`).join("\n")}\n${info.text}${statuses.length ? `\n\nActive statuses\n${statuses.map(s => `${s.icon}: ${s.label}`).join("\n")}` : ""}`;
+          el.dataset.attack = String(intents.some(s => s.label === "Attack"));
+        } else {
+          detail.textContent = `${info.name}\n${info.text}`;
+          el.onclick = () => (window as unknown as {chooseSeaTarget: (index: number) => void}).chooseSeaTarget(info.index!);
+        }
+        el.setAttribute("aria-label", detail.textContent || info.name);
+        el.append(detail);
+        layer.append(el);
+        continue;
+      }
       const title = document.createElement("strong");
       title.textContent = info.kind === "card" ? info.name : "NEXT ACTION";
       const desc = document.createElement("span");
