@@ -1,0 +1,24 @@
+{
+  "id": "6ddbcfd4-2e44-5599-9e1b-da7ea67cc2b9",
+  "name": "side view boxer facing right throws one fast straight jab: f",
+  "prompt": "side view boxer facing right throws one fast straight jab: first pulls the front fist back toward his ribs with shoulder turned (windup), then drives the fist forward to the right into a fully extended straight arm at shoulder height, rear hand stays up guarding the chin, feet stay planted",
+  "width": 384,
+  "height": 384,
+  "model": "animate_with_text_v3",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": {
+    "grid_size": "3x3",
+    "frames": [
+      "frames/0.png",
+      "frames/1.png",
+      "frames/2.png",
+      "frames/3.png",
+      "frames/4.png",
+      "frames/5.png",
+      "frames/6.png",
+      "frames/7.png",
+      "frames/8.png"
+    ]
+  }
+}
