@@ -640,7 +640,9 @@ class MainScene extends Phaser.Scene {
       spr.typeText.setText(stripTags(typeChips(e)));
       spr.statusContainer.removeAll(true);
       this.layoutStatusChips(spr.statusContainer, statusChipList(e), 0, 0, 170);
-      spr.intentText.setText(e.alive ? getIntent(e) : "💀 Defeated");
+      spr.intentText.setText(e.alive ? getIntent(e) : "💀 Defeated").setVisible(false);
+      spr.intentText.setData("readableInfo", null);
+      spr.container.setData("readableInfo", e.alive ? {kind:"intent", name:e.name, text:getIntent(e), width:Math.min(210, n > 1 ? (zoneEnd-zoneStart)/(n-1)-12 : 210), height:68, offsetY:-145} : null);
       spr.container.setVisible(true);
       spr.container.setAlpha(e.alive ? 1 : 0.3);
 
@@ -697,6 +699,8 @@ class MainScene extends Phaser.Scene {
       const costBadge = this.add.circle(-cardW/2+16, -cardH/2+16, 12, 0x65422b).setStrokeStyle(1, canPlay ? 0x79512f : 0x87745c);
       const cardRule = this.add.rectangle(0, -cardH/2+cardH*0.68, cardW-20, 1, 0x79512f, 0.45);
       const cardContainer = this.add.container(x, y, [parchment, cardBg, cardTrim, costBadge, cardRule, costText, rarityText, nameText, descText]);
+      cardContainer.setData("readableInfo", {kind:"card", name:card.name, text:card.desc, cost:cc, width:cardW, height:cardH, playable:canPlay, index:i});
+      [costText, rarityText, nameText, descText].forEach(text => text.setVisible(false));
       if (canPlay){
         cardBg.setInteractive();
         cardBg.on("pointerover", ()=>{ cardContainer.setScale(1.08); cardContainer.setDepth(10); });
@@ -783,7 +787,8 @@ window.playtest = () => ({
   energy: G?.combat?.energy,
   phase: G?.combat?.phase,
   hand: G?.deck?.hand?.map((card, index) => ({index, name:card.name, cost:currentCost(card), affordable:affordable(card)})),
-  enemies: G?.combat?.enemies.map((e) => ({name:e.name, hp:e.hp, alive:e.alive})),
+  enemies: G?.combat?.enemies.map((e) => ({name:e.name, hp:e.hp, alive:e.alive, intent:getIntent(e)})),
+  readability: {cards:document.querySelectorAll('.sea-readable-card').length, intents:Array.from(document.querySelectorAll('.sea-readable-intent')).map(el=>el.textContent)},
   pendingCard: G?.combat?.pendingCardIdx,
   battlePlacement: (() => {
     const scene = window.game.scene.getScenes(true)[0];

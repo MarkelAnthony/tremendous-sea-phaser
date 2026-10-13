@@ -3,6 +3,8 @@ import "./SeaCaptainArt";
 import "./SeaBranchBurn";
 import "./SeaBranchSpecial";
 import "./SeaParchmentCards";
+import { mountSeaReadability } from "./SeaReadableCombat";
+import "./SeaReadableCombat.css";
 import { seaButtonStyle } from "./SeaVisualTheme";
 
 /** Keep the handoff's renderer-agnostic rules untouched and load in their original order. */
@@ -45,9 +47,9 @@ export function mountSeaControls(game: Phaser.Game): void {
     };
     scene.children.list.forEach((child) => visit(child));
     const next = JSON.stringify(controls.map((c) => [c.x,c.y,c.w,c.h,c.label])) + canvas.width + canvas.height;
-    if (signature === next && root.childElementCount === controls.length) return;
+    if (signature === next && root.querySelectorAll(":scope > .sea-control").length === controls.length) return;
     signature = next;
-    root.replaceChildren();
+    root.querySelectorAll(":scope > .sea-control").forEach(control => control.remove());
     controls.forEach((control) => {
       const button = document.createElement("button");
       button.type = "button";
@@ -64,5 +66,6 @@ export function mountSeaControls(game: Phaser.Game): void {
     });
   };
   game.events.on("poststep", refresh);
+  mountSeaReadability(game);
 }
 (window as unknown as Record<string, unknown>).mountSeaControls = mountSeaControls;
