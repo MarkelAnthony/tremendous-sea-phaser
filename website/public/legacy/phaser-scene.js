@@ -309,17 +309,17 @@ class MainScene extends Phaser.Scene {
     this.clearRoot();
     this.addTitle("Choose a card");
     const n = G.pendingReward.length;
-    const cardW = 220, cardH = 260, gap = 24;
+    const cardW = 280, cardH = 490, gap = 24;
     const totalW = n*cardW + (n-1)*gap;
     const startX = 500 - totalW/2 + cardW/2;
     G.pendingReward.forEach((c,i)=>{
       const x = startX + i*(cardW+gap);
-      const panel = this.makeCardPanel(x, 260, cardW, cardH, c.name, c.desc, cardRarity(c), `${c.cost} energy`, ()=>pickReward(i));
+      const panel = this.makeCardPanel(x, 350, cardW, cardH, c.name, c.desc, cardRarity(c), `${c.cost} energy`, ()=>pickReward(i));
       panel.setData("readableInfo", {kind:"choice", name:c.name, text:c.desc, cost:c.cost, width:cardW, height:cardH, rarity:cardRarity(c)});
       panel.setData("readableChoose", ()=>pickReward(i));
       this.uiRoot.add(panel);
     });
-    this.uiRoot.add(this.makeButton(500, 440, 200, 44, "Skip", PALETTE.dim, ()=>pickReward(-1)));
+    this.uiRoot.add(this.makeButton(500, 635, 200, 44, "Skip", PALETTE.dim, ()=>pickReward(-1)));
   }
 
   drawRelicScreen(){
