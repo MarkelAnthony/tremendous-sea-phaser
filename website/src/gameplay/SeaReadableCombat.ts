@@ -46,6 +46,7 @@ export function mountSeaReadability(game: Phaser.Game): void {
         el.onclick = () => { if (info.playable) (window as unknown as {chooseSeaCard: (index: number) => void}).chooseSeaCard(info.index!); };
         const detail = document.createElement("div");
         detail.className = "sea-card-inspect";
+        detail.style.bottom = `${window.innerHeight - top + 10}px`; 
         detail.textContent = `${info.name} · ${info.cost} energy\n${info.text}`;
         el.append(detail);
       } else {

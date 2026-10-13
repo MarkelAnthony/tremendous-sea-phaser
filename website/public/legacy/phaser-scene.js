@@ -700,7 +700,7 @@ class MainScene extends Phaser.Scene {
       const cardRule = this.add.rectangle(0, -cardH/2+cardH*0.68, cardW-20, 1, 0x79512f, 0.45);
       const cardContainer = this.add.container(x, y, [parchment, cardBg, cardTrim, costBadge, cardRule, costText, rarityText, nameText, descText]);
       cardContainer.setData("readableInfo", {kind:"card", name:card.name, text:card.desc, cost:cc, width:cardW, height:cardH, playable:canPlay, index:i});
-      [costText, rarityText, nameText, descText].forEach(text => text.setVisible(false));
+      [parchment, cardTrim, costBadge, cardRule, costText, rarityText, nameText, descText].forEach(part => part.setVisible(false));
       if (canPlay){
         cardBg.setInteractive();
         cardBg.on("pointerover", ()=>{ cardContainer.setScale(1.08); cardContainer.setDepth(10); });
