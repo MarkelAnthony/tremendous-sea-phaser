@@ -1,0 +1,11 @@
+{
+  "id": "ce16d826-ce6b-5ab7-a21e-cdeab26e8fbf",
+  "name": "Repair ONLY the fighter pose for continuity in a fire attack",
+  "prompt": "Repair ONLY the fighter pose for continuity in a fire attack aimed to SCREEN RIGHT. Keep identical character, pixel style, palette, canvas, scale, placement and foot baseline. Show a clear RIGHT-facing profile: nose points right, torso lunges right, lead knee right. Both connected arms thrust forward to RIGHT from the crouched windup, palms emitting attached orange flames on RIGHT. Rear foot planted left, lead foot right. Exactly two arms and two legs; remove doubled limb edges, stray afterimage",
+  "width": 144,
+  "height": 144,
+  "model": "edit_image_pixen",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
