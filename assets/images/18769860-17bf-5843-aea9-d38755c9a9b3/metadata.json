@@ -1,0 +1,22 @@
+{
+  "id": "18769860-17bf-5843-aea9-d38755c9a9b3",
+  "name": "One EAST-facing straight BOXING JAB: clearly bent lead elbow",
+  "prompt": "One EAST-facing straight BOXING JAB: clearly bent lead elbow fist at ribs windup then rapid full arm extension horizontally RIGHT at shoulder height. Fist travels a full forearm length away from torso. Rear hand guards chin. Compact short-fade head unchanged, no protrusions. Feet planted. END at full extension CONTACT; no retraction, no loop, no projectile.",
+  "width": 576,
+  "height": 288,
+  "model": "animate_with_text_v3",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": {
+    "grid_size": "4x2",
+    "frames": [
+      "frames/0.png",
+      "frames/1.png",
+      "frames/2.png",
+      "frames/3.png",
+      "frames/4.png",
+      "frames/5.png",
+      "frames/6.png"
+    ]
+  }
+}
