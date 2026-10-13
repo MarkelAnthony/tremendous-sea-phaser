@@ -1,0 +1,11 @@
+{
+  "id": "d12c789f-04cb-540b-b974-c43c49908b0c",
+  "name": "Repair the head ONLY: remove every strange protrusion, spike",
+  "prompt": "Repair the head ONLY: remove every strange protrusion, spike, backwards brim, duplicate glove or limb emerging from the head. Normal compact human skull, short low fade, east-facing face. Preserve existing body, casting pose, caramel skin, tree tattoo, white-purple camouflage shorts, white shoes and fire on fists/soles. Rear arm must attach at SHOULDER, never skull. Transparent background, unchanged placement and size.",
+  "width": 144,
+  "height": 144,
+  "model": "edit_image_pixen",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
