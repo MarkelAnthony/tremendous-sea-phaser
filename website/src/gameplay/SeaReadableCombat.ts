@@ -27,7 +27,9 @@ export function mountSeaReadability(game: Phaser.Game): void {
     for (const {info, x, y} of items) {
       const el = document.createElement(info.kind === "card" ? "button" : "div");
       el.className = `sea-readable-${info.kind}`;
-      el.style.cssText = `left:${rect.left+(x-info.width/2)*sx}px;top:${rect.top+(y-info.height/2)*sy}px;width:${info.width*sx}px;height:${info.height*sy}px;--read-scale:${sx};`;
+      const height = info.kind === "card" ? Math.max(165, info.height * sy) : info.height * sy;
+      const top = info.kind === "card" ? Math.min(rect.top+(y-info.height/2)*sy, window.innerHeight-height-8) : rect.top+(y-info.height/2)*sy;
+      el.style.cssText = `left:${rect.left+(x-info.width/2)*sx}px;top:${top}px;width:${info.width*sx}px;height:${height}px;--read-scale:${sx};`;
       const title = document.createElement("strong");
       title.textContent = info.kind === "card" ? info.name : "NEXT ACTION";
       const desc = document.createElement("span");
