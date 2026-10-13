@@ -1,0 +1,8 @@
+/* Reward choices use crisp browser text, not scaled canvas lettering. */
+.sea-readable-choice { position:absolute; box-sizing:border-box; pointer-events:auto; display:flex; flex-direction:column; gap:12px; padding:16px; border:2px solid #76532c; border-radius:8px; background:#f7e8c8; color:#24170e; font-family:Arial,Helvetica,sans-serif; text-align:left; cursor:pointer; box-shadow:0 4px 12px #0006; white-space:normal; }
+.sea-choice-cost { font-size:14px; line-height:1.3; color:#52371d; }
+.sea-readable-choice strong { font-size:22px; line-height:1.2; overflow-wrap:anywhere; }
+.sea-choice-description { flex:1; min-height:0; overflow:auto; border-top:1px solid #aa8758; padding-top:10px; font-size:18px; line-height:1.5; font-weight:500; }
+.sea-readable-choice small { font-size:14px; font-weight:bold; color:#52371d; }
+.sea-readable-choice:hover, .sea-readable-choice:focus-visible { outline:3px solid #ffdf82; outline-offset:2px; }
+@media(max-height:550px), (max-width:700px) { .sea-readable-choice { padding:10px; gap:7px; } .sea-readable-choice strong { font-size:18px; } .sea-choice-description { font-size:16px; line-height:1.4; } .sea-choice-cost, .sea-readable-choice small { font-size:12px; } }
