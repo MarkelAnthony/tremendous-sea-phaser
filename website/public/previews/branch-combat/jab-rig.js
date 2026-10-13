@@ -19,8 +19,12 @@ window.jabRigReady = (async () => {
     const fistY = reach <= 0 ? 50 : 57;
     if (reach > 0) {
       // Reuse the original arm's skin/shading, extending from the fixed shoulder.
-      ctx.drawImage(source, 81, 65, 4, 5, 81, 63, fistX - 79, 5);
-      ctx.drawImage(source, 85, 61, 4, 5, 84, 62, Math.max(4, fistX - 81), 4);
+      ctx.fillStyle = '#68402b';
+      ctx.fillRect(80, 61, fistX - 77, 8);
+      ctx.fillStyle = '#aa714a';
+      ctx.fillRect(81, 61, fistX - 78, 4);
+      ctx.fillStyle = '#875234';
+      ctx.fillRect(81, 65, fistX - 78, 3);
     } else {
       ctx.drawImage(source, 84, 60, 7, 12, 84 + reach, 60, 7, 12);
     }
