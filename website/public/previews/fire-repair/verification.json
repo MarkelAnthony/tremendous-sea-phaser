@@ -1,0 +1,24 @@
+[
+  {
+    "frame": 2,
+    "changedPixels": 100,
+    "bounds": [
+      64,
+      45,
+      81,
+      58
+    ],
+    "bodyPixelsUnchanged": true
+  },
+  {
+    "frame": 3,
+    "changedPixels": 110,
+    "bounds": [
+      58,
+      47,
+      74,
+      59
+    ],
+    "bodyPixelsUnchanged": true
+  }
+]
