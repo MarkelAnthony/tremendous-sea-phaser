@@ -39,13 +39,13 @@ export function mountSeaReadability(game: Phaser.Game): void {
       const hand = items.filter(item => item.info.kind === "card");
       const isHand = info.kind === "card";
       const gap = 8;
-      const handWidth = Math.min(rect.width - 24, 1120);
+      const handWidth = Math.min(window.innerWidth - 24, 1120);
       const width = isHand ? Math.min(220, (handWidth - gap * (hand.length - 1)) / Math.max(1, hand.length)) : info.width * sx;
       const height = isHand || info.kind === "choice" ? width * (328 / 224) : info.height * sy;
       const top = isHand ? window.innerHeight - height - 12 : info.kind === "choice" ? rect.top + y * sy - height / 2 : rect.top+(y-info.height/2)*sy;
       const handIndex = hand.findIndex(item => item.info === info);
       const totalWidth = hand.length * width + (hand.length - 1) * gap;
-      const left = isHand ? rect.left + (rect.width - totalWidth) / 2 + handIndex * (width + gap) : rect.left+(x-info.width/2)*sx;
+      const left = isHand ? (window.innerWidth - totalWidth) / 2 + handIndex * (width + gap) : rect.left+(x-info.width/2)*sx;
       el.style.cssText = `left:${left}px;top:${top}px;width:${width}px;height:${height}px;--read-scale:${Math.min(sx, 1.2)};--card-width:${width}px;`;
       if (info.kind === "choice") {
         const cost = document.createElement("b");
