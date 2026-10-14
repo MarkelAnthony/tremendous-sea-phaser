@@ -50,7 +50,9 @@ export function mountSeaReadability(game: Phaser.Game): void {
       if (info.kind === "choice") {
         const cost = document.createElement("b");
         cost.className = "sea-choice-cost";
-        cost.textContent = `${info.cost} energy · ${info.rarity}`;
+        cost.textContent = String(info.cost ?? 0);
+        cost.setAttribute("aria-label", `${info.cost ?? 0} energy`);
+        cost.title = `${info.cost ?? 0} energy · ${info.rarity}`;
         const title = document.createElement("strong");
         title.textContent = info.name;
         const desc = document.createElement("span");
@@ -102,7 +104,8 @@ export function mountSeaReadability(game: Phaser.Game): void {
       if (info.kind === "card") {
         const cost = document.createElement("b");
         cost.className = "sea-readable-cost";
-        cost.textContent = `${info.cost} energy`;
+        cost.textContent = String(info.cost ?? 0);
+        cost.setAttribute("aria-label", `${info.cost ?? 0} energy`);
         el.prepend(cost);
         el.setAttribute("aria-label", `${info.name}. ${info.cost} energy. ${info.text}${info.playable ? "" : ". Cannot play now"}`);
         el.title = `${info.name} — ${info.cost} energy\n${info.text}`;

@@ -25,10 +25,30 @@
   font-size:clamp(11px,calc(13px * var(--read-scale)),16px) !important;
   line-height:1.4; overflow-wrap:anywhere; overflow:visible !important;
 }
+.sea-readable-choice strong {
+  color:#fff5d9 !important;
+  background:#392044;
+  border-radius:4px;
+  text-shadow:0 1px 1px #180c24;
+  font-weight:700;
+}
+/* A quiet, faceted corner jewel: cost is a number, not a headline. */
 .sea-readable-cost, .sea-choice-cost {
-  left:12%; top:18%; max-width:76%; padding:2px 5px !important;
-  font-size:clamp(9px,calc(10px * var(--read-scale)),13px) !important;
-  background:#5a236d !important; color:#fff1ce !important;
+  left:10%; top:17%; width:14%; height:auto; aspect-ratio:1;
+  max-width:32px; padding:0 !important;
+  display:flex; align-items:center; justify-content:center;
+  clip-path:polygon(28% 0,72% 0,100% 28%,100% 72%,72% 100%,28% 100%,0 72%,0 28%);
+  border:0 !important; border-radius:0 !important;
+  font-size:clamp(10px,calc(12px * var(--read-scale)),15px) !important;
+  line-height:1; font-weight:700;
+  background:linear-gradient(135deg,#eed79a 0%,#b98a44 48%,#785129 100%) !important;
+  color:#fff5d9 !important; text-shadow:0 1px 1px #180c24;
+  isolation:isolate;
+}
+.sea-readable-cost::before, .sea-choice-cost::before {
+  content:""; position:absolute; inset:2px; z-index:-1;
+  clip-path:inherit;
+  background:linear-gradient(135deg,#9167aa 0%,#52216d 45%,#30153e 100%);
 }
 .sea-readable-choice .sea-choice-description { height:51%; }
 .sea-readable-choice small {
