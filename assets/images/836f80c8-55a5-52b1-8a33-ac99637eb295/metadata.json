@@ -1,0 +1,11 @@
+{
+  "id": "836f80c8-55a5-52b1-8a33-ac99637eb295",
+  "name": "Pixel art fantasy playing card template, portrait aspect 5:7",
+  "prompt": "Pixel art fantasy playing card template, portrait aspect 5:7. Card fills entire canvas edge to edge, transparent outside rounded corners only. TEXT FIRST DESIGN. Thin elegant gold outline and restrained tiny gold corner flourishes around dark amethyst purple frame. Interior is one enormous clean uninterrupted muted light lilac panel occupying 84 percent of card width and 82 percent of its height. Small lilac title ribbon across top with tiny round plum cost badge at upper left. Hairline gold separator below title. The entire rest of the card interior is blank lilac space for long readable rules text. Purple and gold palette. NO crystals, NO gems, NO jewels, NO objects, NO illustration, NO artwork window, NO central divider, NO text, NO letters, NO symbols. Compact tasteful fantasy card proportions. Slim borders, not thick ornamental frame. Polished appealing amethyst and warm gold card design.",
+  "width": 240,
+  "height": 336,
+  "model": "pixen",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
