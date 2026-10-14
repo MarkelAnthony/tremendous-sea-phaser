@@ -1,0 +1,11 @@
+{
+  "id": "80040776-93b7-56b1-b8f5-02c222f9888b",
+  "name": "Refined Jewel-Sugar Filigree fantasy playing card FRAME, pol",
+  "prompt": "Refined Jewel-Sugar Filigree fantasy playing card FRAME, polished stylized pixel art. Preserve reference composition. Elegant sculpted golden filigree curls like spun sugar, glossy raspberry and turquoise hard candy gemstones, crystalline sugar sparkles. Rich dark outlines, chunky readable storybook fantasy silhouettes. Candy accents confined to perimeter. Large quiet warm cream interior with generous clear space for future readable game text. Distinct round candy energy socket upper left. No letters, no words, no numbers, no text. Ornate but restrained, not Christmas.",
+  "width": 240,
+  "height": 336,
+  "model": "pixflux",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
