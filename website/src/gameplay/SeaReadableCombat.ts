@@ -3,11 +3,14 @@ import Phaser from "phaser";
 import { intentSymbols, statusSymbols } from "./SeaCombatSymbols";
 import "./SeaReadableChoices.css";
 import "./SeaCandyCards.css";
+import "./SeaJewelCards.css";
+import { assetUrl } from "../pixellab/templateAssetPaths";
 
 interface ReadableInfo { kind: "card" | "choice" | "intent" | "enemy"; name: string; text: string; cost?: number; width: number; height: number; offsetY?: number; playable?: boolean; index?: number; rarity?: string; status?: Record<string, number | boolean>; armored?: boolean }
 export function mountSeaReadability(game: Phaser.Game): void {
   const layer = document.createElement("div");
   layer.className = "sea-readability";
+  layer.style.setProperty("--jewel-card-art", `url("${assetUrl("images", "1ffa1d02-8d1c-5061-b5c2-54c1fd017a07", "image.png")}")`);
   document.getElementById("hud-root")!.appendChild(layer);
   let signature = "";
   game.events.on("poststep", () => {
