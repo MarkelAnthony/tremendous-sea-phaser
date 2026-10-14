@@ -1,0 +1,11 @@
+{
+  "id": "1ffa1d02-8d1c-5061-b5c2-54c1fd017a07",
+  "name": "correct pixel art",
+  "prompt": "correct pixel art",
+  "width": 240,
+  "height": 336,
+  "model": "correct_pixelart",
+  "no_background": null,
+  "image": "image.png",
+  "spritesheet": null
+}
