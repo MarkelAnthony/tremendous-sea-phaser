@@ -2,6 +2,7 @@
 import Phaser from "phaser";
 import { intentSymbols, statusSymbols } from "./SeaCombatSymbols";
 import "./SeaReadableChoices.css";
+import "./SeaCandyCards.css";
 
 interface ReadableInfo { kind: "card" | "choice" | "intent" | "enemy"; name: string; text: string; cost?: number; width: number; height: number; offsetY?: number; playable?: boolean; index?: number; rarity?: string; status?: Record<string, number | boolean>; armored?: boolean }
 export function mountSeaReadability(game: Phaser.Game): void {
@@ -47,6 +48,7 @@ export function mountSeaReadability(game: Phaser.Game): void {
         action.textContent = "Add to deck";
         el.append(cost, title, desc, action);
         el.setAttribute("aria-label", `Choose ${info.name}. ${info.cost} energy. ${info.text}`);
+        el.dataset.rarity = String(info.rarity || "").toLowerCase();
         el.onclick = () => choose?.();
         layer.append(el);
         continue;

@@ -1,0 +1,42 @@
+/* Candy framing (CSS only, no new artwork). Text panels stay plain cream for readability. */
+.sea-readable-card, .sea-readable-choice {
+  --candy-a:#e0313d; --candy-b:#fff7ef; --candy-ink:#6e1a22;
+  border:6px solid transparent !important;
+  border-radius:14px !important;
+  background:
+    linear-gradient(#fff8ec,#fbecd2) padding-box,
+    repeating-linear-gradient(45deg,var(--candy-a) 0 7px,var(--candy-b) 7px 14px) border-box !important;
+  box-shadow:0 0 0 2px var(--candy-ink), 0 5px 0 2px #0000002e, 0 8px 16px #0007 !important;
+  color:#2a1410 !important;
+  position:absolute;
+}
+/* Glossy sugar shine along the top edge. */
+.sea-readable-card::before, .sea-readable-choice::before {
+  content:""; position:absolute; left:8%; right:8%; top:3px; height:7px; border-radius:6px;
+  background:linear-gradient(#ffffffcc,#ffffff00); pointer-events:none;
+}
+/* Gumdrop energy badge. */
+.sea-readable-cost, .sea-choice-cost {
+  background:radial-gradient(circle at 35% 30%,#ff8fa0,#d42a45 60%,#8f1428) !important;
+  color:#fff !important; border:2px solid var(--candy-ink); border-radius:999px !important;
+  padding:3px 9px !important; font-weight:800; text-shadow:0 1px 0 #6e1a22;
+  box-shadow:inset 0 -2px 0 #0003, 0 2px 0 #0003; align-self:flex-start;
+}
+.sea-readable-card strong, .sea-readable-choice strong { color:var(--candy-ink); }
+.sea-readable-card > span, .sea-choice-description { border-top:2px dotted #e79aa4 !important; color:#2a1410; }
+.sea-readable-choice small {
+  align-self:center; background:#fff; color:var(--candy-ink) !important; border:2px solid var(--candy-ink);
+  border-radius:999px; padding:3px 12px;
+}
+/* Rarity changes the stripe flavor on reward choices. */
+.sea-readable-choice[data-rarity="uncommon"] { --candy-a:#2f9e6a; --candy-ink:#164d34; }
+.sea-readable-choice[data-rarity="rare"] { --candy-a:#e2a417; --candy-ink:#6d4a06; }
+/* Unplayable cards look like a sucked-on, faded mint. */
+.sea-readable-card[data-playable=false] {
+  --candy-a:#b9a3a6; --candy-ink:#6b5a5c;
+  background:
+    linear-gradient(#efe6dc,#e3d7c9) padding-box,
+    repeating-linear-gradient(45deg,var(--candy-a) 0 7px,#f3ece6 7px 14px) border-box !important;
+}
+.sea-readable-card:hover, .sea-readable-card:focus-visible,
+.sea-readable-choice:hover, .sea-readable-choice:focus-visible { outline:3px solid #ffe36e !important; outline-offset:3px; transform:translateY(-3px); }
