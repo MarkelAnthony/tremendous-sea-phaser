@@ -56,3 +56,7 @@
 .sea-readable-card .sea-card-inspect { display:none !important; }
 .sea-readable-choice small { background:#52216d !important; }
 .sea-readable-card > span, .sea-readable-choice .sea-choice-description { overflow:visible !important; flex:1 0 auto; }
+/* Keep the cream panel aligned with the actual text inset at every aspect ratio. */
+.sea-readable-card::after, .sea-readable-choice::after { top:calc(var(--card-width) * .24); }
+.sea-readable-card strong, .sea-readable-choice strong { width:100%; max-width:100%; align-self:stretch; box-sizing:border-box; }
+.sea-readable-card > span, .sea-readable-choice .sea-choice-description { flex:0 0 auto !important; width:100%; max-width:100%; align-self:stretch; }
