@@ -317,6 +317,9 @@ class MainScene extends Phaser.Scene {
       const panel = this.makeCardPanel(x, 350, cardW, cardH, c.name, c.desc, cardRarity(c), `${c.cost} energy`, ()=>pickReward(i));
       panel.setData("readableInfo", {kind:"choice", name:c.name, text:c.desc, cost:c.cost, width:cardW, height:cardH, rarity:cardRarity(c)});
       panel.setData("readableChoose", ()=>pickReward(i));
+      // The DOM choice owns the approved face and click action. Keep only its
+      // positioning container; old canvas art/text must not show around it.
+      panel.removeAll(true);
       this.uiRoot.add(panel);
     });
     this.uiRoot.add(this.makeButton(500, 635, 200, 44, "Skip", PALETTE.dim, ()=>pickReward(-1)));
