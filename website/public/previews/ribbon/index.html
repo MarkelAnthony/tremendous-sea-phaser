@@ -39,4 +39,30 @@
 </div>
 <p>Reference-led study: a broad plum ribbon attached to the frame, recessed folded tails, a shallow title curve, and natural letter spacing. Clean double-line borders replace image sharpening; only one numbered energy gem remains. The intentionally blank interior isolates the frame and title design for approval. On narrow screens, scroll sideways rather than shrinking the cards.</p>
 <p><a href="../../" style="color:#eac781;">Return to the unchanged game</a></p>
-</main></body></html>
+</main>
+<script>
+// SVG text paths can omit entire glyphs when the text exceeds the path.
+// Fit actual font advances inside the padded face after fonts are ready.
+async function fitPreviewTitles() {
+  await document.fonts.ready;
+  const titles = [...document.querySelectorAll('text:has(textPath)')];
+  titles.forEach(text => {
+    const base = Number(text.dataset.baseSize || text.getAttribute('font-size'));
+    text.dataset.baseSize = String(base);
+    text.setAttribute('font-size', String(base));
+    const natural = text.getComputedTextLength();
+    const safeWidth = 144;
+    text.setAttribute('font-size', String(Math.min(base, base * safeWidth / Math.max(1, natural))));
+  });
+  window.previewState = () => ({ previewOnly: true, titles: titles.map(text => {
+    const curved = text.querySelector('textPath');
+    const path = document.querySelector(curved.getAttribute('href'));
+    const width = text.getComputedTextLength();
+    return { title: curved.textContent, width, safeWidth: 144,
+      pathLength: path.getTotalLength(), endPadding: (path.getTotalLength() - width) / 2,
+      fits: width <= 144.1 };
+  }) });
+}
+void fitPreviewTitles();
+</script>
+</body></html>
