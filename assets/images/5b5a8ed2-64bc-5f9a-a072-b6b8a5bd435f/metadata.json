@@ -1,0 +1,11 @@
+{
+  "id": "5b5a8ed2-64bc-5f9a-a072-b6b8a5bd435f",
+  "name": "Single full trading card frame concept, portrait rectangle f",
+  "prompt": "Single full trading card frame concept, portrait rectangle filling canvas, whimsical ornate pirate fantasy pixel art. PEPPERMINT CORSAIR: sculpted red and ivory twisted peppermint border, elegant asymmetric candy curls, brass rope knots and tiny nautical compass corner ornaments, glossy ruby hard-candy energy medallion top left with EMPTY center. Deep burgundy contour outlines, warm gold highlights, richly shaded handcrafted crisp pixels, jewel teal accents, sophisticated storybook game not generic mobile UI. Inner upper third small decorative crossed candy sabres illustration on dark teal. Lower half broad FLAT PALE CREAM EMPTY panel reserved for highly readable game descriptions. Blank title strip. Restrained candy embellishments only around outside edges, thin frame leaves generous text space. No text no letters no numbers no typography. Entire card visible with margin against dark muted teal background.",
+  "width": 240,
+  "height": 336,
+  "model": "pixen",
+  "no_background": false,
+  "image": "image.png",
+  "spritesheet": null
+}

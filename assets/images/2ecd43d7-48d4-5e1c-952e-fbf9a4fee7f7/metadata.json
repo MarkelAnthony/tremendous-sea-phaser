@@ -1,0 +1,11 @@
+{
+  "id": "2ecd43d7-48d4-5e1c-952e-fbf9a4fee7f7",
+  "name": "Single full trading card frame concept, portrait rectangle f",
+  "prompt": "Single full trading card frame concept, portrait rectangle filling canvas, whimsical ornate living-wood pirate fantasy pixel art. CARAMELWOOD AND CANDY: warm carved caramel-brown wood frame with twisting golden root inlays, small emerald teal candy leaves, coral pink sugar blossoms, subtle cream icing trim, glossy amber hard-candy energy medallion top left with EMPTY center. Dark chocolate contour outlines, warm gold highlights, richly shaded handcrafted crisp pixels matching enchanted tree pirate ship, sophisticated storybook game not generic mobile UI. Inner upper third small decorative glowing ember tree illustration on dark teal. Lower half broad FLAT PALE CREAM EMPTY panel reserved for highly readable game descriptions. Blank title strip. Restrained candy embellishments only around outside edges, thin frame leaves generous text space. No text no letters no numbers no typography. Entire card visible with margin against dark muted teal background.",
+  "width": 240,
+  "height": 336,
+  "model": "pixen",
+  "no_background": false,
+  "image": "image.png",
+  "spritesheet": null
+}

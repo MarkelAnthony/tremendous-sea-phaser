@@ -1,0 +1,11 @@
+{
+  "id": "dca264bd-2cdb-534f-a445-a82b4b2fe800",
+  "name": "Single full trading card frame concept, portrait rectangle f",
+  "prompt": "Single full trading card frame concept, portrait rectangle filling canvas, whimsical ornate pirate fantasy pixel art. JEWEL-SUGAR FILIGREE: elegant sculpted translucent turquoise and violet boiled-sugar frame, curling golden filigree like branches and ocean waves, tiny amber candy crystals, glossy amethyst hard-candy energy medallion top left with EMPTY center. Dark plum contour outlines, warm gold highlights, richly shaded handcrafted crisp pixels, sophisticated storybook game not generic mobile UI. Inner upper third small decorative sugar crystal flame illustration on dark teal. Lower half broad FLAT PALE CREAM EMPTY panel reserved for highly readable game descriptions. Blank title strip. Restrained candy embellishments only around outside edges, thin frame leaves generous text space. No text no letters no numbers no typography. Entire card visible with margin against dark muted teal background.",
+  "width": 240,
+  "height": 336,
+  "model": "pixen",
+  "no_background": false,
+  "image": "image.png",
+  "spritesheet": null
+}
