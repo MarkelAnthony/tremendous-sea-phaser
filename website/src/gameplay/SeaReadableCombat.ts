@@ -4,13 +4,14 @@ import { intentSymbols, statusSymbols } from "./SeaCombatSymbols";
 import "./SeaReadableChoices.css";
 import "./SeaCandyCards.css";
 import "./SeaJewelCards.css";
+import "./SeaAmethystCards.css";
 import { assetUrl } from "../pixellab/templateAssetPaths";
 
 interface ReadableInfo { kind: "card" | "choice" | "intent" | "enemy"; name: string; text: string; cost?: number; width: number; height: number; offsetY?: number; playable?: boolean; index?: number; rarity?: string; status?: Record<string, number | boolean>; armored?: boolean }
 export function mountSeaReadability(game: Phaser.Game): void {
   const layer = document.createElement("div");
   layer.className = "sea-readability";
-  layer.style.setProperty("--jewel-card-art", `url("${new URL(assetUrl("images", "1ffa1d02-8d1c-5061-b5c2-54c1fd017a07", "image.png"), document.baseURI).href}")`);
+  layer.style.setProperty("--jewel-card-art", `url("${new URL(assetUrl("images", "04e1c2fc-67d1-534d-891b-0c6842b740ed", "image.png"), document.baseURI).href}")`);
   document.getElementById("hud-root")!.appendChild(layer);
   let signature = "";
   game.events.on("poststep", () => {
@@ -40,7 +41,7 @@ export function mountSeaReadability(game: Phaser.Game): void {
       const gap = 8;
       const handWidth = Math.min(rect.width - 24, 1120);
       const width = isHand ? Math.min(220, (handWidth - gap * (hand.length - 1)) / Math.max(1, hand.length)) : info.width * sx;
-      const height = isHand ? width * 1.22 : info.kind === "choice" ? width * 1.28 : info.height * sy;
+      const height = isHand || info.kind === "choice" ? width * (328 / 224) : info.height * sy;
       const top = isHand ? window.innerHeight - height - 12 : info.kind === "choice" ? rect.top + y * sy - height / 2 : rect.top+(y-info.height/2)*sy;
       const handIndex = hand.findIndex(item => item.info === info);
       const totalWidth = hand.length * width + (hand.length - 1) * gap;
@@ -118,18 +119,14 @@ export function mountSeaReadability(game: Phaser.Game): void {
       }
       layer.appendChild(el);
     }
-    // Let long names and effects grow their card rather than clipping or scrolling.
-    layer.querySelectorAll<HTMLElement>(".sea-readable-card, .sea-readable-choice").forEach(face => {
-      const title = face.querySelector<HTMLElement>("strong");
-      const description = face.querySelector<HTMLElement>(".sea-choice-description, :scope > span");
-      if (!title || !description) return;
-      const style = getComputedStyle(face);
-      const action = face.querySelector<HTMLElement>("small");
-      const required = parseFloat(style.paddingTop) + parseFloat(style.paddingBottom)
-        + title.scrollHeight + description.scrollHeight + (action?.offsetHeight || 0) + 24;
-      const height = Math.max(face.offsetHeight, required);
-      face.style.height = `${height}px`;
-      face.style.top = `${Math.max(8, Math.min(parseFloat(face.style.top), window.innerHeight - height - 8))}px`;
+    // Fit live lettering inside the approved blank ribbon and lilac rules panel.
+    // Never stretch the frame or introduce a scrolling text box.
+    layer.querySelectorAll<HTMLElement>(".sea-readable-card strong, .sea-readable-choice strong, .sea-readable-card > span, .sea-choice-description").forEach(text => {
+      let size = parseFloat(getComputedStyle(text).fontSize);
+      while ((text.scrollHeight > text.clientHeight + 1 || text.scrollWidth > text.clientWidth + 1) && size > 9) {
+        size -= 0.5;
+        text.style.setProperty("font-size", `${size}px`, "important");
+      }
     });
     // A shared baseline and height keep the hand looking like a coherent card row.
     const faces = [...layer.querySelectorAll<HTMLElement>(".sea-readable-card")];
