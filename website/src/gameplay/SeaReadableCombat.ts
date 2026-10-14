@@ -35,7 +35,7 @@ export function mountSeaReadability(game: Phaser.Game): void {
     for (const {info, x, y, choose} of items) {
       const el = document.createElement(info.kind === "card" || info.kind === "choice" ? "button" : "div");
       el.className = `sea-readable-${info.kind}`;
-      const height = info.kind === "card" ? Math.max(165, info.height * sy) : info.height * sy;
+      const height = info.kind === "card" ? Math.max(255, info.height * sy * 1.35) : info.height * sy;
       const top = info.kind === "card" ? Math.min(rect.top+(y-info.height/2)*sy, window.innerHeight-height-8) : rect.top+(y-info.height/2)*sy;
       el.style.cssText = `left:${rect.left+(x-info.width/2)*sx}px;top:${top}px;width:${info.width*sx}px;height:${height}px;--read-scale:${sx};`;
       if (info.kind === "choice") {
@@ -110,6 +110,19 @@ export function mountSeaReadability(game: Phaser.Game): void {
       }
       layer.appendChild(el);
     }
+    // Let long names and effects grow their card rather than clipping or scrolling.
+    layer.querySelectorAll<HTMLElement>(".sea-readable-card, .sea-readable-choice").forEach(face => {
+      const title = face.querySelector<HTMLElement>("strong");
+      const description = face.querySelector<HTMLElement>(".sea-choice-description, :scope > span");
+      if (!title || !description) return;
+      const style = getComputedStyle(face);
+      const action = face.querySelector<HTMLElement>("small");
+      const required = parseFloat(style.paddingTop) + parseFloat(style.paddingBottom)
+        + title.scrollHeight + description.scrollHeight + (action?.offsetHeight || 0) + 24;
+      const height = Math.max(face.offsetHeight, required);
+      face.style.height = `${height}px`;
+      face.style.top = `${Math.max(8, Math.min(parseFloat(face.style.top), window.innerHeight - height - 8))}px`;
+    });
   });
 }
 (window as unknown as Record<string, unknown>).mountSeaReadability = mountSeaReadability;
