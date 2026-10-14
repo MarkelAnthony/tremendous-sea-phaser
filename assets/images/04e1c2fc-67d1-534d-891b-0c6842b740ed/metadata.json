@@ -1,0 +1,11 @@
+{
+  "id": "04e1c2fc-67d1-534d-891b-0c6842b740ed",
+  "name": "Refine this exact Amethyst & Gold fantasy card frame to prov",
+  "prompt": "Refine this exact Amethyst & Gold fantasy card frame to provide substantially more usable room for readable card rules text. Preserve the existing canvas size and balanced playing-card proportions, crisp clean pixel art, plum purple face, golden filigree, magenta energy gem, and prominent turquoise crystal illustration. Expand the blank pale lilac lower rules panel to nearly the full inner card width and about 43 percent of the card height. Make its interior broad and uninterrupted with very small padding, a thin elegant gold rim, no inset box or heavy double border. Narrow and simplify the side scrollwork beside this panel so ornaments never intrude into the writing area. Slightly compact the top title ribbon and lift the crystal composition to accommodate the larger lower panel while keeping the crystal art a strong visual centerpiece. Keep decorative richness primarily around the upper artwork and corners, clean sharp lines. Keep title ribbon and rules panel entirely blank for future game text, no letters, no numbers. Do not add any navy outer border. Do not elongate the card.",
+  "width": 240,
+  "height": 336,
+  "model": "edit-image",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
