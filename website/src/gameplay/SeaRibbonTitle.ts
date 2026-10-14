@@ -13,7 +13,7 @@ export function createRibbonTitle(name: string): HTMLElement {
   const path = document.createElementNS(SVG_NS, "path");
   const id = `sea-ribbon-${nextRibbonId++}`;
   path.id = id;
-  path.setAttribute("d", "M 37,31 Q 112,19 187,31");
+  path.setAttribute("d", "M 37,33 Q 112,25 187,33");
   defs.append(path);
   const text = document.createElementNS(SVG_NS, "text");
   text.setAttribute("text-anchor", "middle");
@@ -34,7 +34,7 @@ export function createRibbonTitle(name: string): HTMLElement {
 export function fitRibbonTitles(root: HTMLElement): void {
   root.querySelectorAll<SVGTextElement>(".sea-ribbon-title text").forEach(text => {
     const naturalWidth = text.getComputedTextLength();
-    const size = Math.min(17, 17 * 140 / Math.max(1, naturalWidth));
+    const size = Math.min(17, 17 * 130 / Math.max(1, naturalWidth));
     text.setAttribute("font-size", String(size));
   });
 }
