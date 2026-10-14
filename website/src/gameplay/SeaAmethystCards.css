@@ -13,13 +13,20 @@
   background:var(--jewel-card-art) center/100% 100% no-repeat;
 }
 .sea-readable-card strong, .sea-readable-choice strong {
-  position:absolute; left:16%; top:3%; width:68%; height:10%;
+  position:absolute; left:0; top:0; width:100%; height:100%;
+  pointer-events:none;
   display:flex; align-items:center; justify-content:center;
   color:#fff4d6 !important; font-size:clamp(11px,calc(var(--card-width) * .078),19px) !important;
   background:transparent !important; border:0 !important; border-radius:0;
   padding:0; margin:0; font-weight:700; text-align:center;
   text-shadow:0 1px 0 #21112d;
   line-height:1.12; overflow-wrap:normal; word-break:normal;
+}
+.sea-ribbon-title svg { display:block; width:100%; height:100%; overflow:visible; }
+.sea-ribbon-title text {
+  fill:#fff4d6; stroke:#21112d; stroke-width:.65;
+  paint-order:stroke fill; stroke-linejoin:round;
+  text-shadow:none; text-rendering:optimizeLegibility;
 }
 .sea-readable-card > span, .sea-readable-choice .sea-choice-description {
   position:absolute; left:14%; top:30%; width:72%; height:54%;

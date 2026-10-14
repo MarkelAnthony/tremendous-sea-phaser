@@ -6,6 +6,7 @@ import "./SeaCandyCards.css";
 import "./SeaJewelCards.css";
 import "./SeaAmethystCards.css";
 import { assetUrl } from "../pixellab/templateAssetPaths";
+import { createRibbonTitle, fitRibbonTitles } from "./SeaRibbonTitle";
 
 interface ReadableInfo { kind: "card" | "choice" | "intent" | "enemy"; name: string; text: string; cost?: number; width: number; height: number; offsetY?: number; playable?: boolean; index?: number; rarity?: string; status?: Record<string, number | boolean>; armored?: boolean }
 export function mountSeaReadability(game: Phaser.Game): void {
@@ -53,8 +54,7 @@ export function mountSeaReadability(game: Phaser.Game): void {
         cost.textContent = String(info.cost ?? 0);
         cost.setAttribute("aria-label", `${info.cost ?? 0} energy`);
         cost.title = `${info.cost ?? 0} energy · ${info.rarity}`;
-        const title = document.createElement("strong");
-        title.textContent = info.name;
+        const title = createRibbonTitle(info.name);
         const desc = document.createElement("span");
         desc.className = "sea-choice-description";
         desc.textContent = info.text;
@@ -96,8 +96,7 @@ export function mountSeaReadability(game: Phaser.Game): void {
         layer.append(el);
         continue;
       }
-      const title = document.createElement("strong");
-      title.textContent = info.kind === "card" ? info.name : "NEXT ACTION";
+      const title = createRibbonTitle(info.name);
       const desc = document.createElement("span");
       desc.textContent = info.text;
       el.append(title, desc);
@@ -124,7 +123,8 @@ export function mountSeaReadability(game: Phaser.Game): void {
     }
     // Fit live lettering inside the approved blank ribbon and lilac rules panel.
     // Never stretch the frame or introduce a scrolling text box.
-    layer.querySelectorAll<HTMLElement>(".sea-readable-card strong, .sea-readable-choice strong, .sea-readable-card > span, .sea-choice-description").forEach(text => {
+    fitRibbonTitles(layer);
+    layer.querySelectorAll<HTMLElement>(".sea-readable-card > span, .sea-choice-description").forEach(text => {
       let size = parseFloat(getComputedStyle(text).fontSize);
       while ((text.scrollHeight > text.clientHeight + 1 || text.scrollWidth > text.clientWidth + 1) && size > 9) {
         size -= 0.5;
