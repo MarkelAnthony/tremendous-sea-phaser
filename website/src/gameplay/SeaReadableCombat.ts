@@ -11,7 +11,7 @@ interface ReadableInfo { kind: "card" | "choice" | "intent" | "enemy"; name: str
 export function mountSeaReadability(game: Phaser.Game): void {
   const layer = document.createElement("div");
   layer.className = "sea-readability";
-  layer.style.setProperty("--jewel-card-art", `url("${new URL(assetUrl("images", "04e1c2fc-67d1-534d-891b-0c6842b740ed", "image.png"), document.baseURI).href}")`);
+  layer.style.setProperty("--jewel-card-art", `url("${new URL(assetUrl("images", "836f80c8-55a5-52b1-8a33-ac99637eb295", "image.png"), document.baseURI).href}")`);
   document.getElementById("hud-root")!.appendChild(layer);
   let signature = "";
   game.events.on("poststep", () => {
