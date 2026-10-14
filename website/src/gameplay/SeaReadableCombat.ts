@@ -37,7 +37,7 @@ export function mountSeaReadability(game: Phaser.Game): void {
       el.className = `sea-readable-${info.kind}`;
       const height = info.kind === "card" ? Math.max(255, info.height * sy * 1.35) : info.height * sy;
       const top = info.kind === "card" ? Math.min(rect.top+(y-info.height/2)*sy, window.innerHeight-height-8) : rect.top+(y-info.height/2)*sy;
-      el.style.cssText = `left:${rect.left+(x-info.width/2)*sx}px;top:${top}px;width:${info.width*sx}px;height:${height}px;--read-scale:${sx};`;
+      el.style.cssText = `left:${rect.left+(x-info.width/2)*sx}px;top:${top}px;width:${info.width*sx}px;height:${height}px;--read-scale:${sx};--card-width:${info.width*sx}px;`;
       if (info.kind === "choice") {
         const cost = document.createElement("b");
         cost.className = "sea-choice-cost";

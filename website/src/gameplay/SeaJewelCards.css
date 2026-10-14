@@ -9,7 +9,7 @@
   padding:0 !important;
   display:flex !important;
   flex-direction:column; gap:6px;
-  padding:22% 9% 10% !important;
+  padding:calc(var(--card-width) * .28) calc(var(--card-width) * .09) calc(var(--card-width) * .10) !important;
   overflow:hidden;
 }
 .sea-readable-card::before, .sea-readable-choice::before {
@@ -55,3 +55,4 @@
 /* Full text lives on the face, never in a scrolling sub-panel or hover popup. */
 .sea-readable-card .sea-card-inspect { display:none !important; }
 .sea-readable-choice small { background:#52216d !important; }
+.sea-readable-card > span, .sea-readable-choice .sea-choice-description { overflow:visible !important; flex:1 0 auto; }
