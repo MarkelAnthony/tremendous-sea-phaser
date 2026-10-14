@@ -1,0 +1,11 @@
+{
+  "id": "c26b5778-e217-5b1a-997c-90e175e61ab3",
+  "name": "Refine this Amethyst and Gold playing card FRAME design, kee",
+  "prompt": "Refine this Amethyst and Gold playing card FRAME design, keeping the exact card silhouette and width-to-height proportions. Remove ALL crystals, gems, jewel clusters and central illustration entirely. We are perfecting a text-first card template, not adding card art yet. Keep an elegant dark plum/amethyst outer face and slim warm gold filigree confined tightly to the edges and corners. Make a generous light muted lilac title area across the top and a very large continuous light muted lilac rules-text field occupying almost the entire interior beneath it, with modest internal margins. No central art window, no giant empty illustration section. Use subtle purple tonal shading, clean sophisticated readable flat interiors, restrained gold detailing. A tiny simple circular cost badge at upper left without gemstone. Text areas BLANK, no lettering or fake glyphs. No crystals anywhere. Card fills canvas tightly with no extra border or surrounding padding. Appealing polished pixel-art fantasy card, matching source palette and style.",
+  "width": 240,
+  "height": 336,
+  "model": "edit-image",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
