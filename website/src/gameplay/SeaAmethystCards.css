@@ -58,7 +58,7 @@
 .sea-readable-choice small {
   position:absolute; left:22%; bottom:5%; width:56%; margin:0;
   font-size:clamp(9px,calc(10px * var(--read-scale)),13px);
-  background:transparent !important; color:#30203e !important;
-  border:0 !important; border-radius:0; text-shadow:none;
+  background:transparent !important; color:#fff4d6 !important;
+  border:0 !important; border-radius:0; text-shadow:0 1px 0 #21112d;
 }
 
