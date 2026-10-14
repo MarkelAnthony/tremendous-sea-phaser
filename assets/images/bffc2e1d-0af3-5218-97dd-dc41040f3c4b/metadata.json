@@ -1,0 +1,11 @@
+{
+  "id": "bffc2e1d-0af3-5218-97dd-dc41040f3c4b",
+  "name": "Amethyst & Gold fantasy playing card preview. Preserve sharp",
+  "prompt": "Amethyst & Gold fantasy playing card preview. Preserve sharp clean pixel-art style and balanced existing card proportions. Replace cream interior with rich plum-purple and amethyst matching the jewels. Prominent large jewel-art centerpiece occupying upper two thirds, ornate slender gold filigree, turquoise sugar crystals and purple candy gemstone. Slim blank title ribbon at top, small energy gem in corner, compact pale lilac rules panel at bottom for dark readable text. No lettering. No extra navy outer border. Make it feel like a beautiful illustrated collectible card, not a text panel.",
+  "width": 240,
+  "height": 336,
+  "model": "edit-image",
+  "no_background": false,
+  "image": "image.png",
+  "spritesheet": null
+}
