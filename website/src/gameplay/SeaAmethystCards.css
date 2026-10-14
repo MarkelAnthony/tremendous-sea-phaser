@@ -15,23 +15,27 @@
 .sea-readable-card strong, .sea-readable-choice strong {
   position:absolute; left:16%; top:3%; width:68%; height:10%;
   display:flex; align-items:center; justify-content:center;
-  color:#392044 !important; font-size:clamp(11px,calc(14px * var(--read-scale)),18px) !important;
-  line-height:1.12; overflow-wrap:anywhere;
+  color:#fff4d6 !important; font-size:clamp(11px,calc(var(--card-width) * .078),19px) !important;
+  background:transparent !important; border:0 !important; border-radius:0;
+  padding:0; margin:0; font-weight:700; text-align:center;
+  text-shadow:0 1px 0 #21112d;
+  line-height:1.12; overflow-wrap:normal; word-break:normal;
 }
 .sea-readable-card > span, .sea-readable-choice .sea-choice-description {
-  position:absolute; left:12%; top:29%; width:76%; height:57%;
+  position:absolute; left:14%; top:30%; width:72%; height:54%;
   box-sizing:border-box; padding:0 !important; margin:0;
   border:0 !important; color:#30203e !important;
-  font-size:clamp(11px,calc(13px * var(--read-scale)),16px) !important;
-  line-height:1.4; overflow-wrap:anywhere; overflow:visible !important;
+  font-size:clamp(11px,calc(var(--card-width) * .078),18px) !important;
+  font-weight:500; text-shadow:none; text-align:left;
+  line-height:1.45; overflow-wrap:normal; overflow:visible !important;
 }
-.sea-readable-choice strong {
-  color:#fff5d9 !important;
-  background:#392044;
-  border-radius:4px;
-  text-shadow:0 1px 1px #180c24;
-  font-weight:700;
+/* Both screens use the artwork's own dark banner, never an added title box. */
+.sea-readable-card::before, .sea-readable-choice::before {
+  image-rendering:pixelated;
+  filter:none;
 }
+/* Keep lettering legible even when a card cannot currently be played. */
+.sea-readable-card[data-playable=false]::before { filter:none; }
 /* A quiet, faceted corner jewel: cost is a number, not a headline. */
 .sea-readable-cost, .sea-choice-cost {
   left:10%; top:17%; width:14%; height:auto; aspect-ratio:1;
@@ -54,6 +58,7 @@
 .sea-readable-choice small {
   position:absolute; left:22%; bottom:5%; width:56%; margin:0;
   font-size:clamp(9px,calc(10px * var(--read-scale)),13px);
-  background:#52216d !important; color:#fff0bd !important;
+  background:transparent !important; color:#30203e !important;
+  border:0 !important; border-radius:0; text-shadow:none;
 }
 
