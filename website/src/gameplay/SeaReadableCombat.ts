@@ -131,6 +131,13 @@ export function mountSeaReadability(game: Phaser.Game): void {
       face.style.height = `${height}px`;
       face.style.top = `${Math.max(8, Math.min(parseFloat(face.style.top), window.innerHeight - height - 8))}px`;
     });
+    // A shared baseline and height keep the hand looking like a coherent card row.
+    const faces = [...layer.querySelectorAll<HTMLElement>(".sea-readable-card")];
+    const rowHeight = Math.max(0, ...faces.map(face => face.offsetHeight));
+    faces.forEach(face => {
+      face.style.height = `${rowHeight}px`;
+      face.style.top = `${Math.max(8, window.innerHeight - rowHeight - 12)}px`;
+    });
   });
 }
 (window as unknown as Record<string, unknown>).mountSeaReadability = mountSeaReadability;
