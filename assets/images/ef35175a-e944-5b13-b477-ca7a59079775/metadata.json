@@ -1,0 +1,11 @@
+{
+  "id": "ef35175a-e944-5b13-b477-ca7a59079775",
+  "name": "unzoom image",
+  "prompt": "unzoom image",
+  "width": 70,
+  "height": 70,
+  "model": "unzoom",
+  "no_background": null,
+  "image": "image.png",
+  "spritesheet": null
+}
