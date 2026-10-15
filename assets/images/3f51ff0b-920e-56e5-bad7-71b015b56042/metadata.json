@@ -1,0 +1,19 @@
+{
+  "id": "3f51ff0b-920e-56e5-bad7-71b015b56042",
+  "name": "REDRAW Branch as a single full body 128x128 transparent pixe",
+  "prompt": "REDRAW Branch as a single full body 128x128 transparent pixel-art fighter sprite, not a sprite sheet. Reference 1 defines ONLY identity/outfit/pose: preserve caramel brown skin, short dark hair, shirtless athletic build, small tree tattoo on chest, white shorts with purple patches, clearly WHITE shoes and same east/right-facing boxing guard stance and proportions. Reference 2 defines ONLY PIXEL CRAFT: decisive dark selective outlines, extremely clean coherent pixel clusters, 3-tone hard-edged material shading, strong silhouette, readable face/hands, console-quality linework, no blur, no painterly gradients, no noisy texture. Substantially reinterpret rendering, do not lightly sharpen source. MAJOR FEATURE: BOTH fists and BOTH feet visibly wreathed in bold sculpted orange-red flames. Hands: clearly separate flame crowns, yellow/cream hot cores, orange bodies, deep red outer tips, upward curled flame tongues around knuckles/wrists; retain visible fists. Feet: strong flame tongues rising from soles around ankles and behind heels, visible white shoe uppers, fire about ankle-to-calf height. Flames should be large conspicuous crisp pixel shapes, not blurry halos. No ground, background, text, weapons or extra figures. Keep all flames fully inside canvas. Single sprite only.",
+  "width": 256,
+  "height": 256,
+  "model": "generate_image_new",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": {
+    "grid_size": "2x2",
+    "frames": [
+      "frames/0.png",
+      "frames/1.png",
+      "frames/2.png",
+      "frames/3.png"
+    ]
+  }
+}
