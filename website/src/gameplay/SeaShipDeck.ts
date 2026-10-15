@@ -1,5 +1,6 @@
 import Phaser from "phaser";
 import { drawOrnateTrees } from "./SeaOrnateTrees";
+import { addKindlerootLights } from "./SeaKindlerootLights";
 
 /** The fighting floor fills the arena; scenery sits beyond its back railing. */
 export function drawShipDeck(scene: Phaser.Scene, root: Phaser.GameObjects.Container, captain: string): void {
@@ -7,6 +8,7 @@ export function drawShipDeck(scene: Phaser.Scene, root: Phaser.GameObjects.Conta
   if (branch && scene.textures.exists("kindleroot-deck")) {
     const stage = scene.add.image(0, 0, "kindleroot-deck").setOrigin(0).setDisplaySize(1000, 494);
     root.add(stage);
+    addKindlerootLights(scene, root);
     // Contact shadows belong to the fighters so targeting/lunges carry them
     // along the same plane, rather than leaving empty shadows on the deck.
     root.setData("shipCaptain", captain);
