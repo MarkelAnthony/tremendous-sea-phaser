@@ -1,0 +1,11 @@
+{
+  "id": "30da3d63-ad60-5215-be2d-a46605619d34",
+  "name": "Substantially REDRAW this exact combat scene as expertly cra",
+  "prompt": "Substantially REDRAW this exact combat scene as expertly crafted crisp pixel art. Preserve the same composition, shirtless dark-skinned boxer on left with short black hair, cream shorts and shoes, orange fire fists, same wooden ship deck and giant twisting tree trunks, teal magenta foliage, string lights, ocean. Dramatically improve linework: strong selective dark plum outlines around fighter silhouette, fists, face, muscles and shorts; decisive readable shapes, clean stepped single pixel edges, intentional pixel clusters, 3 tone hard-edged cel shading, no blurry antialiasing or painterly gradients. Background bark and deck boards need clear confident dark contour lines and simplified controlled texture, broader shadow masses, fewer noisy speckles, quieter values behind character. Reference sprite sheet guides pixel craftsmanship ONLY, do not copy knight, armor, helmet or shovel. Keep original candy nautical palette and boxer identity. Preserve UI text and bars if present, do not add new UI. This must look visibly redesigned with much cleaner pixel linework, NOT a subtle sharpen filter.",
+  "width": 512,
+  "height": 256,
+  "model": "edit-image",
+  "no_background": false,
+  "image": "image.png",
+  "spritesheet": null
+}
