@@ -2,6 +2,8 @@ import { assetUrl } from "../pixellab/templateAssetPaths";
 import "./SeaVoyageChart.css";
 import "./SeaVoyageRefinements.css";
 import "./SeaVoyageScroll.css";
+import "./SeaCandyChartFrame.css";
+import { candyChartFrame } from "./SeaCandyChartFrame";
 import { chartIcon, chartMarginArt, voyageSeaArt, voyageFoam } from "./SeaChartIllustrations";
 
 interface SeaNode { id: string; floor: number; lane: number; kind: string; connectsTo: string[] }
@@ -84,7 +86,7 @@ function draw(state: SeaState, current: SeaNode | null, choose: (id: string) => 
     const visited = state.visitedNodeIds.has(node.id) && state.visitedNodeIds.has(id);
     routes += `<path d="M${a.x} ${a.y} C${a.x} ${(a.y+b.y)/2},${b.x} ${(a.y+b.y)/2},${b.x} ${b.y}" fill="none" stroke="${available ? "#ad4156" : visited ? "#54745c" : "#806e56"}" stroke-width="${available ? 3 : 1.6}" opacity="${available ? .95 : visited ? .55 : .16}" ${visited ? "" : 'stroke-dasharray="3 6"'}/>`;
   }));
-  target.innerHTML = `<header class="sea-chart-header"><small>THE TREMENDOUS SEA · ACT ${state.act}</small><h2>${state.act===1 ? "Ocean of Tears" : state.act===2 ? "Candied Ocean" : "The Eternal Dark"}</h2><p>${escape(state.cap.name)} <span>♥ ${state.player.hp}/${state.player.maxHp} · ${state.rubees} Rubees</span></p></header><div class="sea-chart-scroll" tabindex="0" role="region" aria-label="Voyage chart, scroll to explore the journey"><div class="sea-chart-body"><svg viewBox="0 0 1000 ${chartHeight}" preserveAspectRatio="none" aria-hidden="true"><g transform="translate(0 ${Math.max(0, chartHeight-720)})">${chartMarginArt()}</g>${routes}</svg></div></div><footer class="sea-chart-footer"><b>${state.pendingMapChoice ? "Choose your next port" : "Your journey"}</b><span>Rose paths lead onward · Scroll to explore</span></footer>`;
+  target.innerHTML = `${candyChartFrame()}<header class="sea-chart-header"><small>THE TREMENDOUS SEA · ACT ${state.act}</small><h2>${state.act===1 ? "Ocean of Tears" : state.act===2 ? "Candied Ocean" : "The Eternal Dark"}</h2><p>${escape(state.cap.name)} <span>♥ ${state.player.hp}/${state.player.maxHp} · ${state.rubees} Rubees</span></p></header><div class="sea-chart-scroll" tabindex="0" role="region" aria-label="Voyage chart, scroll to explore the journey"><div class="sea-chart-body"><svg viewBox="0 0 1000 ${chartHeight}" preserveAspectRatio="none" aria-hidden="true"><g transform="translate(0 ${Math.max(0, chartHeight-720)})">${chartMarginArt()}</g>${routes}</svg></div></div><footer class="sea-chart-footer"><b>${state.pendingMapChoice ? "Choose your next port" : "Your journey"}</b><span>Rose paths lead onward · Scroll to explore</span></footer>`;
   const body = target.querySelector<HTMLDivElement>(".sea-chart-body")!;
   const scroller = target.querySelector<HTMLDivElement>(".sea-chart-scroll")!;
   body.style.height = `${chartHeight}px`;

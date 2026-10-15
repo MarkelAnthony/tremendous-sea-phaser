@@ -1,0 +1,10 @@
+/* Color lives at the edges, never behind the destination labels. */
+.sea-chart-screen{isolation:isolate;background:radial-gradient(ellipse at 5% 26%,#efd5cb55,transparent 24%),radial-gradient(ellipse at 96% 78%,#c6ddc155,transparent 25%),radial-gradient(ellipse at 50% 45%,#faf0d9,#e8d0ab)}
+.sea-chart-candy-frame{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden;border-radius:inherit}
+.sea-chart-candy-frame>svg{width:100%;height:100%}
+.sea-chart-scroll{z-index:1;background:linear-gradient(#b8936210,transparent 22px,transparent calc(100% - 22px),#b8936210)}
+.sea-chart-header h2{color:#8c5064;text-shadow:0 1px #fff4df}
+.sea-chart-header::after{content:"";display:block;width:90px;height:3px;margin:10px auto 0;border-radius:3px;background:linear-gradient(90deg,#ce8e9d 0 33%,#c4b0d0 33% 66%,#a1bca1 66%)}
+.sea-chart-body .sea-chart-node.reachable .sea-chart-dot{background:radial-gradient(circle at 35% 28%,#fff9e9,#f1d9dc);border-color:#b96d83}
+.sea-chart-body .sea-chart-node.current .sea-chart-dot{background:radial-gradient(circle at 35% 28%,#f8f4da,#bed5b6)}
+@media(max-width:650px){.sea-chart-candy-frame{left:-30px;right:-30px;opacity:.75}.sea-chart-header::after{margin-top:6px}}

@@ -16,6 +16,7 @@ function decorateSeaScreen(scene: Phaser.Scene, root: Phaser.GameObjects.Contain
       trim.lineStyle(3, i % 2 ? 0x907044 : 0xc4a372, 0.9);
       trim.lineBetween(i * 7, 494, i * 7 + 6, 501);
     }
+    trim.setData("compactHandTray", true);
     root.add(trim);
     return;
   }

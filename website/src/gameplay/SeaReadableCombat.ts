@@ -33,6 +33,24 @@ export function mountSeaReadability(game: Phaser.Game): void {
     signature = next;
     layer.replaceChildren();
     const sx = rect.width / 1000, sy = rect.height / 700;
+    const handItems = items.filter(item => item.info.kind === "card");
+    if (handItems.length) {
+      const usableWidth = Math.min(Math.max(1, Math.min(window.innerWidth - 12, rect.left + 800 * sx) - Math.max(12, rect.left + 20 * sx)), 1120);
+      const cardHeight = Math.min(220, (usableWidth - 8 * (handItems.length - 1)) / handItems.length) * (328 / 224);
+      const trayTop = Math.max(440, 700 - (cardHeight + 6 * sy) / sy - 12);
+      const scene = game.scene.getScenes(true)[0];
+      const adjustTray = (object: Phaser.GameObjects.GameObject) => {
+        if (object.getData("compactHandTray")) {
+          const tray = object as Phaser.GameObjects.Graphics;
+          tray.clear().fillGradientStyle(0x302016, 0x3d291b, 0x100e0c, 0x211a15, 1).fillRect(0, trayTop, 1000, 700 - trayTop);
+          for (let y = trayTop + 26; y < 700; y += 35) tray.lineStyle(1, 0xb18043, .18).lineBetween(0, y, 1000, y);
+          for (let i = 0; i < 144; i++) tray.lineStyle(3, i % 2 ? 0x907044 : 0xc4a372, .9).lineBetween(i * 7, trayTop, i * 7 + 6, trayTop + 7);
+        }
+        const container = object as Phaser.GameObjects.Container;
+        if (Array.isArray(container.list)) container.list.forEach(adjustTray);
+      };
+      scene?.children.list.forEach(adjustTray);
+    }
     for (const {info, x, y, choose} of items) {
       const el = document.createElement(info.kind === "card" || info.kind === "choice" ? "button" : "div");
       el.className = `sea-readable-${info.kind}`;
@@ -46,7 +64,8 @@ export function mountSeaReadability(game: Phaser.Game): void {
       const handWidth = Math.min(Math.max(1, handRight - handLeft), 1120);
       const width = isHand ? Math.min(220, (handWidth - gap * (hand.length - 1)) / Math.max(1, hand.length)) : info.width * sx;
       const height = isHand || info.kind === "choice" ? width * (328 / 224) : info.height * sy;
-      const top = isHand ? window.innerHeight - height - 12 : info.kind === "choice" ? rect.top + y * sy - height / 2 : rect.top+(y-info.height/2)*sy;
+      // Anchor the compact hand to the game, not to empty space below a fitted canvas.
+      const top = isHand ? rect.bottom - height - 6 * sy : info.kind === "choice" ? rect.top + y * sy - height / 2 : rect.top+(y-info.height/2)*sy;
       const handIndex = hand.findIndex(item => item.info === info);
       const totalWidth = hand.length * width + (hand.length - 1) * gap;
       const left = isHand ? handLeft + (handWidth - totalWidth) / 2 + handIndex * (width + gap) : rect.left+(x-info.width/2)*sx;
