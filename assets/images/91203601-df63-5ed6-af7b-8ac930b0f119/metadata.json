@@ -1,0 +1,18 @@
+{
+  "id": "91203601-df63-5ed6-af7b-8ac930b0f119",
+  "name": "Restyle these final three right-facing heavy punch frames in",
+  "prompt": "Restyle these final three right-facing heavy punch frames into the reference's superior crisp pixel-art linework and exact character design: dark-skinned muscular boxer, purple and white shorts, red-orange gloves. Keep EACH input frame's pose, hand positions, body proportions, scale, facing, feet anchor, original canvas and motion unchanged. Bold selective dark outlines, clear pixel clusters, decisive shading. Prominent yellow-white and orange-red flames on BOTH hands and BOTH feet, following each pose, without hiding the fists or feet. Exactly two arms, two legs; no ghost limbs, no disconnected hands. Transparent background.",
+  "width": 432,
+  "height": 144,
+  "model": "transfer-outfit",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": {
+    "grid_size": "3x1",
+    "frames": [
+      "frames/0.png",
+      "frames/1.png",
+      "frames/2.png"
+    ]
+  }
+}
