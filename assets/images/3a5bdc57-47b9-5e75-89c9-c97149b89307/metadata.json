@@ -1,0 +1,11 @@
+{
+  "id": "3a5bdc57-47b9-5e75-89c9-c97149b89307",
+  "name": "Precise correction ONLY to the golden ornaments decorating t",
+  "prompt": "Precise correction ONLY to the golden ornaments decorating the two trees. These must be CHRISTMAS STRING LIGHTS, NOT golden hanging balls or jewelry. Replace the gold beads/lanterns on tree canopies, tree trunks and garlands with small distinct red, green, blue, and yellow tapered electric Christmas light bulbs, with visible dark green bulb sockets and a thin dark green connecting wire. Small bright colored centers with restrained colored halo, crisp pixel clusters matching existing pixel scale. No large circular gold baubles should remain. Preserve all other pixels and exact composition: same tree silhouettes, branches, leaves, trunks, sail shape, railing, wood planks, plants, perspective, detailed outlines and colors. Do not move or add anything else. This is a targeted Christmas light correction, not a redesign.",
+  "width": 488,
+  "height": 256,
+  "model": "edit-image",
+  "no_background": false,
+  "image": "image.png",
+  "spritesheet": null
+}
