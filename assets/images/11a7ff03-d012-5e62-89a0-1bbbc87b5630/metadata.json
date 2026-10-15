@@ -1,0 +1,11 @@
+{
+  "id": "11a7ff03-d012-5e62-89a0-1bbbc87b5630",
+  "name": "A substantial CLEAN LINEWORK REDRAW of a whimsical living-tr",
+  "prompt": "A substantial CLEAN LINEWORK REDRAW of a whimsical living-tree pirate ship combat background KINDLEROOT. Expert console pixel art, deliberate coherent pixel clusters, decisive selective dark brown/navy outlines, hard edged 3-tone cel shading, NO blur, NO painterly noise, NO bloom or dithering. Wide SIDE-ON view from aboard deck. Lower half open warm timber plank battle floor, clear readable board seams, sparse subtle ember inlays. Behind combat floor ornate wood railing with branching tree carvings; turquoise ocean beyond. At left large woody tree mast and olive leaf sails, rope rigging; trees at far left and far right, thick twisting forked trunks, distinct emerald teal coral pink amber foliage masses, small golden hanging seeds. Keep center open and low contrast for fighters. Rich candy-storybook jewel colors yet clean restrained detail. Unified line weight and chunky readable shapes like polished console sprite art. No characters, UI, letters or whole ship exterior.",
+  "width": 680,
+  "height": 384,
+  "model": "pixen",
+  "no_background": false,
+  "image": "image.png",
+  "spritesheet": null
+}
