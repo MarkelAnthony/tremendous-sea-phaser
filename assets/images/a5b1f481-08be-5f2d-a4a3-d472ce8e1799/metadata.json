@@ -1,0 +1,11 @@
+{
+  "id": "a5b1f481-08be-5f2d-a4a3-d472ce8e1799",
+  "name": "Preview-only revised KINDLEROOT combat background. FIRST ref",
+  "prompt": "Preview-only revised KINDLEROOT combat background. FIRST reference is the STRICT COMPOSITION BLUEPRINT: preserve original side-on deck perspective, left-edge mast, tree positions, railing height, warm deck floor and turquoise sea. SECOND reference supplies ONLY superior crisp pixel linework, selective dark outlines, coherent pixel clusters and clean hard-edged shading; DO NOT copy its centered mast or circular pedestal. Mast must stay in far LEFT 0-12% edge, NEVER in middle, no central pillar, no central pedestal. Keep combat corridor x=15%-90%, lower half, open for fighters: Branch at x=15%, enemies at x=47%,65%,83%, feet at 72% height. No new obstacles between them. Preserve original whimsical trees/sails/foliage masses around edges and upper scene. Rich original storybook colors, not a different ship. Open horizontal timber deck, crisp plank seams and subtle ember accents. No characters, no UI, no text. Artwork only. Closely follow FIRST reference geometry, upgrade rendering craft using SECOND reference.",
+  "width": 688,
+  "height": 384,
+  "model": "generate_image_new",
+  "no_background": false,
+  "image": "image.png",
+  "spritesheet": null
+}
