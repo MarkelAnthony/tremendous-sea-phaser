@@ -1,12 +1,11 @@
 import Phaser from "phaser";
-import { APPROVED_FIRE_DURATIONS } from "./SeaApprovedBranchTiming";
 import { publicAssetUrl } from "../pixellab/templateAssetPaths";
 
 const sequences = {
   idle: Array.from({ length: 8 }, (_, i) => `branch-combat/idle-${i}.png`),
-  jab: [2, 1, 0, 1, 2].map(i => `branch-combat/lead-jab-${i}.png`),
-  heavy: Array.from({ length: 6 }, (_, i) => `branch-combat/attack-${i}.png`),
-  fire: Array.from({ length: 13 }, (_, i) => `fire-rebuild/frame-${i}.png`),
+  jab: [2, 1, 0, 1, 2].map(i => `branch-redraw-attacks/jab-${i}.png`),
+  heavy: Array.from({ length: 6 }, (_, i) => `branch-redraw-attacks/heavy-${i}.png`),
+  fire: Array.from({ length: 17 }, (_, i) => `branch-redraw-attacks/fire-${i}.png`),
 };
 export type BranchClip = keyof typeof sequences;
 const key = (clip: BranchClip, i: number): string => `branch-approved-${clip}-${i}`;
@@ -20,8 +19,7 @@ export function preloadApprovedBranchClips(scene: Phaser.Scene): void {
 
 /** A single fixed canvas anchor per sequence preserves drawn footwork, not frame-by-frame snapping. */
 export function prepareApprovedBranchClip(scene: Phaser.Scene, sprite: Phaser.GameObjects.Sprite, clip: BranchClip): void {
-  // The approved redraw is a single guard pose, not a newly generated clip.
-  // Existing Jab/Heavy/Fire motion and hit timing remain untouched.
+  // Return to the approved guard between the approved redraw attack sequences.
   if (clip === "idle" && scene.textures.exists("branch-approved-redraw")) {
     sprite.anims.stop();
     const frame = scene.textures.get("branch-approved-redraw").get();
@@ -50,7 +48,7 @@ export function prepareApprovedBranchClip(scene: Phaser.Scene, sprite: Phaser.Ga
     .setScale(Number(sprite.getData("visibleModelHeight") || 176) / Math.max(1, bottom - top));
   const animation = `branch-approved-${clip}`;
   if (!scene.anims.exists(animation)) scene.anims.create({ key: animation, frameRate: 1000,
-    frames: sequences[clip].map((_, i) => ({ key: key(clip, i), duration: (clip === "fire" ? APPROVED_FIRE_DURATIONS[i] : clip === "idle" ? 140 : 90) - 1 })),
+    frames: sequences[clip].map((_, i) => ({ key: key(clip, i), duration: (clip === "fire" ? 100 : clip === "idle" ? 140 : 90) - 1 })),
     repeat: clip === "idle" ? -1 : 0,
   });
   sprite.setData("approvedClip", clip);

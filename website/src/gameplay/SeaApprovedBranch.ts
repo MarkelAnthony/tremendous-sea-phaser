@@ -1,6 +1,6 @@
 import Phaser from "phaser";
 
-import { launchApprovedBranchBlast, prepareApprovedBranchClip } from "./SeaBranchApprovedClips";
+import { prepareApprovedBranchClip } from "./SeaBranchApprovedClips";
 
 /** Approved Jab, Heavy and polished Fire playback; combat rules stay untouched. */
 export function playApprovedBranchAttack(scene: Phaser.Scene, sprite: Phaser.GameObjects.Sprite, kind: string, card: string): boolean {
@@ -18,14 +18,7 @@ export function playApprovedBranchAttack(scene: Phaser.Scene, sprite: Phaser.Gam
     prepareApprovedBranchClip(scene, sprite, "idle");
   });
   prepareApprovedBranchClip(scene, sprite, clip);
-  if (clip === "fire") {
-    const release = (): void => {
-      if (sprite.texture.key !== "branch-approved-fire-8") return;
-      sprite.off(Phaser.Animations.Events.ANIMATION_UPDATE, release);
-      launchApprovedBranchBlast(scene, sprite);
-    };
-    sprite.on(Phaser.Animations.Events.ANIMATION_UPDATE, release);
-    sprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => sprite.off(Phaser.Animations.Events.ANIMATION_UPDATE, release));
-  }
+  // The approved Fire frames contain the complete flame wave; do not overlay
+  // the old procedural projectile on top of the newly drawn blast.
   return true;
 }
