@@ -1,10 +1,10 @@
 /** Original ink illustrations: parchment routes and restrained confectionery details. */
 export function chartIcon(kind: string): string {
   const paths: Record<string,string> = {
-    common:'<path d="m5 4 17 18m-17 0L22 4M3 17l7 7m7-21 7 7M4 3l5 2-4 4zm19 0-5 2 4 4z"/>',
+    common:'<path d="m7 18 2-13 4-3 2 5-5 12z" fill="#c9d4cc"/><path d="m4 18 10 3M8 20l-1 6m-3 0h6" stroke="#896544"/><path d="m23 10 8 3-2 9q-2 4-7 6-5-3-6-7l1-9z" fill="#b9cda9"/><path d="m23 14-1 10m-4-6 9 1" stroke="#f7ecd3"/>',
     elite:'<path d="M5 15C0 0 27 0 23 15l-5 3v6H9v-6zM8 22h12M12 18v6m4-6v6"/><circle cx="9" cy="12" r="2"/><circle cx="19" cy="12" r="2"/>',
     boss:'<path d="m3 8 4 14h20l4-14-8 7-6-12-6 12zM7 26h20"/>',
-    oasis:'<path d="M14 25V9m0 4C6 1 1 4 2 12c5-6 9-3 12 1zm0 0c8-12 13-9 12-1-5-6-9-3-12 1zM3 26q12-5 22 0"/>',
+    oasis:'<path d="M17 2c2 7 10 9 9 16-1 7-16 8-18 0-1-5 4-8 5-12 1 4 3 5 4 6 2-3 1-7 0-10z" fill="#d68358"/><path d="M17 13c5 5 6 9 0 11-6-2-5-6 0-11z" fill="#f4cf77" stroke="#b47a4c"/><path d="m6 25 22 3M7 29l21-7" stroke="#805b42" stroke-width="3"/>',
     event:'<path d="M9 8C8 0 23 0 23 8c0 6-9 6-9 12"/><circle cx="14" cy="25" r="1"/>',
     shop:'<path d="M4 12h24v14H4zM2 12l4-9h20l4 9M4 12q4 6 8 0 4 6 8 0 4 6 8 0M10 26V17h9v9"/>',
   };

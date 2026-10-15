@@ -65,9 +65,13 @@ function draw(state: SeaState, current: SeaNode | null, choose: (id: string) => 
   state.revealedChartNodes = [...revealed];
   // A single bottom-to-top branching chart, not a folded serpentine track.
   const positions = new Map(nodes.map(node => {
-    const laneCount = state.mapFloors[node.floor].length;
-    const jitter = laneCount > 1 ? Math.sin(node.floor * 2.4 + node.lane) * 18 : 0;
-    return [node.id, {x:500 + (node.lane - (laneCount - 1) / 2) * (430 / Math.max(2, laneCount - 1)) + jitter, y:node.floor === 0 ? 555 : 400 - (node.floor - 1) * (360 / Math.max(1, state.mapFloors.length - 2))}];
+    const row = state.mapFloors[node.floor];
+    const laneCount = row.length;
+    const laneIndex = row.indexOf(node);
+    // Even stage spacing, with a gentle shared drift rather than random offsets.
+    // Keep the outer quarters clear for the chart's candy illustrations.
+    const drift = laneCount > 1 ? Math.sin(node.floor * 1.35) * 14 : 0;
+    return [node.id, {x:500 + (laneIndex - (laneCount - 1) / 2) * (470 / Math.max(2, laneCount - 1)) + drift, y:530 - node.floor * (475 / Math.max(1, state.mapFloors.length - 1))}];
   }));
   let routes = "";
   nodes.forEach(node => node.connectsTo.forEach(id => {
@@ -76,7 +80,7 @@ function draw(state: SeaState, current: SeaNode | null, choose: (id: string) => 
     const visited = state.visitedNodeIds.has(node.id) && state.visitedNodeIds.has(id);
     routes += `<path d="M${a.x} ${a.y} C${a.x} ${(a.y+b.y)/2},${b.x} ${(a.y+b.y)/2},${b.x} ${b.y}" fill="none" stroke="${available ? "#ad4156" : visited ? "#54745c" : "#806e56"}" stroke-width="${available ? 2.4 : 1.4}" opacity="${available || visited ? 1 : .4}" ${visited ? "" : 'stroke-dasharray="3 6"'}/>`;
   }));
-  target.innerHTML = `<div class="sea-chart-header"><small>THE TREMENDOUS SEA · ACT ${state.act}</small><h2>${state.act===1 ? "Ocean of Tears" : state.act===2 ? "Candied Ocean" : "The Eternal Dark"}</h2><p>${escape(state.cap.name)} · ♥ ${state.player.hp}/${state.player.maxHp} · ${state.rubees} Rubees · ${state.deck.all.length} cards</p></div><div class="sea-chart-body"><svg viewBox="0 0 1000 590" preserveAspectRatio="none" aria-hidden="true"><defs><filter id="paper-grain"><feTurbulence type="fractalNoise" baseFrequency=".65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".09"/></feComponentTransfer></filter><radialGradient id="paper-tone"><stop stop-color="#fbefd6"/><stop offset="1" stop-color="#dbc19a"/></radialGradient></defs><rect width="1000" height="590" fill="url(#paper-tone)"/><rect width="1000" height="590" filter="url(#paper-grain)" opacity=".5"/>${chartMarginArt()}${routes}</svg></div><div class="sea-chart-footer"><b>${state.pendingMapChoice ? "Choose your next port" : "Your journey"}</b><span>Follow the rose-colored paths · Distant dots remain unknown</span><div>⚔ Fight &nbsp; ☠ Elite &nbsp; ♧ Oasis &nbsp; ? Mystery &nbsp; ⚓ Shop &nbsp; ♛ Boss</div></div>`;
+  target.innerHTML = `<div class="sea-chart-header"><small>THE TREMENDOUS SEA · ACT ${state.act}</small><h2>${state.act===1 ? "Ocean of Tears" : state.act===2 ? "Candied Ocean" : "The Eternal Dark"}</h2><p>${escape(state.cap.name)} · ♥ ${state.player.hp}/${state.player.maxHp} · ${state.rubees} Rubees · ${state.deck.all.length} cards</p></div><div class="sea-chart-body"><svg viewBox="0 0 1000 590" preserveAspectRatio="none" aria-hidden="true"><defs><filter id="paper-grain"><feTurbulence type="fractalNoise" baseFrequency=".65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".09"/></feComponentTransfer></filter><radialGradient id="paper-tone"><stop stop-color="#fbefd6"/><stop offset="1" stop-color="#dbc19a"/></radialGradient></defs><rect width="1000" height="590" fill="url(#paper-tone)"/><rect width="1000" height="590" filter="url(#paper-grain)" opacity=".5"/>${chartMarginArt()}${routes}</svg></div><div class="sea-chart-footer"><b>${state.pendingMapChoice ? "Choose your next port" : "Your journey"}</b><span>Follow the rose-colored paths · Distant dots remain unknown</span><div class="sea-chart-legend">${[["common","Fight"],["elite","Elite"],["oasis","Rest"],["event","Mystery"],["shop","Shop"],["boss","Boss"]].map(([kind,label]) => `<span>${chartIcon(kind)}${label}</span>`).join("")}</div></div>`;
   const body = target.querySelector<HTMLDivElement>(".sea-chart-body")!;
   nodes.forEach(node => {
     const p = positions.get(node.id)!; const known = revealed.has(node.id), visited = state.visitedNodeIds.has(node.id), here = node.id === current?.id;
