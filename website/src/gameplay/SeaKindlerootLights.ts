@@ -69,10 +69,11 @@ export function addKindlerootLights(scene: Phaser.Scene, root: Phaser.GameObject
     [[580,150],[597,158],[616,164],[638,165],[660,157]],
     [[590,175],[606,181],[626,185],[641,183],[650,176]],
     [[630,154],[637,151],[645,156],[641,164],[633,160],[630,154]],
-    [[300,190],[293,201],[283,211],[280,220],[291,224]],
-    [[337,186],[339,202],[350,214],[360,226]],
-    [[590,208],[602,216],[614,221],[627,228]],
-    [[640,190],[638,207],[649,222],[660,236]],
+    [[300,96],[312,106],[325,112],[338,108],[351,100],[364,96]],
+    [[306,118],[320,124],[334,120]],
+    [[628,196],[652,204],[630,214],[650,222],[632,232]],
+    [[190,52],[204,60],[216,52]],
+    [[232,64],[246,72],[258,64]],
   ].forEach(strand);
   root.add([g, ...twinkles]);
   const tweens = twinkles.map((light, index) => scene.tweens.add({
@@ -81,6 +82,6 @@ export function addKindlerootLights(scene: Phaser.Scene, root: Phaser.GameObject
     ease: "Sine.easeInOut", yoyo: true, repeat: -1,
   }));
   root.once("destroy", () => tweens.forEach((tween) => tween.remove()));
-  root.setData("christmasLights", { visible: true, bulbs: count, strands: 33,
+  root.setData("christmasLights", { visible: true, bulbs: count, strands: 34,
     twinkling: true, renderer: "kindleroot-backdrop-overlay" });
 }
