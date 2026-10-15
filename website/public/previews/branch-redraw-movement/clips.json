@@ -1,0 +1,76 @@
+{
+  "idle": {
+    "label": "Boxing-sway idle",
+    "files": [
+      "idle-0.png",
+      "idle-1.png",
+      "idle-2.png",
+      "idle-3.png",
+      "idle-4.png",
+      "idle-5.png",
+      "idle-6.png",
+      "idle-7.png",
+      "idle-8.png",
+      "idle-9.png",
+      "idle-10.png",
+      "idle-11.png",
+      "idle-12.png",
+      "idle-13.png",
+      "idle-14.png",
+      "idle-15.png",
+      "idle-16.png"
+    ],
+    "order": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "ms": 85,
+    "scale": 1.6761904761904762,
+    "x": 316.1142857142857,
+    "y": 102.32380952380953
+  },
+  "shuffle": {
+    "label": "Guarded shuffle",
+    "files": [
+      "shuffle-0.png",
+      "shuffle-1.png",
+      "shuffle-2.png",
+      "shuffle-3.png",
+      "shuffle-4.png",
+      "shuffle-5.png",
+      "shuffle-6.png",
+      "shuffle-7.png",
+      "shuffle-8.png"
+    ],
+    "order": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "ms": 110,
+    "scale": 1.6761904761904762,
+    "x": 316.1142857142857,
+    "y": 102.32380952380953
+  }
+}
