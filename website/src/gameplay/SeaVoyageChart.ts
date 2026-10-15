@@ -1,5 +1,6 @@
 import { assetUrl } from "../pixellab/templateAssetPaths";
 import "./SeaVoyageChart.css";
+import "./SeaVoyageRefinements.css";
 
 interface SeaNode { id: string; floor: number; lane: number; kind: string; connectsTo: string[] }
 interface SeaState {
@@ -10,7 +11,25 @@ interface SeaState {
 const labels: Record<string, string> = {common:"Fight", elite:"Elite Fight", boss:"Boss Fight", oasis:"Oasis", event:"Mystery", shop:"Emporium"};
 const icons: Record<string, string> = {common:"⚔", elite:"☠", boss:"♛", oasis:"♧", event:"?", shop:"⚓"};
 // This path is filled from the completed Object receipt, never from its job ID.
-const shipArt = assetUrl("objects", "7007be3e-78ee-4820-8c8e-aa11a26e9bc4", "base", "rotations", "unknown.png");
+let shipArt = assetUrl("objects", "7007be3e-78ee-4820-8c8e-aa11a26e9bc4", "base", "rotations", "unknown.png");
+// Display-only cleanup: keep the synced original untouched, replace pendant gold
+// with small colored bulbs rather than spending another generation.
+const exterior = new Image();
+exterior.onload = () => {
+  const canvas = document.createElement("canvas"); canvas.width = 256; canvas.height = 256;
+  const ctx = canvas.getContext("2d")!; ctx.drawImage(exterior, 0, 0);
+  const pixels = ctx.getImageData(0, 0, 256, 256);
+  for (const [x,y,w,h] of [[8,88,14,42],[14,138,16,40],[124,108,14,34]]) {
+    for (let py=y;py<y+h;py++) for(let px=x;px<x+w;px++) {
+      const i=(py*256+px)*4, r=pixels.data[i], g=pixels.data[i+1], b=pixels.data[i+2];
+      if(r>115 && g>80 && b<g*.75 && r>g*1.08) pixels.data[i+3]=0;
+    }
+  }
+  ctx.putImageData(pixels,0,0);
+  [[30,66,"#df6e79"],[57,55,"#9edeb4"],[82,61,"#89cde5"],[104,51,"#c099e1"],[119,72,"#de7377"]].forEach(([x,y,color])=>{ctx.fillStyle=String(color);ctx.fillRect(Number(x),Number(y),2,2);});
+  shipArt=canvas.toDataURL();
+};
+exterior.src=shipArt;
 let layer: HTMLDivElement | undefined;
 let sailing = false;
 let activeState: SeaState | undefined;
@@ -52,7 +71,8 @@ function draw(state: SeaState, current: SeaNode | null, choose: (id: string) => 
   const cols = Math.ceil(state.mapFloors.length / 3);
   const positions = new Map(nodes.map(node => {
     const band = Math.floor(node.floor / cols), col = node.floor % cols;
-    return [node.id, {x:105 + (band % 2 ? cols - 1 - col : col) * (790 / Math.max(1, cols - 1)), y:130 + band * 160 + (node.lane - 1) * 36}];
+    const laneCount = state.mapFloors[node.floor].length;
+    return [node.id, {x:105 + (band % 2 ? cols - 1 - col : col) * (790 / Math.max(1, cols - 1)), y:115 + band * 175 + (node.lane - (laneCount - 1) / 2) * 55}];
   }));
   let routes = "";
   nodes.forEach(node => node.connectsTo.forEach(id => {

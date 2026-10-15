@@ -785,3 +785,13 @@ window.previewRileyStance = (stance) => {
   window.updateSeaCaptainStance(scene, scene.playerBody, stance);
   return scene.playerBody.getData("stance") === stance;
 };
+
+// Deterministic visual test entry: keeps encounter data intact while opening the chart.
+window.previewSeaChart = () => {
+  const scene = window.game.scene.getScenes(true)[0];
+  if (!G) startGame('Branch');
+  G.pendingMapChoice = true;
+  scene.clearRoot();
+  window.drawSeaChart(G, getCurrentNode(), chooseNextNode);
+  return window.voyageState();
+};
