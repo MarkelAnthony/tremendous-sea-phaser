@@ -52,10 +52,12 @@ export function prepareApprovedBranchClip(scene: Phaser.Scene, sprite: Phaser.Ga
 /** Follow actual on-deck travel without changing its timing or combat behavior. */
 export function watchApprovedBranchMovement(scene: Phaser.Scene, sprite: Phaser.GameObjects.Sprite): void {
   let previousX: number | undefined;
+  let lastTravel: number = -Infinity;
   const update = (): void => {
     if (!sprite.active) return;
     const x = sprite.x + (sprite.parentContainer?.x || 0);
-    const moving = previousX !== undefined && Math.abs(x - previousX) > 0.1;
+    if (previousX !== undefined && Math.abs(x - previousX) > 0.001) lastTravel = scene.time.now;
+    const moving = scene.time.now - lastTravel < 120;
     previousX = x;
     if (sprite.getData("clarityAttackPlaying")) return;
     const clip = moving ? "shuffle" : "idle";
