@@ -1,0 +1,24 @@
+{
+  "id": "d3d2d7f8-1e78-5bad-b90e-037c5bb4ed52",
+  "name": "Looping guarded boxing forward shuffle in place facing the s",
+  "prompt": "Looping guarded boxing forward shuffle in place facing the same direction as reference. Short deliberate alternating steps, lead foot advances then rear foot follows without crossing, knees bent, upper body has restrained boxing bounce, fists stay raised in defensive guard. Preserve exact boxer identity outfit and clean linework. Both fists and both feet visibly burning with compact flickering flames throughout. No punches no turns no camera motion. Return to original stance.",
+  "width": 246,
+  "height": 321,
+  "model": "animate_with_text_v3",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": {
+    "grid_size": "3x3",
+    "frames": [
+      "frames/0.png",
+      "frames/1.png",
+      "frames/2.png",
+      "frames/3.png",
+      "frames/4.png",
+      "frames/5.png",
+      "frames/6.png",
+      "frames/7.png",
+      "frames/8.png"
+    ]
+  }
+}
