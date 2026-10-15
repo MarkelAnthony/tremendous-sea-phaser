@@ -342,6 +342,7 @@ class MainScene extends Phaser.Scene {
   }
 
   drawMapScreen(){
+    this.combatBuilt = false;
     this.clearRoot();
     window.drawSeaChart(G, getCurrentNode(), chooseNextNode);
   }
@@ -791,6 +792,7 @@ window.previewSeaChart = () => {
   const scene = window.game.scene.getScenes(true)[0];
   if (!G) startGame('Branch');
   G.pendingMapChoice = true;
+  scene.combatBuilt = false;
   scene.clearRoot();
   window.drawSeaChart(G, getCurrentNode(), chooseNextNode);
   return window.voyageState();

@@ -5,7 +5,7 @@ import "./SeaVoyageRefinements.css";
 interface SeaNode { id: string; floor: number; lane: number; kind: string; connectsTo: string[] }
 interface SeaState {
   act: number; captainKey: string; cap: { name: string }; player: { hp: number; maxHp: number };
-  rubees: number; deck: { all: unknown[] }; mapFloors: SeaNode[][];
+  rubees: number; deck: { all: unknown[] }; mapFloors: SeaNode[][]; revealedChartAct?: number;
   visitedNodeIds: Set<string>; pendingMapChoice: boolean; revealedChartNodes?: string[];
 }
 const labels: Record<string, string> = {common:"Fight", elite:"Elite Fight", boss:"Boss Fight", oasis:"Oasis", event:"Mystery", shop:"Emporium"};
@@ -64,7 +64,8 @@ function draw(state: SeaState, current: SeaNode | null, choose: (id: string) => 
   const target = root(); target.hidden = false;
   const nodes = state.mapFloors.flat();
   const reachable = new Set(state.pendingMapChoice ? current?.connectsTo || [] : []);
-  const revealed = new Set(state.revealedChartNodes || []);
+  const revealed = new Set(state.revealedChartAct === state.act ? state.revealedChartNodes || [] : []);
+  state.revealedChartAct = state.act;
   state.visitedNodeIds.forEach(id => revealed.add(id));
   reachable.forEach(id => revealed.add(id));
   state.revealedChartNodes = [...revealed];
