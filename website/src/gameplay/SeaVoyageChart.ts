@@ -65,7 +65,8 @@ function draw(state: SeaState, current: SeaNode | null, choose: (id: string) => 
   reachable.forEach(id => revealed.add(id));
   state.revealedChartNodes = [...revealed];
   // Preserve the full graph at a readable scale; the viewport follows the current port.
-  const chartHeight = Math.max(780, (state.mapFloors.length - 1) * 180 + 240);
+  const stageSpacing = Math.min(180, Math.max(110, (target.clientHeight - 190) * .4));
+  const chartHeight = Math.max(780, (state.mapFloors.length - 1) * stageSpacing + 240);
   // A single bottom-to-top branching chart, not a folded serpentine track.
   const positions = new Map(nodes.map(node => {
     const row = state.mapFloors[node.floor];
@@ -74,7 +75,7 @@ function draw(state: SeaState, current: SeaNode | null, choose: (id: string) => 
     // Even stage spacing, with a gentle shared drift rather than random offsets.
     // Keep the outer quarters clear for the chart's candy illustrations.
     const drift = laneCount > 1 ? Math.sin(node.floor * 1.35) * 14 : 0;
-    return [node.id, {x:500 + (laneIndex - (laneCount - 1) / 2) * (560 / Math.max(2, laneCount - 1)) + drift, y:chartHeight - 120 - node.floor * 180}];
+    return [node.id, {x:500 + (laneIndex - (laneCount - 1) / 2) * (560 / Math.max(2, laneCount - 1)) + drift, y:chartHeight - 120 - node.floor * stageSpacing}];
   }));
   let routes = "";
   nodes.forEach(node => node.connectsTo.forEach(id => {
