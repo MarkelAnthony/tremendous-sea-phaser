@@ -39,9 +39,6 @@ export function drawOrnateTrees(g: Phaser.GameObjects.Graphics): void {
       curve(p, w, 0x805237);
       curve(p.map((n, k) => k % 2 === 0 ? n - 3 : n), Math.max(2, w * 0.22), 0xe0af64);
     });
-    // Gold spirals wound around the sinuous bark, rather than straight poles.
-    curve([-3, -15, 21, -35, -26, -39, -9, -61], 2, 0xffde94);
-    curve([-9, -61, 21, -80, -17, -90, 1, -115], 2, 0xffde94);
     // Distinct sweeping crowns built out of leafy sprays, with dark undersides.
     const sprays = [[-65,-135,24],[-39,-164,27],[-4,-182,30],[32,-166,27],[63,-145,24],[-23,-143,22],[20,-146,23]];
     for (const [dx, dy, radius] of sprays) {
@@ -83,13 +80,37 @@ export function drawOrnateTrees(g: Phaser.GameObjects.Graphics): void {
       g.fillTriangle(x+dx*s,y+dy*s,x+(dx+10)*s,y+(dy-8)*s,x+(dx+13)*s,y+(dy+3)*s);
       g.lineStyle(1, tree.dark); g.lineBetween(x+dx*s,y+dy*s,x+(dx+10)*s,y+(dy-4)*s);
     }
-    // Hanging pearl blossoms and tiny carved brass charms.
-    for (const [dx, dy] of [[-52,-96],[42,-104],[13,-94]]) {
-      const px = x+dx*s, py = y+dy*s;
-      g.lineStyle(1, 0xe3bc73, 0.85); g.lineBetween(px, py, px-3*s, py+23*s);
-      g.fillStyle(0x62442e); g.fillCircle(px-3*s, py+24*s, 5*s);
-      g.fillStyle(0xffdf91); g.fillEllipse(px-3*s, py+23*s, 5*s, 8*s);
-      g.fillStyle(0xfff5cf); g.fillCircle(px-4*s, py+21*s, 1.5*s);
-    }
+    // Christmas lights follow the old wraps and hanging strands. Draw last so
+    // the sockets and bulbs remain visible against the bark (world coordinates).
+    const colors = [0xff605b, 0x78ed96, 0x78bdff, 0xffdb72];
+    const bulb = (dx: number, dy: number, index: number): void => {
+      const px = x + dx*s, py = y + dy*s;
+      const color = colors[index % colors.length];
+      g.fillStyle(color, 0.07); g.fillCircle(px, py+6*s, 9*s);
+      g.fillStyle(color, 0.15); g.fillCircle(px, py+6*s, 6*s);
+      g.lineStyle(1*s, 0x183b2b); g.lineBetween(px, py, px, py+3*s);
+      g.fillStyle(0x183b2b); g.fillRect(px-2*s, py+2*s, 4*s, 3*s);
+      g.fillStyle(color); g.fillEllipse(px, py+7*s, 5*s, 8*s);
+      g.fillStyle(0xfff8e4); g.fillEllipse(px-s, py+6*s, 1.5*s, 3*s);
+    };
+    const strands = [
+      [-3,-15,21,-35,-26,-39,-9,-61],
+      [-9,-61,21,-80,-17,-90,1,-115],
+    ];
+    strands.forEach((p, strand) => {
+      curve(p, 2, 0x183b2b);
+      curve(p, 0.7, 0x719b73);
+      for (let j = 0; j < 5; j++) {
+        const t = (j+0.5)/5, u = 1-t;
+        bulb(u*u*u*p[0]+3*u*u*t*p[2]+3*u*t*t*p[4]+t*t*t*p[6],
+          u*u*u*p[1]+3*u*u*t*p[3]+3*u*t*t*p[5]+t*t*t*p[7], j+strand);
+      }
+    });
+    [[-52,-96],[42,-104],[13,-94]].forEach(([dx,dy], i) => {
+      g.lineStyle(1.5*s, 0x183b2b);
+      g.lineBetween(x+dx*s, y+dy*s, x+(dx-3)*s, y+(dy+23)*s);
+      bulb(dx-1, dy+7, i);
+      bulb(dx-3, dy+23, i+1);
+    });
   }
 }
