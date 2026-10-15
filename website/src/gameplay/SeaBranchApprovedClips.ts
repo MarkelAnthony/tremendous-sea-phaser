@@ -2,7 +2,8 @@ import Phaser from "phaser";
 import { publicAssetUrl } from "../pixellab/templateAssetPaths";
 
 const sequences = {
-  idle: Array.from({ length: 8 }, (_, i) => `branch-combat/idle-${i}.png`),
+  idle: Array.from({ length: 17 }, (_, i) => `branch-redraw-movement/idle-${i}.png`),
+  shuffle: Array.from({ length: 9 }, (_, i) => `branch-redraw-movement/shuffle-${i}.png`),
   jab: [2, 1, 0, 1, 2].map(i => `branch-redraw-attacks/jab-${i}.png`),
   heavy: Array.from({ length: 6 }, (_, i) => `branch-redraw-attacks/heavy-${i}.png`),
   fire: Array.from({ length: 17 }, (_, i) => `branch-redraw-attacks/fire-${i}.png`),
@@ -19,17 +20,10 @@ export function preloadApprovedBranchClips(scene: Phaser.Scene): void {
 
 /** A single fixed canvas anchor per sequence preserves drawn footwork, not frame-by-frame snapping. */
 export function prepareApprovedBranchClip(scene: Phaser.Scene, sprite: Phaser.GameObjects.Sprite, clip: BranchClip): void {
-  // Return to the approved guard between the approved redraw attack sequences.
-  if (clip === "idle" && scene.textures.exists("branch-approved-redraw")) {
-    sprite.anims.stop();
-    const frame = scene.textures.get("branch-approved-redraw").get();
-    sprite.setTexture("branch-approved-redraw").setOrigin(0.5, 1)
-      .setScale(Number(sprite.getData("visibleModelHeight") || 176) / frame.realHeight);
-    sprite.setData("approvedClip", "idle");
-    sprite.setData("redrawArt", "approved-christmas-v5");
-    return;
-  }
-  const first = scene.textures.get(key(clip, 0)).get();
+  // Movement shares the preview's guard anchor and scale, so switching loops
+  // preserves the model's height and the saved footwork instead of re-fitting it.
+  const movement = clip === "idle" || clip === "shuffle";
+  const first = scene.textures.get(key(movement ? "idle" : clip, 0)).get();
   const canvas = document.createElement("canvas");
   canvas.width = first.cutWidth; canvas.height = first.cutHeight;
   const context = canvas.getContext("2d", { willReadFrequently: true });
@@ -48,11 +42,30 @@ export function prepareApprovedBranchClip(scene: Phaser.Scene, sprite: Phaser.Ga
     .setScale(Number(sprite.getData("visibleModelHeight") || 176) / Math.max(1, bottom - top));
   const animation = `branch-approved-${clip}`;
   if (!scene.anims.exists(animation)) scene.anims.create({ key: animation, frameRate: 1000,
-    frames: sequences[clip].map((_, i) => ({ key: key(clip, i), duration: (clip === "fire" ? 100 : clip === "idle" ? 140 : 90) - 1 })),
-    repeat: clip === "idle" ? -1 : 0,
+    frames: sequences[clip].map((_, i) => ({ key: key(clip, i), duration: (clip === "fire" ? 100 : clip === "idle" ? 85 : clip === "shuffle" ? 110 : 90) - 1 })),
+    repeat: movement ? -1 : 0,
   });
   sprite.setData("approvedClip", clip);
   sprite.play(animation);
+}
+
+/** Follow actual on-deck travel without changing its timing or combat behavior. */
+export function watchApprovedBranchMovement(scene: Phaser.Scene, sprite: Phaser.GameObjects.Sprite): void {
+  let previousX: number | undefined;
+  const update = (): void => {
+    if (!sprite.active) return;
+    const x = sprite.x + (sprite.parentContainer?.x || 0);
+    const moving = previousX !== undefined && Math.abs(x - previousX) > 0.1;
+    previousX = x;
+    if (sprite.getData("clarityAttackPlaying")) return;
+    const clip = moving ? "shuffle" : "idle";
+    if (sprite.getData("approvedClip") !== clip) prepareApprovedBranchClip(scene, sprite, clip);
+  };
+  scene.events.on(Phaser.Scenes.Events.UPDATE, update);
+  sprite.once(Phaser.GameObjects.Events.DESTROY, () => scene.events.off(Phaser.Scenes.Events.UPDATE, update));
+  const globals = window as unknown as Record<string, unknown>;
+  globals.branchMovementState = () => ({ clip: sprite.getData("approvedClip"), frame: sprite.anims.currentFrame?.index,
+    playing: sprite.anims.isPlaying, attackPlaying: !!sprite.getData("clarityAttackPlaying"), x: sprite.x, y: sprite.y });
 }
 
 export function launchApprovedBranchBlast(scene: Phaser.Scene, sprite: Phaser.GameObjects.Sprite): void {

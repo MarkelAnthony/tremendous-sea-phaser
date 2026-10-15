@@ -2,7 +2,7 @@ import Phaser from "phaser";
 import { queueSeaAttackImpact } from "./SeaAttackImpact";
 import { assetUrl } from "../pixellab/templateAssetPaths";
 import { playApprovedBranchAttack } from "./SeaApprovedBranch";
-import { preloadApprovedBranchClips, prepareApprovedBranchClip } from "./SeaBranchApprovedClips";
+import { preloadApprovedBranchClips, prepareApprovedBranchClip, watchApprovedBranchMovement } from "./SeaBranchApprovedClips";
 const APPROVED_BRANCH = "a0a63217-752b-5178-b8fb-719193036490";
 import { preloadCaptainShips } from "./SeaShipBackdrop";
 import { preloadCharacterAtlas, characterManifest, characterAtlasKey, selectCharacterState } from "../shared/animation";
@@ -53,6 +53,7 @@ export function createSeaCaptain(scene: Phaser.Scene, captain: string): Phaser.G
     sprite.setData("captain", "Branch");
     sprite.setData("artAsset", APPROVED_BRANCH);
     prepareApprovedBranchClip(scene, sprite, "idle");
+    watchApprovedBranchMovement(scene, sprite);
     return sprite;
   }
   if (captain !== "Riley") return null;
