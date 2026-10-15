@@ -3,6 +3,7 @@ import "./SeaCaptainArt";
 import "./SeaBranchBurn";
 import "./SeaBranchSpecial";
 import "./SeaParchmentCards";
+import "./SeaVoyageChart";
 import { mountSeaReadability } from "./SeaReadableCombat";
 import "./SeaReadableCombat.css";
 import { seaButtonStyle } from "./SeaVisualTheme";

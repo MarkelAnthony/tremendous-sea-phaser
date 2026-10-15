@@ -147,6 +147,7 @@ class MainScene extends Phaser.Scene {
 
   // ---- top-level dispatch, mirrors the old renderX() functions in ui.js ----
   syncFromState(){
+    window.hideSeaChart();
     if (!G){ this.drawCaptainSelect(); return; }
     if (G.over){ this.drawEndScreen(); return; }
     if (G.pendingRestartConfirm){ this.drawRestartConfirmScreen(); return; }
@@ -342,51 +343,7 @@ class MainScene extends Phaser.Scene {
 
   drawMapScreen(){
     this.clearRoot();
-    const mainCenterX = 630; // shifted right to make room for the sidebar map
-    this.addTitle(`${G.cap.name} — Act ${G.act}: The Tremendous Sea`, mainCenterX);
-    this.uiRoot.add(this.add.text(mainCenterX, 65, `❤️ ${G.player.hp}/${G.player.maxHp}   💰 ${G.rubees}   🃏 ${G.deck.all.length} cards`, {fontFamily:"sans-serif", fontSize:15, color:"#e8a33d"}).setOrigin(0.5));
-    this.drawGearRow(mainCenterX, 90, 700);
-
-    this.uiRoot.add(this.makeButton(920, 45, 150, 36, "📋 View Deck", PALETTE.panel, ()=>this.drawDeckScreen()));
-
-    const current = getCurrentNode();
-    this.drawMapSidebar(current);
-
-    if (!G.pendingMapChoice){
-      this.uiRoot.add(this.add.text(mainCenterX, 300, "Loading next step...", {fontFamily:"sans-serif", fontSize:14, color:"#93a6b8"}).setOrigin(0.5));
-      return;
-    }
-
-    const options = current.connectsTo.map(findNodeById).filter(Boolean);
-    const icons = {common:"⚔️", elite:"☠️", boss:"💀", oasis:"🏝️", event:"❓", shop:"🏪"};
-    const labels = {common:"Fight", elite:"Elite Fight", boss:"Boss Fight", oasis:"Rest at Oasis", event:"Mystery Event", shop:"F&J Emporium"};
-    const hints = {
-      common:"A common enemy.", elite:"A dangerous fight — real Gear on victory.",
-      boss:"The act's final battle.", oasis:"Fully heal and rest.",
-      event:"Something strange awaits.", shop:"Spend your Rubees.",
-    };
-
-    this.uiRoot.add(this.add.text(mainCenterX, 110, "Choose your path", {fontFamily:"sans-serif", fontSize:16, fontStyle:"bold", color:"#e8a33d"}).setOrigin(0.5));
-
-    const n = options.length;
-    const cardW = 200, cardH = 240, gap = 26;
-    const totalW = n*cardW + (n-1)*gap;
-    const startX = mainCenterX - totalW/2 + cardW/2;
-    options.forEach((node, i)=>{
-      const x = startX + i*(cardW+gap);
-      const y = 320;
-      const container = this.add.container(x, y);
-      const bg = this.add.rectangle(0, 0, cardW, cardH, PALETTE.panel, 0.95).setStrokeStyle(3, PALETTE.accent);
-      const iconText = this.add.text(0, -70, icons[node.kind]||"❓", {fontSize:48}).setOrigin(0.5);
-      const labelText = this.add.text(0, -10, labels[node.kind]||node.kind, {fontFamily:"sans-serif", fontSize:16, fontStyle:"bold", color:"#eef3f7"}).setOrigin(0.5);
-      const hintText = this.add.text(0, 28, hints[node.kind]||"", {fontFamily:"sans-serif", fontSize:12, color:"#93a6b8", wordWrap:{width:cardW-24}, align:"center"}).setOrigin(0.5, 0);
-      container.add([bg, iconText, labelText, hintText]);
-      bg.setInteractive();
-      bg.on("pointerover", ()=>{ bg.setStrokeStyle(4, 0xffffff); container.setScale(1.04); });
-      bg.on("pointerout", ()=>{ bg.setStrokeStyle(3, PALETTE.accent); container.setScale(1); });
-      bg.on("pointerdown", ()=>chooseNextNode(node.id));
-      this.uiRoot.add(container);
-    });
+    window.drawSeaChart(G, getCurrentNode(), chooseNextNode);
   }
 
   // Compact vertical "floor ladder" map — shows a window of floors around the

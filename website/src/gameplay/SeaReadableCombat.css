@@ -15,7 +15,7 @@
 .sea-readable-intent .sea-status-symbols { font-size:clamp(12px,calc(16px * var(--read-scale)),21px); overflow:visible; border-top:0; margin-top:3px; padding-top:3px; color:#a9e8ff; }
 .sea-symbol-tooltip { display:none; position:absolute; top:calc(100% + 8px); left:50%; transform:translateX(-50%); width:260px; max-width:85vw; padding:12px; border:1px solid #e5c880; border-radius:8px; background:#102332; color:#fff6dc; box-shadow:0 6px 18px #000b; font:15px/1.45 Arial,sans-serif; text-align:left; white-space:pre-line; pointer-events:none; }
 .sea-readable-enemy .sea-symbol-tooltip { top:10%; }
-.sea-readable-intent:hover .sea-symbol-tooltip, .sea-readable-intent:focus-visible .sea-symbol-tooltip, .sea-readable-enemy:hover .sea-symbol-tooltip, .sea-readable-enemy:focus-visible .sea-symbol-tooltip { display:block; }
+.sea-readable-intent:hover .sea-symbol-tooltip, .sea-readable-intent:focus-visible .sea-symbol-tooltip, .sea-readable-enemy[data-inspected=true] .sea-symbol-tooltip { display:block; }
 .sea-readable-intent strong { font-size:clamp(9px,calc(11px * var(--read-scale)),16px); letter-spacing:1px; color:#ffe5a0; }
 .sea-readable-intent span { font-size:clamp(12px,calc(17px * var(--read-scale)),24px); font-weight:bold; line-height:1.2; overflow:auto; }
 .sea-readable-intent[data-attack=true] { background:transparent; border:0; color:#ffb28e; }

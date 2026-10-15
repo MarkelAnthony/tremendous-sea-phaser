@@ -93,6 +93,18 @@ export function mountSeaReadability(game: Phaser.Game): void {
         } else {
           detail.textContent = `${info.name}\n${info.text}`;
           el.onclick = () => (window as unknown as {chooseSeaTarget: (index: number) => void}).chooseSeaTarget(info.index!);
+          let hoverTimer: ReturnType<typeof setTimeout> | undefined;
+          const cancelHover = () => { clearTimeout(hoverTimer); el.removeAttribute("data-inspected"); };
+          const beginHover = () => {
+            cancelHover();
+            hoverTimer = setTimeout(() => {
+              if (el.isConnected && (el.matches(":hover") || document.activeElement === el)) el.dataset.inspected = "true";
+            }, 3000);
+          };
+          el.onmouseenter = beginHover;
+          el.onmouseleave = cancelHover;
+          el.onfocus = beginHover;
+          el.onblur = cancelHover;
         }
         el.setAttribute("aria-label", detail.textContent || info.name);
         el.append(detail);
