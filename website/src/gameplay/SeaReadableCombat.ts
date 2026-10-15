@@ -5,14 +5,13 @@ import "./SeaReadableChoices.css";
 import "./SeaCandyCards.css";
 import "./SeaJewelCards.css";
 import "./SeaAmethystCards.css";
-import { assetUrl } from "../pixellab/templateAssetPaths";
 import { createRibbonTitle, fitRibbonTitles } from "./SeaRibbonTitle";
 
 interface ReadableInfo { kind: "card" | "choice" | "intent" | "enemy"; name: string; text: string; cost?: number; width: number; height: number; offsetY?: number; playable?: boolean; index?: number; rarity?: string; status?: Record<string, number | boolean>; armored?: boolean }
 export function mountSeaReadability(game: Phaser.Game): void {
   const layer = document.createElement("div");
   layer.className = "sea-readability";
-  layer.style.setProperty("--jewel-card-art", `url("${new URL(assetUrl("images", "836f80c8-55a5-52b1-8a33-ac99637eb295", "image.png"), document.baseURI).href}")`);
+  layer.style.setProperty("--jewel-card-art", `url("${new URL("art/approved-ribbon-card.svg", document.baseURI).href}")`);
   document.getElementById("hud-root")!.appendChild(layer);
   let signature = "";
   game.events.on("poststep", () => {

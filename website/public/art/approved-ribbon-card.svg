@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 380" preserveAspectRatio="none"><defs>
+<linearGradient id="frame" x2="0" y2="1"><stop stop-color="#775384"/><stop offset="1" stop-color="#34293f"/></linearGradient>
+<linearGradient id="face" x2="0" y2="1"><stop stop-color="#654373"/><stop offset="1" stop-color="#41284d"/></linearGradient>
+<linearGradient id="gold" x2="0" y2="1"><stop stop-color="#f0dba3"/><stop offset=".5" stop-color="#b59155"/><stop offset="1" stop-color="#80613c"/></linearGradient>
+<g id="card">
+<path d="M24 20 H236 L252 36 V362 L236 378 H24 L8 362 V36Z" fill="#211925" stroke="#100e15" stroke-width="4"/>
+<path d="M25 25 H235 L247 37 V360 L235 373 H25 L13 360 V37Z" fill="url(#frame)" stroke="url(#gold)" stroke-width="2"/>
+<path d="M31 66 H229 L237 74 V354 L227 363 H33 L23 354 V74Z" fill="#ad9490" stroke="#211a28" stroke-width="4"/>
+<path d="M32 69 H228 L234 75 V353 L226 360 H34 L26 353 V75Z" fill="none" stroke="#dbc49a" stroke-width="1.5"/>
+<!-- Folded ends sit behind the broad face and attach to the card rails. -->
+<path d="M18 36 L2 44 L10 57 L2 72 L35 67 L35 44Z" fill="#322239" stroke="#b49361" stroke-width="1.5"/>
+<path d="M242 36 L258 44 L250 57 L258 72 L225 67 L225 44Z" fill="#322239" stroke="#b49361" stroke-width="1.5"/>
+<path d="M18 59 L35 67 L35 53Z M242 59 L225 67 L225 53Z" fill="#1e1727"/>
+<path d="M18 29 Q130 14 242 29 V61 Q130 46 18 61Z" fill="url(#face)" stroke="#211528" stroke-width="4"/>
+<path d="M18 29 Q130 14 242 29 V61 Q130 46 18 61Z" fill="none" stroke="#d7bb83" stroke-width="1.6"/>
+<path d="M23 32 Q130 18 237 32" fill="none" stroke="#ead4a5" stroke-width=".8"/>
+<!-- Exactly one cost gem, clear of the lettering. -->
+<path d="M27 60 L44 70 V90 L27 101 L10 90 V70Z" fill="#352241" stroke="#211626" stroke-width="4"/>
+<path d="M27 61 L43 71 V89 L27 99 L11 89 V71Z" fill="#724991" stroke="#dbc293" stroke-width="1.5"/>
+<path d="M27 64 L27 80 L14 72Z" fill="#b48bd0"/><path d="M27 80 L40 88 L27 96Z" fill="#4e326d"/>
+
+<path d="M32 344 L32 351 L40 351 M228 344 L228 351 L220 351" fill="none" stroke="#eed5a3" stroke-width="1.5"/>
+</g>
+<path id="short-title" d="M48 49 Q130 38 212 49"/>
+<path id="long-title" d="M48 49 Q130 38 212 49"/>
+</defs><use href="#card"/></svg>

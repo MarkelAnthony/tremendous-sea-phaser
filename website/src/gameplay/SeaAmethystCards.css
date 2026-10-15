@@ -69,3 +69,16 @@
   border:0 !important; border-radius:0; text-shadow:0 1px 0 #21112d;
 }
 
+
+/* Approved reference-led preview: crisp vector frame and one integrated jewel. */
+.sea-readable-card::before, .sea-readable-choice::before { image-rendering:auto; }
+.sea-readable-card, .sea-readable-choice { overflow:visible; }
+.sea-ribbon-title text { fill:#fff3d5; stroke:#291b30; stroke-width:1; }
+.sea-readable-cost, .sea-choice-cost {
+  left:3.85%; top:16.05%; width:13.08%; height:10%; max-width:none;
+  aspect-ratio:auto; clip-path:none; background:transparent !important;
+  font-family:Georgia,serif;
+  font-size:calc(var(--card-width) * .09615) !important;
+  text-shadow:0 1px 1px #362441;
+}
+.sea-readable-cost::before, .sea-choice-cost::before { display:none; }
