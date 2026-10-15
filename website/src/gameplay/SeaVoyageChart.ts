@@ -67,7 +67,7 @@ function draw(state: SeaState, current: SeaNode | null, choose: (id: string) => 
   const positions = new Map(nodes.map(node => {
     const laneCount = state.mapFloors[node.floor].length;
     const jitter = laneCount > 1 ? Math.sin(node.floor * 2.4 + node.lane) * 18 : 0;
-    return [node.id, {x:500 + (node.lane - (laneCount - 1) / 2) * (300 / Math.max(2, laneCount - 1)) + jitter, y:550 - node.floor * (510 / Math.max(1, state.mapFloors.length - 1))}];
+    return [node.id, {x:500 + (node.lane - (laneCount - 1) / 2) * (430 / Math.max(2, laneCount - 1)) + jitter, y:node.floor === 0 ? 550 : 470 - (node.floor - 1) * (430 / Math.max(1, state.mapFloors.length - 2))}];
   }));
   let routes = "";
   nodes.forEach(node => node.connectsTo.forEach(id => {
