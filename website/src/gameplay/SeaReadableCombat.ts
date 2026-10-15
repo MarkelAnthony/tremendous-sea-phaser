@@ -170,7 +170,7 @@ export function mountSeaReadability(game: Phaser.Game): void {
     const rowHeight = Math.max(0, ...faces.map(face => face.offsetHeight));
     faces.forEach(face => {
       face.style.height = `${rowHeight}px`;
-      face.style.top = `${Math.max(8, window.innerHeight - rowHeight - 12)}px`;
+      face.style.top = `${Math.max(8, rect.bottom - rowHeight - 6 * sy)}px`;
     });
   });
 }
