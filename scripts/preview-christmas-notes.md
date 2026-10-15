@@ -1,0 +1,1 @@
+Preview-only correction: preserve fight-layout-revised-v4 composition, Branch, enemy placeholder, and all scenery. Replace golden tree spheres with small red/green/blue/yellow Christmas bulbs, visible dark sockets and connecting wire. Do not change live assets or combat.
