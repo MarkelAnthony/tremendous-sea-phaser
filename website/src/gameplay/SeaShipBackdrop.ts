@@ -1,6 +1,6 @@
 import Phaser from "phaser";
 import { drawShipDeck } from "./SeaShipDeck";
-import { assetUrl } from "../pixellab/templateAssetPaths";
+import { publicAssetUrl } from "../pixellab/templateAssetPaths";
 
 /** Captain-specific ship scenery. Act scenery is deliberately left for a later pass. */
 export function drawCaptainShip(scene: Phaser.Scene, root: Phaser.GameObjects.Container, captain: string): void {
@@ -10,7 +10,7 @@ export function drawCaptainShip(scene: Phaser.Scene, root: Phaser.GameObjects.Co
 
 export function preloadCaptainShips(scene: Phaser.Scene): void {
   scene.load.image("branch-ship", new URL("art/branch-ship.png", document.baseURI).href);
-  scene.load.image("kindleroot-deck", assetUrl("images", "3fd01aa3-ba6b-5567-a564-5b0cb564bfe6", "image.png"));
+  scene.load.image("kindleroot-deck", publicAssetUrl("art", "kindleroot-approved-christmas.png"));
 }
 (window as unknown as Record<string, unknown>).shipPreview = () => {
   const game = (window as unknown as { game?: Phaser.Game }).game;

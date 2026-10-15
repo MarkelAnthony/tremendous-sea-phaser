@@ -1,5 +1,6 @@
 import Phaser from "phaser";
 import { APPROVED_FIRE_DURATIONS } from "./SeaApprovedBranchTiming";
+import { publicAssetUrl } from "../pixellab/templateAssetPaths";
 
 const sequences = {
   idle: Array.from({ length: 8 }, (_, i) => `branch-combat/idle-${i}.png`),
@@ -11,6 +12,7 @@ export type BranchClip = keyof typeof sequences;
 const key = (clip: BranchClip, i: number): string => `branch-approved-${clip}-${i}`;
 
 export function preloadApprovedBranchClips(scene: Phaser.Scene): void {
+  scene.load.image("branch-approved-redraw", publicAssetUrl("art", "branch-approved-redraw.png"));
   for (const clip of Object.keys(sequences) as BranchClip[]) sequences[clip].forEach((path, i) => {
     scene.load.image(key(clip, i), new URL(`previews/${path}`, document.baseURI).href);
   });
@@ -18,6 +20,17 @@ export function preloadApprovedBranchClips(scene: Phaser.Scene): void {
 
 /** A single fixed canvas anchor per sequence preserves drawn footwork, not frame-by-frame snapping. */
 export function prepareApprovedBranchClip(scene: Phaser.Scene, sprite: Phaser.GameObjects.Sprite, clip: BranchClip): void {
+  // The approved redraw is a single guard pose, not a newly generated clip.
+  // Existing Jab/Heavy/Fire motion and hit timing remain untouched.
+  if (clip === "idle" && scene.textures.exists("branch-approved-redraw")) {
+    sprite.anims.stop();
+    const frame = scene.textures.get("branch-approved-redraw").get();
+    sprite.setTexture("branch-approved-redraw").setOrigin(0.5, 1)
+      .setScale(Number(sprite.getData("visibleModelHeight") || 176) / frame.realHeight);
+    sprite.setData("approvedClip", "idle");
+    sprite.setData("redrawArt", "approved-christmas-v5");
+    return;
+  }
   const first = scene.textures.get(key(clip, 0)).get();
   const canvas = document.createElement("canvas");
   canvas.width = first.cutWidth; canvas.height = first.cutHeight;
