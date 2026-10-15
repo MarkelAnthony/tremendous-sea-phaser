@@ -3,12 +3,12 @@ import Phaser from "phaser";
 /** Source-art coordinates, transformed with the 680×381 Kindleroot backdrop. */
 export function addKindlerootLights(scene: Phaser.Scene, root: Phaser.GameObjects.Container): void {
   const g = scene.add.graphics();
-  g.setScale(1000 / 680, 494 / 381);
+  g.setScale(1000 / 680, 494 / 384);
   const colors = [0xff414c, 0x42ef8c, 0x49b5ff, 0xffe56b];
   let count = 0;
   // Only the tiny light/glow layers breathe; cables and sockets stay solid.
   const twinkles = Array.from({ length: 5 }, () =>
-    scene.add.graphics().setScale(1000 / 680, 494 / 381));
+    scene.add.graphics().setScale(1000 / 680, 494 / 384));
   const bulb = (x: number, y: number): void => {
     const color = colors[count++ % colors.length];
     g.fillStyle(color, 0.12); g.fillCircle(x, y + 4, 8);
@@ -41,40 +41,26 @@ export function addKindlerootLights(scene: Phaser.Scene, root: Phaser.GameObject
       }
     }
   };
-  // Hanging decorations beneath the two crowns (not the ship's rigging).
-  [
-    [[292,60],[288,90],[292,122]], [[330,55],[335,100],[332,140]],
-    [[370,60],[372,95],[370,130]], [[408,65],[412,100],[410,140]],
-    [[450,70],[448,110],[452,150]], [[520,40],[518,75],[522,105]],
-    [[555,35],[553,70],[556,100]], [[590,30],[592,60],[590,95]],
-    [[625,35],[627,70],[624,105]], [[660,30],[662,65]],
-    // Continue the strings across the exposed trunk wraps.
-    [[338,146],[348,149],[358,150],[370,149],[380,146],[388,142]],
-    [[326,166],[340,170],[352,171],[366,170],[378,167],[390,162]],
-    [[626,128],[638,131],[650,132],[662,131],[672,127]],
-    [[618,142],[630,145],[643,146],[656,144],[668,140]],
-    // Previously missed canopy pendants, circular ornaments and lower wraps.
-    [[355,55],[352,72],[348,90],[348,105]],
-    [[430,60],[435,74],[442,88],[445,100]],
-    [[455,45],[460,56],[469,68],[475,75]],
-    [[545,45],[549,61],[554,74],[555,85]],
-    [[575,55],[579,70],[587,85],[590,95]],
-    [[625,50],[629,65],[633,79],[635,90]],
-    [[345,73],[339,76],[339,84],[345,88],[351,84],[351,76],[345,73]],
-    [[415,78],[409,82],[409,89],[415,93],[421,89],[421,82],[415,78]],
-    [[605,53],[599,57],[599,64],[605,68],[611,64],[611,57],[605,53]],
-    [[650,68],[644,72],[644,79],[650,83],[656,79],[656,72],[650,68]],
-    [[300,155],[316,164],[333,169],[351,168],[370,160]],
-    [[320,144],[324,154],[331,157],[339,153],[340,145]],
-    [[580,150],[597,158],[616,164],[638,165],[660,157]],
-    [[590,175],[606,181],[626,185],[641,183],[650,176]],
-    [[630,154],[637,151],[645,156],[641,164],[633,160],[630,154]],
-    [[300,96],[312,106],[325,112],[338,108],[351,100],[364,96]],
-    [[306,118],[320,124],[334,120]],
-    [[628,196],[652,204],[630,214],[650,222],[632,232]],
-    [[190,52],[204,60],[216,52]],
-    [[232,64],[246,72],[258,64]],
-  ].forEach(strand);
+  // Measured source-art positions: replace the pendants themselves, rather
+  // than drawing unrelated swags on top of still-gold source pixels.
+  const strands = [
+    [[207,78],[208,108],[211,139]], [[222,79],[220,112],[222,144]],
+    [[237,78],[239,106],[237,138]], [[251,76],[253,105],[254,141]],
+    [[264,75],[262,104],[262,134]],
+    [[353,87],[356,120],[355,158]], [[371,85],[374,121],[378,162]],
+    [[395,65],[397,88],[397,108]],
+    [[503,30],[508,64],[516,103]], [[529,29],[534,63],[538,111]],
+    [[553,27],[557,58],[566,112]], [[581,26],[584,60],[590,115]],
+    [[607,26],[610,60],[617,116]], [[634,27],[635,54],[635,102]],
+    [[653,25],[655,49],[660,70]], [[674,25],[674,50],[677,65]],
+    [[273,180],[291,188],[313,190],[339,186],[357,180]],
+    [[268,211],[289,222],[313,224],[336,217],[351,208]],
+    [[270,225],[290,234],[314,236],[338,228],[353,220]],
+    [[613,126],[633,136],[654,138],[676,130]],
+    [[613,148],[636,159],[658,160],[677,149]],
+    [[660,303],[675,315],[660,329],[676,341],[660,354]],
+  ];
+  strands.forEach(strand);
   root.add([g, ...twinkles]);
   const tweens = twinkles.map((light, index) => scene.tweens.add({
     targets: light, alpha: { from: 0.1, to: 0.8 },
@@ -82,6 +68,6 @@ export function addKindlerootLights(scene: Phaser.Scene, root: Phaser.GameObject
     ease: "Sine.easeInOut", yoyo: true, repeat: -1,
   }));
   root.once("destroy", () => tweens.forEach((tween) => tween.remove()));
-  root.setData("christmasLights", { visible: true, bulbs: count, strands: 34,
+  root.setData("christmasLights", { visible: true, bulbs: count, strands: strands.length,
     twinkling: true, renderer: "kindleroot-backdrop-overlay" });
 }
