@@ -1,6 +1,7 @@
 import { assetUrl } from "../pixellab/templateAssetPaths";
 import "./SeaVoyageChart.css";
 import "./SeaVoyageRefinements.css";
+import "./SeaVoyageScroll.css";
 import { chartIcon, chartMarginArt, voyageSeaArt, voyageFoam } from "./SeaChartIllustrations";
 
 interface SeaNode { id: string; floor: number; lane: number; kind: string; connectsTo: string[] }
@@ -63,6 +64,8 @@ function draw(state: SeaState, current: SeaNode | null, choose: (id: string) => 
   state.visitedNodeIds.forEach(id => revealed.add(id));
   reachable.forEach(id => revealed.add(id));
   state.revealedChartNodes = [...revealed];
+  // Preserve the full graph at a readable scale; the viewport follows the current port.
+  const chartHeight = Math.max(780, (state.mapFloors.length - 1) * 180 + 240);
   // A single bottom-to-top branching chart, not a folded serpentine track.
   const positions = new Map(nodes.map(node => {
     const row = state.mapFloors[node.floor];
@@ -71,24 +74,25 @@ function draw(state: SeaState, current: SeaNode | null, choose: (id: string) => 
     // Even stage spacing, with a gentle shared drift rather than random offsets.
     // Keep the outer quarters clear for the chart's candy illustrations.
     const drift = laneCount > 1 ? Math.sin(node.floor * 1.35) * 14 : 0;
-    return [node.id, {x:500 + (laneIndex - (laneCount - 1) / 2) * (470 / Math.max(2, laneCount - 1)) + drift, y:530 - node.floor * (475 / Math.max(1, state.mapFloors.length - 1))}];
+    return [node.id, {x:500 + (laneIndex - (laneCount - 1) / 2) * (560 / Math.max(2, laneCount - 1)) + drift, y:chartHeight - 120 - node.floor * 180}];
   }));
   let routes = "";
   nodes.forEach(node => node.connectsTo.forEach(id => {
     const a = positions.get(node.id), b = positions.get(id); if (!a || !b) return;
     const available = current?.id === node.id && reachable.has(id);
     const visited = state.visitedNodeIds.has(node.id) && state.visitedNodeIds.has(id);
-    routes += `<path d="M${a.x} ${a.y} C${a.x} ${(a.y+b.y)/2},${b.x} ${(a.y+b.y)/2},${b.x} ${b.y}" fill="none" stroke="${available ? "#ad4156" : visited ? "#54745c" : "#806e56"}" stroke-width="${available ? 2.4 : 1.4}" opacity="${available || visited ? 1 : .4}" ${visited ? "" : 'stroke-dasharray="3 6"'}/>`;
+    routes += `<path d="M${a.x} ${a.y} C${a.x} ${(a.y+b.y)/2},${b.x} ${(a.y+b.y)/2},${b.x} ${b.y}" fill="none" stroke="${available ? "#ad4156" : visited ? "#54745c" : "#806e56"}" stroke-width="${available ? 3 : 1.6}" opacity="${available ? .95 : visited ? .55 : .16}" ${visited ? "" : 'stroke-dasharray="3 6"'}/>`;
   }));
-  target.innerHTML = `<div class="sea-chart-header"><small>THE TREMENDOUS SEA · ACT ${state.act}</small><h2>${state.act===1 ? "Ocean of Tears" : state.act===2 ? "Candied Ocean" : "The Eternal Dark"}</h2><p>${escape(state.cap.name)} · ♥ ${state.player.hp}/${state.player.maxHp} · ${state.rubees} Rubees · ${state.deck.all.length} cards</p></div><div class="sea-chart-body"><svg viewBox="0 0 1000 590" preserveAspectRatio="none" aria-hidden="true"><defs><filter id="paper-grain"><feTurbulence type="fractalNoise" baseFrequency=".65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".09"/></feComponentTransfer></filter><radialGradient id="paper-tone"><stop stop-color="#fbefd6"/><stop offset="1" stop-color="#dbc19a"/></radialGradient></defs><rect width="1000" height="590" fill="url(#paper-tone)"/><rect width="1000" height="590" filter="url(#paper-grain)" opacity=".5"/>${chartMarginArt()}${routes}</svg></div><div class="sea-chart-footer"><b>${state.pendingMapChoice ? "Choose your next port" : "Your journey"}</b><span>Follow the rose-colored paths · Distant dots remain unknown</span><div class="sea-chart-legend">${[["common","Fight"],["elite","Elite"],["oasis","Rest"],["event","Mystery"],["shop","Shop"],["boss","Boss"]].map(([kind,label]) => `<span>${chartIcon(kind)}${label}</span>`).join("")}</div></div>`;
+  target.innerHTML = `<header class="sea-chart-header"><small>THE TREMENDOUS SEA · ACT ${state.act}</small><h2>${state.act===1 ? "Ocean of Tears" : state.act===2 ? "Candied Ocean" : "The Eternal Dark"}</h2><p>${escape(state.cap.name)} <span>♥ ${state.player.hp}/${state.player.maxHp} · ${state.rubees} Rubees</span></p></header><div class="sea-chart-scroll" tabindex="0" role="region" aria-label="Voyage chart, scroll to explore the journey"><div class="sea-chart-body"><svg viewBox="0 0 1000 ${chartHeight}" preserveAspectRatio="none" aria-hidden="true"><g transform="translate(0 ${Math.max(0, chartHeight-720)})">${chartMarginArt()}</g>${routes}</svg></div></div><footer class="sea-chart-footer"><b>${state.pendingMapChoice ? "Choose your next port" : "Your journey"}</b><span>Rose paths lead onward · Scroll to explore</span></footer>`;
   const body = target.querySelector<HTMLDivElement>(".sea-chart-body")!;
-  const stageGap = body.clientHeight * (475 / 590) / Math.max(1, state.mapFloors.length - 1);
-  body.style.setProperty("--chart-port-size", `${Math.max(15, Math.min(30, stageGap * .78))}px`);
+  const scroller = target.querySelector<HTMLDivElement>(".sea-chart-scroll")!;
+  body.style.height = `${chartHeight}px`;
+  body.style.setProperty("--chart-port-size", "54px");
   nodes.forEach(node => {
     const p = positions.get(node.id)!; const known = revealed.has(node.id), visited = state.visitedNodeIds.has(node.id), here = node.id === current?.id;
     const el = document.createElement("button"); el.type = "button";
     el.className = `sea-chart-node${reachable.has(node.id) ? " reachable" : ""}${visited ? " visited" : ""}${here ? " current" : ""}`;
-    el.style.cssText = `left:${p.x/10}%;top:${p.y/5.9}%;`;
+    el.style.cssText = `left:${p.x/10}%;top:${p.y/chartHeight*100}%;`;
     el.disabled = !reachable.has(node.id);
     el.dataset.nodeId = node.id; el.dataset.revealed = String(known);
     el.setAttribute("aria-label", known ? `${here ? "Current port: " : visited ? "Visited: " : "Sail to "}${labels[node.kind] || node.kind}, stage ${node.floor+1}` : `Uncharted port, stage ${node.floor+1}`);
@@ -96,6 +100,8 @@ function draw(state: SeaState, current: SeaNode | null, choose: (id: string) => 
     el.onclick = () => sail(node, choose);
     body.append(el);
   });
+  const hereY = current ? positions.get(current.id)?.y : chartHeight - 120;
+  scroller.scrollTop = Math.max(0, (hereY ?? chartHeight - 120) - scroller.clientHeight + 110);
 }
 const globals = window as unknown as Record<string, unknown>;
 globals.drawSeaChart = draw;

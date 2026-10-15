@@ -1,0 +1,21 @@
+/* Approved spacious chart: the journey scrolls rather than shrinking its ports. */
+.sea-chart-screen{border:1px solid #ac8a68;border-radius:14px;background:radial-gradient(ellipse at 50% 45%,#faf0d9,#e8d0ab);box-shadow:inset 0 0 55px #9b75432b,0 8px 30px #15252a40;padding:0 18px;color:#614c3b}
+.sea-chart-header{margin:0 24px;padding:15px 0 10px;position:relative;z-index:3;flex-shrink:0;border-bottom:1px solid #a7856038;background:none}
+.sea-chart-header small{font:9px Georgia,serif;letter-spacing:3px;color:#96735e}
+.sea-chart-header h2{font:italic 30px Georgia,serif;margin:5px 0;color:#654732;letter-spacing:.5px}
+.sea-chart-header p{font:11px Georgia,serif;color:#856c54;margin:6px 0 0}.sea-chart-header p span{margin-left:16px;color:#967a63}
+.sea-chart-scroll{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;position:relative;scrollbar-width:thin;scrollbar-color:#ba9c76 transparent;overscroll-behavior:contain;outline-offset:-4px;background:linear-gradient(#b8936220,transparent 22px,transparent calc(100% - 22px),#b8936218)}
+.sea-chart-body{flex:none;position:relative;width:100%;margin:0;min-height:780px;isolation:isolate;overflow:visible;background:none;border:0}
+.sea-chart-body>svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.sea-chart-body .sea-chart-node{width:64px;height:64px;touch-action:pan-y}
+.sea-chart-body .sea-chart-node .sea-chart-dot{width:7px;height:7px;background:#a78e6e;border:1px solid #866f5140;box-shadow:none}
+.sea-chart-body .sea-chart-node[data-revealed=true] .sea-chart-dot{width:48px;height:48px;padding:8px;background:#efdfbf;border:1px solid #a8885f66;box-shadow:0 2px 4px #86674712;color:#6f563e}
+.sea-chart-body .sea-chart-node.reachable .sea-chart-dot{width:60px;height:60px;padding:10px;background:#fff3d9;border:1.5px solid #b96d75;box-shadow:0 0 0 6px #b96d750c,0 3px 9px #84613d15;color:#945463;animation:none}
+.sea-chart-body .sea-chart-node.reachable:hover .sea-chart-dot,.sea-chart-body .sea-chart-node.reachable:focus-visible .sea-chart-dot{transform:translateY(-2px);outline:2px solid #c68c8e;outline-offset:4px}
+.sea-chart-body .sea-chart-node .sea-chart-label,.sea-chart-body .sea-chart-node:nth-last-child(-n+3) .sea-chart-label{top:70px;left:50%;right:auto;transform:translateX(-50%);font:14px Georgia,serif;color:#944f5b;letter-spacing:.3px;background:#f7e9cf;border:0;padding:3px 10px;border-radius:9px;white-space:nowrap}
+.sea-chart-body .sea-chart-node.current .sea-chart-dot{background:#dce2c6;border-color:#809470;color:#536b50;box-shadow:0 0 0 5px #8094700d}
+.sea-chart-body .sea-chart-node .sea-chart-here{top:64px;bottom:auto;left:50%;right:auto;transform:translateX(-50%);font:italic 13px Georgia,serif;background:#eee3c8;border:0;color:#5b7457;padding:4px 10px;white-space:nowrap}
+.sea-chart-body .sea-chart-node.visited:not(.current) .sea-chart-dot{opacity:.65}
+.sea-chart-footer{padding:10px 0 12px;border-top:1px solid #a7856038;margin:0 24px;background:none;z-index:3;flex-shrink:0}
+.sea-chart-footer b{font:italic 17px Georgia,serif;margin:0 0 4px;color:#785548}.sea-chart-footer>span{font:10px Georgia,serif;color:#967b61;margin:0;letter-spacing:.4px}
+@media(max-width:650px){.sea-chart-screen{padding:0 4px;border-radius:8px}.sea-chart-header{margin:0 12px;padding:9px 0 7px}.sea-chart-header h2{font-size:24px}.sea-chart-header small{font-size:8px;letter-spacing:1.8px}.sea-chart-header p{font-size:10px}.sea-chart-header p span{margin-left:6px}.sea-chart-footer{margin:0 12px;padding:7px 0}.sea-chart-footer b{font-size:15px}.sea-chart-body .sea-chart-node.reachable .sea-chart-dot{width:48px;height:48px;padding:7px}.sea-chart-body .sea-chart-node .sea-chart-label,.sea-chart-body .sea-chart-node:nth-last-child(-n+3) .sea-chart-label{font-size:12px;top:62px;padding:3px 5px}}
