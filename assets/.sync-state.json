@@ -375,7 +375,17 @@
       "export_version": 13
     }
   },
-  "objects": {},
+  "objects": {
+    "7007be3e-78ee-4820-8c8e-aa11a26e9bc4": {
+      "updated_at": "2026-10-15T04:22:21.569112+00:00",
+      "animation_ids": [],
+      "name": "base",
+      "member_ids": [
+        "7007be3e-78ee-4820-8c8e-aa11a26e9bc4"
+      ],
+      "sync_version": 3
+    }
+  },
   "tilesets": {
     "98033b10-af32-513d-a10d-4175e7370594": {
       "updated_at": "2026-10-05T08:41:24.135066+00:00",

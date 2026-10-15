@@ -43,7 +43,9 @@
   "maps": {
     "The Verdant Crossing": "assets/maps/284a60d0-b94a-50b2-ac1d-2f869e93608a/"
   },
-  "objects": {},
+  "objects": {
+    "base": "assets/objects/7007be3e-78ee-4820-8c8e-aa11a26e9bc4/"
+  },
   "tilesets": {
     "Forest grass and stone": "assets/tilesets/98033b10-af32-513d-a10d-4175e7370594/"
   },
