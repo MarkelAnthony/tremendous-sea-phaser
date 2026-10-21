@@ -332,6 +332,15 @@ function playCardOnTarget(enemyIdx){
 }
 
 function playCard(idx, target, isRepeatedPlay){
+  if (!isRepeatedPlay && window.game?.scene.getScenes(true)[0]?.playerBody?.getData?.("clarityAttackPlaying")) return;
+  const card = isRepeatedPlay ? idx : G.deck.hand[idx];
+  if (!card || (!isRepeatedPlay && !affordable(card))) return;
+  window.beginBranchCardAnimation?.(card, G.captainKey === "Branch");
+  try { return resolveCardEffects(idx, target, isRepeatedPlay); }
+  finally { window.endBranchCardAnimation?.(); }
+}
+
+function resolveCardEffects(idx, target, isRepeatedPlay){
   const card = isRepeatedPlay ? idx : G.deck.hand[idx];
   if (!isRepeatedPlay){
     if (isRiley() && card.locked && G.player.stance !== card.homeStance) return; // safety net
@@ -801,7 +810,8 @@ function playCard(idx, target, isRepeatedPlay){
     if (scene?.playerBody) {
       const special = (targets.length || card.selfEnflame) && window.playSeaBranchSpecial(scene, scene.playerBody, card);
       const punched = !special && targets.length && card.dmg > 0 && window.playSeaBranchPunch(scene, scene.playerBody, card.name);
-      if (!special && !punched && (targets.length || card.selfEnflame)) window.playSeaBranchBurn(scene, scene.playerBody, card);
+      const burned = !special && !punched && (targets.length || card.selfEnflame) && window.playSeaBranchBurn(scene, scene.playerBody, card);
+      if (!special && !punched && !burned && targets.length && (card.dmg > 0 || card.detonate || card.detonateRate || card.doubleThenDetonate)) window.playSeaBranchFallback?.(scene, scene.playerBody, card.name);
     }
   }
 
@@ -1109,6 +1119,7 @@ function playCard(idx, target, isRepeatedPlay){
 }
 
 function endTurn(){
+  if (window.game?.scene.getScenes(true)[0]?.playerBody?.getData?.("clarityAttackPlaying")) return;
   if (!G.combat || G.combat.phase!=="player") return;
   discardHand(G.deck);
   G.player.status.noAttack = false;
@@ -2411,6 +2422,7 @@ function healPlayer(amount){
   if (G.player.status.noHeal){ pushLogQuiet("The silence holds — no healing takes effect."); return 0; }
   const mult = hasRelicHook("bittersweetHeart") ? 0.5 : 1;
   const actual = Math.round(amount * mult);
+  if (actual > 0) window.noteBranchCardEffect?.("heal");
   const before = G.player.hp;
   G.player.hp = Math.min(G.player.maxHp, G.player.hp + actual);
   if (G.player.hp > before && G.combat){ G.combat.healedThisTurn = true; }

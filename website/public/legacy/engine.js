@@ -87,6 +87,7 @@ function gainBlock(c, amt){
   if (typeof G !== "undefined" && G && G.player && c === G.player && typeof hasRelicHook === "function" && hasRelicHook("bottomlessCandyBag")) return;
   if (typeof G !== "undefined" && G && G.player && c === G.player && G.player.status.noBlock) return;
   if (typeof G !== "undefined" && G && G.player && c === G.player && amt > 0 && G.combat){ G.combat.blockedThisTurn = true; }
+  if (typeof G !== "undefined" && G && c === G.player && amt > 0) window.noteBranchCardEffect?.("block");
   c.block += amt;
 }
 

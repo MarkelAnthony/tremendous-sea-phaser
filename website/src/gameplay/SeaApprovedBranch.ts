@@ -11,7 +11,7 @@ export function playApprovedBranchAttack(scene: Phaser.Scene, sprite: Phaser.Gam
   sprite.setData(counter, Number(sprite.getData(counter) || 0) + 1);
   sprite.setData(kind === "punch" ? "branchPunchCard" : kind === "burn" ? "branchBurnCard" : "branchSpecialCard", card);
   if (kind !== "punch" && kind !== "burn") sprite.setData("branchSpecialKind", kind);
-  const clip = kind === "punch" ? "jab" : kind === "burn" || kind === "blast" || kind === "eruption" ? "fire" : "heavy";
+  const clip = /kick/i.test(card) || kind === "kick" ? "kick" : kind === "punch" ? "jab" : kind === "burn" || kind === "blast" || kind === "eruption" ? "fire" : "heavy";
   sprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
     if (!sprite.active) return;
     sprite.setData("clarityAttackPlaying", false);

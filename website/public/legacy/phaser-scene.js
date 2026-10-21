@@ -110,13 +110,20 @@ class MainScene extends Phaser.Scene {
               if (Array.isArray(object.list)) object.list.forEach(disableControls);
             };
             disableControls(scene.uiRoot);
-            scene.playerBody.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
-              // Let the impact burst's final sparks fade before showing results.
-              scene.time.delayedCall(180, () => {
-                scene.finishingAttackPending = false;
-                render();
+            const waitForSequence = () => {
+              // A healing/block follow-up may start on the same completion event.
+              scene.time.delayedCall(30, () => {
+                if (scene.playerBody?.active && scene.playerBody.getData?.("clarityAttackPlaying")) {
+                  scene.playerBody.once(Phaser.Animations.Events.ANIMATION_COMPLETE, waitForSequence);
+                  return;
+                }
+                scene.time.delayedCall(150, () => {
+                  scene.finishingAttackPending = false;
+                  render();
+                });
               });
-            });
+            };
+            scene.playerBody.once(Phaser.Animations.Events.ANIMATION_COMPLETE, waitForSequence);
           }
           return;
         }

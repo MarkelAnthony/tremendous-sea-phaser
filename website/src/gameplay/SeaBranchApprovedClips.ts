@@ -7,6 +7,9 @@ const sequences = {
   jab: [2, 1, 0, 1, 2].map(i => `branch-redraw-attacks/jab-${i}.png`),
   heavy: Array.from({ length: 6 }, (_, i) => `branch-redraw-attacks/heavy-${i}.png`),
   fire: Array.from({ length: 17 }, (_, i) => `branch-redraw-attacks/fire-${i}.png`),
+  kick: Array.from({ length: 13 }, (_, i) => `branch-defense-healing/kick-${i}.png`),
+  block: Array.from({ length: 17 }, (_, i) => `branch-defense-healing/block-${i}.png`),
+  heal: Array.from({ length: 17 }, (_, i) => `branch-defense-healing/heal-${i}.png`),
 };
 export type BranchClip = keyof typeof sequences;
 const key = (clip: BranchClip, i: number): string => `branch-approved-${clip}-${i}`;
@@ -38,11 +41,15 @@ export function prepareApprovedBranchClip(scene: Phaser.Scene, sprite: Phaser.Ga
       }
     }
   }
-  sprite.setTexture(key(clip, 0)).setOrigin((left + right) / 2 / canvas.width, bottom / canvas.height)
-    .setScale(Number(sprite.getData("visibleModelHeight") || 176) / Math.max(1, bottom - top));
+  const defense = clip === "kick" || clip === "block" || clip === "heal";
+  // The approved studies share a 107px guard and a fixed 183px deck line.
+  // Anchor to Branch, not to the wall/phoenix effect's expanding silhouette.
+  sprite.setTexture(key(clip, 0)).setOrigin(defense ? (clip === "heal" ? 128 : 80) / 256 : (left + right) / 2 / canvas.width,
+    defense ? 183 / 192 : bottom / canvas.height)
+    .setScale(Number(sprite.getData("visibleModelHeight") || 176) / (defense ? 107 : Math.max(1, bottom - top)));
   const animation = `branch-approved-${clip}`;
   if (!scene.anims.exists(animation)) scene.anims.create({ key: animation, frameRate: 1000,
-    frames: sequences[clip].map((_, i) => ({ key: key(clip, i), duration: (clip === "fire" ? 100 : clip === "idle" ? 85 : clip === "shuffle" ? 110 : 90) - 1 })),
+    frames: sequences[clip].map((_, i) => ({ key: key(clip, i), duration: (clip === "fire" || clip === "block" ? 100 : clip === "idle" || clip === "kick" ? 85 : clip === "shuffle" || clip === "heal" ? 110 : 90) - 1 })),
     repeat: movement ? -1 : 0,
   });
   sprite.setData("approvedClip", clip);

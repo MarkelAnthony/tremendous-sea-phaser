@@ -2,6 +2,7 @@ import Phaser from "phaser";
 import "./SeaCaptainArt";
 import "./SeaBranchBurn";
 import "./SeaBranchSpecial";
+import "./SeaBranchSupport";
 import "./SeaParchmentCards";
 import "./SeaVoyageChart";
 import { mountSeaReadability } from "./SeaReadableCombat";
