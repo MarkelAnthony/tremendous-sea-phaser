@@ -1,0 +1,11 @@
+{
+  "id": "e2dd662c-7b0d-5752-9dc7-5c3e493887ee",
+  "name": "Edit this RIGHT HALF of an existing pixel art living-tree pi",
+  "prompt": "Edit this RIGHT HALF of an existing pixel art living-tree pirate ship battle background. Keep EXACT composition, tree silhouettes, ocean, timber boards, perspective, dimensions and crisp native pixel grid; do not zoom, crop or move structures. Replace ALL gold/yellow baubles, hanging gold seeds, brass balls, tan/gold ropes, gold tree bands and gold railing decorations with candy-pirate details: peppermint red and ivory striped ropes and bindings, pink/mint wrapped sweets, dark red licorice rigging, candy cane rail fittings. Absolutely NO gold balls or tan ropes left. Tasteful sparse miniature Christmas string lights, red ivory-white mint and pink only, hanging naturally on branches and railing, dark licorice wire; not huge ornaments, not crowded. Convert glowing GOLD DECK CRACKS into narrow RED-ORANGE FIRE fissures with tiny tongues of flame and deep red edges, not yellow metal, keep combat floor clear. Preserve natural brown wooden trunks and planks, multicolor foliage, teal sea, and all boundary structure at the left edge to join the other half. No characters, text or UI. Restrained crafted candy pirate atmosphere, not a snowy scene.",
+  "width": 340,
+  "height": 384,
+  "model": "edit-image",
+  "no_background": false,
+  "image": "image.png",
+  "spritesheet": null
+}
