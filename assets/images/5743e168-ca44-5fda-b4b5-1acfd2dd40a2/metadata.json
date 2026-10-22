@@ -1,0 +1,11 @@
+{
+  "id": "5743e168-ca44-5fda-b4b5-1acfd2dd40a2",
+  "name": "Revise this RIGHT HALF of a continuous pixel-art woodland pi",
+  "prompt": "Revise this RIGHT HALF of a continuous pixel-art woodland pirate ship deck. Preserve EXACT composition, tree positions, deck perspective, boundaries, scale and pixel-art rendering; no camera changes. Coherent practical festive decoration, NOT candyland. Replace ALL golden balls, yellow-gold ornament dots and golden ropes with dark forest-green electrical cords and muted dark hemp lashings. Add TWO clearly sagging strings of small traditional teardrop CHRISTMAS BULBS (alternating red, warm white, mint green, pink), secured visibly between existing tree trunks/branches and railing posts. Each bulb hangs DOWN from its cord on a short socket; restrained warm glow. Add two hanging dark wrought-iron glass lanterns on short chains attached to sturdy branches, each with a tiny clearly recognizable winged fairy INSIDE its glass chamber. Fairies mint-white luminous humanoid silhouettes with paired wings, not flame candles. Lantern frames dark plum/iron, not gold. Keep lanterns above railing, leave deck clear for combat. Replace glowing gold deck cracks with thin ember-red/orange FIRE fissures, local red accents not gold. Existing leafy tree crowns remain leafy. NO candy, sweets, gumdrops, peppermint stripes, colored blobs, gold baubles, floating ornaments or unattached lights. Do not change image edges so it still joins adjacent background.",
+  "width": 340,
+  "height": 384,
+  "model": "edit-image",
+  "no_background": false,
+  "image": "image.png",
+  "spritesheet": null
+}
