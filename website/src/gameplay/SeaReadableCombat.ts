@@ -36,7 +36,9 @@ export function mountSeaReadability(game: Phaser.Game): void {
     const handItems = items.filter(item => item.info.kind === "card");
     if (handItems.length) {
       const usableWidth = Math.min(Math.max(1, Math.min(window.innerWidth - 12, rect.left + 800 * sx) - Math.max(12, rect.left + 20 * sx)), 1120);
-      const cardHeight = Math.min(220, (usableWidth - 8 * (handItems.length - 1)) / handItems.length) * (328 / 224);
+      // Keep a five-card footprint even as cards are played; never grow into the action.
+      const handSlots = Math.max(5, handItems.length);
+      const cardHeight = Math.min(220, (usableWidth - 8 * (handSlots - 1)) / handSlots) * (328 / 224);
       const trayTop = Math.max(440, 700 - (cardHeight + 6 * sy) / sy - 12);
       const scene = game.scene.getScenes(true)[0];
       const adjustTray = (object: Phaser.GameObjects.GameObject) => {
@@ -62,7 +64,8 @@ export function mountSeaReadability(game: Phaser.Game): void {
       const handLeft = Math.max(12, rect.left + 20 * sx);
       const handRight = Math.min(window.innerWidth - 12, rect.left + 800 * sx);
       const handWidth = Math.min(Math.max(1, handRight - handLeft), 1120);
-      const width = isHand ? Math.min(220, (handWidth - gap * (hand.length - 1)) / Math.max(1, hand.length)) : info.width * sx;
+      const handSlots = Math.max(5, hand.length);
+      const width = isHand ? Math.min(220, (handWidth - gap * (handSlots - 1)) / handSlots) : info.width * sx;
       const height = isHand || info.kind === "choice" ? width * (328 / 224) : info.height * sy;
       // Anchor the compact hand to the game, not to empty space below a fitted canvas.
       const top = isHand ? rect.bottom - height - 6 * sy : info.kind === "choice" ? rect.top + y * sy - height / 2 : rect.top+(y-info.height/2)*sy;

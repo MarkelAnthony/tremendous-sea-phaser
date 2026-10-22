@@ -17,14 +17,12 @@ const TEMPLATE_ASSET_PATHS = join(
 const assetsDir = process.argv[2] ?? DEFAULT_ASSETS_DIR;
 const mapsDir = join(assetsDir, "maps");
 const charactersDir = join(assetsDir, "characters");
-const characterExportNames = [
-  "PLAYER_CHARACTER_ID",
-];
 const VALID_DIRECTIONS = new Set([
   "south", "south-west", "west", "north-west",
   "north", "north-east", "east", "south-east",
 ]);
 const MAX_TERRAIN_RENDER_ERRORS = 20;
+const TERRAIN_FAILURE_EXAMPLE_TILES = 3;
 const PHASER_RUNTIME_PATTERNS = [
   /\bnew\s+Phaser\./,
   /\bextends\s+Phaser\./,
@@ -80,20 +78,129 @@ function requireFile(missing, mapId, mapDir, filename) {
 }
 
 
-function readTemplateCharacterIds() {
-  const source = readFileSync(TEMPLATE_ASSET_PATHS, "utf8");
-  const ids = [];
+function withoutComments(source) {
+  // A role name left behind in a comment ("dropped NPC_CHARACTER_ID here") is
+  // not a use — otherwise removing a character can never be finished.
+  return source.replace(/\/\*[\s\S]*?\*\//g, " ").replace(/\/\/[^\n]*/g, " ");
+}
 
-  for (const exportName of characterExportNames) {
-    const pattern = new RegExp(`export const ${exportName} = "([^"]+)";`);
-    const match = source.match(pattern);
-    if (!match) {
-      throw new Error(`Missing ${exportName} in website/src/pixellab/templateAssetPaths.ts`);
-    }
-    ids.push(match[1]);
+function characterIdExports() {
+  const source = withoutComments(readFileSync(TEMPLATE_ASSET_PATHS, "utf8"));
+
+  // Every literal id first, so an alias below can resolve to one. Any
+  // SCREAMING_CASE export, not just `*_CHARACTER_ID`, because an alias is free to
+  // point at a differently-named constant and only lookups by name read this.
+  //
+  // Any quote style, and nothing required after the closing one: matching only
+  // `= "id";` refused `'id'`, a backtick, `"id" as const` and a trailing comment
+  // — all valid TypeScript with the id in plain sight — and the refusal claimed
+  // the export was missing while pointing at the line that declares it. Reading
+  // MORE shapes can only resolve a role that would otherwise fail loudly; it can
+  // never make a used role go unchecked.
+  const literals = new Map();
+  for (const [, name, id] of source.matchAll(
+    /export const ([A-Z0-9_]+)\s*=\s*["'`]([^"'`]+)["'`]/g,
+  )) {
+    literals.set(name, id);
   }
 
-  return ids;
+  // `export const A = B;` — an alias, the obvious way to say "this role reuses
+  // that character". Reported 2026-10-05: only quoted literals were matched, so
+  // an alias read as an absent export and blocked the deploy. Resolved one hop
+  // through literals only, so a chain that never reaches an id still fails
+  // loudly rather than silently validating nothing.
+  const aliases = new Map();
+  for (const [, name, target] of source.matchAll(
+    /export const ([A-Z0-9_]*_CHARACTER_ID)\s*=\s*([A-Z0-9_]+)\b/g,
+  )) {
+    aliases.set(name, target);
+  }
+
+  return { literals, aliases };
+}
+
+function characterIdUses() {
+  // Which character roles the game still USES, name -> files using it.
+  //
+  // templateAssetPaths.ts is excluded deliberately: every export mentions its
+  // own name, so counting the declaration as a use would mark every role used
+  // forever and make this whole check a no-op.
+  const uses = new Map();
+
+  for (const path of collectTypeScriptFiles(SRC_DIR)) {
+    if (path === TEMPLATE_ASSET_PATHS) {
+      continue;
+    }
+    const code = withoutComments(readFileSync(path, "utf8"));
+    const relativePath = relative(join(import.meta.dirname, ".."), path);
+    for (const [, name] of code.matchAll(/\b([A-Z0-9_]*_CHARACTER_ID)\b/g)) {
+      if (!uses.has(name)) {
+        uses.set(name, []);
+      }
+      if (!uses.get(name).includes(relativePath)) {
+        uses.get(name).push(relativePath);
+      }
+    }
+  }
+
+  return uses;
+}
+
+function readTemplateCharacterIds(warnings) {
+  // The character roles to validate are the ones the project USES, not a fixed
+  // list of the four the template shipped with.
+  //
+  // Reported three times (2026-10-04, 10-05, 10-08): a project that removed its
+  // NPCs — deleting the exports and every reference, exactly as asked — was then
+  // refused by "Missing NPC_CHARACTER_ID", and a project that kept the dead
+  // constants was refused for their absent asset folders. Neither can be fixed
+  // from inside the project: the roles were hardcoded here, so NPCs were
+  // effectively permanent. One reporter patched this file by hand to get a deploy
+  // out.
+  //
+  // Use-driven instead of list-driven, which is also what makes it non-vacuous:
+  // if these patterns ever stop matching the file, the uses remain and resolve to
+  // nothing, so validation fails loudly instead of quietly checking zero
+  // characters. A role the agent adds later gets the same treatment for free.
+  const { literals, aliases } = characterIdExports();
+  const uses = characterIdUses();
+
+  const ids = [];
+  const unresolved = [];
+  for (const [name, files] of uses) {
+    const id = literals.get(name) ?? literals.get(aliases.get(name));
+    if (id === undefined) {
+      unresolved.push(
+        `${name} is used by ${files.join(", ")} but has no id in ` +
+          "website/src/pixellab/templateAssetPaths.ts" +
+          (aliases.has(name)
+            ? ` (it points at ${aliases.get(name)}, which has no id either)`
+            : ""),
+      );
+      continue;
+    }
+    ids.push(id);
+  }
+
+  if (unresolved.length > 0) {
+    throw new Error(
+      `${unresolved.join("; ")}. Either stop using the role, or export it: ` +
+        'export const <ROLE>_CHARACTER_ID = "<character id>";',
+    );
+  }
+
+  // Character roles only — `literals` also holds MAP_FOLDER and friends, which
+  // are used in ways this never looks for.
+  for (const name of [...literals.keys(), ...aliases.keys()]) {
+    if (name.endsWith("_CHARACTER_ID") && !uses.has(name)) {
+      warnings.push(
+        `${name} is exported but no .ts file uses it, so its character assets ` +
+          "were not checked",
+      );
+    }
+  }
+
+  return [...new Set(ids)];
 }
 
 function readReachabilityText() {
@@ -358,7 +465,12 @@ function validateMapTerrain(errors, mapId, mapJson, terrainMap) {
   const bounds = mapJson.mapConfig.boundingBox;
   const maxTileX = bounds.minX + mapJson.mapConfig.dimensions.width - 1;
   const maxTileY = bounds.minY + mapJson.mapConfig.dimensions.height - 1;
-  const seenFailures = new Set();
+  // Counted per terrain COMBINATION, not per tile, and every tile is counted
+  // before anything is reported. Reporting just the first tile read as "one bad
+  // tile": two users repainted the named tile, re-exported, and got the next
+  // tile with the same unrenderable pair, repeatedly (2026-10-05 x2). The pair
+  // is the defect — the tile is only where it was noticed first.
+  const failures = new Map();
 
   for (let tileY = bounds.minY; tileY <= maxTileY; tileY += 1) {
     for (let tileX = bounds.minX; tileX <= maxTileX; tileX += 1) {
@@ -373,16 +485,34 @@ function validateMapTerrain(errors, mapId, mapJson, terrainMap) {
       }
 
       const failureKey = terrainIds.join(",");
-      if (seenFailures.has(failureKey)) {
-        continue;
+      let failure = failures.get(failureKey);
+      if (!failure) {
+        if (failures.size >= MAX_TERRAIN_RENDER_ERRORS) {
+          continue; // cap distinct combinations, but keep counting the known ones
+        }
+        failure = { terrainIds, tiles: [], tileCount: 0 };
+        failures.set(failureKey, failure);
       }
-      seenFailures.add(failureKey);
-      const names = terrainIds.map((terrainId) => terrainName(mapJson, terrainId)).join(", ");
-      errors.push(`assets/maps/${mapId} cannot render terrains ${names} at tile ${tileX},${tileY}`);
-      if (seenFailures.size >= MAX_TERRAIN_RENDER_ERRORS) {
-        return;
+      failure.tileCount += 1;
+      if (failure.tiles.length < TERRAIN_FAILURE_EXAMPLE_TILES) {
+        failure.tiles.push(`${tileX},${tileY}`);
       }
     }
+  }
+
+  for (const { terrainIds, tiles, tileCount } of failures.values()) {
+    const names = terrainIds.map((terrainId) => terrainName(mapJson, terrainId)).join(", ");
+    if (tileCount === 1) {
+      errors.push(`assets/maps/${mapId} cannot render terrains ${names} at tile ${tiles[0]}`);
+      continue;
+    }
+    // Just the count — the footer below already says how to fix the pair, and
+    // the count is the part that was missing: it tells the user this is the
+    // whole boundary rather than the one tile that got named.
+    const examples = tiles.join(" / ") + (tileCount > tiles.length ? " / …" : "");
+    errors.push(
+      `assets/maps/${mapId} cannot render terrains ${names} at ${tileCount} tiles (${examples})`,
+    );
   }
 }
 
@@ -390,12 +520,10 @@ function main() {
   if (!existsSync(mapsDir)) {
     throw new Error(`Missing PixelLab maps directory: ${mapsDir}`);
   }
-  if (!existsSync(charactersDir)) {
-    throw new Error(`Missing PixelLab characters directory: ${charactersDir}`);
-  }
 
   const missing = [];
   const unreachable = [];
+  const warnings = [];
   let mapCount = 0;
 
   validatePhaserRuntimeImports(missing);
@@ -449,7 +577,17 @@ function main() {
     throw new Error(`No PixelLab map folders found in ${mapsDir}`);
   }
 
-  const characterIds = readTemplateCharacterIds();
+  const characterIds = readTemplateCharacterIds(warnings);
+
+  // Only a problem once some role needs a character. A project with no character
+  // roles left has no use for the directory, and used to be refused for not
+  // having one. Named here rather than left to N missing-manifest lines, because
+  // "the whole export is gone" and "this one character is missing" need different
+  // fixes (reported 2026-10-07, a project whose sync lost every character).
+  if (characterIds.length > 0 && !existsSync(charactersDir)) {
+    missing.push(`assets/characters/ is missing entirely (${charactersDir})`);
+  }
+
   for (const characterId of characterIds) {
     const manifestPath = join(charactersDir, characterId, "manifest.json");
     if (!existsSync(manifestPath)) {
@@ -548,12 +686,34 @@ function main() {
     console.warn("These are stale exports: delete the folder, or point MAP_FOLDER / a warp at it and it becomes an error.");
   }
 
+  if (warnings.length > 0) {
+    console.warn("PixelLab character roles nothing uses — not blocking the build:");
+    for (const warning of warnings) {
+      console.warn(`  - ${warning}`);
+    }
+    console.warn("Delete the export too if the role is gone; use it again and it becomes an error.");
+  }
+
   if (missing.length > 0) {
     console.error("PixelLab asset validation failed. Runtime asset problems:");
     for (const filename of missing) {
       console.error(`  - ${filename}`);
     }
-    console.error("Re-sync PixelLab assets before building; do not work around this in gameplay code.");
+    // The advice has to match what was listed. "Re-sync" was printed after
+    // every failure, including a terrain pair with no tileset — which no sync
+    // can create — and an agent reported having no repair path for it.
+    const terrainGaps = missing.filter((line) => line.includes(" cannot render terrains ")).length;
+    if (terrainGaps > 0) {
+      console.error(
+        "`cannot render terrains` is not a sync problem: no tileset connects that pair. " +
+          "view_map shows each tile. Repaint with edit_map so the two terrains do not touch " +
+          "(the only fix where three meet at a corner), or create_topdown_tileset for the pair.",
+      );
+    }
+    if (terrainGaps < missing.length) {
+      console.error("For the missing files: re-sync PixelLab assets before building.");
+    }
+    console.error("Do not work around this in gameplay code.");
     process.exit(1);
   }
 
