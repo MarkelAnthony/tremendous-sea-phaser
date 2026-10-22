@@ -1,6 +1,5 @@
 import Phaser from "phaser";
 import { drawShipDeck } from "./SeaShipDeck";
-import { assetUrl } from "../pixellab/templateAssetPaths";
 
 /** Captain-specific ship scenery. Act scenery is deliberately left for a later pass. */
 export function drawCaptainShip(scene: Phaser.Scene, root: Phaser.GameObjects.Container, captain: string): void {
@@ -10,8 +9,8 @@ export function drawCaptainShip(scene: Phaser.Scene, root: Phaser.GameObjects.Co
 
 export function preloadCaptainShips(scene: Phaser.Scene): void {
   scene.load.image("branch-ship", new URL("art/branch-ship.png", document.baseURI).href);
-  // Cleanup and lights share the measured 680×384 source coordinate system.
-  scene.load.image("kindleroot-deck", assetUrl("images", "3fd01aa3-ba6b-5567-a564-5b0cb564bfe6", "image.png"));
+  // Use the approved full-deck preview directly, without the old gold cleanup overlays.
+  scene.load.image("kindleroot-deck", new URL("previews/branch-fairy-ship/fairy-ship.png", document.baseURI).href);
 }
 (window as unknown as Record<string, unknown>).shipPreview = () => {
   const game = (window as unknown as { game?: Phaser.Game }).game;

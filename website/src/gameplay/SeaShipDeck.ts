@@ -1,23 +1,20 @@
 import Phaser from "phaser";
 import { drawOrnateTrees } from "./SeaOrnateTrees";
-import { addKindlerootLights } from "./SeaKindlerootLights";
-import { kindlerootChristmasTexture } from "./SeaKindlerootDecorationCleanup";
 
 /** The fighting floor fills the arena; scenery sits beyond its back railing. */
 export function drawShipDeck(scene: Phaser.Scene, root: Phaser.GameObjects.Container, captain: string): void {
   const branch = captain === "Branch";
   if (branch && scene.textures.exists("kindleroot-deck")) {
-    // Remove baked brass ornaments before drawing their colored replacements.
+    // Approved fairy-lantern artwork already contains the hanging decorations.
     // Fighters and their approved animations remain separate combat objects.
-    const stage = scene.add.image(0, 0, kindlerootChristmasTexture(scene)).setOrigin(0).setDisplaySize(1000, 494);
+    const stage = scene.add.image(0, 0, "kindleroot-deck").setOrigin(0).setDisplaySize(1000, 494);
     root.add(stage);
-    addKindlerootLights(scene, root);
     // Contact shadows belong to the fighters so targeting/lunges carry them
     // along the same plane, rather than leaving empty shadows on the deck.
     root.setData("shipCaptain", captain);
     root.setData("shipTheme", "Kindleroot · living tree mast, leafy sails, emberwood deck");
     root.setData("combatSurface", "Kindleroot timber deck beneath fighters at y=355");
-    root.setData("deckArt", "kindleroot-cleaned-christmas-v6");
+    root.setData("deckArt", "branch-approved-fairy-ship");
     return;
   }
   const riley = captain === "Riley";
