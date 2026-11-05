@@ -1,0 +1,32 @@
+{
+  "id": "d718ac4c-6055-579a-816e-f18464aa21ee",
+  "name": "Pulls both fists down to his sides, clenches and tenses his",
+  "prompt": "Pulls both fists down to his sides, clenches and tenses his whole body as flames swirl up from his feet and wrap around him in a rising fiery aura, his gloves flare brighter, then the aura settles and he returns to the same boxing guard, still faintly smoldering.",
+  "width": 1280,
+  "height": 768,
+  "model": "animate_minimax_h3",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": {
+    "grid_size": "5x4",
+    "frames": [
+      "frames/0.png",
+      "frames/1.png",
+      "frames/2.png",
+      "frames/3.png",
+      "frames/4.png",
+      "frames/5.png",
+      "frames/6.png",
+      "frames/7.png",
+      "frames/8.png",
+      "frames/9.png",
+      "frames/10.png",
+      "frames/11.png",
+      "frames/12.png",
+      "frames/13.png",
+      "frames/14.png",
+      "frames/15.png",
+      "frames/16.png"
+    ]
+  }
+}
