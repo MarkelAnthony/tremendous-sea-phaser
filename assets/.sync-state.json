@@ -1,4 +1,5 @@
 {
+  "audio": {},
   "characters": {
     "76af08a0-4d26-40fc-b346-558313f02bcb": {
       "updated_at": "2026-08-16T05:25:56.048046+00:00|2026-10-04T13:05:21.619937+00:00|2026-10-05T08:40:11.359560+00:00",
@@ -17,7 +18,7 @@
         "665efdc0-0272-4952-a45d-0230446158ea",
         "ab54db7c-d449-4000-9255-94ef8ce894fa"
       ],
-      "sync_version": 12
+      "sync_version": 16
     },
     "113f91a5-29f0-5c08-9981-5c5b3b5a8718": {
       "updated_at": "2026-10-05T08:41:24.135066+00:00",
@@ -44,7 +45,7 @@
       "member_ids": [
         "113f91a5-29f0-5c08-9981-5c5b3b5a8718"
       ],
-      "sync_version": 12
+      "sync_version": 16
     },
     "36e5db22-bb07-5f4f-9eb6-75b915d82f4c": {
       "updated_at": "2026-10-05T08:41:24.135066+00:00",
@@ -60,7 +61,7 @@
       "member_ids": [
         "36e5db22-bb07-5f4f-9eb6-75b915d82f4c"
       ],
-      "sync_version": 12
+      "sync_version": 16
     },
     "476945d1-f351-5034-b0af-5a3e362e53ee": {
       "updated_at": "2026-10-05T08:41:24.135066+00:00|2026-10-05T08:41:24.135066+00:00",
@@ -98,7 +99,7 @@
         "476945d1-f351-5034-b0af-5a3e362e53ee",
         "0ce95af2-e954-5aed-9c46-11ba706b224f"
       ],
-      "sync_version": 12
+      "sync_version": 16
     },
     "b872b214-8d45-4f34-b202-a5ca77f2e210": {
       "updated_at": "2026-10-05T09:48:03.847414+00:00|2026-10-05T12:07:43.327555+00:00|2026-10-05T10:38:39.316035+00:00",
@@ -143,7 +144,7 @@
         "b15bd612-59f4-4175-915d-0b777cfb835b",
         "86587070-efce-4ef8-b513-e5a10a41dc6c"
       ],
-      "sync_version": 12
+      "sync_version": 16
     },
     "629513df-5f23-4867-8b57-4d6c102df309": {
       "updated_at": "2026-10-12T22:59:50.808784+00:00",
@@ -159,7 +160,7 @@
       "member_ids": [
         "629513df-5f23-4867-8b57-4d6c102df309"
       ],
-      "sync_version": 12
+      "sync_version": 16
     }
   },
   "images": {
@@ -597,9 +598,12 @@
   },
   "maps": {
     "284a60d0-b94a-50b2-ac1d-2f869e93608a": {
-      "updated_at": "2026-10-05T08:41:24.135066+00:00",
+      "updated_at": "2026-10-25T00:47:15.305631+00:00",
       "name": "The Verdant Crossing",
-      "export_version": 13
+      "export_version": 13,
+      "tilesets": {
+        "98033b10-af32-513d-a10d-4175e7370594": "2026-10-05T08:41:24.135066+00:00"
+      }
     }
   },
   "objects": {
@@ -616,7 +620,8 @@
   "tilesets": {
     "98033b10-af32-513d-a10d-4175e7370594": {
       "updated_at": "2026-10-05T08:41:24.135066+00:00",
-      "name": "Forest grass and stone"
+      "name": "Forest grass and stone",
+      "sync_version": 2
     }
   },
   "ui_assets": {
@@ -629,5 +634,6 @@
       "updated_at": "0",
       "export_version": 2
     }
-  }
+  },
+  "rooms": {}
 }

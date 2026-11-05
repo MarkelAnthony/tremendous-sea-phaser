@@ -77,7 +77,7 @@
           "atlas_frame_pattern": "idle/animations/attack-d62b3bad/{direction}/frame_{frame}"
         },
         {
-          "name": "idle",
+          "name": "custom-facing-right-and-standing-tall",
           "id": "56f6d911-43bd-4c77-af2e-5426e8c6d791",
           "source_name": "custom-Facing right and standing tall",
           "display_name": "Branch special blast",
@@ -88,14 +88,12 @@
             "east"
           ],
           "loop": true,
-          "aliases": [
-            "idle"
-          ],
-          "path_pattern": "idle/animations/idle/{direction}/frame_{frame}.png",
-          "atlas_frame_pattern": "idle/animations/idle/{direction}/frame_{frame}"
+          "aliases": [],
+          "path_pattern": "idle/animations/custom-facing-right-and-standing-tall/{direction}/frame_{frame}.png",
+          "atlas_frame_pattern": "idle/animations/custom-facing-right-and-standing-tall/{direction}/frame_{frame}"
         },
         {
-          "name": "idle-7a6f2ebd",
+          "name": "custom-standing-tall-facing-right-be",
           "id": "7a6f2ebd-1f80-42a5-9705-5fa3dd302da7",
           "source_name": "custom-Standing tall facing right, be",
           "display_name": "Branch special eruption",
@@ -106,14 +104,12 @@
             "east"
           ],
           "loop": true,
-          "aliases": [
-            "idle"
-          ],
-          "path_pattern": "idle/animations/idle-7a6f2ebd/{direction}/frame_{frame}.png",
-          "atlas_frame_pattern": "idle/animations/idle-7a6f2ebd/{direction}/frame_{frame}"
+          "aliases": [],
+          "path_pattern": "idle/animations/custom-standing-tall-facing-right-be/{direction}/frame_{frame}.png",
+          "atlas_frame_pattern": "idle/animations/custom-standing-tall-facing-right-be/{direction}/frame_{frame}"
         },
         {
-          "name": "idle-f24ec95e",
+          "name": "idle",
           "id": "f24ec95e-01dd-4773-8c0f-1db9193d5f5b",
           "source_name": "custom-Gentle looping fighting idle, ",
           "display_name": "Branch idle",
@@ -127,8 +123,8 @@
           "aliases": [
             "idle"
           ],
-          "path_pattern": "idle/animations/idle-f24ec95e/{direction}/frame_{frame}.png",
-          "atlas_frame_pattern": "idle/animations/idle-f24ec95e/{direction}/frame_{frame}"
+          "path_pattern": "idle/animations/idle/{direction}/frame_{frame}.png",
+          "atlas_frame_pattern": "idle/animations/idle/{direction}/frame_{frame}"
         },
         {
           "name": "spell",

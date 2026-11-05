@@ -696,7 +696,7 @@
     }
   },
   "tileset_image": {
-    "filename": "tileset_unknown.png",
+    "filename": "tileset.png",
     "format": "PNG",
     "dimensions": {
       "width": 128,
