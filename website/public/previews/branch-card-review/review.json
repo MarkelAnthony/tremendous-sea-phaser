@@ -1,0 +1,899 @@
+{
+  "cards": [
+    {
+      "name": "Flame Jab",
+      "description": "Deal 5 dmg. Apply 2 Enflame.",
+      "family": "jab",
+      "sequence": [
+        "jab"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Cinder Fist",
+      "description": "Deal 8 dmg. Double if target has Enflame.",
+      "family": "heavy",
+      "sequence": [
+        "heavy"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Branch's Resolve",
+      "description": "Gain 6 Block.",
+      "family": "block",
+      "sequence": [
+        "block"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Slow Burn",
+      "description": "Apply 3 Enflame.",
+      "family": "fire",
+      "sequence": [
+        "fire"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Charred Cross",
+      "description": "Deal 11 dmg. Apply 2 Enflame.",
+      "family": "heavy",
+      "sequence": [
+        "heavy"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Reckless Blaze",
+      "description": "Deal 10 dmg. Apply 1 Daze to yourself (the next attack against you deals double).",
+      "family": "heavy",
+      "sequence": [
+        "heavy"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Scorch Kick",
+      "description": "Deal 15 dmg. Costs 0 if this is your 2nd Attack card played this turn.",
+      "family": "kick",
+      "sequence": [
+        "kick"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Blazing Edge",
+      "description": "Deal 13 dmg. Apply 3 Enflame.",
+      "family": "heavy-gap",
+      "sequence": [
+        "heavy"
+      ],
+      "note": "UNRESOLVED: slashing damage does not fit a bare-fist heavy. Preview is a placeholder; needs a fiery cutting-hand motion or an approved change to the card fiction.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Dark Flame",
+      "description": "Deal 16 dmg. Detonate Enflame (1x).",
+      "family": "detonate",
+      "sequence": [
+        "detonate"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Solar Flare",
+      "description": "Deal 13 dmg. Stun if it penetrates Block.",
+      "family": "eruption",
+      "sequence": [
+        "eruption"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Phoenix Straight",
+      "description": "Deal 5 dmg. Apply 2 Enflame. If this kills, heal = dmg dealt.",
+      "family": "heavy",
+      "sequence": [
+        "heavy",
+        "heal"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": true
+    },
+    {
+      "name": "Wraithfire Bolt",
+      "description": "Deal 28 dmg. Gain 3 energy if this kills the target.",
+      "family": "bolt",
+      "sequence": [
+        "bolt"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Wildfire Haymaker",
+      "description": "Deal 16 dmg to ALL. Apply 3 Enflame. Costs 2 if Flame Jab + Charred Cross played last turn.",
+      "family": "eruption",
+      "sequence": [
+        "heavy",
+        "eruption"
+      ],
+      "note": "Heavy punch \u2192 eruption, not a spell-only gesture. One card resolution, no extra hit.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Branch's Fury",
+      "description": "Deal 14 dmg. If target has Enflame: +10 bonus dmg AND permanent +1 Fire damage for rest of combat.",
+      "family": "heavy",
+      "sequence": [
+        "heavy"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Fireball Candy - Fafnir",
+      "description": "\u2605 Deal 20 dmg. Detonate all Enflame on target for 2x stacks as bonus damage.",
+      "family": "detonate",
+      "sequence": [
+        "detonate"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Emberfy",
+      "description": "Deal 5 dmg. Apply 3 Enflame.",
+      "family": "fire",
+      "sequence": [
+        "fire"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Wildfire Lash",
+      "description": "Deal 3 dmg to ALL. Apply 3 Enflame. (Cheap AoE Enflame seed.)",
+      "family": "eruption",
+      "sequence": [
+        "eruption"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Phoenix Fire Storm",
+      "description": "Deal 11 dmg to ALL. Apply 3 Enflame to all. Heal HP = dmg dealt for each enemy killed by this hit.",
+      "family": "eruption",
+      "sequence": [
+        "eruption",
+        "heal"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": true
+    },
+    {
+      "name": "Fireball Candy - Wildfire",
+      "description": "\u2605 Deal 16 dmg to ALL. Apply 5 Enflame, no decay 2 turns.",
+      "family": "eruption",
+      "sequence": [
+        "eruption"
+      ],
+      "note": "Wide eruption plus persistent no-decay cue; the separately reported no-decay rule bug still needs repair.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Draft Up",
+      "description": "Draw 2 cards.",
+      "family": "idle",
+      "sequence": [
+        "idle"
+      ],
+      "note": "Guard/idle plus a card-draw cue; no pretend attack.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Sage's Remedy",
+      "description": "Heal 7. Remove all debuffs.",
+      "family": "heal",
+      "sequence": [
+        "heal"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Banked Coals",
+      "description": "Remove all Enflame from target. Gain Block = stacks removed. Draw a card if any were removed.",
+      "family": "block",
+      "sequence": [
+        "block"
+      ],
+      "note": "Draw flames from target \u2192 Block \u2192 conditional draw. Guard is only one part of the final treatment.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Fuel the Fire",
+      "description": "Remove all Enflame from target. Gain 2 energy if any removed. Costs 0 next draw if 5+ removed.",
+      "family": "power",
+      "sequence": [
+        "power"
+      ],
+      "note": "Consume target flames and gain energy; no projectile or damage impact.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Cinderwall",
+      "description": "Gain Block equal to total Enflame stacks on all enemies (no consume).",
+      "family": "block",
+      "sequence": [
+        "block"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Implode",
+      "description": "Apply 10 Enflame, then immediately detonate all current stacks on target for damage equal to the total.",
+      "family": "detonate",
+      "sequence": [
+        "detonate"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Fireball Candy - Eviscerate",
+      "description": "\u2605 Deal 24 to ALL + detonate Enflame.",
+      "family": "eruption",
+      "sequence": [
+        "eruption"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Rock Candy - Stoneskin",
+      "description": "Negate the next attack this turn.",
+      "family": "block",
+      "sequence": [
+        "block"
+      ],
+      "note": "Guard means negate-next-attack, not ordinary Block. Use a distinct persistent shield cue.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Christmas Dinner",
+      "description": "Gain 2 energy.",
+      "family": "idle",
+      "sequence": [
+        "idle"
+      ],
+      "note": "Guard/idle plus energy cue; no pretend attack.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Fireball Candy - Blood Ignite",
+      "description": "Apply 4 Enflame to yourself. Gain +2 permanent Fire damage for the rest of combat.",
+      "family": "power",
+      "sequence": [
+        "power"
+      ],
+      "note": "Self-ignite aura only; never launch a wave at an enemy.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Fireball Candy - Supernova",
+      "description": "Deal 20 dmg to ALL. Apply 5 Enflame to yourself.",
+      "family": "eruption",
+      "sequence": [
+        "eruption"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Fire Inside",
+      "description": "Apply 3 Enflame to yourself. Draw 3 cards.",
+      "family": "power",
+      "sequence": [
+        "power"
+      ],
+      "note": "Self-ignite aura then draw cue; no enemy damage.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Branch Bomb",
+      "description": "Deal damage to ALL equal to 3x your own current Enflame stacks.",
+      "family": "eruption",
+      "sequence": [
+        "eruption"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Nova Guard",
+      "description": "Gain Block equal to 2x your own current Enflame stacks.",
+      "family": "block",
+      "sequence": [
+        "block"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Fireball Candy - Megaton",
+      "description": "Deal 30 dmg. Apply 8 Enflame to yourself.",
+      "family": "bolt",
+      "sequence": [
+        "bolt"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Living Ember",
+      "description": "Deal 13 dmg. Apply 3 Enflame to yourself.",
+      "family": "fire",
+      "sequence": [
+        "fire"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Burn Bomb",
+      "description": "Detonate target's Enflame at 1x. Gain 1 energy if it detonates for 5+.",
+      "family": "detonate",
+      "sequence": [
+        "detonate"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Fireball Candy - C4 Trigger",
+      "description": "Marks the target \u2014 at the start of their next turn, all their current Enflame detonates at 3x instead of ticking normally.",
+      "family": "detonate",
+      "sequence": [
+        "detonate"
+      ],
+      "note": "Marking gesture now; explosion belongs at the next enemy turn, not on card play. This preview shows the motion vocabulary only.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Hot Flash",
+      "description": "Detonate target's Enflame at 1x, then apply half that amount as fresh Enflame to a second random enemy.",
+      "family": "detonate",
+      "sequence": [
+        "detonate"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Fire Spin",
+      "description": "Detonate target's Enflame (1x), then reapply the same amount as fresh Enflame.",
+      "family": "detonate",
+      "sequence": [
+        "detonate"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Lung Smoke",
+      "description": "Deal 5 dmg. If target has Enflame, also apply Tire.",
+      "family": "fire",
+      "sequence": [
+        "fire"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Wildfire Gambit",
+      "description": "Deal 11 dmg. If target has Enflame, spread half of it to a second random enemy.",
+      "family": "fire",
+      "sequence": [
+        "fire"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Hot Hand",
+      "description": "Deal 13 dmg. If target has Enflame, also Stun.",
+      "family": "heavy",
+      "sequence": [
+        "heavy"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Suffocate",
+      "description": "Deal 9 dmg. If target has Enflame, also apply 2 Daze stacks.",
+      "family": "fire",
+      "sequence": [
+        "fire"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Fireball Candy - Phoenix Awakening",
+      "description": "Heal 6 HP. Exhaust. Permanent: your Fire-typed cards deal Magical damage instead.",
+      "family": "power",
+      "sequence": [
+        "power",
+        "heal"
+      ],
+      "note": "Power-up \u2192 heal, no outgoing attack.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Fireball Candy - Flame On!",
+      "description": "\u2605 Exhaust. Permanent: enemy Enflame ticks deal bonus damage equal to your own current Enflame stacks.",
+      "family": "power",
+      "sequence": [
+        "power"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Fireball Candy - Cinderguard",
+      "description": "\u2605 Exhaust. Permanent: at the start of each of your turns, gain Block equal to total current Enflame on all enemies.",
+      "family": "power",
+      "sequence": [
+        "power"
+      ],
+      "note": "Power-up now; block gesture only when the passive actually grants Block.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Thistle's Boom",
+      "description": "\u2605 Double the target's current Enflame stacks, then detonate the total.",
+      "family": "detonate",
+      "sequence": [
+        "detonate"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Willow's Prone Shot",
+      "description": "Deal 12 dmg, ignores Block.",
+      "family": "bolt",
+      "sequence": [
+        "bolt"
+      ],
+      "note": "Bolt is only a partial fit: the current name explicitly promises a prone shot. Needs a prone pose or approval to rename the card; not silently treated as solved.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Twin Strike",
+      "description": "Deal 13 dmg. Stun if it penetrates Block.",
+      "family": "heavy-gap",
+      "sequence": [
+        "heavy",
+        "heavy"
+      ],
+      "note": "UNRESOLVED: two slashing strikes need a distinct two-hit cutting motion; repeating the same heavy is not final art.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Arcane Cinder",
+      "description": "Deal 13 dmg.",
+      "family": "bolt",
+      "sequence": [
+        "bolt"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Phoenix Ember",
+      "description": "Deal 4 dmg. Apply 2 Enflame. Heal 2.",
+      "family": "fire",
+      "sequence": [
+        "fire",
+        "heal"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Mystic Detonation",
+      "description": "Detonate all Enflame on target for 1x \u2014 no base damage.",
+      "family": "detonate",
+      "sequence": [
+        "detonate"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Phoenix Ward",
+      "description": "Gain 4 Block. Heal 2.",
+      "family": "block",
+      "sequence": [
+        "block",
+        "heal"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Piercing Hex",
+      "description": "Deal 12 dmg, ignores Block.",
+      "family": "bolt",
+      "sequence": [
+        "bolt"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Phoenix Cascade",
+      "description": "Deal 8 dmg to ALL. Detonates Enflame (1x) on any that have it. Heals on kill.",
+      "family": "eruption",
+      "sequence": [
+        "eruption",
+        "heal"
+      ],
+      "note": "Wide eruption, detonation on burning targets, healing only on actual kills. This study does not preview enemy effects.",
+      "conditionalHeal": true
+    },
+    {
+      "name": "Phantom Volley",
+      "description": "3 random hits, 4 dmg each. Each hit applies 1 Enflame.",
+      "family": "bolt",
+      "sequence": [
+        "bolt",
+        "bolt",
+        "bolt"
+      ],
+      "note": "Repeat release three times for the three random hits; bolt study alone does not establish target travel or gameplay impact timing.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Wraith's Grasp",
+      "description": "Deal 10 dmg. Stun if it penetrates Block.",
+      "family": "bolt",
+      "sequence": [
+        "bolt"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Phoenix Rebirth",
+      "description": "Deal 14 dmg. Heal 100% of damage dealt.",
+      "family": "bolt",
+      "sequence": [
+        "bolt",
+        "heal"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": true
+    },
+    {
+      "name": "Fireball Candy - Arcane Immolation",
+      "description": "Deal 13 dmg to ALL. Apply 4 Enflame to all.",
+      "family": "eruption",
+      "sequence": [
+        "eruption"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    },
+    {
+      "name": "Fireball Candy - Phoenix Reckoning",
+      "description": "\u2605 Deal 14 dmg to ALL. Apply 5 (heavy) Enflame to all. Heal 6 HP.",
+      "family": "eruption",
+      "sequence": [
+        "eruption",
+        "heal"
+      ],
+      "note": "Keep effects tied to the actual resolved result, not just the card name.",
+      "conditionalHeal": false
+    }
+  ],
+  "clips": {
+    "jab": {
+      "files": [
+        "../branch-redraw-attacks/jab-2.png",
+        "../branch-redraw-attacks/jab-1.png",
+        "../branch-redraw-attacks/jab-0.png",
+        "../branch-redraw-attacks/jab-1.png",
+        "../branch-redraw-attacks/jab-2.png"
+      ],
+      "anchor": [
+        80.0,
+        112
+      ],
+      "scale": 2.6666666666666665,
+      "ms": 90,
+      "new": false
+    },
+    "heavy": {
+      "files": [
+        "../branch-redraw-attacks/heavy-0.png",
+        "../branch-redraw-attacks/heavy-1.png",
+        "../branch-redraw-attacks/heavy-2.png",
+        "../branch-redraw-attacks/heavy-3.png",
+        "../branch-redraw-attacks/heavy-4.png",
+        "../branch-redraw-attacks/heavy-5.png"
+      ],
+      "anchor": [
+        79.0,
+        110
+      ],
+      "scale": 2.588235294117647,
+      "ms": 90,
+      "new": false
+    },
+    "fire": {
+      "files": [
+        "../branch-redraw-attacks/fire-0.png",
+        "../branch-redraw-attacks/fire-1.png",
+        "../branch-redraw-attacks/fire-2.png",
+        "../branch-redraw-attacks/fire-3.png",
+        "../branch-redraw-attacks/fire-4.png",
+        "../branch-redraw-attacks/fire-5.png",
+        "../branch-redraw-attacks/fire-6.png",
+        "../branch-redraw-attacks/fire-7.png",
+        "../branch-redraw-attacks/fire-8.png",
+        "../branch-redraw-attacks/fire-9.png",
+        "../branch-redraw-attacks/fire-10.png",
+        "../branch-redraw-attacks/fire-11.png",
+        "../branch-redraw-attacks/fire-12.png",
+        "../branch-redraw-attacks/fire-13.png",
+        "../branch-redraw-attacks/fire-14.png",
+        "../branch-redraw-attacks/fire-15.png",
+        "../branch-redraw-attacks/fire-16.png"
+      ],
+      "anchor": [
+        59.0,
+        139
+      ],
+      "scale": 1.644859813084112,
+      "ms": 100,
+      "new": false
+    },
+    "kick": {
+      "files": [
+        "../branch-defense-healing/kick-0.png",
+        "../branch-defense-healing/kick-1.png",
+        "../branch-defense-healing/kick-2.png",
+        "../branch-defense-healing/kick-3.png",
+        "../branch-defense-healing/kick-4.png",
+        "../branch-defense-healing/kick-5.png",
+        "../branch-defense-healing/kick-6.png",
+        "../branch-defense-healing/kick-7.png",
+        "../branch-defense-healing/kick-8.png",
+        "../branch-defense-healing/kick-9.png",
+        "../branch-defense-healing/kick-10.png",
+        "../branch-defense-healing/kick-11.png",
+        "../branch-defense-healing/kick-12.png"
+      ],
+      "anchor": [
+        80,
+        183
+      ],
+      "scale": 1.644859813084112,
+      "ms": 90,
+      "new": false
+    },
+    "block": {
+      "files": [
+        "../branch-defense-healing/block-0.png",
+        "../branch-defense-healing/block-1.png",
+        "../branch-defense-healing/block-2.png",
+        "../branch-defense-healing/block-3.png",
+        "../branch-defense-healing/block-4.png",
+        "../branch-defense-healing/block-5.png",
+        "../branch-defense-healing/block-6.png",
+        "../branch-defense-healing/block-7.png",
+        "../branch-defense-healing/block-8.png",
+        "../branch-defense-healing/block-9.png",
+        "../branch-defense-healing/block-10.png",
+        "../branch-defense-healing/block-11.png",
+        "../branch-defense-healing/block-12.png",
+        "../branch-defense-healing/block-13.png",
+        "../branch-defense-healing/block-14.png",
+        "../branch-defense-healing/block-15.png",
+        "../branch-defense-healing/block-16.png"
+      ],
+      "anchor": [
+        80,
+        183
+      ],
+      "scale": 1.644859813084112,
+      "ms": 100,
+      "new": false
+    },
+    "heal": {
+      "files": [
+        "../branch-defense-healing/heal-0.png",
+        "../branch-defense-healing/heal-1.png",
+        "../branch-defense-healing/heal-2.png",
+        "../branch-defense-healing/heal-3.png",
+        "../branch-defense-healing/heal-4.png",
+        "../branch-defense-healing/heal-5.png",
+        "../branch-defense-healing/heal-6.png",
+        "../branch-defense-healing/heal-7.png",
+        "../branch-defense-healing/heal-8.png",
+        "../branch-defense-healing/heal-9.png",
+        "../branch-defense-healing/heal-10.png",
+        "../branch-defense-healing/heal-11.png",
+        "../branch-defense-healing/heal-12.png",
+        "../branch-defense-healing/heal-13.png",
+        "../branch-defense-healing/heal-14.png",
+        "../branch-defense-healing/heal-15.png",
+        "../branch-defense-healing/heal-16.png"
+      ],
+      "anchor": [
+        128,
+        183
+      ],
+      "scale": 1.644859813084112,
+      "ms": 110,
+      "new": false
+    },
+    "idle": {
+      "files": [
+        "../branch-redraw-movement/idle-0.png",
+        "../branch-redraw-movement/idle-1.png",
+        "../branch-redraw-movement/idle-2.png",
+        "../branch-redraw-movement/idle-3.png",
+        "../branch-redraw-movement/idle-4.png",
+        "../branch-redraw-movement/idle-5.png",
+        "../branch-redraw-movement/idle-6.png",
+        "../branch-redraw-movement/idle-7.png",
+        "../branch-redraw-movement/idle-8.png",
+        "../branch-redraw-movement/idle-9.png",
+        "../branch-redraw-movement/idle-10.png",
+        "../branch-redraw-movement/idle-11.png",
+        "../branch-redraw-movement/idle-12.png",
+        "../branch-redraw-movement/idle-13.png",
+        "../branch-redraw-movement/idle-14.png",
+        "../branch-redraw-movement/idle-15.png",
+        "../branch-redraw-movement/idle-16.png"
+      ],
+      "anchor": [
+        40.5,
+        106
+      ],
+      "scale": 1.6761904761904762,
+      "ms": 90,
+      "new": false
+    },
+    "detonate": {
+      "files": [
+        "detonate-0.png",
+        "detonate-1.png",
+        "detonate-2.png",
+        "detonate-3.png",
+        "detonate-4.png",
+        "detonate-5.png",
+        "detonate-6.png",
+        "detonate-7.png",
+        "detonate-8.png",
+        "detonate-9.png",
+        "detonate-10.png",
+        "detonate-11.png",
+        "detonate-12.png",
+        "detonate-13.png",
+        "detonate-14.png",
+        "detonate-15.png",
+        "detonate-16.png"
+      ],
+      "anchor": [
+        80,
+        183
+      ],
+      "scale": 1.644859813084112,
+      "ms": 100,
+      "new": true
+    },
+    "eruption": {
+      "files": [
+        "eruption-0.png",
+        "eruption-1.png",
+        "eruption-2.png",
+        "eruption-3.png",
+        "eruption-4.png",
+        "eruption-5.png",
+        "eruption-6.png",
+        "eruption-7.png",
+        "eruption-8.png",
+        "eruption-9.png",
+        "eruption-10.png",
+        "eruption-11.png",
+        "eruption-12.png",
+        "eruption-13.png",
+        "eruption-14.png",
+        "eruption-15.png",
+        "eruption-16.png"
+      ],
+      "anchor": [
+        80,
+        183
+      ],
+      "scale": 1.644859813084112,
+      "ms": 100,
+      "new": true
+    },
+    "bolt": {
+      "files": [
+        "bolt-0.png",
+        "bolt-1.png",
+        "bolt-2.png",
+        "bolt-3.png",
+        "bolt-4.png",
+        "bolt-5.png",
+        "bolt-6.png",
+        "bolt-7.png",
+        "bolt-8.png",
+        "bolt-9.png",
+        "bolt-10.png",
+        "bolt-11.png",
+        "bolt-12.png",
+        "bolt-13.png",
+        "bolt-14.png",
+        "bolt-15.png",
+        "bolt-16.png"
+      ],
+      "anchor": [
+        80,
+        183
+      ],
+      "scale": 1.644859813084112,
+      "ms": 100,
+      "new": true
+    },
+    "power": {
+      "files": [
+        "power-0.png",
+        "power-1.png",
+        "power-2.png",
+        "power-3.png",
+        "power-4.png",
+        "power-5.png",
+        "power-6.png",
+        "power-7.png",
+        "power-8.png",
+        "power-9.png",
+        "power-10.png",
+        "power-11.png",
+        "power-12.png",
+        "power-13.png",
+        "power-14.png",
+        "power-15.png",
+        "power-16.png"
+      ],
+      "anchor": [
+        80,
+        183
+      ],
+      "scale": 1.644859813084112,
+      "ms": 100,
+      "new": true
+    }
+  }
+}
