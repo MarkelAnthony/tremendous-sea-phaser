@@ -74,8 +74,18 @@ export function showSeaVictory(scene: Phaser.Scene, reward: Victory, next: () =>
   const start = performance.now(); const ctx = canvas.getContext("2d")!;
   const draw = (): void => {
     if (!overlay) return;
-    const t = (performance.now() - start) % 3200;
-    const index = t >= 2800 ? 0 : Math.min(16, Math.floor(t / 2800 * 17));
+    // Play the wind-up once, then sustain the crouched charge. Keep the
+    // flame clock continuous so neither its brightness nor its motion resets.
+    const t = performance.now() - start;
+    const frameMs = 2800 / 17;
+    const introMs = 16 * frameMs;
+    const sustainFrames = [16, 15, 14, 13, 12, 11, 10, 9, 10, 11, 12, 13, 14, 15];
+    const index = t < introMs
+      ? Math.min(15, Math.floor(t / frameMs))
+      : sustainFrames[Math.floor((t - introMs) / frameMs) % sustainFrames.length];
+    canvas.dataset.chargeFrame = String(index);
+    canvas.dataset.chargePhase = t < introMs ? "wind-up" : "sustain";
+    canvas.dataset.chargeElapsed = String(Math.floor(t));
     ctx.clearRect(0, 0, 500, 370); ctx.save(); ctx.translate(0, 15);
     paintFury(ctx, frameImage(scene, false, index), t, true); ctx.restore();
     animation = requestAnimationFrame(draw);
