@@ -785,7 +785,7 @@ window.playtest = () => ({
   hp: G?.player?.hp,
   energy: G?.combat?.energy,
   phase: G?.combat?.phase,
-  hand: G?.deck?.hand?.map((card, index) => ({index, name:card.name, cost:currentCost(card), affordable:affordable(card)})),
+  hand: G?.combat ? G.deck.hand.map((card, index) => ({index, name:card.name, cost:currentCost(card), affordable:affordable(card)})) : [],
   enemies: G?.combat?.enemies.map((e) => ({name:e.name, hp:e.hp, alive:e.alive, intent:getIntent(e)})),
   readability: {cards:document.querySelectorAll('.sea-readable-card').length, intents:Array.from(document.querySelectorAll('.sea-readable-intent')).map(el=>el.textContent)},
   pendingCard: G?.combat?.pendingCardIdx,
