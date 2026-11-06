@@ -11,6 +11,7 @@ let frames=[],anchors=[],clock=0,last=0,paused=false,ready=false,cycles=0;
 const phase=document.querySelector('#phase'),pause=document.querySelector('#pause');
 document.querySelector('#replay').onclick=()=>{clock=0;paused=false;pause.textContent='Pause'};
 pause.onclick=()=>{paused=!paused;pause.textContent=paused?'Resume':'Pause'};
+window.seekPreview=(ms)=>{clock=ms;paused=true;pause.textContent='Resume'};
 const colors=['#913224','#e04a20','#ff8525','#ffbe45','#fff0a3'];
 function pix(x,y,w,h,c){ctx.fillStyle=c;ctx.fillRect(Math.round(x),Math.round(y),w,h)}
 function beam(x,y,end,progress,t){const tip=x+(end-x)*progress;const fade=Math.min(1,progress*5);ctx.globalAlpha=fade;
