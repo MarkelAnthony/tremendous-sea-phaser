@@ -252,6 +252,7 @@ function enterCombat(def){
   G.player.hitBefore = false;
   G.player._t1 = true;
   G.combat = {
+    startRubees: G.rubees,
     enemies: spawnEnemies(def),
     immovableCharge: {on:false},
     turn: 1,
@@ -1429,6 +1430,7 @@ function enterCombatFull(def, fightKindOverride){
   }
   const fightKind = fightKindOverride || (getCurrentNode() ? getCurrentNode().kind : "common");
   G.combat = {
+    startRubees: G.rubees,
     enemies: spawnEnemies(def),
     immovableCharge: {on:false},
     turn: 1,
@@ -1526,6 +1528,17 @@ function enterCombatFull(def, fightKindOverride){
 }
 
 function afterCombatContinue(){
+  if (!G?.combat?.win || G.pendingVictory) return;
+  const before = Number(G.combat.startRubees ?? G.rubees);
+  const branch = G.captainKey === "Branch";
+  window.seaResolvingVictory = true;
+  try { resolveCombatRewards(); }
+  finally { window.seaResolvingVictory = false; }
+  G.pendingVictory = {earned: G.rubees - before, total: G.rubees, branch};
+  render();
+}
+
+function resolveCombatRewards(){
   if (G.pendingShopGuardVictory){
     G.pendingShopGuardVictory = false;
     G.combat = null;

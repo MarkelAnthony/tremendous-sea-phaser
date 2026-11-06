@@ -1,6 +1,7 @@
 import Phaser from "phaser";
 import { playApprovedBranchAttack } from "./SeaApprovedBranch";
 import { playWraithfireBolt } from "./SeaWraithfireBolt";
+import { playBranchFury } from "./SeaBranchFury";
 import { characterManifest, characterAtlasKey, selectCharacterState } from "../shared/animation";
 
 const BRANCH = "76af08a0-4d26-40fc-b346-558313f02bcb";
@@ -21,6 +22,7 @@ const specials: Record<string, string> = {
 export function playSeaBranchSpecial(scene: Phaser.Scene, sprite: Phaser.GameObjects.Sprite, card: { name: string }, targetIndex: number = 0): boolean {
   const kind = specials[card.name];
   if (sprite.getData("captain") !== "Branch" || !kind || sprite.getData("clarityAttackPlaying")) return false;
+  if (card.name === "Branch's Fury" && sprite.getData("approvedBranchArt")) return playBranchFury(scene, sprite);
   if (card.name === "Wraithfire Bolt" && sprite.getData("approvedBranchArt")) return playWraithfireBolt(scene, sprite, targetIndex);
   if (sprite.getData("approvedBranchArt")) return playApprovedBranchAttack(scene, sprite, kind, card.name);
   const name = `Branch special ${kind}`;

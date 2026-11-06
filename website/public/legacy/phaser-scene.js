@@ -96,6 +96,7 @@ class MainScene extends Phaser.Scene {
     // Redefine the global render() — everything else in ui.js is untouched.
     const scene = this;
     render = function(){
+      if (window.seaResolvingVictory) return;
       try {
         if (G && !G.over) saveGame();
         if (G && G.over) clearSave();
@@ -155,7 +156,13 @@ class MainScene extends Phaser.Scene {
   // ---- top-level dispatch, mirrors the old renderX() functions in ui.js ----
   syncFromState(){
     window.hideSeaChart();
-    if (!G){ this.drawCaptainSelect(); return; }
+    if (!G){ window.hideSeaVictory(); this.drawCaptainSelect(); return; }
+    if (G.pendingVictory){
+      this.clearRoot();
+      window.showSeaVictory(this, G.pendingVictory, () => { G.pendingVictory = null; render(); });
+      return;
+    }
+    window.hideSeaVictory();
     if (G.over){ this.drawEndScreen(); return; }
     if (G.pendingRestartConfirm){ this.drawRestartConfirmScreen(); return; }
     if (G.pendingCrewMoment){ this.drawTextScreen("A Memory Surfaces", G.pendingCrewMoment.text, [{label:"Continue", onClick:()=>continueCrewMoment()}]); return; }
@@ -191,6 +198,7 @@ class MainScene extends Phaser.Scene {
   drawCombatResult(){
     this.combatBuilt = false; // force a fresh skeleton next time combat starts
     const win = G.combat.win;
+    if (win) { afterCombatContinue(); return; }
     this.clearRoot();
     this.addTitle(win ? "🏆 Victory!" : "💀 Defeated...");
     this.uiRoot.add(this.add.text(400, 110, G.log.slice(0,6).join("\n"), {fontFamily:"sans-serif", fontSize:13, color:"#93a6b8", align:"center", wordWrap:{width:600}}).setOrigin(0.5, 0));
@@ -750,9 +758,29 @@ window.startVoyage = (captain) => startGame(captain);
 window.chooseSeaCard = (index) => selectCard(index);
 window.chooseSeaTarget = (index) => playCardOnTarget(index);
 window.endSeaTurn = () => endTurn();
+// Deterministic checks exercise the real card and victory/reward paths.
+window.testBranchFuryCard = (lethal = false) => {
+  if (!G?.combat || G.combat.over || G.captainKey !== 'Branch') return false;
+  const card = G.pool.find(c => c.name === "Branch's Fury");
+  if (!card) return false;
+  G.combat.energy = Math.max(3, G.combat.energy);
+  if (lethal) G.combat.enemies.forEach(e => { e.hp = 1; });
+  G.deck.hand.push({...card}); render();
+  selectCard(G.deck.hand.length - 1); playCardOnTarget(G.combat.enemies.findIndex(e => e.alive));
+  return true;
+};
+window.testSeaVictory = () => {
+  if (!G?.combat || G.combat.over) return false;
+  G.combat.enemies.forEach(e => { e.hp = 0; e.alive = false; });
+  checkCombatEnd(); render(); return true;
+};
 window.playtest = () => ({
   scene: window.game.scene.getScenes(true)[0]?.scene.key,
   captain: G?.captainKey || null,
+  victory: G?.pendingVictory || null,
+  victoryVisible: !!document.getElementById('sea-victory'),
+  rubees: G?.rubees,
+  rewardCards: G?.pendingReward?.map(c => c.name) || null,
   act: G?.act || null,
   hp: G?.player?.hp,
   energy: G?.combat?.energy,
