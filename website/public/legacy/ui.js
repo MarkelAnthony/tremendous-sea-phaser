@@ -808,7 +808,7 @@ function resolveCardEffects(idx, target, isRepeatedPlay){
   if (G.captainKey === "Branch") {
     const scene = window.game?.scene.getScenes(true)[0];
     if (scene?.playerBody) {
-      const special = (targets.length || card.selfEnflame) && window.playSeaBranchSpecial(scene, scene.playerBody, card);
+      const special = (targets.length || card.selfEnflame) && window.playSeaBranchSpecial(scene, scene.playerBody, card, G.combat.enemies.indexOf(target));
       const punched = !special && targets.length && card.dmg > 0 && window.playSeaBranchPunch(scene, scene.playerBody, card.name);
       const burned = !special && !punched && (targets.length || card.selfEnflame) && window.playSeaBranchBurn(scene, scene.playerBody, card);
       if (!special && !punched && !burned && targets.length && (card.dmg > 0 || card.detonate || card.detonateRate || card.doubleThenDetonate)) window.playSeaBranchFallback?.(scene, scene.playerBody, card.name);

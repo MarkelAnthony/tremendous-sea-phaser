@@ -1,5 +1,6 @@
 import Phaser from "phaser";
 import { queueSeaAttackImpact } from "./SeaAttackImpact";
+import { preloadWraithfireBolt } from "./SeaWraithfireBolt";
 import { assetUrl } from "../pixellab/templateAssetPaths";
 import { playApprovedBranchAttack } from "./SeaApprovedBranch";
 import { preloadApprovedBranchClips, prepareApprovedBranchClip, watchApprovedBranchMovement } from "./SeaBranchApprovedClips";
@@ -12,6 +13,7 @@ const BRANCH = "76af08a0-4d26-40fc-b346-558313f02bcb";
 export function preloadSeaCaptain(scene: Phaser.Scene): void {
   preloadCaptainShips(scene);
   preloadApprovedBranchClips(scene);
+  preloadWraithfireBolt(scene);
   preloadCharacterAtlas(scene, RILEY);
   preloadCharacterAtlas(scene, BRANCH);
   scene.load.image("branch-approved-guard", assetUrl("images", APPROVED_BRANCH, "image.png"));

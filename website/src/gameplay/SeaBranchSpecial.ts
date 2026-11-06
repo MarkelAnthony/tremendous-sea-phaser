@@ -1,5 +1,6 @@
 import Phaser from "phaser";
 import { playApprovedBranchAttack } from "./SeaApprovedBranch";
+import { playWraithfireBolt } from "./SeaWraithfireBolt";
 import { characterManifest, characterAtlasKey, selectCharacterState } from "../shared/animation";
 
 const BRANCH = "76af08a0-4d26-40fc-b346-558313f02bcb";
@@ -17,9 +18,10 @@ const specials: Record<string, string> = {
 };
 
 /** Explicit heavy-card routing takes priority over generic punch/burn keywords. */
-export function playSeaBranchSpecial(scene: Phaser.Scene, sprite: Phaser.GameObjects.Sprite, card: { name: string }): boolean {
+export function playSeaBranchSpecial(scene: Phaser.Scene, sprite: Phaser.GameObjects.Sprite, card: { name: string }, targetIndex: number = 0): boolean {
   const kind = specials[card.name];
   if (sprite.getData("captain") !== "Branch" || !kind || sprite.getData("clarityAttackPlaying")) return false;
+  if (card.name === "Wraithfire Bolt" && sprite.getData("approvedBranchArt")) return playWraithfireBolt(scene, sprite, targetIndex);
   if (sprite.getData("approvedBranchArt")) return playApprovedBranchAttack(scene, sprite, kind, card.name);
   const name = `Branch special ${kind}`;
   const selection = selectCharacterState(characterManifest(scene, BRANCH), { state: BRANCH, preferredClips: [name] });
