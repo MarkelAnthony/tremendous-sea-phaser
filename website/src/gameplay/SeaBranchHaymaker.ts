@@ -23,7 +23,7 @@ export function playBranchHaymaker(scene: Phaser.Scene, sprite: Phaser.GameObjec
   // Preserve the preview's fixed guard anchor; overlap the torso slightly
   // so the rounded glove visibly lands rather than stopping at its bounds.
   const anchor = { x: 105, y: 183 };
-  const contactX = target.container.x - 20;
+  const contactX = target.container.x + 15;
   const strikeX = contactX - parent.x - (150 - anchor.x) * scale;
   const started = scene.time.now;
   let finished = false;
