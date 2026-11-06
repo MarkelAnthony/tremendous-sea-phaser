@@ -1,0 +1,125 @@
+{
+  "files": [
+    "body-0.png",
+    "body-1.png",
+    "body-2.png",
+    "body-3.png",
+    "body-4.png",
+    "body-5.png",
+    "body-6.png",
+    "body-7.png",
+    "body-8.png",
+    "body-9.png",
+    "body-10.png",
+    "body-11.png",
+    "body-12.png",
+    "body-13.png",
+    "body-14.png",
+    "body-15.png",
+    "body-16.png"
+  ],
+  "anchors": [
+    {
+      "footX": 41,
+      "footY": 106,
+      "gloveX": 66,
+      "gloveY": 30
+    },
+    {
+      "footX": 41,
+      "footY": 106,
+      "gloveX": 66,
+      "gloveY": 30
+    },
+    {
+      "footX": 41,
+      "footY": 106,
+      "gloveX": 66,
+      "gloveY": 30
+    },
+    {
+      "footX": 41,
+      "footY": 106,
+      "gloveX": 66,
+      "gloveY": 30
+    },
+    {
+      "footX": 41,
+      "footY": 106,
+      "gloveX": 66,
+      "gloveY": 30
+    },
+    {
+      "footX": 41,
+      "footY": 106,
+      "gloveX": 79,
+      "gloveY": 31
+    },
+    {
+      "footX": 41,
+      "footY": 106,
+      "gloveX": 79,
+      "gloveY": 31
+    },
+    {
+      "footX": 41,
+      "footY": 106,
+      "gloveX": 79,
+      "gloveY": 31
+    },
+    {
+      "footX": 41,
+      "footY": 106,
+      "gloveX": 79,
+      "gloveY": 31
+    },
+    {
+      "footX": 41,
+      "footY": 106,
+      "gloveX": 79,
+      "gloveY": 31
+    },
+    {
+      "footX": 41,
+      "footY": 106,
+      "gloveX": 79,
+      "gloveY": 31
+    },
+    {
+      "footX": 41,
+      "footY": 106,
+      "gloveX": 79,
+      "gloveY": 31
+    },
+    {
+      "footX": 41,
+      "footY": 106,
+      "gloveX": 79,
+      "gloveY": 31
+    },
+    {
+      "footX": 41,
+      "footY": 106,
+      "gloveX": 79,
+      "gloveY": 31
+    },
+    {
+      "footX": 41,
+      "footY": 106,
+      "gloveX": 66,
+      "gloveY": 30
+    },
+    {
+      "footX": 41,
+      "footY": 106,
+      "gloveX": 66,
+      "gloveY": 30
+    },
+    {
+      "footX": 41,
+      "footY": 106,
+      "gloveX": 66,
+      "gloveY": 30
+    }
+  ]
+}

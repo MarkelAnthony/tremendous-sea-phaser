@@ -10,7 +10,7 @@ Excluded: Rock Candy - Stoneskin (sidekick ability, deferred — see `sidekick-a
 
 | # | Card | Reference | Preview | Approved | In combat |
 |---|------|-----------|---------|----------|-----------|
-| 1 | Wraithfire Bolt | agreed in principle: `uploads/piccolo gif.gif` (charge → glove thrust → spiral fire beam) — awaiting go-ahead to preview | – | – | – |
+| 1 | Wraithfire Bolt | agreed in principle: `uploads/piccolo gif.gif` (charge → glove thrust → spiral fire beam) — preview requested | `/previews/wraithfire-bolt/` body + procedural spiral beam study | pending | no |
 | 2 | Wildfire Haymaker | pending | – | – | – |
 | 3 | Branch's Fury | pending | – | – | – |
 | 4 | Fireball Candy - Fafnir | pending | – | – | – |
@@ -31,3 +31,5 @@ Beats taken from it, adapted to Branch:
 3. Fire: a straight flame core with a spinning fire spiral wrapped around it shoots from the glove, capped by a bright fireball head, and grows to reach the target.
 4. Impact + quick fade; arm recovers. Shortened from the reference's 2.5 s to ~1.2-1.5 s to keep combat moving.
 Split: Branch's body (charge + thrust pose) and the beam as a separate effect, so the beam can stretch to whichever enemy is targeted.
+
+Preview generated: PixMiniMax loose-image animation, job `a19398e5-f432-4147-b9b2-f93109e341ad`, saved asset `31a71679-dba5-55b3-bd0f-fb6448648a6b`; charged 1 generation. 17 frames including source, east-facing. Separate procedural pixel beam. Review glove edge clipping and beam attachment before approval. No combat integration.

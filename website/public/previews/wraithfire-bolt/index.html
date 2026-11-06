@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Wraithfire Bolt · animation study</title>
+<style>*{box-sizing:border-box}body{margin:0;background:#141923;color:#ece4d5;font:15px/1.5 system-ui;padding:24px}main{max-width:1050px;margin:auto}h1{margin-bottom:4px;font-size:26px}p{color:#bac2ce}canvas{width:100%;background:#20283a;image-rendering:pixelated;border:1px solid #4d5265;border-radius:8px}button,input{max-width:100%}button{background:#334050;color:#fff;border:1px solid #687789;border-radius:7px;padding:9px 16px;cursor:pointer}.controls{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:14px 0}strong{color:#ffcc7e}#phase{min-width:180px}a{color:#8bdfd2}</style>
+<main><h1>Wraithfire Bolt</h1><p><strong>Preview only · not in combat · awaiting your approval</strong><br>Reference: charge → glove thrust → spinning fire beam → recovery. Branch's generated motion is paired with a separate pixel-fire effect so its reach can adjust to a target.</p>
+<canvas id="stage" width="800" height="300" aria-label="Branch charging and firing a spinning fire beam at a target marker"></canvas>
+<div class="controls"><button id="replay">Replay</button><button id="pause">Pause</button><label>Slow motion <input type="checkbox" id="slow"></label><label>Target distance <input id="distance" type="range" min="440" max="740" value="670"></label><span id="phase"></span></div>
+<p>Review the glove connection, spiral motion and held firing pose. The target is only a marker; no damage or card rules have changed. <a href="../../../">Back to game</a></p></main>
+<script>
+const canvas=document.querySelector('canvas'),ctx=canvas.getContext('2d');ctx.imageSmoothingEnabled=false;
+let frames=[],anchors=[],clock=0,last=0,paused=false,ready=false,cycles=0;
+const phase=document.querySelector('#phase'),pause=document.querySelector('#pause');
+document.querySelector('#replay').onclick=()=>{clock=0;paused=false;pause.textContent='Pause'};
+pause.onclick=()=>{paused=!paused;pause.textContent=paused?'Resume':'Pause'};
+const colors=['#913224','#e04a20','#ff8525','#ffbe45','#fff0a3'];
+function pix(x,y,w,h,c){ctx.fillStyle=c;ctx.fillRect(Math.round(x),Math.round(y),w,h)}
+function beam(x,y,end,progress,t){const tip=x+(end-x)*progress;const fade=Math.min(1,progress*5);ctx.globalAlpha=fade;
+ for(let i=0;i<tip-x;i+=3){let taper=Math.min(1,(tip-x-i+10)/30),r=(6+Math.sin(i*.13+t*.019)*2)*taper;pix(x+i,y-r,4,r*2,colors[1]);pix(x+i,y-r*.55,4,r*1.1,colors[3]);pix(x+i,y-2,4,4,colors[4]);}
+ // Two helical ribbons circulate around the straight hot core, with bright front-facing coils.
+ for(let layer=0;layer<2;layer++)for(let i=0;i<tip-x;i+=3){const a=i*.075-t*.025+layer*Math.PI,dy=Math.sin(a)*14;pix(x+i,y+dy-2,5,Math.cos(a)>0?5:3,Math.cos(a)>0?colors[3]:colors[1]);if(Math.cos(a)>.6)pix(x+i,y+dy-2,3,2,colors[4]);}
+ for(let i=0;i<16;i++){let a=i*Math.PI/8;pix(tip+Math.cos(a)*10,y+Math.sin(a)*12,5,5,colors[2]);}pix(tip-8,y-9,16,18,colors[3]);pix(tip-5,y-5,10,10,colors[4]);ctx.globalAlpha=1;
+}
+function draw(now){const dt=last?Math.min(60,now-last):0;last=now;if(ready&&!paused)clock+=dt*(document.querySelector('#slow').checked?.35:1);const t=clock%2200;if(t<dt)cycles++;
+ctx.fillStyle='#20283a';ctx.fillRect(0,0,800,300);pix(0,244,800,2,'#727078');pix(0,246,800,54,'#292c35');
+const end=+document.querySelector('#distance').value;ctx.strokeStyle='#728397';ctx.setLineDash([5,5]);ctx.strokeRect(end-13,116,26,100);ctx.setLineDash([]);ctx.fillStyle='#aab8c9';ctx.font='12px system-ui';ctx.fillText('TARGET',end-23,103);
+if(ready){const active=Math.min(t,1450);let index=Math.min(frames.length-1,Math.floor(active/1450*frames.length));if(t>1450)index=0;const image=frames[index],a=anchors[index],s=1.7;ctx.drawImage(image,140-a.footX*s,244-a.footY*s,image.width*s,image.height*s);const gx=140+(a.gloveX-a.footX)*s,gy=244+(a.gloveY-a.footY)*s;
+if(t<380){for(let i=0;i<7;i++){const angle=t*.018+i*.9,r=17*(1-t/380);pix(gx+Math.cos(angle)*r,gy+Math.sin(angle)*r,3,3,colors[3]);}}
+if(t>=490&&t<1080)beam(gx,gy,end,Math.min(1,(t-490)/170),t);
+if(t>=1040&&t<1220){ctx.globalAlpha=1-(t-1040)/180;for(let i=0;i<14;i++){let a=i*2.4,r=8+(t-1040)*.23;pix(end+Math.cos(a)*r,gy+Math.sin(a)*r,4,4,colors[i%5]);}ctx.globalAlpha=1;}
+phase.textContent=t<380?'Charge':t<490?'Glove thrust':t<1080?'Spinning beam':t<1450?'Recover':'Ready';window.previewState={ready,frame:index,phase:phase.textContent,paused,cycles,target:end,combatChanged:false};}
+requestAnimationFrame(draw)}
+requestAnimationFrame(draw);
+fetch('clip.json').then(r=>r.json()).then(async data=>{anchors=data.anchors;frames=await Promise.all(data.files.map(src=>new Promise((resolve,reject)=>{const i=new Image;i.onload=()=>resolve(i);i.onerror=reject;i.src=src})));ready=true}).catch(e=>{phase.textContent='Could not load preview: '+e;window.previewState={ready:false,error:String(e)}});
+</script></html>
