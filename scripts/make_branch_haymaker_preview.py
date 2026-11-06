@@ -34,6 +34,18 @@ for n in range(32):
   # Use padded layer so the extending glove is never cropped.
   padded=Image.new('RGBA',(256,160)); padded.alpha_composite(arm,(x,y))
   padded=padded.rotate(-round(58*amount),resample=Image.Resampling.NEAREST,center=(x+56,y+27))
+  # Drop isolated rotation specks so the glove has no floating fragments.
+  visited=set()
+  for py in range(padded.height):
+   for px in range(padded.width):
+    if (px,py) in visited or not padded.getpixel((px,py))[3]: continue
+    todo=[(px,py)]; visited.add((px,py)); component=[]
+    while todo:
+     ax,ay=todo.pop(); component.append((ax,ay))
+     for q in [(ax-1,ay),(ax+1,ay),(ax,ay-1),(ax,ay+1)]:
+      if 0<=q[0]<padded.width and 0<=q[1]<padded.height and q not in visited and padded.getpixel(q)[3]: visited.add(q); todo.append(q)
+    if len(component)<8:
+     for q in component: padded.putpixel(q,(0,0,0,0))
   out.alpha_composite(padded)
  if 14<=n<=22:
   fx=flames[(n-14)%5].copy(); fade=1 if n<20 else (23-n)/4
