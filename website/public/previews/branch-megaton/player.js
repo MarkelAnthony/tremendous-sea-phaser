@@ -4,13 +4,13 @@ const load=src=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()
 const solar=new Image();solar.src='./sun.png';
 function draw(){if(!frames.length||!enemies.length)return;const layout=arenaLayout();if(!layout)return;const frame=Math.min(32,Math.floor(time*fps/1000)),age=frame-impactFrame;ctx.imageSmoothingEnabled=false;ctx.clearRect(0,0,1000,700);
 const reaction=age<0?0:Math.min(7,1+age),recoil=age<0?0:Math.min(45,Math.max(0,age)*7),s=layout.scale;
-const target=Object.values(battle.enemySprites)[0]?.container;if(target){target.x=layout.enemyX;const body=target.list.find(o=>o.type==='Rectangle');if(body)body.setFillStyle(age===0?0xffefba:0xd9534f);}
+const target=Object.values(battle.enemySprites)[0]?.container;if(target){target.x=layout.enemyX+recoil;const body=target.list.find(o=>o.type==='Rectangle');if(body)body.setFillStyle(age===0?0xffefba:0xd9534f);}
 const im=frames[frame],x=layout.x-105*s,y=layout.feet-183*s;
 // Split at the top of the glove: keep the approved arm/throw, give the sun its own room.
 if(frame>=3&&frame<=18){ctx.drawImage(im,0,76,256,116,x,y+76*s,256*s,116*s);}
 else ctx.drawImage(im,x,y,256*s,192*s);
 let diameter=0,sunX=0,sunY=0;
-if(frame>=3&&frame<=21){const p=Math.min(1,(frame-3)/13);diameter=18+222*Math.pow(p,1.8);if(frame>16)diameter*=1+0.025*Math.sin(frame*2);const palmX=layout.x+22*s,palmY=y+79*s;sunX=palmX;sunY=palmY-diameter/2+7;
+if(frame>=3&&frame<=21){const p=Math.min(1,(frame-3)/13);diameter=18+166*Math.pow(p,1.8);if(frame>16)diameter*=1+0.015*Math.sin(frame*2);const palmX=layout.x+22*s,palmY=y+79*s;sunX=palmX;sunY=palmY-diameter/2+7;
 // From the wind-up onward the generated sun is behind Branch's throwing arm.
 if(frame>=19){sunX-= (frame-18)*10;sunY+= (frame-18)*8;}
 }else if(frame===22){diameter=232;sunX=layout.x+170;sunY=layout.enemyY-48;}

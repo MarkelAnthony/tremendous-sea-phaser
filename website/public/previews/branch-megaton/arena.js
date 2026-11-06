@@ -9,7 +9,7 @@ gameFrame.addEventListener('load',()=>{
   const scene=w.game.scene.getScenes(true)[0];
   if(!scene.playerBody||!scene.enemySprites||!Object.keys(scene.enemySprites).length)return;
   battle=scene;model=scene.playerBody;gameCanvas=w.game.canvas;
-  model.setVisible(false);clearInterval(check);
+  model.setVisible(false);for(const entry of Object.values(scene.enemySprites))entry.container.setData('reviewHomeX',entry.container.x);clearInterval(check);
  },150);
 });
 function arenaLayout(){
@@ -17,5 +17,5 @@ function arenaLayout(){
  const r=gameCanvas.getBoundingClientRect(), s=stage.getBoundingClientRect();
  canvas.style.left=r.left+'px';canvas.style.top=r.top+'px';canvas.style.width=r.width+'px';canvas.style.height=r.height+'px';
  const target=Object.values(battle.enemySprites)[0]?.container;
- return {x:battle.playerContainer.x,feet:battle.playerContainer.y+75,enemyX:target?.x||715,enemyY:target?.y||280,scale:Number(model.getData('visibleModelHeight')||176)/107,viewport:{width:1000,height:700,displayWidth:s.width}};
+ return {x:battle.playerContainer.x,feet:battle.playerContainer.y+75,enemyX:target?.getData('reviewHomeX')||715,enemyY:target?.y||280,scale:Number(model.getData('visibleModelHeight')||176)/107,viewport:{width:1000,height:700,displayWidth:s.width}};
 }
