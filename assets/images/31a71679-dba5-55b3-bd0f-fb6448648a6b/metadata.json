@@ -1,0 +1,32 @@
+{
+  "id": "31a71679-dba5-55b3-bd0f-fb6448648a6b",
+  "name": "One complete stationary beam-release boxing motion, facing r",
+  "prompt": "One complete stationary beam-release boxing motion, facing right throughout. First brace the legs wide and pull the lead boxing glove inward to the chest to gather power, rear glove guarding the chin. Twist the torso and thrust the lead glove straight horizontally to the right at shoulder level. Hold the arm fully extended and locked for half the animation as if sustaining a powerful beam from the knuckles, with subtle recoil through shoulders. Finally retract the glove and return to the original boxing guard. Feet planted throughout. The energy beam will be composited separately: animate only the boxer and existing small flames, no large projectile, no beam, no other character. Strong readable anticipation, rapid thrust, sustained straight arm, quick recovery.",
+  "width": 410,
+  "height": 428,
+  "model": "animate_minimax_h3",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": {
+    "grid_size": "5x4",
+    "frames": [
+      "frames/0.png",
+      "frames/1.png",
+      "frames/2.png",
+      "frames/3.png",
+      "frames/4.png",
+      "frames/5.png",
+      "frames/6.png",
+      "frames/7.png",
+      "frames/8.png",
+      "frames/9.png",
+      "frames/10.png",
+      "frames/11.png",
+      "frames/12.png",
+      "frames/13.png",
+      "frames/14.png",
+      "frames/15.png",
+      "frames/16.png"
+    ]
+  }
+}
