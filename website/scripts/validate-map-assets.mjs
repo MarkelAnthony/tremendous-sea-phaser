@@ -3,7 +3,7 @@
  */
 
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
-import { join, relative } from "node:path";
+import { dirname, join, relative } from "node:path";
 
 const DEFAULT_ASSETS_DIR = join(import.meta.dirname, "..", "..", "assets");
 const SRC_DIR = join(import.meta.dirname, "..", "src");
@@ -14,6 +14,8 @@ const TEMPLATE_ASSET_PATHS = join(
   "pixellab",
   "templateAssetPaths.ts",
 );
+const TERRAIN_RENDERER = join(SRC_DIR, "pixellab", "terrainRenderer.ts");
+const CURRENT_TERRAIN_RENDERER = join(import.meta.dirname, "current-terrainRenderer.ts");
 const assetsDir = process.argv[2] ?? DEFAULT_ASSETS_DIR;
 const mapsDir = join(assetsDir, "maps");
 const charactersDir = join(assetsDir, "characters");
@@ -36,6 +38,16 @@ const PHASER_IMPORT_PATTERN = /\bimport\s+Phaser\s+from\s+["']phaser["'];?/;
 
 function readJson(path) {
   return JSON.parse(readFileSync(path, "utf8"));
+}
+
+// Whether terrains that no one tileset spans may touch is the project's RENDERER's
+// call, not this file's. This validator is replaced in every project at the start
+// of each session; terrainRenderer.ts only ever arrives with a new project. A
+// renderer that predates hard edges still throws on them, so for that project
+// they must keep failing the build instead of the game.
+function rendererDrawsHardTerrainEdges() {
+  return existsSync(TERRAIN_RENDERER)
+    && /^export const DRAWS_HARD_TERRAIN_EDGES = true;/m.test(readFileSync(TERRAIN_RENDERER, "utf8"));
 }
 
 function collectTypeScriptFiles(dir) {
@@ -119,6 +131,59 @@ function characterIdExports() {
   return { literals, aliases };
 }
 
+function reachableTypeScriptFiles() {
+  // The modules main.ts imports, directly or not: only those are bundled, so a
+  // template file nothing imports any more (PlayerController in a terrain-only
+  // game) ships nothing and needs none of its characters. Scanning every file
+  // demanded four deleted characters from such a project, and this file is
+  // reinstalled each session, so the agent's own fix could not stick
+  // (agent_feedback 2026-11-04, five turns). Anything this cannot follow (an
+  // alias like "@/x", import.meta.glob, an import() of a computed path, another
+  // entry in index.html) makes every file count, as before. Imports are read
+  // from the raw source: a commented-out one only adds a file, while the
+  // comment stripper can eat the rest of a line after "https://".
+  const all = collectTypeScriptFiles(SRC_DIR);
+  const entry = join(SRC_DIR, "main.ts");
+  const html = join(SRC_DIR, "..", "index.html");
+  const entries = existsSync(html)
+    ? [...readFileSync(html, "utf8").matchAll(/<script[^>]*\bsrc=["']([^"']+)["']/g)].map((m) => m[1])
+    : [];
+  if (!existsSync(entry) || entries.some((src) => !/^\.?\/src\/main\.ts$/.test(src))) {
+    return all;
+  }
+  const seen = new Set();
+  const queue = [entry];
+  while (queue.length > 0) {
+    const path = queue.pop();
+    if (seen.has(path)) {
+      continue;
+    }
+    seen.add(path);
+    const code = readFileSync(path, "utf8");
+    const dynamicImports = code.match(/\bimport\s*\(/g) ?? [];
+    const literalImports = code.match(/\bimport\s*\(\s*(["'])[^"']*\1\s*\)/g) ?? [];
+    if (/import\.meta\.glob/.test(code) || dynamicImports.length !== literalImports.length) {
+      return all;
+    }
+    for (const [, spec] of code.matchAll(/(?:\bfrom|\bimport)\s*\(?\s*["']([^"']+)["']/g)) {
+      if (/^[@~#]\/|^\//.test(spec)) {
+        return all;
+      }
+      if (!spec.startsWith(".")) {
+        continue;
+      }
+      const base = join(dirname(path), spec).replace(/\.js$/, "");
+      const target = [base, `${base}.ts`, join(base, "index.ts")].find(
+        (candidate) => candidate.endsWith(".ts") && existsSync(candidate) && statSync(candidate).isFile(),
+      );
+      if (target) {
+        queue.push(target);
+      }
+    }
+  }
+  return all.filter((path) => seen.has(path));
+}
+
 function characterIdUses() {
   // Which character roles the game still USES, name -> files using it.
   //
@@ -126,13 +191,27 @@ function characterIdUses() {
   // own name, so counting the declaration as a use would mark every role used
   // forever and make this whole check a no-op.
   const uses = new Map();
+  // A role a module defines for itself (`const ELF_CHARACTER_ID = "<id>"`) is
+  // as good as an export: it was refused for not being in templateAssetPaths.ts
+  // (agent_feedback 2026-11-05 13:30), a rule nothing documented. Names are
+  // module-scoped, so one name can hold a different id in each module: every
+  // id is kept and checked, never just the last one scanned.
+  const localLiterals = new Map();
 
-  for (const path of collectTypeScriptFiles(SRC_DIR)) {
+  for (const path of reachableTypeScriptFiles()) {
     if (path === TEMPLATE_ASSET_PATHS) {
       continue;
     }
     const code = withoutComments(readFileSync(path, "utf8"));
     const relativePath = relative(join(import.meta.dirname, ".."), path);
+    for (const [, name, id] of code.matchAll(
+      /\bconst ([A-Z0-9_]*_CHARACTER_ID)\s*=\s*["']([0-9a-fA-F-]{36})["']/g,
+    )) {
+      if (!localLiterals.has(name)) {
+        localLiterals.set(name, new Set());
+      }
+      localLiterals.get(name).add(id);
+    }
     for (const [, name] of code.matchAll(/\b([A-Z0-9_]*_CHARACTER_ID)\b/g)) {
       if (!uses.has(name)) {
         uses.set(name, []);
@@ -143,7 +222,7 @@ function characterIdUses() {
     }
   }
 
-  return uses;
+  return { uses, localLiterals };
 }
 
 function readTemplateCharacterIds(warnings) {
@@ -163,13 +242,14 @@ function readTemplateCharacterIds(warnings) {
   // nothing, so validation fails loudly instead of quietly checking zero
   // characters. A role the agent adds later gets the same treatment for free.
   const { literals, aliases } = characterIdExports();
-  const uses = characterIdUses();
+  const { uses, localLiterals } = characterIdUses();
 
   const ids = [];
   const unresolved = [];
   for (const [name, files] of uses) {
-    const id = literals.get(name) ?? literals.get(aliases.get(name));
-    if (id === undefined) {
+    const exported = literals.get(name) ?? literals.get(aliases.get(name));
+    const local = [...(localLiterals.get(name) ?? [])];
+    if (exported === undefined && local.length === 0) {
       unresolved.push(
         `${name} is used by ${files.join(", ")} but has no id in ` +
           "website/src/pixellab/templateAssetPaths.ts" +
@@ -179,13 +259,14 @@ function readTemplateCharacterIds(warnings) {
       );
       continue;
     }
-    ids.push(id);
+    ids.push(...(exported === undefined ? [] : [exported]), ...local);
   }
 
   if (unresolved.length > 0) {
     throw new Error(
-      `${unresolved.join("; ")}. Either stop using the role, or export it: ` +
-        'export const <ROLE>_CHARACTER_ID = "<character id>";',
+      `${unresolved.join("; ")}. Either stop using the role, or give it an id: ` +
+        'export const <ROLE>_CHARACTER_ID = "<character id>"; in templateAssetPaths.ts, ' +
+        "or the same const in the module that uses it.",
     );
   }
 
@@ -194,13 +275,33 @@ function readTemplateCharacterIds(warnings) {
   for (const name of [...literals.keys(), ...aliases.keys()]) {
     if (name.endsWith("_CHARACTER_ID") && !uses.has(name)) {
       warnings.push(
-        `${name} is exported but no .ts file uses it, so its character assets ` +
+        // "no .ts file uses it" stays word for word: projects keep the test that
+        // matches it while this file is reinstalled under them every session.
+        `${name} is exported but no .ts file uses it that main.ts imports, so its character assets ` +
           "were not checked",
       );
     }
   }
 
   return [...new Set(ids)];
+}
+
+// MAP_FOLDER's value when it can be read with certainty: a complete string
+// literal, or a constant naming one. Anything else (concatenation, an
+// interpolated template, a call) returns null and is not checked, so a valid
+// game is never failed on a guess.
+function startMapFolder() {
+  const source = withoutComments(readFileSync(TEMPLATE_ASSET_PATHS, "utf8"));
+  const valueOf = (name) => {
+    const found = source.match(new RegExp(`(?:export\\s+)?const\\s+${name}\\s*=\\s*([^;\\n]+)`));
+    return found ? found[1].trim().replace(/\s+as\s+const$/, "") : null;
+  };
+  let value = valueOf("MAP_FOLDER");
+  if (value && /^[A-Za-z_][A-Za-z0-9_]*$/.test(value)) {
+    value = valueOf(value);
+  }
+  const literal = value?.match(/^(["'`])([^"'`$\\]+)\1$/);
+  return literal ? literal[2] : null;
 }
 
 function readReachabilityText() {
@@ -375,7 +476,7 @@ function applyTransitionTerrains(terrain, mapJson) {
   }
 }
 
-function buildRenderLookups(mapJson) {
+function buildRenderLookups(mapJson, hardEdges) {
   const standardPairs = new Set();
   const standardTerrains = new Set();
   const transitionTerrainIds = transitionTerrainIdsByTileset(mapJson);
@@ -387,7 +488,12 @@ function buildRenderLookups(mapJson) {
     if (Number(tileset.transitionSize ?? 0) >= 1) {
       const transitionTerrainId = transitionTerrainIds.get(tileset.id);
       if (transitionTerrainId !== undefined) {
-        transitionSpecs.push({ lowerTerrainId, upperTerrainId, transitionTerrainId });
+        transitionSpecs.push({
+          lowerTerrainId,
+          upperTerrainId,
+          transitionTerrainId,
+          fills: transitionFillEncodings(tileset),
+        });
       }
       continue;
     }
@@ -398,7 +504,25 @@ function buildRenderLookups(mapJson) {
     standardTerrains.add(upperTerrainId);
   }
 
-  return { standardPairs, standardTerrains, transitionSpecs };
+  return { standardPairs, standardTerrains, transitionSpecs, hardEdges };
+}
+
+// Which of the set's own terrains it has a plain tile for: 0 = lower, 1 = upper.
+// Mirrors the runtime's transitionFillTileset, which looks for a matcher tile
+// whose centre is all one terrain. Without transitionMatcherTiles the runtime
+// uses its built-in patterns, which have both.
+function transitionFillEncodings(tileset) {
+  if (!tileset.transitionMatcherTiles) {
+    return new Set([0, 1]);
+  }
+  const fills = new Set();
+  for (const { pattern } of tileset.transitionMatcherTiles) {
+    const centre = [pattern[1][1], pattern[1][2], pattern[2][1], pattern[2][2]];
+    if (centre.every((value) => value === centre[0]) && (centre[0] === 0 || centre[0] === 1)) {
+      fills.add(centre[0]);
+    }
+  }
+  return fills;
 }
 
 function transitionSpecCanRender(terrainIds, spec) {
@@ -409,15 +533,19 @@ function transitionSpecCanRender(terrainIds, spec) {
   ));
 }
 
+function canRenderSingleTerrain(terrainId, lookups) {
+  if (lookups.standardTerrains.has(terrainId)) {
+    return true;
+  }
+  return lookups.transitionSpecs.some((spec) => (
+    (terrainId === spec.lowerTerrainId && spec.fills.has(0))
+    || (terrainId === spec.upperTerrainId && spec.fills.has(1))
+  ));
+}
+
 function canRenderTerrainCombination(terrainIds, lookups) {
   if (terrainIds.length === 1) {
-    const terrainId = terrainIds[0];
-    if (lookups.standardTerrains.has(terrainId)) {
-      return true;
-    }
-    return lookups.transitionSpecs.some((spec) => (
-      terrainId === spec.lowerTerrainId || terrainId === spec.upperTerrainId
-    ));
+    return canRenderSingleTerrain(terrainIds[0], lookups);
   }
 
   if (lookups.transitionSpecs.some((spec) => transitionSpecCanRender(terrainIds, spec))) {
@@ -430,10 +558,13 @@ function canRenderTerrainCombination(terrainIds, lookups) {
     }
   }
 
-  return false;
+  // A hard edge: the renderer fills each quarter of the tile from its own
+  // terrain's plain tile, so it only needs every terrain to have one.
+  return lookups.hardEdges
+    && terrainIds.every((terrainId) => canRenderSingleTerrain(terrainId, lookups));
 }
 
-function validateMapTerrain(errors, mapId, mapJson, terrainMap) {
+function validateMapTerrain(errors, mapId, mapJson, terrainMap, hardEdges) {
   const definedTerrainIds = new Set();
   const duplicateTerrainIds = new Set();
 
@@ -461,7 +592,7 @@ function validateMapTerrain(errors, mapId, mapJson, terrainMap) {
   }
 
   const terrain = buildTerrainGrid(mapJson, terrainMap);
-  const lookups = buildRenderLookups(mapJson);
+  const lookups = buildRenderLookups(mapJson, hardEdges);
   const bounds = mapJson.mapConfig.boundingBox;
   const maxTileX = bounds.minX + mapJson.mapConfig.dimensions.width - 1;
   const maxTileY = bounds.minY + mapJson.mapConfig.dimensions.height - 1;
@@ -527,6 +658,7 @@ function main() {
   let mapCount = 0;
 
   validatePhaserRuntimeImports(missing);
+  const hardEdges = rendererDrawsHardTerrainEdges();
 
   // A map folder that NOTHING names — not the sources, not another map's warp
   // annotations — cannot be loaded at runtime. Its problems are reported but must
@@ -569,12 +701,30 @@ function main() {
 
     const terrainMapPath = join(mapDir, "terrain-map.json");
     if (existsSync(terrainMapPath)) {
-      validateMapTerrain(sink, mapId, mapJson, readJson(terrainMapPath));
+      validateMapTerrain(sink, mapId, mapJson, readJson(terrainMapPath), hardEdges);
     }
   }
 
   if (mapCount === 0) {
     throw new Error(`No PixelLab map folders found in ${mapsDir}`);
+  }
+
+  // The map the game boots into. Its folder going missing (the map was unlinked
+  // from the project, or deleted) left every check above green while the deployed
+  // game 404'd on map.json and never became ready (agent_feedback 2026-10-27,
+  // three reports): nothing here looked for the folder MAP_FOLDER names.
+  const startMap = startMapFolder();
+  if (startMap && !existsSync(join(mapsDir, startMap, "map.json"))) {
+    const present = readdirSync(mapsDir).filter((entry) =>
+      existsSync(join(mapsDir, entry, "map.json")),
+    );
+    missing.push(
+      `assets/maps/${startMap}/map.json — MAP_FOLDER in src/pixellab/templateAssetPaths.ts ` +
+        "names this map, but it is not in the project's assets, so the game would 404 on " +
+        "boot. Add that map to the project (add_to_project) if it still exists, or point " +
+        "MAP_FOLDER at the map the game loads (it is the default for loadPixelLabMap). " +
+        `Maps here: ${present.join(", ")}`,
+    );
   }
 
   const characterIds = readTemplateCharacterIds(warnings);
@@ -703,17 +853,41 @@ function main() {
     // every failure, including a terrain pair with no tileset — which no sync
     // can create — and an agent reported having no repair path for it.
     const terrainGaps = missing.filter((line) => line.includes(" cannot render terrains ")).length;
-    if (terrainGaps > 0) {
+    if (terrainGaps > 0 && hardEdges) {
+      // Terrains from different tilesets meet with a hard edge, so what is left
+      // is a terrain no tileset draws at all.
+      console.error(
+        "`cannot render terrains` is not a sync problem: one of those terrains has no tileset at all. " +
+          "Create a tileset that includes it, or repaint with edit_map so it is not used.",
+      );
+    } else if (terrainGaps > 0) {
       console.error(
         "`cannot render terrains` is not a sync problem: no tileset connects that pair. " +
           "view_map shows each tile. Repaint with edit_map so the two terrains do not touch " +
           "(the only fix where three meet at a corner), or create_topdown_tileset for the pair.",
       );
+      // The session puts the current renderer here when this project's predates
+      // hard edges (api offer_current_terrain_renderer.py): the one free fix
+      // that keeps the map as Map Workshop drew it.
+      if (existsSync(CURRENT_TERRAIN_RENDERER)) {
+        console.error(
+          "Free, and keeps the map as it is: this project's terrain renderer predates hard edges. " +
+            "The current one is at website/scripts/current-terrainRenderer.ts — " +
+            "`mv` it over website/src/pixellab/terrainRenderer.ts (`diff` the two first if this project changed its renderer; " +
+            "if tsc then flags a caller, the project predates 2026-05-11: adapt it) " +
+            "and pairs that no tileset connects draw as a hard edge.",
+        );
+      }
     }
-    if (terrainGaps < missing.length) {
+    // The start-map line carries its own fix (link the map or repoint
+    // MAP_FOLDER, which IS gameplay code), so the generic advice skips it.
+    const startMapGaps = missing.filter((line) => line.includes("— MAP_FOLDER")).length;
+    if (terrainGaps + startMapGaps < missing.length) {
       console.error("For the missing files: re-sync PixelLab assets before building.");
     }
-    console.error("Do not work around this in gameplay code.");
+    if (startMapGaps < missing.length) {
+      console.error("Do not work around this in gameplay code.");
+    }
     process.exit(1);
   }
 
