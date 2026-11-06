@@ -627,13 +627,33 @@ class MainScene extends Phaser.Scene {
 
       if (animate && prev && prev.enemies[i]){
         const before = prev.enemies[i];
+        const haymakerDelay = Math.max(0, Number(this.playerBody.getData("haymakerImpactAt") || 0) - this.time.now);
         if (before.hp > e.hp){
-          this.flashAndShake(spr.container, spr.body);
-          this.floatingText(spr.container.x, spr.container.y-90, `-${before.hp-e.hp}`, "#ff6b6b");
-          this.lungeAttack(this.playerContainer, spr.container.x, spr.container.y);
+          const react = () => {
+            if (!spr.container.active) return;
+            this.flashAndShake(spr.container, spr.body);
+            this.floatingText(spr.container.x, spr.container.y-90, `-${before.hp-e.hp}`, "#ff6b6b");
+            if (haymakerDelay > 0) {
+              this.tweens.add({ targets:spr.container, x:spr.container.x+26, duration:160, yoyo:true, hold:100 });
+            } else this.lungeAttack(this.playerContainer, spr.container.x, spr.container.y);
+          };
+          if (haymakerDelay > 0) {
+            spr.container.setAlpha(1);
+            const oldPct = before.hp / displayMax;
+            this.updateBar(spr.hpBarBg, oldPct, 0xd9534f);
+            spr.hpText.setText(`${before.hp}/${displayMax}`);
+            this.time.delayedCall(haymakerDelay, () => {
+              if (!spr.container.active) return;
+              this.updateBar(spr.hpBarBg, pct, 0xd9534f);
+              spr.hpText.setText(`${displayHp}/${displayMax}`);
+              react();
+            });
+          } else react();
         }
         if (before.alive && !e.alive){
-          this.tweens.add({ targets: spr.container, alpha:0, scale:0.6, duration:400 });
+          const fall = () => { if (spr.container.active) this.tweens.add({ targets: spr.container, alpha:0, scale:0.6, duration:400 }); };
+          if (haymakerDelay > 0) this.time.delayedCall(haymakerDelay + 160, fall);
+          else fall();
         }
       }
     });
@@ -769,6 +789,16 @@ window.testBranchFuryCard = (lethal = false) => {
   selectCard(G.deck.hand.length - 1); playCardOnTarget(G.combat.enemies.findIndex(e => e.alive));
   return true;
 };
+window.testBranchHaymakerCard = () => {
+  if (!G?.combat || G.combat.over || G.captainKey !== 'Branch') return false;
+  const card = G.pool.find(c => c.name === 'Wildfire Haymaker');
+  if (!card) return false;
+  G.combat.energy = Math.max(3, G.combat.energy);
+  G.deck.hand.push({...card}); render();
+  selectCard(G.deck.hand.length - 1);
+  if (G.combat.pendingCardIdx != null) playCardOnTarget(G.combat.enemies.findIndex(e => e.alive));
+  return true;
+};
 window.testSeaVictory = () => {
   if (!G?.combat || G.combat.over) return false;
   G.combat.enemies.forEach(e => { e.hp = 0; e.alive = false; });
@@ -811,7 +841,8 @@ window.playtest = () => ({
   branchBurnCard: window.game.scene.getScenes(true)[0]?.playerBody?.getData?.("branchBurnCard") || null,
   branchSpecialCount: window.game.scene.getScenes(true)[0]?.playerBody?.getData?.("branchSpecialCount") || 0,
   branchSpecialCard: window.game.scene.getScenes(true)[0]?.playerBody?.getData?.("branchSpecialCard") || null,
-  branchSpecialKind: window.game.scene.getScenes(true)[0]?.playerBody?.getData?.("branchSpecialKind") || null
+  branchSpecialKind: window.game.scene.getScenes(true)[0]?.playerBody?.getData?.("branchSpecialKind") || null,
+  haymaker: window.game.scene.getScenes(true)[0]?.playerBody?.getData?.("haymakerState") || null
 });
 // Art-only approval preview: does not change combat rules or the player's stance.
 window.previewRileyStance = (stance) => {
