@@ -20,10 +20,10 @@ export function playBranchHaymaker(scene: Phaser.Scene, sprite: Phaser.GameObjec
   if (!parent || !target || !scene.textures.exists(key(32))) return false;
   const home = { x: sprite.x, y: sprite.y, flip: sprite.flipX };
   const scale = Number(sprite.getData("visibleModelHeight") || 176) / 107;
-  // Preview contact is (150,102.5) on its native 256x192 canvas.
-  // Keep the guard's fixed (105,183) anchor throughout, including recovery.
+  // Preserve the preview's fixed guard anchor; overlap the torso slightly
+  // so the rounded glove visibly lands rather than stopping at its bounds.
   const anchor = { x: 105, y: 183 };
-  const contactX = target.container.x - 48;
+  const contactX = target.container.x - 20;
   const strikeX = contactX - parent.x - (150 - anchor.x) * scale;
   const started = scene.time.now;
   let finished = false;
@@ -53,7 +53,7 @@ export function playBranchHaymaker(scene: Phaser.Scene, sprite: Phaser.GameObjec
     const retreat = elapsed > 26 * FRAME_MS ? Math.min(1, (elapsed - 26 * FRAME_MS) / (7 * FRAME_MS)) : 0;
     sprite.x = Phaser.Math.Linear(home.x, strikeX, advance * (1 - retreat));
     sprite.setTexture(key(index)).setOrigin(anchor.x / 256, anchor.y / 192).setScale(scale);
-    const glove = { x: parent.x + sprite.x + (150 - anchor.x) * scale, y: parent.y + sprite.y + (102.5 - anchor.y) * scale };
+    const glove = { x: parent.x + sprite.x + (150 - anchor.x) * scale, y: parent.y + sprite.y + (111 - anchor.y) * scale };
     if (!hit && index >= 11) {
       hit = true;
       scene.cameras.main.shake(100, 0.002);
