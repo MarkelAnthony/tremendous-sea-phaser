@@ -183,7 +183,7 @@
       "sync_version": 16
     },
     "aa70a93d-daad-4ea9-935e-5d47bb0efa98": {
-      "updated_at": "2026-11-07T21:34:25.440166+00:00",
+      "updated_at": "2026-11-07T22:33:57.961122+00:00",
       "animation_ids": [],
       "animation_fingerprint": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
       "name": "Riley \u00b7 Ivory Riot",
@@ -194,6 +194,12 @@
     }
   },
   "images": {
+    "80684260-a701-5451-819d-9c09eafd4b24": {
+      "updated_at": "2026-11-07T22:33:34.533821+00:00",
+      "image_url": "https://backblaze.pixellab.ai/file/pixellab-generations/production/creator/df7cccb5-c579-4252-af7b-a8153cfb8aaf/80684260-a701-5451-819d-9c09eafd4b24/image.png",
+      "frame_urls": [],
+      "sync_version": 3
+    },
     "035b3ded-ddce-59d6-a524-f35c090aa4bb": {
       "updated_at": "2026-11-07T22:32:23.503950+00:00",
       "image_url": "https://backblaze.pixellab.ai/file/pixellab-generations/production/creator/df7cccb5-c579-4252-af7b-a8153cfb8aaf/035b3ded-ddce-59d6-a524-f35c090aa4bb/image.png",
@@ -1154,12 +1160,6 @@
     "ccee019a-1fe4-51e9-9d0f-6c0159113355": {
       "updated_at": "2026-10-05T08:41:24.135066+00:00",
       "image_url": "https://backblaze.pixellab.ai/file/pixellab-generations/production/creator/df7cccb5-c579-4252-af7b-a8153cfb8aaf/ccee019a-1fe4-51e9-9d0f-6c0159113355/image.png",
-      "frame_urls": [],
-      "sync_version": 3
-    },
-    "80684260-a701-5451-819d-9c09eafd4b24": {
-      "updated_at": "2026-11-07T22:33:34.533821+00:00",
-      "image_url": "https://backblaze.pixellab.ai/file/pixellab-generations/production/creator/df7cccb5-c579-4252-af7b-a8153cfb8aaf/80684260-a701-5451-819d-9c09eafd4b24/image.png",
       "frame_urls": [],
       "sync_version": 3
     }
