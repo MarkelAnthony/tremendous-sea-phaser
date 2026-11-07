@@ -181,6 +181,16 @@
         "aa70a93d-daad-4ea9-935e-5d47bb0efa98"
       ],
       "sync_version": 16
+    },
+    "01ea74cb-62b9-4806-8721-bb98bc7ff3a5": {
+      "updated_at": "2026-11-07T20:56:46.850219+00:00",
+      "animation_ids": [],
+      "animation_fingerprint": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "name": "Riley \u00b7 Crimson Headliner",
+      "member_ids": [
+        "01ea74cb-62b9-4806-8721-bb98bc7ff3a5"
+      ],
+      "sync_version": 16
     }
   },
   "images": {
