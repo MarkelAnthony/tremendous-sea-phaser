@@ -161,6 +161,26 @@
         "629513df-5f23-4867-8b57-4d6c102df309"
       ],
       "sync_version": 16
+    },
+    "aa70a93d-daad-4ea9-935e-5d47bb0efa98": {
+      "updated_at": "2026-11-07T20:48:35.714469+00:00",
+      "animation_ids": [],
+      "animation_fingerprint": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "name": "Riley \u00b7 Ivory Riot",
+      "member_ids": [
+        "aa70a93d-daad-4ea9-935e-5d47bb0efa98"
+      ],
+      "sync_version": 16
+    },
+    "61b35125-7d8c-475d-b855-e2e9210393c4": {
+      "updated_at": "2026-11-07T20:48:18.499394+00:00",
+      "animation_ids": [],
+      "animation_fingerprint": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "name": "Riley \u00b7 Midnight Encore",
+      "member_ids": [
+        "61b35125-7d8c-475d-b855-e2e9210393c4"
+      ],
+      "sync_version": 16
     }
   },
   "images": {
