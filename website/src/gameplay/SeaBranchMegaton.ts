@@ -62,7 +62,7 @@ export function playBranchMegaton(scene: Phaser.Scene, sprite: Phaser.GameObject
     const foot = sprite.getWorldTransformMatrix().transformPoint(0, 0);
     sprite.setData("megatonState", { active: true, frame, connected, exactApprovedFrames: true,
       sunVisible: sun.visible, sun: { x: sun.x, y: sun.y }, target: { x: targetPoint.x, y: targetPoint.y },
-      sunTop: foot.y - 249 * scale, scale });
+      sunTop: foot.y - 213 * scale, scale });
   };
   scene.events.on(Phaser.Scenes.Events.UPDATE, update);
   scene.events.once(Phaser.Scenes.Events.SHUTDOWN, cleanup);
