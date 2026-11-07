@@ -10,7 +10,7 @@ gameFrame.addEventListener('load',()=>{
   const scene=w.game.scene.getScenes(true)[0];
   if(!scene.playerBody||!scene.enemySprites||!Object.keys(scene.enemySprites).length)return;
   battle=scene;model=scene.playerBody;gameCanvas=w.game.canvas;
-  model.setVisible(false);for(const entry of Object.values(scene.enemySprites))entry.container.setData('reviewHomeX',entry.container.x);clearInterval(check);
+  model.setVisible(false);Object.values(scene.enemySprites).forEach((entry,i)=>{entry.container.x=580+i*135;entry.container.setData('reviewHomeX',entry.container.x);});clearInterval(check);
  },150);
 });
 function arenaLayout(){
