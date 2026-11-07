@@ -1,0 +1,40 @@
+{
+  "id": "40d6e483-e892-551b-9d36-d85914b66145",
+  "name": "He lowers his left hand to his side and raises his right ope",
+  "prompt": "He lowers his left hand to his side and raises his right open palm straight up overhead. A small spark of fire appears above the palm and steadily grows into a big round pixel-art sun, a glowing yellow-orange ball with a bright core and short flickering flame tongues around its rim, held above his head by one hand, getting larger each frame until it is wider than his shoulders. He crouches, leans back, then hurls the sun forward to the right with the same arm; the sun flies off to the right edge. He recovers back to his boxing guard.",
+  "width": 1280,
+  "height": 1280,
+  "model": "animate_minimax_h3",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": {
+    "grid_size": "5x5",
+    "frames": [
+      "frames/0.png",
+      "frames/1.png",
+      "frames/2.png",
+      "frames/3.png",
+      "frames/4.png",
+      "frames/5.png",
+      "frames/6.png",
+      "frames/7.png",
+      "frames/8.png",
+      "frames/9.png",
+      "frames/10.png",
+      "frames/11.png",
+      "frames/12.png",
+      "frames/13.png",
+      "frames/14.png",
+      "frames/15.png",
+      "frames/16.png",
+      "frames/17.png",
+      "frames/18.png",
+      "frames/19.png",
+      "frames/20.png",
+      "frames/21.png",
+      "frames/22.png",
+      "frames/23.png",
+      "frames/24.png"
+    ]
+  }
+}
