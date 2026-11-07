@@ -3,6 +3,7 @@ import { queueSeaAttackImpact } from "./SeaAttackImpact";
 import { preloadWraithfireBolt } from "./SeaWraithfireBolt";
 import { preloadBranchFury } from "./SeaBranchFury";
 import { preloadBranchHaymaker } from "./SeaBranchHaymaker";
+import { preloadBranchMegaton } from "./SeaBranchMegaton";
 import { assetUrl } from "../pixellab/templateAssetPaths";
 import { playApprovedBranchAttack } from "./SeaApprovedBranch";
 import { preloadApprovedBranchClips, prepareApprovedBranchClip, watchApprovedBranchMovement } from "./SeaBranchApprovedClips";
@@ -18,6 +19,7 @@ export function preloadSeaCaptain(scene: Phaser.Scene): void {
   preloadWraithfireBolt(scene);
   preloadBranchFury(scene);
   preloadBranchHaymaker(scene);
+  preloadBranchMegaton(scene);
   preloadCharacterAtlas(scene, RILEY);
   preloadCharacterAtlas(scene, BRANCH);
   scene.load.image("branch-approved-guard", assetUrl("images", APPROVED_BRANCH, "image.png"));
