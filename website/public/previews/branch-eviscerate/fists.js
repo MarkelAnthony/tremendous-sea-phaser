@@ -3,26 +3,28 @@ const canvas=document.querySelector('canvas'),ctx=canvas.getContext('2d'),seek=d
 const FRAMES=64,fps=20;let time=0,last=0,playing=true,images={};
 const load=src=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(Error(src));im.src=src;});
 const launches=[{f:9,hand:'left',target:0},{f:15,hand:'right',target:1},{f:21,hand:'left',target:2},{f:27,hand:'right',target:0},{f:33,hand:'left',target:1},{f:39,hand:'right',target:2},{f:47,hand:'left',target:0,finish:true},{f:47,hand:'right',target:1,finish:true},{f:48,hand:'left',target:2,finish:true}];
-function fist(x,y,scale,angle,age,finish){
- ctx.save();ctx.translate(Math.round(x),Math.round(y));ctx.rotate(angle);ctx.scale(scale,scale);
- // Solid anatomical silhouette first; fire stays behind the wrist, never over the fingers.
- const p=(color,points)=>{ctx.fillStyle=color;ctx.beginPath();points.forEach(([a,b],i)=>i?ctx.lineTo(a,b):ctx.moveTo(a,b));ctx.closePath();ctx.fill();};
- const r=(c,x,y,w,h)=>{ctx.fillStyle=c;ctx.fillRect(x,y,w,h);};
- p('#c34024',[[-47,-13],[-23,-9],[-33,-22],[-12,-14],[-9,-9],[-9,12],[-24,19],[-20,10],[-44,16],[-32,4],[-53,0],[-27,-3]]);
- p('#ff8b28',[[-38,-9],[-16,-5],[-22,-14],[-7,-8],[-6,9],[-25,13],[-18,5],[-38,7],[-25,0]]);
- p('#64272a',[[-15,-13],[-7,-19],[6,-19],[6,-23],[17,-23],[17,-20],[26,-20],[26,-16],[30,-16],[30,-7],[32,-7],[32,2],[30,2],[30,11],[24,11],[24,17],[14,17],[14,22],[1,22],[-6,18],[-8,12],[-15,10]]);
- p('#f77426',[[-12,-11],[-5,-16],[9,-16],[9,-20],[16,-20],[16,-17],[24,-17],[24,-13],[27,-13],[27,-5],[29,-5],[29,0],[27,0],[27,8],[21,8],[21,14],[12,14],[12,19],[1,19],[-3,15],[-5,8],[-12,7]]);
- // Four separate curled fingers with dark crease channels and square leading knuckles.
- r('#9f3825',5,-16,4,26);
- for(const [yy,xx,ww] of [[-17,10,14],[-9,10,17],[-1,10,17],[7,9,12]]){
-  r('#963024',xx,yy,ww,7);r('#ffb53d',xx+1,yy,ww-1,5);
-  r('#ffe78a',xx+ww-5,yy,4,4);r('#ef7626',xx+1,yy+4,ww-2,1);
+// Native sprite pixels, not vector anatomy. Reference: stretched-arm punch afterimages.
+const punchBuffer=document.createElement('canvas');punchBuffer.width=112;punchBuffer.height=40;
+const pc=punchBuffer.getContext('2d');
+function fist(x,y,scale,angle,age,finish,reach){
+ if(!images.glove)return;
+ pc.clearRect(0,0,112,40);pc.imageSmoothingEnabled=false;
+ const tail=Math.min(88,Math.max(24,reach/scale));
+ // Uneven horizontal streaks make a stretched fiery forearm, not a comet/round fireball.
+ const colors=['#a82e22','#df4622','#f77921','#ffb83e','#ffd66b'];
+ for(let row=0;row<10;row++){
+  const yy=10+row*2,notch=(row*7+Math.floor(age*35)*3)%13;
+  const length=tail-(row%3)*6-notch;
+  pc.fillStyle=colors[row===0||row===9?0:row===1||row===8?1:row%3+2];
+  pc.fillRect(Math.round(88-length),yy,Math.round(length+3),2);
  }
- // Broad hooked thumb crosses the palm beneath the curled fingers.
- p('#7e2b26',[[-7,1],[-1,-2],[6,0],[9,6],[18,7],[18,14],[11,17],[0,16],[-5,12]]);
- p('#ffbc43',[[-4,2],[0,1],[4,3],[7,9],[15,10],[15,12],[9,14],[1,13],[-2,10]]);
- r('#fff0a1',-2,3,4,5);r('#df5526',-9,-9,4,10);r('#ffcf57',-7,-12,9,4);
- for(let i=0;i<(finish?6:3);i++){const a=((age*36+i*7)%22);r(i%2?'#ffb53d':'#ec5928',-30-a,-10+((i*11+Math.floor(age*20))%23),3,2);}
+ // Short broken tongues stay behind the hand, leaving the approved mitt readable.
+ pc.fillStyle='#df4622';pc.fillRect(70,7,12,3);pc.fillRect(59,30,18,2);
+ pc.fillStyle='#ffb83e';pc.fillRect(75,10,11,2);pc.fillRect(69,28,15,2);
+ pc.drawImage(images.glove,0,0,16,17,81,7,30,27);
+ ctx.save();ctx.translate(Math.round(x),Math.round(y));ctx.rotate(angle);
+ ctx.imageSmoothingEnabled=false;
+ ctx.drawImage(punchBuffer,-104*scale,-20*scale,112*scale,40*scale);
  ctx.restore();
 }
 function draw(){
@@ -42,32 +44,34 @@ function draw(){
   const d=frame-launch.f;if(d<0||d>14)continue;
   const target=enemies[launch.target%enemies.length]?.container;if(!target)continue;
   const tx=target.getData('reviewHomeX'),ty=target.y-8;const start={x:layout.x+47,y:layout.feet-109+(launch.hand==='right'?13:-4)};
-  const size=launch.finish?3.1:2.5,impact=8,hold=launch.finish?3:2;
-  const end={x:tx-24*size,y:ty};const angle=Math.atan2(end.y-start.y,end.x-start.x);
+  const size=launch.finish?2.7:2.2,impact=6,hold=launch.finish?3:1;
+  const end={x:tx-7*size,y:ty};const angle=Math.atan2(end.y-start.y,end.x-start.x);
   if(d<=impact+hold){
    // Two-frame gathering pause, then an accelerating thrust. Hold the solid fist on contact.
-   const progress=d<2?0:Math.pow(Math.min(1,(d-2)/6),2.4);
+   const progress=d<1?0:Math.pow(Math.min(1,(d-1)/5),2.6);
    const x=start.x+(end.x-start.x)*progress,y=start.y+(end.y-start.y)*progress;
-   fist(x,y,size*(d<2?.82+d*.09:1),angle,d/14,launch.finish);
+   fist(x,y,size*(d<1?.7:1),angle,d/14,launch.finish,Math.hypot(x-start.x,y-start.y));
    visible.push({hand:launch.hand,target:launch.target,x,y,contact:d>=impact});
   }
   if(d>=impact){
    hits.push(launch.target%enemies.length);const elapsed=d-impact,p=elapsed/7;
    reactions.set(launch.target%enemies.length,{offset:(launch.finish?22:13)*(elapsed<hold?1:Math.max(0,1-(elapsed-hold)/5)),flash:elapsed<hold});
    ctx.save();ctx.translate(tx,ty);ctx.globalAlpha=Math.max(0,1-p);
-   // Sharp compression cross and expanding broken shock ring, not an obscuring fireball.
-   ctx.strokeStyle='#ffbc43';ctx.lineWidth=3;ctx.beginPath();ctx.ellipse(0,0,12+p*38,27+p*42,0,-1.2,1.2);ctx.stroke();
-   ctx.fillStyle='#fff0bd';ctx.fillRect(-3,-28-p*14,6,16);ctx.fillRect(-3,12+p*14,6,16);ctx.fillRect(12,-3,20+p*16,6);
-   for(let k=0;k<5;k++){const a=-1.2+k*.6,r=15+p*60;ctx.fillStyle=k%2?'#ff8c2b':'#ffe7a3';ctx.fillRect(Math.round(Math.cos(a)*r),Math.round(Math.sin(a)*r),6,3);}
+   // Sprite-sized broken impact streaks: no smooth rings or giant UI-like crosses.
+   for(let k=0;k<7;k++){
+    const yy=-27+k*8,spread=elapsed*6;
+    ctx.fillStyle=k%2?'#f77921':'#ffd66b';
+    ctx.fillRect(Math.round(4+spread+(k%3)*5),yy,Math.max(3,16-elapsed*2),3);
+   }
    ctx.restore();
   }
  }
  enemies.forEach((entry,i)=>{const reaction=reactions.get(i);entry.container.x=entry.container.getData('reviewHomeX')+(reaction?.offset||0);entry.container.setAlpha(reaction?.flash?.65:1);});
  seek.value=String(frame);status.textContent=`Frame ${frame+1} / ${FRAMES} · ${playing?'Playing':'Paused'}`;
  document.querySelector('#phase').textContent=frame<7?'Plant feet · wind-up':frame<45?'Alternating punches · fire fists fan across the enemy line':frame<55?'Heavy finishing volley':'Recover to guard';
- window.previewState={ready:true,version:6,frame,frames:FRAMES,playing,pose,visibleFists:visible,hitTargets:hits,enemyCount:enemies.length,launches:launches.length,combatChanged:false};
+ window.previewState={ready:true,version:7,frame,frames:FRAMES,playing,pose,visibleFists:visible,hitTargets:hits,enemyCount:enemies.length,launches:launches.length,combatChanged:false};
 }
 window.seekPreview=n=>{playing=false;time=Math.max(0,Math.min(FRAMES-1,Number(n)))*1000/fps+1;pause.textContent='Play';draw();};window.playtest=()=>window.previewState||{ready:false};
 pause.onclick=()=>{playing=!playing;pause.textContent=playing?'Pause':'Play';};document.querySelector('#replay').onclick=()=>{time=0;playing=true;pause.textContent='Pause';};seek.max=String(FRAMES-1);seek.oninput=()=>window.seekPreview(seek.value);document.querySelector('#previous').onclick=()=>window.seekPreview(Math.floor(time*fps/1000)-1);document.querySelector('#next').onclick=()=>window.seekPreview(Math.floor(time*fps/1000)+1);
-Promise.all(['jab0','jab1','jab2','heavy0','heavy2','heavy4','heavy5'].map(async key=>{images[key]=await load(`../branch-redraw-attacks/${key.replace(/(\d)/,'-$1')}.png`);})).then(draw).catch(e=>{status.textContent=e.message;});
+Promise.all(['jab0','jab1','jab2','heavy0','heavy2','heavy4','heavy5'].map(async key=>{images[key]=await load(`../branch-redraw-attacks/${key.replace(/(\d)/,'-$1')}.png`);})).then(async()=>{images.glove=await load('./glove-source.png');draw();}).catch(e=>{status.textContent=e.message;});
 function tick(now){if(last&&playing)time=(time+Math.min(80,now-last)*Number(document.querySelector('#speed').value))%(FRAMES*1000/fps+850);last=now;draw();requestAnimationFrame(tick);}requestAnimationFrame(tick);
