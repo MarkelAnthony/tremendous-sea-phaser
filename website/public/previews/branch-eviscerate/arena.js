@@ -6,6 +6,7 @@ gameFrame.addEventListener('load',()=>{
   const w=gameFrame.contentWindow;
   if(!w.game?.scene?.getScenes(true)[0]||!w.startVoyage)return;
   if(!w.playtest?.().captain){w.startVoyage('Branch');return;}
+  if(!w.eviscerateTargetsReady){w.eviscerateTargetsReady=true;w.eval('enterCombat({...ACT1_COMMONS.find(e=>e.name==="Squabbling Gull"),count:3})');return;}
   const scene=w.game.scene.getScenes(true)[0];
   if(!scene.playerBody||!scene.enemySprites||!Object.keys(scene.enemySprites).length)return;
   battle=scene;model=scene.playerBody;gameCanvas=w.game.canvas;

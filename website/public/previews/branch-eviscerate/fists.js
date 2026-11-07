@@ -36,7 +36,7 @@ function draw(){
   const target=enemies[launch.target%enemies.length]?.container;if(!target)continue;
   const tx=target.getData('reviewHomeX'),ty=target.y-8;const start={x:layout.x+47,y:layout.feet-109+(launch.hand==='right'?13:-4)};
   const progress=Math.min(1,age);const end={x:tx+8,y:ty};
-  if(age<1){const x=start.x+(end.x-start.x)*progress,y=start.y+(end.y-start.y)*progress;fist(x,y,(launch.finish?2.2:1.65)*(0.65+0.35*Math.min(1,age*4)),Math.atan2(end.y-start.y,end.x-start.x),Math.min(.92,.15+age*.75),launch.finish);visible.push({hand:launch.hand,target:launch.target,x,y});}
+  if(age<1){const x=start.x+(end.x-start.x)*progress,y=start.y+(end.y-start.y)*progress;fist(x,y,(launch.finish?3.4:2.8)*(0.65+0.35*Math.min(1,age*4)),Math.atan2(end.y-start.y,end.x-start.x),Math.min(.92,.15+age*.75),launch.finish);visible.push({hand:launch.hand,target:launch.target,x,y});}
   else {hits.push(launch.target%enemies.length);const p=(age-1)/.65;ctx.save();ctx.translate(tx,ty);ctx.globalAlpha=1-p;ctx.fillStyle='#ffe7a3';for(let k=0;k<8;k++){const a=k*Math.PI/4,r=8+p*30;ctx.fillRect(Math.round(Math.cos(a)*r),Math.round(Math.sin(a)*r),k%2?3:5,k%2?3:5);}ctx.restore();}
  }
  enemies.forEach((entry,i)=>{const hit=hits.includes(i);entry.container.x=entry.container.getData('reviewHomeX')+(hit?6:0);entry.container.setAlpha(hit?.72:1);});
