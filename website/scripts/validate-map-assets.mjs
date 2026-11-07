@@ -275,10 +275,12 @@ function readTemplateCharacterIds(warnings) {
   for (const name of [...literals.keys(), ...aliases.keys()]) {
     if (name.endsWith("_CHARACTER_ID") && !uses.has(name)) {
       warnings.push(
-        // "no .ts file uses it" stays word for word: projects keep the test that
-        // matches it while this file is reinstalled under them every session.
-        `${name} is exported but no .ts file uses it that main.ts imports, so its character assets ` +
-          "were not checked",
+        // Both phrasings stay word for word: this file is reinstalled every session
+        // but a project keeps the test it was created with, which matches either
+        // "<NAME> is exported but no .ts file uses it" or, for projects made
+        // 2026-11-04..05, "<NAME> is exported but nothing main.ts imports uses it".
+        `${name} is exported but nothing main.ts imports uses it, so its character assets ` +
+          `were not checked (${name} is exported but no .ts file uses it that main.ts imports)`,
       );
     }
   }
