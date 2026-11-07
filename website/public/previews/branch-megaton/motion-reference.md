@@ -1,4 +1,8 @@
-# Megaton revision: one-handed sun
+# Megaton v4 (rebuilt from scratch)
+
+One PixMiniMax animation (job 21b45d62) from the approved sprite: sun generated in the same pass so its pixel style matches Branch. Frames in v4/; flight sun cut from frame 16.
+
+# Previous: one-handed sun
 
 Reference: user-supplied `uploads/spirit bomb gif.gif`, inspected as all 16 frames in a contact sheet.
 
