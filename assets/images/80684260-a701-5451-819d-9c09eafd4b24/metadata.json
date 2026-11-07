@@ -1,0 +1,11 @@
+{
+  "id": "80684260-a701-5451-819d-9c09eafd4b24",
+  "name": "Sword count correction only; preserve outfit, face, pose and",
+  "prompt": "Sword count correction only; preserve outfit, face, pose and pixel art. Exactly FOUR swords total: two held cyan and pink blades pointing downward; exactly TWO floating swords behind back pointing UP with hilts DOWN at waist. Keep left floating gold sword. REMOVE the extra gold floating sword on right entirely. Make the remaining violet floating sword clearly visible behind head/back, tip beside head, grip at waist. No fifth sword, no extra blades.",
+  "width": 128,
+  "height": 128,
+  "model": "edit_image_pixen",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
