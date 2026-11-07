@@ -6,6 +6,14 @@ const launches=[{f:9,hand:'left',target:0},{f:15,hand:'right',target:1},{f:21,ha
 // Native sprite pixels, not vector anatomy. Reference: stretched-arm punch afterimages.
 const punchBuffer=document.createElement('canvas');punchBuffer.width=112;punchBuffer.height=40;
 const pc=punchBuffer.getContext('2d');
+// Isolate the mitt from neighboring body/fire pixels; preserve its native palette and grid.
+const gloveBuffer=document.createElement('canvas');gloveBuffer.width=10;gloveBuffer.height=9;
+function prepareGlove(){
+ const gc=gloveBuffer.getContext('2d');gc.imageSmoothingEnabled=false;
+ // A quarter-turn points the knuckles forward and the cuff back, without resampling.
+ gc.translate(10,0);gc.rotate(Math.PI/2);
+ gc.drawImage(images.glove,7,3,9,10,0,0,9,10);
+}
 function fist(x,y,scale,angle,age,finish,reach){
  if(!images.glove)return;
  pc.clearRect(0,0,112,40);pc.imageSmoothingEnabled=false;
@@ -16,15 +24,18 @@ function fist(x,y,scale,angle,age,finish,reach){
   const yy=10+row*2,notch=(row*7+Math.floor(age*35)*3)%13;
   const length=tail-(row%3)*6-notch;
   pc.fillStyle=colors[row===0||row===9?0:row===1||row===8?1:row%3+2];
-  pc.fillRect(Math.round(88-length),yy,Math.round(length+3),2);
+  pc.fillRect(Math.round(74-length),yy,Math.round(length),2);
  }
  // Short broken tongues stay behind the hand, leaving the approved mitt readable.
- pc.fillStyle='#df4622';pc.fillRect(70,7,12,3);pc.fillRect(59,30,18,2);
- pc.fillStyle='#ffb83e';pc.fillRect(75,10,11,2);pc.fillRect(69,28,15,2);
- pc.drawImage(images.glove,0,0,16,17,81,7,30,27);
- ctx.save();ctx.translate(Math.round(x),Math.round(y));ctx.rotate(angle);
+ pc.fillStyle='#df4622';pc.fillRect(60,9,12,3);pc.fillRect(54,28,18,2);
+ pc.fillStyle='#ffb83e';pc.fillRect(64,12,10,2);pc.fillRect(62,26,12,2);
+ // Integer 3x nearest-neighbor enlargement: original thumb, knuckles and cuff stay intact.
+ pc.drawImage(gloveBuffer,0,0,10,9,78,7,30,27);
+ ctx.save();ctx.translate(Math.round(x),Math.round(y));
+ // Travel follows the aim angle, but the hand stays unrotated on its native pixel grid.
  ctx.imageSmoothingEnabled=false;
- ctx.drawImage(punchBuffer,-104*scale,-20*scale,112*scale,40*scale);
+ const pixelScale=Math.max(1,Math.round(scale));
+ ctx.drawImage(punchBuffer,-104*pixelScale,-20*pixelScale,112*pixelScale,40*pixelScale);
  ctx.restore();
 }
 function draw(){
@@ -69,9 +80,9 @@ function draw(){
  enemies.forEach((entry,i)=>{const reaction=reactions.get(i);entry.container.x=entry.container.getData('reviewHomeX')+(reaction?.offset||0);entry.container.setAlpha(reaction?.flash?.65:1);});
  seek.value=String(frame);status.textContent=`Frame ${frame+1} / ${FRAMES} · ${playing?'Playing':'Paused'}`;
  document.querySelector('#phase').textContent=frame<7?'Plant feet · wind-up':frame<45?'Alternating punches · fire fists fan across the enemy line':frame<55?'Heavy finishing volley':'Recover to guard';
- window.previewState={ready:true,version:7,frame,frames:FRAMES,playing,pose,visibleFists:visible,hitTargets:hits,enemyCount:enemies.length,launches:launches.length,combatChanged:false};
+ window.previewState={ready:true,version:8,frame,frames:FRAMES,playing,pose,visibleFists:visible,hitTargets:hits,enemyCount:enemies.length,launches:launches.length,combatChanged:false};
 }
 window.seekPreview=n=>{playing=false;time=Math.max(0,Math.min(FRAMES-1,Number(n)))*1000/fps+1;pause.textContent='Play';draw();};window.playtest=()=>window.previewState||{ready:false};
 pause.onclick=()=>{playing=!playing;pause.textContent=playing?'Pause':'Play';};document.querySelector('#replay').onclick=()=>{time=0;playing=true;pause.textContent='Pause';};seek.max=String(FRAMES-1);seek.oninput=()=>window.seekPreview(seek.value);document.querySelector('#previous').onclick=()=>window.seekPreview(Math.floor(time*fps/1000)-1);document.querySelector('#next').onclick=()=>window.seekPreview(Math.floor(time*fps/1000)+1);
-Promise.all(['jab0','jab1','jab2','heavy0','heavy2','heavy4','heavy5'].map(async key=>{images[key]=await load(`../branch-redraw-attacks/${key.replace(/(\d)/,'-$1')}.png`);})).then(async()=>{images.glove=await load('./glove-source.png');draw();}).catch(e=>{status.textContent=e.message;});
+Promise.all(['jab0','jab1','jab2','heavy0','heavy2','heavy4','heavy5'].map(async key=>{images[key]=await load(`../branch-redraw-attacks/${key.replace(/(\d)/,'-$1')}.png`);})).then(async()=>{images.glove=await load('./glove-source.png');prepareGlove();draw();}).catch(e=>{status.textContent=e.message;});
 function tick(now){if(last&&playing)time=(time+Math.min(80,now-last)*Number(document.querySelector('#speed').value))%(FRAMES*1000/fps+850);last=now;draw();requestAnimationFrame(tick);}requestAnimationFrame(tick);
