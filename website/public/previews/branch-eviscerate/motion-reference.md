@@ -1,0 +1,2 @@
+# Eviscerate revision
+Preview only; combat unchanged. Preserve both of Branch's approved oversized boxing gloves in every pose. Jump first, tuck legs, brace both gloved hands forward/downward, release a sustained narrow corkscrew fire beam (not a cloud or fireball), recoil and land. Use native chunky pixel clusters and a restricted warm palette. Check glove continuity across contact sheet and beam silhouette at real combat scale before delivery.
