@@ -1,0 +1,11 @@
+{
+  "id": "79caf0db-a3be-5f23-aa2e-08c3fbb191c4",
+  "name": "Keep this exact female character design, pose, cloak, face,",
+  "prompt": "Keep this exact female character design, pose, cloak, face, hair, pixel style and existing three swords unchanged. ADD ONE violet-purple steel sword visibly FLOATING in the empty space behind her back at the left of her cloak, separated from her silhouette and the floating gold sword. Give it a distinct hilt and long readable blade. Exactly FOUR swords: cyan and pink held one in each hand; gold and violet floating behind her. No aura. Transparent background.",
+  "width": 128,
+  "height": 128,
+  "model": "edit_image_pixen",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
