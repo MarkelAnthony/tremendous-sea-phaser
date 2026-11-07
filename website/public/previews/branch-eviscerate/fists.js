@@ -7,12 +7,11 @@ const launches=[{f:9,hand:'left',target:0},{f:15,hand:'right',target:1},{f:21,ha
 const punchBuffer=document.createElement('canvas');punchBuffer.width=112;punchBuffer.height=40;
 const pc=punchBuffer.getContext('2d');
 // Isolate the mitt from neighboring body/fire pixels; preserve its native palette and grid.
-const gloveBuffer=document.createElement('canvas');gloveBuffer.width=10;gloveBuffer.height=9;
+const gloveBuffer=document.createElement('canvas');gloveBuffer.width=16;gloveBuffer.height=13;
 function prepareGlove(){
  const gc=gloveBuffer.getContext('2d');gc.imageSmoothingEnabled=false;
- // A quarter-turn points the knuckles forward and the cuff back, without resampling.
- gc.translate(10,0);gc.rotate(Math.PI/2);
- gc.drawImage(images.glove,7,3,9,10,0,0,9,10);
+ // Use the complete forward-facing punch glove directly from the approved jab.
+ gc.drawImage(images.jab0,86,49,16,13,0,0,16,13);
 }
 function fist(x,y,scale,angle,age,finish,reach){
  if(!images.glove)return;
@@ -24,13 +23,13 @@ function fist(x,y,scale,angle,age,finish,reach){
   const yy=10+row*2,notch=(row*7+Math.floor(age*35)*3)%13;
   const length=tail-(row%3)*6-notch;
   pc.fillStyle=colors[row===0||row===9?0:row===1||row===8?1:row%3+2];
-  pc.fillRect(Math.round(74-length),yy,Math.round(length),2);
+  pc.globalAlpha=.45;pc.fillRect(Math.round(58-length),yy,Math.round(length),2);pc.globalAlpha=1;
  }
  // Short broken tongues stay behind the hand, leaving the approved mitt readable.
- pc.fillStyle='#df4622';pc.fillRect(60,9,12,3);pc.fillRect(54,28,18,2);
- pc.fillStyle='#ffb83e';pc.fillRect(64,12,10,2);pc.fillRect(62,26,12,2);
+ pc.fillStyle='#df4622';pc.fillRect(44,9,12,3);pc.fillRect(40,28,16,2);
+ pc.fillStyle='#ffb83e';pc.fillRect(48,12,10,2);pc.fillRect(46,26,12,2);
  // Integer 3x nearest-neighbor enlargement: original thumb, knuckles and cuff stay intact.
- pc.drawImage(gloveBuffer,0,0,10,9,78,7,30,27);
+ pc.drawImage(gloveBuffer,0,0,16,13,62,0,48,39);
  ctx.save();ctx.translate(Math.round(x),Math.round(y));
  // Travel follows the aim angle, but the hand stays unrotated on its native pixel grid.
  ctx.imageSmoothingEnabled=false;
