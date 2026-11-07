@@ -4,6 +4,7 @@ import { playWraithfireBolt } from "./SeaWraithfireBolt";
 import { playBranchFury } from "./SeaBranchFury";
 import { playBranchHaymaker } from "./SeaBranchHaymaker";
 import { playBranchMegaton } from "./SeaBranchMegaton";
+import { playBranchEviscerate } from "./SeaBranchEviscerate";
 import { characterManifest, characterAtlasKey, selectCharacterState } from "../shared/animation";
 
 const BRANCH = "76af08a0-4d26-40fc-b346-558313f02bcb";
@@ -28,6 +29,7 @@ export function playSeaBranchSpecial(scene: Phaser.Scene, sprite: Phaser.GameObj
   if (card.name === "Branch's Fury" && sprite.getData("approvedBranchArt")) return playBranchFury(scene, sprite);
   if (card.name === "Wraithfire Bolt" && sprite.getData("approvedBranchArt")) return playWraithfireBolt(scene, sprite, targetIndex);
   if (card.name === "Fireball Candy - Megaton" && sprite.getData("approvedBranchArt")) return playBranchMegaton(scene, sprite, targetIndex);
+  if (card.name === "Fireball Candy - Eviscerate" && sprite.getData("approvedBranchArt")) return playBranchEviscerate(scene, sprite);
   if (sprite.getData("approvedBranchArt")) return playApprovedBranchAttack(scene, sprite, kind, card.name);
   const name = `Branch special ${kind}`;
   const selection = selectCharacterState(characterManifest(scene, BRANCH), { state: BRANCH, preferredClips: [name] });

@@ -627,14 +627,17 @@ class MainScene extends Phaser.Scene {
 
       if (animate && prev && prev.enemies[i]){
         const before = prev.enemies[i];
-        const haymakerDelay = Math.max(0, Number(this.playerBody.getData("haymakerImpactAt") || 0) - this.time.now, Number(this.playerBody.getData("megatonImpactAt") || 0) - this.time.now);
+        const eviscerateImpactAt = Number(this.playerBody.getData("eviscerateImpactTimes")?.[i] || 0);
+        const haymakerDelay = Math.max(0, eviscerateImpactAt - this.time.now, Number(this.playerBody.getData("haymakerImpactAt") || 0) - this.time.now, Number(this.playerBody.getData("megatonImpactAt") || 0) - this.time.now);
         if (before.hp > e.hp){
           const react = () => {
             if (!spr.container.active) return;
             this.flashAndShake(spr.container, spr.body);
             this.floatingText(spr.container.x, spr.container.y-90, `-${before.hp-e.hp}`, "#ff6b6b");
-            if (haymakerDelay > 0) {
+            if (haymakerDelay > 0 && !eviscerateImpactAt) {
               this.tweens.add({ targets:spr.container, x:spr.container.x+26, duration:160, yoyo:true, hold:100 });
+            } else if (eviscerateImpactAt) {
+              // The approved barrage supplies its own per-punch recoil.
             } else this.lungeAttack(this.playerContainer, spr.container.x, spr.container.y);
           };
           if (haymakerDelay > 0) {
@@ -811,6 +814,19 @@ window.testBranchMegatonCard = (lethal = false, targetIndex = 0) => {
   selectCard(G.deck.hand.length - 1); playCardOnTarget(targetIndex);
   return true;
 };
+window.testBranchEviscerateCard = (lethal = false) => {
+  if (!G?.combat || G.combat.over || G.captainKey !== 'Branch') return false;
+  const scene = window.game.scene.getScenes(true)[0];
+  if (scene?.playerBody?.getData("clarityAttackPlaying")) return false;
+  const card = G.pool.find(c => c.name === 'Fireball Candy - Eviscerate');
+  if (!card) return false;
+  G.combat.energy = Math.max(3, G.combat.energy);
+  if (lethal) G.combat.enemies.forEach(e => { e.hp = 1; });
+  G.deck.hand.push({...card}); render();
+  selectCard(G.deck.hand.length - 1);
+  if (G.combat.pendingCardIdx != null) playCardOnTarget(G.combat.enemies.findIndex(e => e.alive));
+  return true;
+};
 window.testSeaVictory = () => {
   if (!G?.combat || G.combat.over) return false;
   G.combat.enemies.forEach(e => { e.hp = 0; e.alive = false; });
@@ -855,6 +871,7 @@ window.playtest = () => ({
   branchSpecialCard: window.game.scene.getScenes(true)[0]?.playerBody?.getData?.("branchSpecialCard") || null,
   branchSpecialKind: window.game.scene.getScenes(true)[0]?.playerBody?.getData?.("branchSpecialKind") || null,
   megaton: window.game.scene.getScenes(true)[0]?.playerBody?.getData?.("megatonState") || null,
+  eviscerate: window.game.scene.getScenes(true)[0]?.playerBody?.getData?.("eviscerateState") || null,
   playerStatus: G?.player?.status || null,
   haymaker: window.game.scene.getScenes(true)[0]?.playerBody?.getData?.("haymakerState") || null
 });
