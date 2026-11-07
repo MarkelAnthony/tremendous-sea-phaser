@@ -1,0 +1,11 @@
+{
+  "id": "b511de7b-93d1-5353-be41-e2ad4197b1bf",
+  "name": "Change ONLY the two unheld gold and violet swords behind Ril",
+  "prompt": "Change ONLY the two unheld gold and violet swords behind Riley. Both levitate vertically upright, perfectly parallel like ||, tips UP at head height, crossguards and grips DOWN toward floor. Place both entirely to the LEFT of her rear cape silhouette with clear transparent air gaps between each sword and her body. Neither touches hair, shoulder, cloak or each other. No straps. Exactly four swords total. Preserve her outfit, body, pose and the cyan and pink swords held in her hands.",
+  "width": 128,
+  "height": 128,
+  "model": "edit_image_pixen",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
