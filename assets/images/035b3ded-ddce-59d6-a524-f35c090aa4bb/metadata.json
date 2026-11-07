@@ -1,0 +1,11 @@
+{
+  "id": "035b3ded-ddce-59d6-a524-f35c090aa4bb",
+  "name": "Keep Riley's face, dark skin, short white hair, scale, ivory",
+  "prompt": "Keep Riley's face, dark skin, short white hair, scale, ivory mantle and violet cloak. Move ONLY the two floating gold/violet swords directly behind her back, almost vertical, hilts DOWN by waist, tips UP beside head; clearly separated. Keep cyan/pink swords firmly gripped one per hand. Exactly FOUR swords. Add Fran FF12-inspired ornate fitted plum armor, filigree panels, patterned thigh-high armored boots, gold star belt and asymmetric pirate sash. No bunny ears. Clean same pixel style.",
+  "width": 128,
+  "height": 128,
+  "model": "edit_image_pixen",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
