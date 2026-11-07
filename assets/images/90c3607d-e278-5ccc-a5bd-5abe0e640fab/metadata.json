@@ -1,0 +1,11 @@
+{
+  "id": "90c3607d-e278-5ccc-a5bd-5abe0e640fab",
+  "name": "Fix ONLY gold and violet floating swords at upper left. Eras",
+  "prompt": "Fix ONLY gold and violet floating swords at upper left. Erase their diagonal shapes completely. Replace with two STRAIGHT VERTICAL swords like two upright fence posts ||. Each blade center has identical X coordinate from tip to pommel: NO tilt. Both tips at head height, grips down at waist height. Float both left of cape, generous transparent gaps. Exactly 4 swords including unchanged held cyan and pink pair. Preserve Riley's entire appearance and pose.",
+  "width": 128,
+  "height": 128,
+  "model": "edit_image_pixen",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
