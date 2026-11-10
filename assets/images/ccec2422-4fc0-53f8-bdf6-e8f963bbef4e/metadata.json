@@ -1,0 +1,11 @@
+{
+  "id": "ccec2422-4fc0-53f8-bdf6-e8f963bbef4e",
+  "name": "Remove the entire purple cape, leaving transparent space beh",
+  "prompt": "Remove the entire purple cape, leaving transparent space behind her. Change full-length maroon pants into very short fitted maroon shorts with gold-trimmed hems ending at the TOP of her thighs, exposing dark brown thighs down to existing boots. Preserve Fran-inspired sleeveless fitted shirt, head, white hair, body pose, hands, boots and both held cyan and pink swords exactly. No cape, no skirt, no added weapons. Same pixel style and canvas.",
+  "width": 128,
+  "height": 128,
+  "model": "edit_image_pixen",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
