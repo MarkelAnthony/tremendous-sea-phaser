@@ -1,0 +1,11 @@
+{
+  "id": "8662501a-c07b-5aca-8732-de62f85bac76",
+  "name": "Enlarge ONLY the tiny blue sword behind her white hair into",
+  "prompt": "Enlarge ONLY the tiny blue sword behind her white hair into a full-length BLUE SWORD, as long and wide as the red sword, with a distinct long straight blue blade and crossguard, fanning upward behind her head toward upper right. Keep it separate from the red and green swords. Keep Riley's exact face, hair, closed-fist guard pose, outfit, high-cut briefs, bare thighs and boots unchanged. No cape, no additional weapons. Transparent background.",
+  "width": 128,
+  "height": 128,
+  "model": "edit_image_pixen",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
