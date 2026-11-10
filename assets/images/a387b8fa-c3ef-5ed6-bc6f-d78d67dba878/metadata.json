@@ -1,0 +1,11 @@
+{
+  "id": "a387b8fa-c3ef-5ed6-bc6f-d78d67dba878",
+  "name": "Change ONLY her maroon shorts into opaque high-cut wrestling",
+  "prompt": "Change ONLY her maroon shorts into opaque high-cut wrestling briefs: gold waistband, diagonal gold-trimmed leg openings rising high on the hips, fully covered crotch, NO shorts legs or inseam. Expose upper thighs. Keep identical Fran-inspired top, body pose, face, hair, boots, arms and held weapons. No cape. Same exact placement and transparent canvas.",
+  "width": 128,
+  "height": 128,
+  "model": "edit_image_pixen",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
