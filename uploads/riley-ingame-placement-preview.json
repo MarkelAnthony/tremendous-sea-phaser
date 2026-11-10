@@ -1,0 +1,12 @@
+{
+  "selected": "gold",
+  "swords": {
+    "gold": {
+      "x": 26,
+      "y": 59,
+      "angle": 0,
+      "size": 100,
+      "depth": 1
+    }
+  }
+}
