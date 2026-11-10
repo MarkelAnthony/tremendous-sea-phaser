@@ -1,0 +1,11 @@
+{
+  "id": "f48d43aa-edaa-5e85-937d-f82cb5c7be18",
+  "name": "Change ONLY Riley's lower-body stance from a stretched lunge",
+  "prompt": "Change ONLY Riley's lower-body stance from a stretched lunge into a planted stationary fighting guard. She MUST remain facing EAST/right in side profile with the same stern unsmiling face, short silver hair, dark brown skin, exact maroon/gold outfit, bare clean thighs, boots and empty raised clenched fists. Bring the rear foot substantially closer under her hips, shorten the front-to-back foot spacing, bend BOTH knees slightly, keep BOTH soles firmly on the same ground line, and center hips/weight evenly between the feet. Torso upright stacked over the hips, not leaning into a stride. Compact, grounded, menacing ready stance, NOT running, lunging or attacking. Preserve EXACTLY FOUR floating swords behind her on the LEFT: one blue, one green, one gold, one red. Keep their existing positions, colors, orientations and layering unchanged, all detached from her fists. No extra swords, no missing swords, no cape. Preserve pixel art style, scale, transparent canvas and all appearance details. Only reposition her legs/hips minimally to plant her stance.",
+  "width": 128,
+  "height": 128,
+  "model": "edit-image",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
