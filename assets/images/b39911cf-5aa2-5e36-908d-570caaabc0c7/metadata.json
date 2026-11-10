@@ -1,0 +1,11 @@
+{
+  "id": "b39911cf-5aa2-5e36-908d-570caaabc0c7",
+  "name": "Correct Fist Blade Riley. The reference is the SAME woman's",
+  "prompt": "Correct Fist Blade Riley. The reference is the SAME woman's approved appearance: copy her exact face, short swept silver-lavender hair silhouette, dark brown skin palette, maroon fitted sleeveless top with gold V piping, high-cut wrestling briefs with gold edging, entirely bare thighs and maroon knee boots. No cape. Do not lighten her skin, enlarge hair, change identity or add fabric below brief openings. Keep input's high/low closed-fist martial-arts guard and bent staggered legs. Exactly FOUR distinct full-length swords, each clearly separated and countable: blue and red by raised fist, green by lowered fist, ADD a fourth GOLD sword behind the lower/back arm with blade extending diagonally outward into the empty left space. Keep each full blade and hilt readable, not merged into limbs or another sword. Keep character scale, native crisp pixel art and transparent background. Appearance reference's two swords in hands and two on back are NOT the pose to copy; transfer the woman's appearance only.",
+  "width": 128,
+  "height": 128,
+  "model": "edit-image",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
