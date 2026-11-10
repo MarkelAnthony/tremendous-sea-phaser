@@ -1,0 +1,11 @@
+{
+  "id": "22f62240-da88-5308-b1c1-601dd852bbda",
+  "name": "Edit this SAME Riley sprite into an unarmed fist fighting gu",
+  "prompt": "Edit this SAME Riley sprite into an unarmed fist fighting guard. Preserve exact identity: same fluffy rounded pale silver hair silhouette, face, dark brown skin palette, maroon high-cut wrestling briefs outfit with gold trim, boots, original sprite scale, proportions and same simple pixel cluster/shading style. Body and face remain in strict EAST/right side view. Stern unsmiling determined expression. Both empty hands clenched, arms raised in compact boxing guard. Upright balanced torso, compact shoulder-width planted feet, both knees slightly bent, weight centered, NOT a lunge, NOT leaning forward. Remove BOTH held swords completely: NO swords, NO weapons, NO floating objects anywhere. Transparent background. Keep character approximately same size and position in 128x128 canvas. Do not redesign hair, outfit, anatomy or add detail.",
+  "width": 128,
+  "height": 128,
+  "model": "edit-image",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
