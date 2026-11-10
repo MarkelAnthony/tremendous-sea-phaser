@@ -1,0 +1,19 @@
+{
+  "id": "03e30ea9-82a2-5b77-8efa-b3a0ca92a522",
+  "name": "Fist Blade stance CONCEPT STILL of Riley, SAME WOMAN as appe",
+  "prompt": "Fist Blade stance CONCEPT STILL of Riley, SAME WOMAN as appearance reference, not the male pose model. Exact deep chocolate brown skin on face arms and thighs; short silver-white bob; fitted dark plum/maroon gold-trim sleeveless bodice, very high-cut gold-edged wrestling briefs (NO shorts legs), bare thighs down to maroon gold-trim knee boots, no cape. COPY THE ACTUAL POSE REFERENCE: extremely wide low bent-knee crouch, asymmetric arms: image-left arm stretched low/outward with open claw-like hand at hip height, image-right arm bent with hand raised near head. Not an upright boxing guard. Match Riley's head/body proportions and crisp native pixel style from approved appearance. Fist Blade weapon configuration: three distinct FULL LENGTH red, green and blue swords levitate behind her back, pointing upward in a spaced fan, NOT held in fists; no gold/violet Four Sword loadout. Each blue blade must be full-sized like red and green, NOT a tiny dagger. Keep hands readable and face visible. No aura, no white skin, no male hair/gi. Single full-body sprite with transparent background and generous margin, on 128x128 canvas. This is a stance illustration for approval.",
+  "width": 256,
+  "height": 256,
+  "model": "generate_image_new",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": {
+    "grid_size": "2x2",
+    "frames": [
+      "frames/0.png",
+      "frames/1.png",
+      "frames/2.png",
+      "frames/3.png"
+    ]
+  }
+}

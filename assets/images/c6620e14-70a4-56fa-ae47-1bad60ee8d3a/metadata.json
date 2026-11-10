@@ -1,0 +1,19 @@
+{
+  "id": "c6620e14-70a4-56fa-ae47-1bad60ee8d3a",
+  "name": "Entropy stance STILL: Riley is the EXACT SAME dark chocolate",
+  "prompt": "Entropy stance STILL: Riley is the EXACT SAME dark chocolate-brown skinned woman as the approved appearance reference. Her skin must remain DARK BROWN everywhere, NOT white/pale, no transformation palette swap. Short cropped silver-white bob, fitted dark maroon/plum sleeveless gold-trim bodice, very high-cut gold-edged wrestling briefs, clean BARE DARK BROWN thighs, maroon gold-trim knee boots, no cape. Use second reference for pose ONLY: calm upright battle stance, feet shoulder width apart, relaxed empty hands hanging at both sides, fists loosely closed, composed face, three-quarter view slightly facing right. Copy Riley's original proportions and native crisp pixel shading. Three distinct gold swords LEVITATE behind her upright with POINTS UP and hilts below, fanned symmetrically, tips separated from her hair, swords never horizontal, hands empty. No aura, no charging effect, no flash, no white bodysuit, no ponytail. Transparent background single full-body sprite, 128x128 with margin, body at same visual scale as appearance reference. This is a still-pose draft for approval, not animation.",
+  "width": 256,
+  "height": 256,
+  "model": "generate_image_new",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": {
+    "grid_size": "2x2",
+    "frames": [
+      "frames/0.png",
+      "frames/1.png",
+      "frames/2.png",
+      "frames/3.png"
+    ]
+  }
+}
