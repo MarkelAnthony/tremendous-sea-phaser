@@ -1,0 +1,11 @@
+{
+  "id": "4e94fe02-9ac4-5d82-9e17-1c2aceb395a9",
+  "name": "Surgical tiny pixel-art anatomy cleanup ONLY of the neck and",
+  "prompt": "Surgical tiny pixel-art anatomy cleanup ONLY of the neck and upper shoulders of this existing right-facing dark-skinned woman Riley wearing a yellow robe. Reveal a short natural neck beneath her unchanged jaw: lower the high robe collar slightly, give neck a subtle warm skin highlight and dark under-jaw shadow. Smooth the shoulder slope into the upper arms, remove hunched blocky corners. Keep the same exact identity, pixel size, palette, shading style, body silhouette, strength, yellow robe and blue trim. Do not add accessories or move the head. A few carefully placed pixels, not a redesign. Keep outside mask unchanged.",
+  "width": 128,
+  "height": 128,
+  "model": "inpaint_pro_flash",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
