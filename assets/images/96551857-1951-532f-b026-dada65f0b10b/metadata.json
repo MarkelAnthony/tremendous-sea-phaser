@@ -1,0 +1,11 @@
+{
+  "id": "96551857-1951-532f-b026-dada65f0b10b",
+  "name": "Keep EXACTLY this same Riley: identical face, silver hair, d",
+  "prompt": "Keep EXACTLY this same Riley: identical face, silver hair, dark brown skin, maroon/gold top, high-cut gold-trimmed briefs, bare thighs, tall maroon boots, same pixel style and scale. Change ONLY pose to low wide martial arts guard: knees bent outward, one clenched fist low beside hip, other clenched fist raised beside head. Retain full-length blue, red and green Fist Blades alongside fists, not miniature. No cape. Do not redesign her face, outfit, proportions or colors.",
+  "width": 128,
+  "height": 128,
+  "model": "edit_image_pixen",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}

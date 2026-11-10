@@ -1,0 +1,11 @@
+{
+  "id": "48be9567-37de-55be-924e-bf30e23fb669",
+  "name": "Remove ONLY the two held swords, including hilts and colored",
+  "prompt": "Remove ONLY the two held swords, including hilts and colored pixels. Keep Riley pixel-identical in appearance: same dark brown skin, same face and silver hair, maroon gold top, high-cut briefs, bare thighs and maroon boots. Keep same standing pose and proportions, hands now empty. No weapons, no cape, no aura, no white skin or white outfit. Transparent background.",
+  "width": 128,
+  "height": 128,
+  "model": "edit_image_pixen",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
