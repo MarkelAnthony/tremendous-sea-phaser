@@ -12,6 +12,7 @@
     "Riley \u00b7 Ivory Riot": "assets/characters/aa70a93d-daad-4ea9-935e-5d47bb0efa98/"
   },
   "images": {
+    "Move the two floating swords (violet and gold) so they float": "assets/images/a774b51e-73e8-5745-96af-356ce7884e7b/",
     "Fix ONLY gold and violet floating swords at upper left. Eras": "assets/images/90c3607d-e278-5ccc-a5bd-5abe0e640fab/",
     "Change ONLY the two unheld gold and violet swords behind Ril": "assets/images/b511de7b-93d1-5353-be41-e2ad4197b1bf/",
     "Sword count correction only; preserve outfit, face, pose and": "assets/images/80684260-a701-5451-819d-9c09eafd4b24/",
@@ -83,8 +84,7 @@
     "Very subtle feminine athletic silhouette adjustment ONLY: sl": "assets/images/ecfcc815-6cac-5eee-8c54-57d7e33ed23a/",
     "Subtly refine ONLY Riley's torso waist and hip silhouette to": "assets/images/acf22a59-bc4d-5b23-a1a9-6d381f05d949/",
     "Repair ONLY the forward outstretched hand at the end of Rile": "assets/images/d6288b5d-d192-5eea-a992-861cf26e48f3/",
-    "Ancient forest": "assets/images/ccee019a-1fe4-51e9-9d0f-6c0159113355/",
-    "Move the two floating swords (violet and gold) so they float": "assets/images/a774b51e-73e8-5745-96af-356ce7884e7b/"
+    "Ancient forest": "assets/images/ccee019a-1fe4-51e9-9d0f-6c0159113355/"
   },
   "maps": {
     "The Verdant Crossing": "assets/maps/284a60d0-b94a-50b2-ac1d-2f869e93608a/"
