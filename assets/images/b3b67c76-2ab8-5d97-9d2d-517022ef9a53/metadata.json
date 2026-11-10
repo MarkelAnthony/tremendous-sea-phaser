@@ -1,0 +1,11 @@
+{
+  "id": "b3b67c76-2ab8-5d97-9d2d-517022ef9a53",
+  "name": "Repair ONLY the far shoulder of this right-facing pixel-art",
+  "prompt": "Repair ONLY the far shoulder of this right-facing pixel-art character: the yellow sleeve protrusion to the RIGHT of the dark neck/chest currently looks like a detached ball. Redraw it as a small foreshortened shoulder connected anatomically to the upper torso, tucked behind the neck/chest and near shoulder. Narrow its outward bulge, make a continuous natural sloping shoulder-to-upper-arm connection, with restrained darker ochre shading so it recedes in depth. Preserve robe design and pixel scale, existing dark outlines and yellow/ochre palette. Do not add accessories or change pose. Keep face, hair, near shoulder, swords and all other art unchanged. The fix should visibly improve the misplaced far shoulder, not simply recolor the existing lump.",
+  "width": 128,
+  "height": 128,
+  "model": "inpaint_pro_flash",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
