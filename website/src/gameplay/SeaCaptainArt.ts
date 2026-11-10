@@ -1,5 +1,4 @@
 import Phaser from "phaser";
-import { attachRileyFourthSword } from "./SeaRileyFourthSword";
 import { queueSeaAttackImpact } from "./SeaAttackImpact";
 import { preloadWraithfireBolt } from "./SeaWraithfireBolt";
 import { preloadBranchFury } from "./SeaBranchFury";
@@ -25,7 +24,6 @@ export function preloadSeaCaptain(scene: Phaser.Scene): void {
   preloadCharacterAtlas(scene, BRANCH);
   scene.load.image("branch-approved-guard", assetUrl("images", APPROVED_BRANCH, "image.png"));
   scene.load.image("riley-readable-fist", new URL("art/riley-readable-fist.png", document.baseURI).href);
-  scene.load.image("riley-fourth-sword", new URL("previews/riley/fist-layers/gold.png", document.baseURI).href);
 }
 export function createSeaCaptain(scene: Phaser.Scene, captain: string): Phaser.GameObjects.Sprite | null {
   if (captain === "Branch") {
@@ -79,9 +77,8 @@ export function createSeaCaptain(scene: Phaser.Scene, captain: string): Phaser.G
   if (!scene.anims.exists(animationKey)) scene.anims.create({ key: animationKey, frames, frameRate: 6, repeat: -1 });
   const sprite = scene.add.sprite(0, 75, key, frames[0].frame);
   sprite.setOrigin(0.5, 1).setScale(1.35).play(animationKey);
-  sprite.setData("swords", { held: ["red", "green"], floating: ["blue", "gold"] });
+  sprite.setData("swords", { held: ["red", "green"], floating: "blue" });
   sprite.setData("stance", "FourSword");
-  attachRileyFourthSword(scene, sprite);
   return sprite;
 }
 /** Play each approved stance's own idle loop; Four Swords retains its original clip. */
@@ -132,7 +129,7 @@ export function updateSeaCaptainStance(scene: Phaser.Scene, sprite: Phaser.GameO
     sprite.play(animationKey);
   }
   sprite.setData("stance", stance);
-  sprite.setData("swords", stance === "FourSword" ? { held: ["red", "green"], floating: ["blue", "gold"] } : { held: [], floating: stance === "Entropy" ? ["gold", "gold", "gold", "gold"] : ["red", "green", "blue", "gold"] });
+  sprite.setData("swords", stance === "FourSword" ? { held: ["red", "green"], floating: ["blue"] } : { held: [], floating: stance === "Entropy" ? ["gold", "gold", "gold"] : ["red", "green", "blue"] });
 }
 /** A damage-based Clarity gain is the shared trigger for every Four Sword attack. */
 export function playSeaClarityAttack(scene: Phaser.Scene, sprite: Phaser.GameObjects.Sprite): void {
