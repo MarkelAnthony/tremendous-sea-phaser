@@ -306,6 +306,16 @@ function startMapFolder() {
   return literal ? literal[2] : null;
 }
 
+// With no maps synced at all, the map the game boots into is the one to bring
+// back: naming it lets the chat agent be told whether it still exists (and only
+// left the project) or was deleted — two different fixes.
+function bootMapNote() {
+  const startMap = startMapFolder();
+  return startMap
+    ? ` (the game boots into assets/maps/${startMap}/, named by MAP_FOLDER in src/pixellab/templateAssetPaths.ts)`
+    : "";
+}
+
 function readReachabilityText() {
   // Everything that can NAME a map folder, because any of them makes it loadable at
   // runtime. TypeScript alone is NOT enough: mapWarps.ts reads targetMapFolder /
@@ -651,7 +661,7 @@ function validateMapTerrain(errors, mapId, mapJson, terrainMap, hardEdges) {
 
 function main() {
   if (!existsSync(mapsDir)) {
-    throw new Error(`Missing PixelLab maps directory: ${mapsDir}`);
+    throw new Error(`Missing PixelLab maps directory: ${mapsDir}${bootMapNote()}`);
   }
 
   const missing = [];
@@ -708,7 +718,7 @@ function main() {
   }
 
   if (mapCount === 0) {
-    throw new Error(`No PixelLab map folders found in ${mapsDir}`);
+    throw new Error(`No PixelLab map folders found in ${mapsDir}${bootMapNote()}`);
   }
 
   // The map the game boots into. Its folder going missing (the map was unlinked
