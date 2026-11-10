@@ -1,0 +1,11 @@
+{
+  "id": "62dee41d-fd52-5b38-bbaf-acfda1a89b45",
+  "name": "Replace the stretched lunging legs with a compact PLANTED st",
+  "prompt": "Replace the stretched lunging legs with a compact PLANTED stationary boxer stance facing right. Hips at x80 y77. TWO bare dark brown thighs descend mostly VERTICALLY beneath hips, knees softly bent, feet at x70 and x96 on SAME ground line y120. Rear boot MUST be brought RIGHTWARD to x68-76, not left at x38. Front boot x91-103. Narrow the huge stride to only 28 pixels between feet. Equal weight on both grounded flat soles. Keep maroon boots with gold trim and clean bare thighs; match existing pixel-art outlines and shading exactly. Erase the old outstretched rear leg, leaving transparency there. NOT a lunge, NOT running. Preserve upper body and all four floating swords outside mask. Only two legs, anatomically coherent. Confident compact menacing guard.",
+  "width": 128,
+  "height": 128,
+  "model": "inpaint_pro_flash",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
