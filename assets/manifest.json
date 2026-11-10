@@ -5,11 +5,11 @@
     "Forest Guardian": "assets/characters/113f91a5-29f0-5c08-9981-5c5b3b5a8718/",
     "Forest Wolf": "assets/characters/36e5db22-bb07-5f4f-9eb6-75b915d82f4c/",
     "Forest Warrior": "assets/characters/476945d1-f351-5034-b0af-5a3e362e53ee/",
+    "Riley": "assets/characters/b872b214-8d45-4f34-b202-a5ca77f2e210/",
     "Branch \u00b7 Kindleroot art brief": "assets/characters/629513df-5f23-4867-8b57-4d6c102df309/",
     "Riley \u00b7 Crimson Headliner": "assets/characters/01ea74cb-62b9-4806-8721-bb98bc7ff3a5/",
     "Riley \u00b7 Midnight Encore": "assets/characters/61b35125-7d8c-475d-b855-e2e9210393c4/",
-    "Riley \u00b7 Ivory Riot": "assets/characters/aa70a93d-daad-4ea9-935e-5d47bb0efa98/",
-    "Riley": "assets/characters/b872b214-8d45-4f34-b202-a5ca77f2e210/"
+    "Riley \u00b7 Ivory Riot": "assets/characters/aa70a93d-daad-4ea9-935e-5d47bb0efa98/"
   },
   "images": {
     "Change ONLY her maroon shorts into opaque high-cut wrestling": "assets/images/a387b8fa-c3ef-5ed6-bc6f-d78d67dba878/",
@@ -87,7 +87,9 @@
     "Very subtle feminine athletic silhouette adjustment ONLY: sl": "assets/images/ecfcc815-6cac-5eee-8c54-57d7e33ed23a/",
     "Subtly refine ONLY Riley's torso waist and hip silhouette to": "assets/images/acf22a59-bc4d-5b23-a1a9-6d381f05d949/",
     "Repair ONLY the forward outstretched hand at the end of Rile": "assets/images/d6288b5d-d192-5eea-a992-861cf26e48f3/",
-    "Ancient forest": "assets/images/ccee019a-1fe4-51e9-9d0f-6c0159113355/"
+    "Ancient forest": "assets/images/ccee019a-1fe4-51e9-9d0f-6c0159113355/",
+    "Change ONLY weapons and arms to Entropy stance. Keep this ex": "assets/images/bf60029d-87d9-5a6a-a006-1b7d86c3bd74/",
+    "Change ONLY weapon configuration and arms to Fist Blade guar": "assets/images/47eca5d2-46ec-5d57-8ba4-53f054ef8062/"
   },
   "maps": {
     "The Verdant Crossing": "assets/maps/284a60d0-b94a-50b2-ac1d-2f869e93608a/"

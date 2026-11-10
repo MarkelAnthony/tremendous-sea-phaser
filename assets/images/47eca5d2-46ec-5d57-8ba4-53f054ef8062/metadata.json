@@ -1,0 +1,11 @@
+{
+  "id": "47eca5d2-46ec-5d57-8ba4-53f054ef8062",
+  "name": "Change ONLY weapon configuration and arms to Fist Blade guar",
+  "prompt": "Change ONLY weapon configuration and arms to Fist Blade guard. Keep this exact woman, hair, face, purple gold-trimmed high-cut briefs and bodice, bare thighs, boots, no cape. Empty BOTH hands, remove all held and back swords. Forward elbow bent, tightly CLOSED fist raised at face height, other fist guarding torso. Three distinct red, green, blue swords hover separately behind her back. Same east-facing side view, scale, transparent 128x128 canvas. No walking or effects.",
+  "width": 128,
+  "height": 128,
+  "model": "edit_image_pixen",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}

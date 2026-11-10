@@ -1,0 +1,11 @@
+{
+  "id": "bf60029d-87d9-5a6a-a006-1b7d86c3bd74",
+  "name": "Change ONLY weapons and arms to Entropy stance. Keep this ex",
+  "prompt": "Change ONLY weapons and arms to Entropy stance. Keep this exact woman, hair, face, purple gold-trimmed high-cut briefs and fitted bodice, clean bare thighs, boots, no cape. Remove all four current swords. Both hands empty and relaxed at sides, feet planted. Exactly THREE separate golden-yellow swords float point-up, handles down in a descending arc behind her back: large upper, medium middle, small lower, all inside canvas. Same east-facing side view, scale, transparent 128x128. No effects.",
+  "width": 128,
+  "height": 128,
+  "model": "edit_image_pixen",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
