@@ -1,0 +1,17 @@
+{
+  "status": "still-pose-review-before-character-creation-and-animation",
+  "size": 128,
+  "mode": "v3",
+  "appearance": "Latest approved sword editor: briefs, clean bare thighs, no cape, corrected gold flipX; Four Sword composed exactly from editor default arrangement. Saved library character unchanged.",
+  "directions": ["south", "south-east", "east", "north-east", "north", "north-west", "west", "south-west"],
+  "animations": [
+    {"stance":"Four Sword","name":"four-idle","mode":"v3","frames":8,"description":"Subtle breathing loop in the approved Four Sword pose. Keep all four swords stable, distinct and correctly layered."},
+    {"stance":"Four Sword","name":"four-attack","mode":"v3","frames":8,"description":"A decisive Four Sword swipe with anticipation, a readable strike and recovery to the approved stance. Preserve all four weapons without duplication."},
+    {"stance":"Fist Blade","name":"fist-idle","mode":"v3","frames":8,"description":"Subtle breathing in the approved Fist Blade guard, preserving its established weapon configuration and the updated outfit."},
+    {"stance":"Fist Blade","name":"fist-attack","mode":"v3","frames":8,"description":"A compact Fist Blade strike with clear anticipation, impact and recovery, following the existing stance weapon design."},
+    {"stance":"Entropy","name":"entropy-idle","mode":"v3","frames":8,"description":"Subtle breathing in the approved Entropy stance, retaining its established weapon configuration without changing the updated outfit."},
+    {"stance":"Entropy","name":"entropy-attack","mode":"v3","frames":8,"description":"An Entropy attack following the existing stance weapon design, with a clear wind-up, decisive strike and recovery."}
+  ],
+  "reviewJobs": {"fist":"cbc12086-9641-4cd7-950f-54fbdf1d8d8f","entropy":"bae15c42-3d0e-41cc-ad05-9c689c491e38"},
+  "chargesSoFar": {"stillEdits":2,"rotations":0,"animations":0}
+}
