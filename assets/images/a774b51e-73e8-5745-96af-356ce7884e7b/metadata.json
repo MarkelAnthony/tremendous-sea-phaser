@@ -1,0 +1,11 @@
+{
+  "id": "a774b51e-73e8-5745-96af-356ce7884e7b",
+  "name": "Move the two floating swords (violet and gold) so they float",
+  "prompt": "Move the two floating swords (violet and gold) so they float upright behind Riley's back, tips up near head height, hilts down near waist, parallel to each other and overlapping in depth: the nearer gold sword sits in front and partially covers the farther violet sword, offset only a few pixels so both blades are visible, like two shoulder blades seen from the side. Keep a small gap between the swords and her cloak. Keep Riley, her outfit, and her held cyan and pink swords unchanged.",
+  "width": 128,
+  "height": 128,
+  "model": "edit_image_pixen",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
