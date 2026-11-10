@@ -1,0 +1,11 @@
+{
+  "id": "21001600-b1f0-564b-9320-68f36aeb4a55",
+  "name": "Keep this EXACT character and pose unchanged: same face, ski",
+  "prompt": "Keep this EXACT character and pose unchanged: same face, skin, silver hair, maroon gold high-cut briefs outfit, boots, raised fist and low fist. Remove ALL swords and weapons from around and behind her, including gold, purple, red, blue, green blades, hilts and handles. Empty hands. Only Riley's body and outfit remain on transparency. No new weapons. Do not redraw or restyle the character.",
+  "width": 128,
+  "height": 128,
+  "model": "edit_image_pixen",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
