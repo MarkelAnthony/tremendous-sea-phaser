@@ -1,0 +1,11 @@
+{
+  "id": "6b194d5c-d3cd-55ce-b482-843fec2d7434",
+  "name": "Correct THIS SAME Riley sprite, retaining her identity, exac",
+  "prompt": "Correct THIS SAME Riley sprite, retaining her identity, exact dark brown skin, short silver-white hairstyle, maroon and gold high-cut outfit, bare thighs, boots and pixel-art style. Repose her BODY and HEAD facing EAST (screen RIGHT), a side-view fighter, NOT front facing. Menacing combat guard: bent knees, weight forward, both EMPTY clenched fists guarding in front of her torso toward screen right; stern narrowed eyes, lowered brows, closed unsmiling mouth, no smile, no happy expression. EXACTLY FOUR full-sized distinct swords: ONE blue, ONE red, ONE green, ONE gold. ALL FOUR FLOAT ENTIRELY BEHIND HER BACK, on the SCREEN LEFT side of her body, in a compact separated four-blade fan. Her back faces LEFT because she faces RIGHT. Every blade, hilt and pommel must remain behind her back plane; NO sword above/in/near her forward hands, none on screen right, none held, none attached to hips. Leave visible air gaps between all four swords and Riley, and between each blade so all four can be counted. Compose Riley center-right with the sword fan to her left. Preserve character scale and 128x128 transparent canvas; no cape, no extra weapons, no effects.",
+  "width": 128,
+  "height": 128,
+  "model": "edit-image",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
