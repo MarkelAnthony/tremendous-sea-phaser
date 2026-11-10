@@ -1,0 +1,11 @@
+{
+  "id": "be7806e6-1fcd-50f5-b9ea-68981c206e02",
+  "name": "Change ONLY shirt and pants cut to Fran from Final Fantasy X",
+  "prompt": "Change ONLY shirt and pants cut to Fran from Final Fantasy XII inspired: fitted sleeveless high-neck magenta armored bodice, high-cut sides at hips, open upper-thigh cutouts above separate fitted magenta leggings with gold piping. Keep adult Riley's face, white hair, skin, pose, purple cloak and BOTH held cyan/pink swords exactly unchanged. No extra swords, no floating weapons. Transparent background. Same pixel art scale and silhouette.",
+  "width": 128,
+  "height": 128,
+  "model": "edit_image_pixen",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
