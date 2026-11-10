@@ -1,0 +1,11 @@
+{
+  "id": "e0e55ceb-8d6d-5942-a92f-c41fb5f5367c",
+  "name": "Keep this EXACT SAME woman Riley: identical dark brown skin,",
+  "prompt": "Keep this EXACT SAME woman Riley: identical dark brown skin, short silver cropped hair, face, maroon and gold high-cut outfit, bare thighs and purple gold boots. Correct ONLY the Fist Blade stance weapon arrangement. She is an UNARMED BOXER: both hands are clearly EMPTY CLOSED FISTS, raised in a compact fighting guard, knees bent in a balanced fighting stance. All FOUR full-size swords levitate BEHIND her back in a distinct separated fan, not in front of her body or attached to hands or hips. Exactly one BLUE sword, one RED sword, one GOLD sword and one GREEN sword. Arrange four long blades in a floating fan behind her shoulders, with visible air gaps separating their hilts from her fists. Show all four distinct blades and hilts, no fifth sword, no overlapping swords. Riley is the foreground layer in front of all weapons. Remove every old sword from the hands, hip and legs and restore clean skin there. Preserve her face identity and outfit design, proportions, skin tone and pixel art style. No cape. Transparent background, entire character and all four swords in frame.",
+  "width": 128,
+  "height": 128,
+  "model": "edit-image",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
