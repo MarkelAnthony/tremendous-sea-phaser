@@ -1,0 +1,11 @@
+{
+  "id": "6004bc52-5cce-5a7a-91e0-f12dfb7eb652",
+  "name": "Redraw her upper body in a NEW anatomically correct pose. Ex",
+  "prompt": "Redraw her upper body in a NEW anatomically correct pose. Expose a long clearly visible bare neck between jaw and LOW open collar. Remove back-projecting yellow shoulder bump entirely. Green-sword arm hangs STRAIGHT DOWN from rounded shoulder directly under ear, elbow at waist, hand beside hip; move hand and sword to match. Far shoulder hidden behind chest. Keep white hair, dark skin, yellow blue-trim robe, face, bare feet, colored swords. Neck and shoulder silhouette MUST visibly change.",
+  "width": 128,
+  "height": 128,
+  "model": "edit_image_pixen",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
