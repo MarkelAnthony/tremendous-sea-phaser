@@ -1,0 +1,11 @@
+{
+  "id": "462b3280-9b5c-58be-b3cb-313c2b5cfc7e",
+  "name": "Dress this anatomical pose study as Riley from the reference",
+  "prompt": "Dress this anatomical pose study as Riley from the reference. Final clean native 128x128 pixel-art character sprite, transparent background. Preserve INPUT body anatomy and bent-arm pose: right-facing profile, visible neck under jaw, both shoulders on lateral ribcage below neck, upper arms descending to low elbows, forearms bending FORWARD and upward to hands. Do not reuse reference's rear-facing shoulder/arm pose. Copy reference identity faithfully: dark brown woman, swept-back spiky silver-white hair, original right-facing face and gold earring, pink cord, mustard gold kimono robe with intricate blue geometric embroidered cuffs and hem, red-pink waist sash and wrist wraps, bare brown feet. Draped sleeves follow new upper arms and elbows, do not hide neck or expand into back protrusions. Exactly FOUR distinct swords: one red sword held in near raised hand, one green sword held in far raised hand, blades pointing up forward with distinct grips; one floating blue sword on left and one floating golden sword lower left, both with small crisp magical cross sparkles. All weapons fit canvas with margin. Keep near/far wrists and sword guards clearly separate. Intentional pixel clusters, dark thin outlines and original warm gold/cool blue detailed palette. No labels, guides, construction joints or backdrop.",
+  "width": 128,
+  "height": 128,
+  "model": "edit-image",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
