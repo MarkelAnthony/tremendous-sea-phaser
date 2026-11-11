@@ -1,0 +1,11 @@
+{
+  "id": "4ab38d57-20c6-5b87-8713-f9a4e026b0b8",
+  "name": "Correct anatomy: the green-sword arm must connect to a prope",
+  "prompt": "Correct anatomy: the green-sword arm must connect to a proper shoulder at the top-side of her torso, not come out of her back. Side view facing right; shoulder sits directly under the neck on the torso side, upper arm hangs from the shoulder, forearm angles back so the hand holds the green sword pointing down-left. Add a short visible neck. Keep face, white hair, earring, mustard robe with blue trim, red sword hand, floating blue sword, size and style unchanged.",
+  "width": 128,
+  "height": 128,
+  "model": "edit_image_pro_flash",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}

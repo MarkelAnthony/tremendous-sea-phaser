@@ -1,0 +1,11 @@
+{
+  "id": "3818a48f-4640-5976-a7db-4559f9c08c09",
+  "name": "Fix the anatomy of the arm holding the green sword: currentl",
+  "prompt": "Fix the anatomy of the arm holding the green sword: currently it sprouts from her upper back. Redraw it so it is the NEAR arm, attached at a clearly visible near shoulder on the side of her torso just below the neck, upper arm going down from the shoulder, elbow bent, hand still gripping the green sword pointing down-left behind her. Give her a visible neck between jaw and collar. Keep everything else identical: right-facing side view, white spiky hair, dark skin, gold earring, mustard-gold robe with light blue trim, red sword in the other hand, floating blue sword, same size and position, same pixel art style.",
+  "width": 128,
+  "height": 128,
+  "model": "edit_image_pro_flash",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
