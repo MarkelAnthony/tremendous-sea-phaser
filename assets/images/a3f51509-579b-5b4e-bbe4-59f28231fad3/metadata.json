@@ -1,0 +1,11 @@
+{
+  "id": "a3f51509-579b-5b4e-bbe4-59f28231fad3",
+  "name": "Anatomical correction to this side-view female dual-sword sp",
+  "prompt": "Anatomical correction to this side-view female dual-sword sprite. Make a VERY VISIBLE structural redesign of neck, shoulder girdle and upper arms. Lift the head upwards by 5 pixels, exposing an unmistakable dark skin neck 5 pixels tall beneath jaw and above collar. Lower the collar and give it an open V neckline. REMOVE the yellow sleeve/shoulder bump sticking out of her BACK at left. Rebuild green-sword arm hanging vertically at her SIDE directly below base of neck, shoulder socket aligned under ear, natural round deltoid and elbow at waist, hand at hip. The shoulder must NOT originate on her back. The far shoulder and upper arm should be hidden behind the chest, its red-sword forearm emerges on the front/right only. Narrow natural sloping shoulders with clear neck above. Relaxed anatomically coherent standing posture. Keep Riley recognizable: same face, spiky white hair, hoop earring, yellow robe with blue trims, dark skin, two colored swords, bare feet, floating blue sword. You may alter sword hand placement and upper torso silhouette as needed for correct shoulder anatomy. Prioritize clear neck separation and shoulder alignment over keeping broken original pose. Pixel art transparent background.",
+  "width": 128,
+  "height": 128,
+  "model": "edit-image",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
