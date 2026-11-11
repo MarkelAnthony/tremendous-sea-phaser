@@ -1,0 +1,19 @@
+{
+  "id": "b749bc5b-e4c9-511d-866e-04363b7dfdb0",
+  "name": "NEW DRAWING from scratch: full-body Riley, female dark-brown",
+  "prompt": "NEW DRAWING from scratch: full-body Riley, female dark-brown-skinned magical four-sword warrior facing RIGHT in side/three-quarter profile. Readable native 128px pixel sprite, elegant adult proportions. White spiky swept-back hair, white eyebrows/lashes, pale luminous eyes, composed confident expression, defined nose, small lips, gold dangling earring. Clearly exposed NECK connects jaw to chest; shoulders attach to ribcage. Exactly TWO arms, elbows naturally bent forward, two separate hands gripping hilts. EXACTLY FOUR COMPLETE SEPARATE SWORDS: 1 RED ruby sword held forward, blade diagonally down-right; 2 GREEN emerald sword held in other hand, blade diagonally down-left; 3 BLUE sapphire sword floats upright left above waist with cyan star sparkles; 4 GOLD sword floats upright farther left slightly lower with warm gold star sparkles. All four blades have distinct silhouettes, guards, grips, pommels, beveled edges. No overlapping blades, missing sword or extra arms. Long mustard-gold robe, deep-blue V collar leaving neck and upper chest visible, loose sleeves with blue geometric patterned cuffs, intricate blue zigzag trim and embroidery on hem and side slits, gold cloth folds, pink-magenta waist sash. Dark brown bare ankles and BARE FEET, grounded wide balanced bent-knee stance. Sleeves follow coherent shoulder-elbow-wrist chains, no hand sprouting from back, no shoulder growing out of neck. Portrait 1: complexion/facial refinement. Portrait 2: spiky white hair and white brows, NOT grin/clothes. Fran: elegant balance and connected anatomy ONLY; NO bunny ears, armor, bow or heels. Small sprite: bent-arm silhouette ONLY, NOT blonde hair or bodysuit. Existing style image supplies pixel rendering and gold robe/blue patterned trim ONLY, not its flawed arm anatomy. Crisp clusters, restrained outlines, transparent background. Entire figure and four swords fit canvas.",
+  "width": 256,
+  "height": 256,
+  "model": "generate_image_new",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": {
+    "grid_size": "2x2",
+    "frames": [
+      "frames/0.png",
+      "frames/1.png",
+      "frames/2.png",
+      "frames/3.png"
+    ]
+  }
+}

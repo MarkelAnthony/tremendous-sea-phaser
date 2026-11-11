@@ -1352,6 +1352,17 @@
       "image_url": "https://backblaze.pixellab.ai/file/pixellab-generations/production/creator/df7cccb5-c579-4252-af7b-a8153cfb8aaf/ccee019a-1fe4-51e9-9d0f-6c0159113355/image.png",
       "frame_urls": [],
       "sync_version": 3
+    },
+    "b749bc5b-e4c9-511d-866e-04363b7dfdb0": {
+      "updated_at": "2026-11-11T11:59:09.936844+00:00",
+      "image_url": "https://backblaze.pixellab.ai/file/pixellab-generations/production/creator/df7cccb5-c579-4252-af7b-a8153cfb8aaf/b749bc5b-e4c9-511d-866e-04363b7dfdb0/image.png",
+      "frame_urls": [
+        "https://backblaze.pixellab.ai/file/pixellab-generations/production/creator/df7cccb5-c579-4252-af7b-a8153cfb8aaf/b749bc5b-e4c9-511d-866e-04363b7dfdb0/frames/0.png",
+        "https://backblaze.pixellab.ai/file/pixellab-generations/production/creator/df7cccb5-c579-4252-af7b-a8153cfb8aaf/b749bc5b-e4c9-511d-866e-04363b7dfdb0/frames/1.png",
+        "https://backblaze.pixellab.ai/file/pixellab-generations/production/creator/df7cccb5-c579-4252-af7b-a8153cfb8aaf/b749bc5b-e4c9-511d-866e-04363b7dfdb0/frames/2.png",
+        "https://backblaze.pixellab.ai/file/pixellab-generations/production/creator/df7cccb5-c579-4252-af7b-a8153cfb8aaf/b749bc5b-e4c9-511d-866e-04363b7dfdb0/frames/3.png"
+      ],
+      "sync_version": 3
     }
   },
   "maps": {
