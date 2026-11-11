@@ -1,0 +1,11 @@
+{
+  "id": "81c6483d-ce0d-5697-8c1b-495589ee4180",
+  "name": "Anatomical correction, NOT recoloring. Redraw the screen-RIG",
+  "prompt": "Anatomical correction, NOT recoloring. Redraw the screen-RIGHT far shoulder and yellow sleeve beside the dark chest so the far arm connects believably to the torso. Existing raised detached round yellow bump has wrong construction: remove that high shoulder cap. Start the far shoulder lower, beneath and behind the neckline, as a foreshortened sloping connection emerging from behind the chest. Draw a continuous compact sleeve tapering down to the EXISTING forearm below the edit, with an understandable armhole crease and clear chest-over-shoulder overlap. Replace the existing silhouette and fold structure visibly; do not just darken or shrink the old bump. Keep the exposed dark chest/neck readable. Match original crisp single-pixel outlines, gold robe palette and sparse stepped pixel shading. No new accessories, no extra limb, no neck ornament. Preserve face, hair, near shoulder and pose.",
+  "width": 128,
+  "height": 128,
+  "model": "inpaint_pro_flash",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
