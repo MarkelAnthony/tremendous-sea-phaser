@@ -1,0 +1,11 @@
+{
+  "id": "aec10b21-6bff-5536-977e-8d90c6faa099",
+  "name": "Keep this exact character, exposed bare neck, V-neckline, sh",
+  "prompt": "Keep this exact character, exposed bare neck, V-neckline, shoulders, robe, hair, green sword and hanging sword arm UNCHANGED. Add a RED sword held in the other hand at the FRONT RIGHT waist, blade pointing diagonally down-right. Small dark hand visibly grips red sword hilt at waist. Preserve current anatomically correct neck and shoulders. Two swords total, one green hanging down and one red pointing down-right. Transparent pixel art.",
+  "width": 128,
+  "height": 128,
+  "model": "edit_image_pixen",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
