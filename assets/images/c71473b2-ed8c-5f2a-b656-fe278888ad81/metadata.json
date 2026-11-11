@@ -1,0 +1,11 @@
+{
+  "id": "c71473b2-ed8c-5f2a-b656-fe278888ad81",
+  "name": "Redraw this character's ENTIRE upper body anatomy competentl",
+  "prompt": "Redraw this character's ENTIRE upper body anatomy competently, not a minor touchup. Preserve recognizable white spiky hair, dark-skinned woman, gold hoop earring, yellow blue-trim robe, belt, bare legs, green and red swords and small floating blue sword. Right-facing side-view game sprite. The current shoulders and neck are anatomically broken. Design a NEW coherent relaxed dual-sword standing pose: upright neck with 4-5 clearly visible skin pixels between jaw and open V collar, sloping trapezius from base of neck to a single clean visible shoulder socket directly below ear. Shoulder girdle perpendicular to chest, not jutting from middle of back. Near arm hangs NATURALLY STRAIGHT DOWN along side seam from shoulder to elbow, then slightly bent forearm holding green sword down-left. Remove original backward-projecting shoulder and sleeve entirely: no arm growing from back, no upper-arm pointing backwards, no hunched bump behind head. Repose green hand as necessary. Far shoulder and upper arm OCCLUDED behind ribcage, only far forearm and hand emerging beyond FRONT RIGHT torso silhouette holding red sword down-right. Upper chest narrow, neck centered on ribcage, both humeral heads below neck, elbows at waist. Prioritize believable silhouette and anatomy over preserving original upper-body pose. Clear separate head-neck-shoulder-arm silhouette, simple readable pixel clusters, original pixel density, same canvas. Do not add markings or anatomy guides.",
+  "width": 128,
+  "height": 128,
+  "model": "edit_image_pro_flash",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
