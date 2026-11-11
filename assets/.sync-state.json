@@ -1316,7 +1316,7 @@
     "284a60d0-b94a-50b2-ac1d-2f869e93608a": {
       "updated_at": "2026-10-25T00:47:15.305631+00:00",
       "name": "The Verdant Crossing",
-      "export_version": 13,
+      "export_version": 14,
       "tilesets": {
         "98033b10-af32-513d-a10d-4175e7370594": "2026-10-05T08:41:24.135066+00:00"
       }
