@@ -1,0 +1,11 @@
+{
+  "id": "6513f8cc-b6e5-40e3-9292-b9e2549c0f72",
+  "name": "Riley \u2014 APPROVED four-sword sprite (candidate 3)",
+  "prompt": "Riley approved master sprite: four swords (red and green held, blue and gold floating), sparkles, visible neck, bent-arm grips, gold robe with blue trim, magenta sash",
+  "width": 128,
+  "height": 128,
+  "model": "pixelart_workbench",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
