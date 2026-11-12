@@ -1,0 +1,11 @@
+{
+  "id": "7108340a-8ed6-5454-b26f-31aed5bd8065",
+  "name": "Edit Riley's approved candidate 3 into a close-range FIST-BL",
+  "prompt": "Edit Riley's approved candidate 3 into a close-range FIST-BLADE fighting stance. Preserve her identity, dark skin, exact face, short spiky white hair, gold earring, mustard-gold ankle-length robe, navy V collar and wrist bands, blue geometric hem ornament, magenta waist sash, bare feet, proportions, palette and crisp native pixel-art style. Preserve all FOUR distinct colored blades (yellow, cyan-blue, green, red) and their recognizable designs; do not treat the upper yellow and cyan blades as unrelated icons or delete them. Arrange weapons into a coherent close-range fist-blade guard, with fists raised near chest, elbows visibly bent and blades held close to fists, properly connected grips. Knees naturally flexed in a planted balanced stance. Redraw articulated limbs and natural robe folds, NEVER squash, stretch or compress the sprite. Keep the approved viewing angle and scale, same 128x128 transparent canvas. One single complete full-body still sprite only, no animation, no grid, no labels, no ground shadow, no new costume or equipment.",
+  "width": 128,
+  "height": 128,
+  "model": "edit_image_pro_flash",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
