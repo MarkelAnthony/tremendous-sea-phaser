@@ -101,51 +101,6 @@
       ],
       "sync_version": 16
     },
-    "b872b214-8d45-4f34-b202-a5ca77f2e210": {
-      "updated_at": "2026-10-05T09:48:03.847414+00:00|2026-10-05T12:07:43.327555+00:00|2026-10-05T10:38:39.316035+00:00",
-      "animation_ids": [
-        "0ceb9d51-eecb-444f-affd-c167f19d1576",
-        "0d4bd492-f645-4dd6-bd30-b0046ad8ab9d",
-        "0ed5a011-c189-4996-a7bc-89ce6c060eaf",
-        "1184d170-21fb-4d8a-a83a-a5082138c9a8",
-        "1d3b3393-5043-4d66-94a8-ceccb569d8cc",
-        "22bf555b-594f-481b-a8ae-cb50e6bcf32a",
-        "404905bc-0196-49c4-9f97-c3d9f8988e75",
-        "4423b0da-b3f4-4134-8ddd-cbb3524e5791",
-        "4b5c5891-e2aa-4c2b-ad7f-8096a303a38b",
-        "5c8a36e0-d5f4-4ddb-875b-78f903570084",
-        "65b78d17-1a10-4ad6-97b1-a398714bf019",
-        "67423d99-9e56-49c7-af2f-27e41263832b",
-        "6c78ccab-0cfb-44e2-af6e-efafd6ffb410",
-        "70be75b0-419f-4c0a-981b-62360e54c820",
-        "79a651ad-eae2-4a44-87eb-f7b9ef2c1e73",
-        "7f54a905-dc2c-4f46-80b9-56e4c3332414",
-        "8aa0e045-4e23-4fb9-a991-b0b9ee2f72d6",
-        "8ff59206-e070-4c78-8d93-0dd38296f6f5",
-        "950f440e-61c9-4731-a6f8-b444d94f40e8",
-        "9ebee03e-3ee9-4628-a79e-0c19635dd8d1",
-        "9f8acdd3-8409-4f08-8613-c860d6354238",
-        "b4b7e8f5-bd8e-4fe1-bb85-6f7daa00b48d",
-        "b7a40844-7c4d-45ad-ba1b-e849865aacc8",
-        "b9b07007-ba96-4382-8fa5-1faa66ab4ede",
-        "c2b2cdc9-b584-4e25-a117-f1b7a5de234d",
-        "c57e1b0d-9131-4a5f-a802-2ec620271c05",
-        "c7e61411-b395-4438-bf2e-dce696eb03cd",
-        "d60f543e-3430-4f11-9067-70e957bcedfa",
-        "d62bc3a8-fdad-424a-b3e0-9a52a19d376f",
-        "e3be86b7-9680-439b-acf1-1fdeef34b1e9",
-        "eeaca794-5445-456e-afdc-0f96f4dcd049",
-        "f695394b-b352-4449-97be-f7728a03d6ce"
-      ],
-      "animation_fingerprint": "243a7fd0891a6164806c4913f5cb0f46cc3513433794ede79f8d46f8443f6b59",
-      "name": "Riley",
-      "member_ids": [
-        "b872b214-8d45-4f34-b202-a5ca77f2e210",
-        "b15bd612-59f4-4175-915d-0b777cfb835b",
-        "86587070-efce-4ef8-b513-e5a10a41dc6c"
-      ],
-      "sync_version": 16
-    },
     "629513df-5f23-4867-8b57-4d6c102df309": {
       "updated_at": "2026-10-12T22:59:50.808784+00:00",
       "animation_ids": [
@@ -189,6 +144,51 @@
       "name": "Riley \u00b7 Ivory Riot",
       "member_ids": [
         "aa70a93d-daad-4ea9-935e-5d47bb0efa98"
+      ],
+      "sync_version": 16
+    },
+    "b872b214-8d45-4f34-b202-a5ca77f2e210": {
+      "updated_at": "2026-10-05T09:48:03.847414+00:00|2026-10-05T12:07:43.327555+00:00|2026-10-05T10:38:39.316035+00:00",
+      "animation_ids": [
+        "0ceb9d51-eecb-444f-affd-c167f19d1576",
+        "0d4bd492-f645-4dd6-bd30-b0046ad8ab9d",
+        "0ed5a011-c189-4996-a7bc-89ce6c060eaf",
+        "1184d170-21fb-4d8a-a83a-a5082138c9a8",
+        "1d3b3393-5043-4d66-94a8-ceccb569d8cc",
+        "22bf555b-594f-481b-a8ae-cb50e6bcf32a",
+        "404905bc-0196-49c4-9f97-c3d9f8988e75",
+        "4423b0da-b3f4-4134-8ddd-cbb3524e5791",
+        "4b5c5891-e2aa-4c2b-ad7f-8096a303a38b",
+        "5c8a36e0-d5f4-4ddb-875b-78f903570084",
+        "65b78d17-1a10-4ad6-97b1-a398714bf019",
+        "67423d99-9e56-49c7-af2f-27e41263832b",
+        "6c78ccab-0cfb-44e2-af6e-efafd6ffb410",
+        "70be75b0-419f-4c0a-981b-62360e54c820",
+        "79a651ad-eae2-4a44-87eb-f7b9ef2c1e73",
+        "7f54a905-dc2c-4f46-80b9-56e4c3332414",
+        "8aa0e045-4e23-4fb9-a991-b0b9ee2f72d6",
+        "8ff59206-e070-4c78-8d93-0dd38296f6f5",
+        "950f440e-61c9-4731-a6f8-b444d94f40e8",
+        "9ebee03e-3ee9-4628-a79e-0c19635dd8d1",
+        "9f8acdd3-8409-4f08-8613-c860d6354238",
+        "b4b7e8f5-bd8e-4fe1-bb85-6f7daa00b48d",
+        "b7a40844-7c4d-45ad-ba1b-e849865aacc8",
+        "b9b07007-ba96-4382-8fa5-1faa66ab4ede",
+        "c2b2cdc9-b584-4e25-a117-f1b7a5de234d",
+        "c57e1b0d-9131-4a5f-a802-2ec620271c05",
+        "c7e61411-b395-4438-bf2e-dce696eb03cd",
+        "d60f543e-3430-4f11-9067-70e957bcedfa",
+        "d62bc3a8-fdad-424a-b3e0-9a52a19d376f",
+        "e3be86b7-9680-439b-acf1-1fdeef34b1e9",
+        "eeaca794-5445-456e-afdc-0f96f4dcd049",
+        "f695394b-b352-4449-97be-f7728a03d6ce"
+      ],
+      "animation_fingerprint": "243a7fd0891a6164806c4913f5cb0f46cc3513433794ede79f8d46f8443f6b59",
+      "name": "Riley",
+      "member_ids": [
+        "b872b214-8d45-4f34-b202-a5ca77f2e210",
+        "b15bd612-59f4-4175-915d-0b777cfb835b",
+        "86587070-efce-4ef8-b513-e5a10a41dc6c"
       ],
       "sync_version": 16
     }
