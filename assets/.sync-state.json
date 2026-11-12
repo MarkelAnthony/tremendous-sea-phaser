@@ -193,9 +193,12 @@
       "sync_version": 16
     },
     "4315e222-eddb-4624-ae3b-b9b23d256f24": {
-      "updated_at": "2026-11-12T08:38:33.725986+00:00",
-      "animation_ids": [],
-      "animation_fingerprint": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "updated_at": "2026-11-12T08:56:10.192115+00:00",
+      "animation_ids": [
+        "a47d124f-d9c0-4289-a68e-e78a4edab36e",
+        "eb1d285c-09c9-4e84-8621-262427808447"
+      ],
+      "animation_fingerprint": "41c809b5e75dc7edabc8ad1ccea9278e4a8f17d0ddddef143379bb139cd1e7e7",
       "name": "Riley \u2014 approved candidate 3 \u00b7 standing views approval",
       "member_ids": [
         "4315e222-eddb-4624-ae3b-b9b23d256f24"
