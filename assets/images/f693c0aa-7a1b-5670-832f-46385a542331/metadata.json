@@ -1,0 +1,32 @@
+{
+  "id": "f693c0aa-7a1b-5670-832f-46385a542331",
+  "name": "Four sword combat combo toward enemy to RIGHT: STAGGERED PUR",
+  "prompt": "Four sword combat combo toward enemy to RIGHT: STAGGERED PURSUIT. First bend knees and coil torso, then step and SWING the red and green swords firmly HELD IN HANDS through strong diagonal cuts, turning hips and shoulders, with real elbow/wrist follow-through. Immediately the two hovering blue and gold swords leave their idle positions BEHIND her and sweep forward to RIGHT, pivoting through independent wide slashing arcs like telekinetic swords, following up the handheld strike with a second cutting beat. Show both floating blades clearly at the FRONT RIGHT of Riley at their impact, never sitting behind throughout. Finally they arc back and she returns to the original guard. Exactly FOUR rigid colored swords, two held and two free-flying; keep recognizable hilts and blades throughout. Anticipation, held-sword slash, floating-sword follow-up, recovery. Animated articulated body, grounded feet, weight transfer and knee flex. Same face hair robe proportions as reference. No camera motion,",
+  "width": 640,
+  "height": 512,
+  "model": "animate_with_text_v3",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": {
+    "grid_size": "5x4",
+    "frames": [
+      "frames/0.png",
+      "frames/1.png",
+      "frames/2.png",
+      "frames/3.png",
+      "frames/4.png",
+      "frames/5.png",
+      "frames/6.png",
+      "frames/7.png",
+      "frames/8.png",
+      "frames/9.png",
+      "frames/10.png",
+      "frames/11.png",
+      "frames/12.png",
+      "frames/13.png",
+      "frames/14.png",
+      "frames/15.png",
+      "frames/16.png"
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "2a65c736-3cc2-5a23-89a3-fb766e9644d1",
+  "name": "Four-sword combat attack to the RIGHT: CROSSING SLASH. Wind",
+  "prompt": "Four-sword combat attack to the RIGHT: CROSSING SLASH. Wind up with deeply flexed knees and torso turned away, both hands bring the held green and red swords high. Twist hips and shoulders into two committed downward diagonals forming an X-cut in the enemy space to right, visibly bending and extending elbows; keep hands wrapped on hilts. The two floating blue and gold swords swing AWAY FROM BEHIND HER and scissor through the same enemy space from opposite diagonals, upper right to lower right then lower right to upper right, independent magic melee slashes like animated floating weapons. At contact the blue and gold blades must be to the RIGHT of her body, not hovering behind. Then they return behind her as arms recover guard. Exactly four solid colored swords with clear handles and blades, never vanish or multiply. Full body animated weight shift, robe follows turning hips, planted stepping feet, strong follow-through and recovery to source pose. Preserve woman's face, hair, yellow/p",
+  "width": 640,
+  "height": 512,
+  "model": "animate_with_text_v3",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": {
+    "grid_size": "5x4",
+    "frames": [
+      "frames/0.png",
+      "frames/1.png",
+      "frames/2.png",
+      "frames/3.png",
+      "frames/4.png",
+      "frames/5.png",
+      "frames/6.png",
+      "frames/7.png",
+      "frames/8.png",
+      "frames/9.png",
+      "frames/10.png",
+      "frames/11.png",
+      "frames/12.png",
+      "frames/13.png",
+      "frames/14.png",
+      "frames/15.png",
+      "frames/16.png"
+    ]
+  }
+}
