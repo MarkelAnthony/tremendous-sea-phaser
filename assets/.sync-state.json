@@ -191,9 +191,25 @@
         "aa70a93d-daad-4ea9-935e-5d47bb0efa98"
       ],
       "sync_version": 16
+    },
+    "4315e222-eddb-4624-ae3b-b9b23d256f24": {
+      "updated_at": "2026-11-12T08:38:33.725986+00:00",
+      "animation_ids": [],
+      "animation_fingerprint": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "name": "Riley \u2014 approved candidate 3 \u00b7 standing views approval",
+      "member_ids": [
+        "4315e222-eddb-4624-ae3b-b9b23d256f24"
+      ],
+      "sync_version": 16
     }
   },
   "images": {
+    "6513f8cc-b6e5-40e3-9292-b9e2549c0f72": {
+      "updated_at": "2026-11-12T08:29:07.894061+00:00",
+      "image_url": "https://backblaze.pixellab.ai/file/pixellab-generations/production/creator/df7cccb5-c579-4252-af7b-a8153cfb8aaf/6513f8cc-b6e5-40e3-9292-b9e2549c0f72/image.png",
+      "frame_urls": [],
+      "sync_version": 3
+    },
     "b749bc5b-e4c9-511d-866e-04363b7dfdb0": {
       "updated_at": "2026-11-11T11:59:09.936844+00:00",
       "image_url": "https://backblaze.pixellab.ai/file/pixellab-generations/production/creator/df7cccb5-c579-4252-af7b-a8153cfb8aaf/b749bc5b-e4c9-511d-866e-04363b7dfdb0/image.png",
@@ -1361,12 +1377,6 @@
     "ccee019a-1fe4-51e9-9d0f-6c0159113355": {
       "updated_at": "2026-10-05T08:41:24.135066+00:00",
       "image_url": "https://backblaze.pixellab.ai/file/pixellab-generations/production/creator/df7cccb5-c579-4252-af7b-a8153cfb8aaf/ccee019a-1fe4-51e9-9d0f-6c0159113355/image.png",
-      "frame_urls": [],
-      "sync_version": 3
-    },
-    "6513f8cc-b6e5-40e3-9292-b9e2549c0f72": {
-      "updated_at": "2026-11-12T08:29:07.894061+00:00",
-      "image_url": "https://backblaze.pixellab.ai/file/pixellab-generations/production/creator/df7cccb5-c579-4252-af7b-a8153cfb8aaf/6513f8cc-b6e5-40e3-9292-b9e2549c0f72/image.png",
       "frame_urls": [],
       "sync_version": 3
     }
