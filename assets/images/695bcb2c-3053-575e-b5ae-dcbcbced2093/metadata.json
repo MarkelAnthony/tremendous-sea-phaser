@@ -1,0 +1,32 @@
+{
+  "id": "695bcb2c-3053-575e-b5ae-dcbcbced2093",
+  "name": "A complete Fistblade Stance rightward punch attack then reco",
+  "prompt": "A complete Fistblade Stance rightward punch attack then recover to the exact reference guard. One EMPTY closed fist is held forward, ALL FOUR swords float BEHIND Riley, no swords held. Anticipation: draw forward fist back to chest, bend elbow, sink knees and twist torso back. Strike: uncoil hips and shoulders and extend a powerful straight punch to screen-right with clear elbow extension and weight transfer, opposite hand guarding waist. Follow-through: robe and sash swing with motion. Recovery: retract and resume exact original one-fist-forward stance. All four colored swords (red, green, blue, gold) hover behind her throughout with subtle reactive tilt, never attach to hands, never vanish or multiply. Actual redrawn articulated limb, knee and torso poses; no stretching, whole-sprite bobbing, image transforms or camera motion. Preserve face, hair, skin, robe coverage, palette, proportions. Keep feet planted and art within 128x128 transparent canvas. No sparkles or effects obscuring kn",
+  "width": 640,
+  "height": 512,
+  "model": "animate_with_text_v3",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": {
+    "grid_size": "5x4",
+    "frames": [
+      "frames/0.png",
+      "frames/1.png",
+      "frames/2.png",
+      "frames/3.png",
+      "frames/4.png",
+      "frames/5.png",
+      "frames/6.png",
+      "frames/7.png",
+      "frames/8.png",
+      "frames/9.png",
+      "frames/10.png",
+      "frames/11.png",
+      "frames/12.png",
+      "frames/13.png",
+      "frames/14.png",
+      "frames/15.png",
+      "frames/16.png"
+    ]
+  }
+}
