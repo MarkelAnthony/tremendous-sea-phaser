@@ -1388,6 +1388,22 @@
       "image_url": "https://backblaze.pixellab.ai/file/pixellab-generations/production/creator/df7cccb5-c579-4252-af7b-a8153cfb8aaf/ccee019a-1fe4-51e9-9d0f-6c0159113355/image.png",
       "frame_urls": [],
       "sync_version": 3
+    },
+    "e1e8728a-681e-5d0b-8111-311e022fd795": {
+      "updated_at": "2026-11-12T10:06:41.388506+00:00",
+      "image_url": "https://backblaze.pixellab.ai/file/pixellab-generations/production/creator/df7cccb5-c579-4252-af7b-a8153cfb8aaf/e1e8728a-681e-5d0b-8111-311e022fd795/image.png",
+      "frame_urls": [
+        "https://backblaze.pixellab.ai/file/pixellab-generations/production/creator/df7cccb5-c579-4252-af7b-a8153cfb8aaf/e1e8728a-681e-5d0b-8111-311e022fd795/frames/0.png",
+        "https://backblaze.pixellab.ai/file/pixellab-generations/production/creator/df7cccb5-c579-4252-af7b-a8153cfb8aaf/e1e8728a-681e-5d0b-8111-311e022fd795/frames/1.png",
+        "https://backblaze.pixellab.ai/file/pixellab-generations/production/creator/df7cccb5-c579-4252-af7b-a8153cfb8aaf/e1e8728a-681e-5d0b-8111-311e022fd795/frames/2.png",
+        "https://backblaze.pixellab.ai/file/pixellab-generations/production/creator/df7cccb5-c579-4252-af7b-a8153cfb8aaf/e1e8728a-681e-5d0b-8111-311e022fd795/frames/3.png",
+        "https://backblaze.pixellab.ai/file/pixellab-generations/production/creator/df7cccb5-c579-4252-af7b-a8153cfb8aaf/e1e8728a-681e-5d0b-8111-311e022fd795/frames/4.png",
+        "https://backblaze.pixellab.ai/file/pixellab-generations/production/creator/df7cccb5-c579-4252-af7b-a8153cfb8aaf/e1e8728a-681e-5d0b-8111-311e022fd795/frames/5.png",
+        "https://backblaze.pixellab.ai/file/pixellab-generations/production/creator/df7cccb5-c579-4252-af7b-a8153cfb8aaf/e1e8728a-681e-5d0b-8111-311e022fd795/frames/6.png",
+        "https://backblaze.pixellab.ai/file/pixellab-generations/production/creator/df7cccb5-c579-4252-af7b-a8153cfb8aaf/e1e8728a-681e-5d0b-8111-311e022fd795/frames/7.png",
+        "https://backblaze.pixellab.ai/file/pixellab-generations/production/creator/df7cccb5-c579-4252-af7b-a8153cfb8aaf/e1e8728a-681e-5d0b-8111-311e022fd795/frames/8.png"
+      ],
+      "sync_version": 3
     }
   },
   "maps": {

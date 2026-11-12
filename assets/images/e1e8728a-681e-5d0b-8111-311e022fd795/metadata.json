@@ -1,0 +1,24 @@
+{
+  "id": "e1e8728a-681e-5d0b-8111-311e022fd795",
+  "name": "Slow controlled transition from the standing ready guard int",
+  "prompt": "Slow controlled transition from the standing ready guard into the supplied bent-knee guard pose. Both feet stay planted at the same ground level. Knees flex with real articulated leg movement, hips settle slightly toward the supporting leg, robe folds follow the legs. Keep the upper body upright, head steady, arms and grips stable, all four swords rigid and connected exactly as in the source. No whole-image vertical sliding, no squashing, no widening, no camera motion, no attacks, no extra limbs or weapons. Small restrained blade glints only. End exactly in the provided final pose.",
+  "width": 384,
+  "height": 384,
+  "model": "animate_with_text_v3",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": {
+    "grid_size": "3x3",
+    "frames": [
+      "frames/0.png",
+      "frames/1.png",
+      "frames/2.png",
+      "frames/3.png",
+      "frames/4.png",
+      "frames/5.png",
+      "frames/6.png",
+      "frames/7.png",
+      "frames/8.png"
+    ]
+  }
+}
