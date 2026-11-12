@@ -1,0 +1,11 @@
+{
+  "id": "75496508-66a4-5fac-8830-fe6d3f340c26",
+  "name": "Redraw ONLY the masked lower robe and legs as a new anatomic",
+  "prompt": "Redraw ONLY the masked lower robe and legs as a new anatomically believable bent-knee fighting-guard key pose of this EXACT Riley sprite. No scaling, squashing or compression. Her two bare feet outside the mask stay planted exactly. Show distinct thigh-to-knee-to-shin angles: knees flex outward, weight favors the right leg, bent exposed knee visible through the EXISTING robe opening, the other knee readable under angular fabric folds. Preserve her long gold robe, dark blue geometric hem embroidery, magenta sash, same palette, same outline thickness, same pixel density and identity. Cloth should fold and overlap around bent legs, NOT shrink vertically or bulge like a spring. Keep the hem long and original costume intact; do not add trousers or armor or new accessories. Match the existing hip and waist seamlessly at the mask edge. All four swords, hands, face, visible neck, torso and arms outside this mask are sacred and unchanged. Single static key pose, transparent background, 128x128.",
+  "width": 128,
+  "height": 128,
+  "model": "inpaint_pro_flash",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
