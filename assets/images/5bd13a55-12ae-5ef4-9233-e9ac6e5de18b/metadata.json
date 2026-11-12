@@ -1,0 +1,11 @@
+{
+  "id": "5bd13a55-12ae-5ef4-9233-e9ac6e5de18b",
+  "name": "Redraw the SOURCE approved Riley into the FIST BLADE pose fr",
+  "prompt": "Redraw the SOURCE approved Riley into the FIST BLADE pose from the reference. SOURCE is authoritative for character identity, dark brown skin, white spiky hair, face, gold earring, mustard gold robe, navy neckline/cuffs and gold-patterned hem, magenta sash, barefoot feet and proportions. REFERENCE guides POSE ONLY: facing right, one closed fist extended horizontally forward at shoulder/chest height, other arm tucked back, upright balanced planted stance, hovering swords behind her back on screen-left. IMPORTANT exactly FOUR whole distinct floating swords behind Riley, fanned with clear gaps, each recognizable hilt crossguard and blade: one RED, one GREEN, one BLUE, one GOLD. Reference only shows three swords: ADD the fourth GOLD sword to make FOUR. No sword in either hand. No blade attached to fist, no gauntlet weapon. Keep a clearly clenched empty fist with tucked thumb. Preserve source robe coverage without increasing exposed thigh. Preserve SOURCE art style and detail, not reference's old costume or boots. Single full-body transparent pixel art still on unchanged 128x128 canvas. No sparkles, no text, no animation.",
+  "width": 128,
+  "height": 128,
+  "model": "edit_image_pro_flash",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
