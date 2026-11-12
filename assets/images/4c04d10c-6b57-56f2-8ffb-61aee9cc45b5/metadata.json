@@ -1,0 +1,32 @@
+{
+  "id": "4c04d10c-6b57-56f2-8ffb-61aee9cc45b5",
+  "name": "A single coordinated FOUR BLADE DOWNWARD CHOP to the RIGHT,",
+  "prompt": "A single coordinated FOUR BLADE DOWNWARD CHOP to the RIGHT, then recovery. The BLUE and GOLD flying swords must TRAVEL across the image from behind Riley to ABOVE AND IN FRONT OF her, then PLUNGE POINT-FIRST DOWN onto the enemy to the RIGHT of her feet. They DO NOT remain hovering behind her during attack. Simultaneously she raises BOTH red and green hand-held swords overhead and chops BOTH sharply DOWN to the same enemy on her right. Frame progression: 1-4 all four blades lift HIGH ABOVE her head, wrists and elbows raised; 5-8 all four blades sweep DOWN AND RIGHT in big vertical arcs; 9-11 all four blade tips point DOWN at impact to right of body, Riley crouches into follow-through; 12-16 recover original stance. Make blue and gold flight and downward impact unmistakable. EXACTLY four swords: red and green held firmly in hands, blue and gold magically flying. Articulated arm swing, knee bend and torso lean, not sprite manipulation. Same woman, same robe, no camera motion, transparent,",
+  "width": 640,
+  "height": 512,
+  "model": "animate_with_text_v3",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": {
+    "grid_size": "5x4",
+    "frames": [
+      "frames/0.png",
+      "frames/1.png",
+      "frames/2.png",
+      "frames/3.png",
+      "frames/4.png",
+      "frames/5.png",
+      "frames/6.png",
+      "frames/7.png",
+      "frames/8.png",
+      "frames/9.png",
+      "frames/10.png",
+      "frames/11.png",
+      "frames/12.png",
+      "frames/13.png",
+      "frames/14.png",
+      "frames/15.png",
+      "frames/16.png"
+    ]
+  }
+}
