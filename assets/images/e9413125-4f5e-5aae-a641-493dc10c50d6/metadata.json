@@ -1,0 +1,32 @@
+{
+  "id": "e9413125-4f5e-5aae-a641-493dc10c50d6",
+  "name": "Four-sword overhead downward slam attack toward enemy to her",
+  "prompt": "Four-sword overhead downward slam attack toward enemy to her right. Anticipation: bend knees and raise BOTH hand-held swords overhead, while BOTH floating swords rise above and behind shoulders. Strike: forcefully swing the red and green held swords DOWN and forward toward the enemy; simultaneously the blue and gold FLOATING swords sweep in large downward arcs from overhead onto the SAME target to her right. ALL FOUR swords actively strike downward, none remain parked behind her. Readable descending blade angles, decisive low follow-through, torso rotation and weight transfer with feet grounded. Then recover naturally to starting guard. Keep exactly four distinct swords throughout, two gripped and two freely floating, same colors and intact straight blades. Preserve Riley's face, hair, robe coverage, body proportions and pixel style. Animate articulated body and blade motion, no whole-sprite scaling or translation. No enemy drawn, no camera motion. Full swords stay inside canvas.",
+  "width": 640,
+  "height": 512,
+  "model": "animate_with_text_v3",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": {
+    "grid_size": "5x4",
+    "frames": [
+      "frames/0.png",
+      "frames/1.png",
+      "frames/2.png",
+      "frames/3.png",
+      "frames/4.png",
+      "frames/5.png",
+      "frames/6.png",
+      "frames/7.png",
+      "frames/8.png",
+      "frames/9.png",
+      "frames/10.png",
+      "frames/11.png",
+      "frames/12.png",
+      "frames/13.png",
+      "frames/14.png",
+      "frames/15.png",
+      "frames/16.png"
+    ]
+  }
+}
