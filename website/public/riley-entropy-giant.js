@@ -1,6 +1,6 @@
 // Review-only choreography. Original Riley pixels remain at native scale.
 import {drawSlash,drawImpact} from './riley-entropy-slash.js';
-import {drawPowerBody,drawPowerAura,powerState} from './riley-entropy-power.js';
+import {drawPowerBody,powerState} from './riley-entropy-power.js';
 const image=src=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=reject;im.src=src});
 const root='./art/riley-entropy-parts/';
 const swords=await Promise.all(['sword1.png','sword2.png','sword3.png','sword4.png'].map(n=>image(root+n)));
@@ -20,7 +20,6 @@ export function drawGiant(c,f){
  const hit=f>=19&&f<29;const recoil=hit?Math.sin((f-19)/10*Math.PI)*11:0;
  c.save();c.translate(215+recoil,149);c.fillStyle='#192134';c.fillRect(-14,2,28,3);c.fillStyle=hit?'#ffe1a1':'#63758e';c.fillRect(-9,-47,18,16);c.fillRect(-13,-30,26,27);c.fillRect(-10,-4,7,7);c.fillRect(4,-4,7,7);c.fillStyle='#29364e';c.fillRect(-6,-42,13,4);c.fillStyle=hit?'#fff5ca':'#c38756';c.fillRect(-19,-27,15,22);c.fillStyle='#ecbc69';c.fillRect(-13,-24,3,16);c.restore();
  // Keep the newly refined focused face through the strike AND recovery.
- if(f<31)drawPowerAura(c,powerFrame(f));
  drawPowerBody(c,f<31?powerFrame(f):24);
  if(f<10||f>=24){
   const t=f<10?ease(f/9):1-ease((f-24)/11);
