@@ -17,7 +17,7 @@ ctx.font='13px system-ui';ctx.fillStyle='#81e6d9';ctx.fillText('START / RETURN',
 const recoil=contact?8:0;ctx.save();ctx.translate(targetX+recoil,0);ctx.fillStyle=contact?'#ffe4a2':'#876c59';ctx.fillRect(-9,111,29,118);ctx.beginPath();ctx.arc(5,94,18,0,Math.PI*2);ctx.fill();ctx.fillStyle='#546681';ctx.fillRect(-5,229,9,ground-229);ctx.fillRect(14,229,9,ground-229);ctx.fillStyle='#d4b780';ctx.fillRect(-14,127,43,4);ctx.fillRect(-14,189,43,4);ctx.restore();
 ctx.fillStyle='#0005';ctx.beginPath();ctx.ellipse(x,ground,31,5,0,0,Math.PI*2);ctx.fill();
 let image=c.frames[frame],ax=c.anchorX,ay=c.anchorY,scale=c.scale;
-if(finished){image=c.idle[Math.floor((elapsed-duration)/100)%c.idle.length];if(stance==='swords'){ax=100*image.width/256;ay=172*image.height/192;scale=1.65*256/image.width;}}
+if(finished){image=c.idle[Math.floor((elapsed-duration)/100)%c.idle.length];if(stance==='swords'){ax=60;ay=124;scale=1.65;}}
 ctx.drawImage(image,Math.round(x-ax*scale),Math.round(ground-ay*scale),image.width*scale,image.height*scale);
 if(contact){const cy=stance==='fist'?124:155;ctx.strokeStyle='#ffe59b';ctx.lineWidth=3;for(let i=0;i<8;i++){const a=i*Math.PI/4;ctx.beginPath();ctx.moveTo(targetX+Math.cos(a)*9,cy+Math.sin(a)*9);ctx.lineTo(targetX+Math.cos(a)*22,cy+Math.sin(a)*22);ctx.stroke();}ctx.fillStyle='#ffe59b';ctx.font='bold 14px system-ui';ctx.fillText('CONTACT',targetX+35,cy-10);}
 document.querySelector('#status').textContent=`${stance==='swords'?'Four Sword':'Fistblade'} · ${phase} · ${finished?'Idle':`Frame ${frame+1}/${c.frames.length}`} · Forward ${Math.round(x-startX)} px${finished?' · Returned exactly to start':''}`;
