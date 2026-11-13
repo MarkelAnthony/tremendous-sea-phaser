@@ -1,0 +1,11 @@
+{
+  "id": "1492e2fd-85c6-5615-8f94-611c7bf7e642",
+  "name": "Clean this exact attack frame without moving any part: tidy",
+  "prompt": "Clean this exact attack frame without moving any part: tidy malformed hand gripping the green sword, retain same green blade angle and length; clean face and white hair stray pixels and ragged sword contours. Preserve all four swords, their locations, bare feet, yellow robe, pink sash, silhouette and exact pose. Transparency unchanged. No extra effects.",
+  "width": 256,
+  "height": 192,
+  "model": "edit_image_pixen",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}

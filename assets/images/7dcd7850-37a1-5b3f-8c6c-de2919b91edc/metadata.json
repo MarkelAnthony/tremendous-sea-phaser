@@ -1,0 +1,11 @@
+{
+  "id": "7dcd7850-37a1-5b3f-8c6c-de2919b91edc",
+  "name": "Local cleanup only. Erase the unwanted gray dithered smoke b",
+  "prompt": "Local cleanup only. Erase the unwanted gray dithered smoke blob beside and above Riley's head, leaving transparency there. Preserve white hair, dark skin, yellow robe, magenta sash, barefoot pose, all four swords and colored slash arcs EXACTLY. Do not move or redesign anything. Clean jagged contaminated edges adjoining the gray blob.",
+  "width": 256,
+  "height": 192,
+  "model": "edit_image_pixen",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}

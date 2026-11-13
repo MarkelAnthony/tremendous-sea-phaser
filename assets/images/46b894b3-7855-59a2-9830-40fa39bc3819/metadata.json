@@ -1,0 +1,11 @@
+{
+  "id": "46b894b3-7855-59a2-9830-40fa39bc3819",
+  "name": "Local cleanup only: remove the unwanted gray dithered cloud",
+  "prompt": "Local cleanup only: remove the unwanted gray dithered cloud beside and above the head and behind the red slash, replacing it with transparency. Repair the obscured sword grip edge. Preserve the exact pose, face, white hair, yellow robe, pink sash and all four swords and colored arcs. No movement or redesign.",
+  "width": 256,
+  "height": 192,
+  "model": "edit_image_pixen",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}

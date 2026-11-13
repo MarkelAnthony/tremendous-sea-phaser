@@ -1,0 +1,11 @@
+{
+  "id": "1d59715f-e6ee-56c1-a2d0-4c8e34aeec38",
+  "name": "Minimal cleanup only: remove the stray thin blue dangling th",
+  "prompt": "Minimal cleanup only: remove the stray thin blue dangling thread at the tip of the held red sword. Clarify the existing floating gold and blue swords without moving them. Keep exact attack pose, face, white hair, dark skin, yellow robe, pink sash, green/red held blades and bare feet. No redraw or redesign. Transparent background.",
+  "width": 256,
+  "height": 192,
+  "model": "edit_image_pixen",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}

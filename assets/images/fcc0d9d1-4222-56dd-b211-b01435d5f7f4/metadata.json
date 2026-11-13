@@ -1,0 +1,11 @@
+{
+  "id": "fcc0d9d1-4222-56dd-b211-b01435d5f7f4",
+  "name": "Minimal cleanup: sharpen existing floating gold and blue swo",
+  "prompt": "Minimal cleanup: sharpen existing floating gold and blue sword outlines and separate muddy gold/blue overlapping slash pixels; remove detached ragged edge specks. Keep identical arc shapes, trajectories, sword positions and all of Riley's pose and identity. No changes to costume or held green/red swords. Transparent background.",
+  "width": 256,
+  "height": 192,
+  "model": "edit_image_pixen",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}

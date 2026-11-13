@@ -1,0 +1,11 @@
+{
+  "id": "853d57d2-a7ac-50b5-a8bb-05f21ace412c",
+  "name": "Minimal pixel cleanup of this identical attack recovery fram",
+  "prompt": "Minimal pixel cleanup of this identical attack recovery frame: clarify the small floating gold and blue sword outlines and hilts, remove ghost fragments and dirty pixels around blades, clarify existing hand grip. Do not move or resize swords or Riley. Preserve white hair, dark skin, yellow robe, magenta sash, bare feet, exact silhouette and pose. Transparent background.",
+  "width": 256,
+  "height": 192,
+  "model": "edit_image_pixen",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}

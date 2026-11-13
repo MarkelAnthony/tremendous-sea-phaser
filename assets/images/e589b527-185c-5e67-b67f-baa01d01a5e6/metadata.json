@@ -1,0 +1,11 @@
+{
+  "id": "e589b527-185c-5e67-b67f-baa01d01a5e6",
+  "name": "Clean ragged and muddy pixels on the existing gold and blue",
+  "prompt": "Clean ragged and muddy pixels on the existing gold and blue slash crescents and the floating swords inside them. Keep crescents and sword paths in EXACT same positions and shapes. Preserve Riley's exact pose, face, hair, hands, yellow robe, magenta sash, bare feet and held green and red swords. No new effects. Transparent background.",
+  "width": 256,
+  "height": 192,
+  "model": "edit_image_pixen",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}

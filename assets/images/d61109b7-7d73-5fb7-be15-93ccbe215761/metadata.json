@@ -1,0 +1,11 @@
+{
+  "id": "d61109b7-7d73-5fb7-be15-93ccbe215761",
+  "name": "Minimal pixel-art cleanup of this exact attack pose: clarify",
+  "prompt": "Minimal pixel-art cleanup of this exact attack pose: clarify the existing face and hand gripping the green sword, remove stray dirty pixels on floating blue and gold sword edges. Preserve sword positions, angles and shapes, white hair, dark skin, yellow robe, magenta sash, bare feet and complete silhouette. No new motion or effects.",
+  "width": 256,
+  "height": 192,
+  "model": "edit_image_pixen",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
