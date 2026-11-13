@@ -13,6 +13,13 @@
     "Riley \u2014 approved candidate 3 \u00b7 standing views approval": "assets/characters/4315e222-eddb-4624-ae3b-b9b23d256f24/"
   },
   "images": {
+    "Minimal cleanup: sharpen existing floating gold and blue swo": "assets/images/fcc0d9d1-4222-56dd-b211-b01435d5f7f4/",
+    "Minimal cleanup only: remove the stray thin blue dangling th": "assets/images/1d59715f-e6ee-56c1-a2d0-4c8e34aeec38/",
+    "Clean this exact attack frame without moving any part: tidy": "assets/images/1492e2fd-85c6-5615-8f94-611c7bf7e642/",
+    "Clean ragged and muddy pixels on the existing gold and blue": "assets/images/e589b527-185c-5e67-b67f-baa01d01a5e6/",
+    "Minimal pixel-art cleanup of this exact attack pose: clarify": "assets/images/d61109b7-7d73-5fb7-be15-93ccbe215761/",
+    "Minimal pixel cleanup of this identical attack recovery fram": "assets/images/853d57d2-a7ac-50b5-a8bb-05f21ace412c/",
+    "Local cleanup only. Erase the unwanted gray dithered smoke b": "assets/images/7dcd7850-37a1-5b3f-8c6c-de2919b91edc/",
     "A four-sword combo attacking to the right, then recovery. Fi": "assets/images/53f1ea14-fa34-55d7-b659-bd66b069eb28/",
     "A powerful planted four-sword crossing execution, attacking": "assets/images/9196c237-e6c8-57f3-bf5a-3bc259f503dc/",
     "A four-blade advancing double-cut combo aimed to the RIGHT.": "assets/images/832d50bd-0b2f-54c1-9b08-864e2e4c44ab/",
@@ -132,13 +139,6 @@
     "Subtly refine ONLY Riley's torso waist and hip silhouette to": "assets/images/acf22a59-bc4d-5b23-a1a9-6d381f05d949/",
     "Repair ONLY the forward outstretched hand at the end of Rile": "assets/images/d6288b5d-d192-5eea-a992-861cf26e48f3/",
     "Ancient forest": "assets/images/ccee019a-1fe4-51e9-9d0f-6c0159113355/",
-    "Minimal cleanup only: remove the stray thin blue dangling th": "assets/images/1d59715f-e6ee-56c1-a2d0-4c8e34aeec38/",
-    "Clean ragged and muddy pixels on the existing gold and blue": "assets/images/e589b527-185c-5e67-b67f-baa01d01a5e6/",
-    "Minimal cleanup: sharpen existing floating gold and blue swo": "assets/images/fcc0d9d1-4222-56dd-b211-b01435d5f7f4/",
-    "Clean this exact attack frame without moving any part: tidy": "assets/images/1492e2fd-85c6-5615-8f94-611c7bf7e642/",
-    "Minimal pixel-art cleanup of this exact attack pose: clarify": "assets/images/d61109b7-7d73-5fb7-be15-93ccbe215761/",
-    "Minimal pixel cleanup of this identical attack recovery fram": "assets/images/853d57d2-a7ac-50b5-a8bb-05f21ace412c/",
-    "Local cleanup only. Erase the unwanted gray dithered smoke b": "assets/images/7dcd7850-37a1-5b3f-8c6c-de2919b91edc/",
     "Local cleanup only: remove the unwanted gray dithered cloud": "assets/images/46b894b3-7855-59a2-9830-40fa39bc3819/"
   },
   "maps": {
