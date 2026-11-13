@@ -1,0 +1,104 @@
+[
+  {
+    "frame": 9,
+    "changedPixels": 2442,
+    "regions": [
+      [
+        90,
+        30,
+        200,
+        105
+      ]
+    ]
+  },
+  {
+    "frame": 11,
+    "changedPixels": 2556,
+    "regions": [
+      [
+        135,
+        45,
+        196,
+        115
+      ]
+    ]
+  },
+  {
+    "frame": 12,
+    "changedPixels": 683,
+    "regions": [
+      [
+        118,
+        72,
+        151,
+        105
+      ]
+    ]
+  },
+  {
+    "frame": 14,
+    "changedPixels": 443,
+    "regions": [
+      [
+        30,
+        40,
+        125,
+        80
+      ]
+    ]
+  },
+  {
+    "frame": 17,
+    "changedPixels": 2037,
+    "regions": [
+      [
+        70,
+        15,
+        225,
+        74
+      ]
+    ]
+  },
+  {
+    "frame": 18,
+    "changedPixels": 2953,
+    "regions": [
+      [
+        110,
+        15,
+        230,
+        75
+      ],
+      [
+        175,
+        80,
+        228,
+        163
+      ]
+    ]
+  },
+  {
+    "frame": 26,
+    "changedPixels": 280,
+    "regions": [
+      [
+        166,
+        125,
+        201,
+        155
+      ]
+    ]
+  },
+  {
+    "frame": 28,
+    "changedPixels": 233,
+    "regions": [
+      [
+        140,
+        25,
+        220,
+        85
+      ]
+    ]
+  }
+]

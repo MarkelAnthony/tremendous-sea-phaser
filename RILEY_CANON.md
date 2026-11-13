@@ -42,3 +42,6 @@ The sole public approval gallery is `website/public/riley-current-animations.htm
 ## Rule before any generation
 Compare the start image with the master side by side (read_image) and confirm hair, robe, sash,
 bare feet and all four sword colours match BEFORE spending generations.
+
+## Four Sword attack motion approved
+The user approved the motion of `53f1ea14-fa34-55d7-b659-bd66b069eb28` and requested ONLY local cleanup on displayed frames 9, 11, 12, 14, 17, 18, 26, 28. This attack is an explicit exception to retired attack drafts above: preserve its choreography and 33-frame/10 fps timing. Original review manifest remains intact; cleanup preview uses `website/public/art/riley-four-sword-attack-cleaned.json`. Cleanup pixels await user review. Do not regenerate the motion.
