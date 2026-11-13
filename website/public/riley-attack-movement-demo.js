@@ -1,7 +1,7 @@
 const loadImage=src=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(Error('Cannot load '+src));im.src=src;});
 const loadClip=async url=>{const meta=await fetch(url).then(r=>r.json());return {meta,frames:await Promise.all(meta.frames.map(loadImage))};};
 const [sword,fist,swordIdle,fistIdle]=await Promise.all([loadClip('./art/riley-four-sword-attack-cleaned.json'),loadClip('./art/riley-fistblade-attack.json'),Promise.all(Array.from({length:33},(_,i)=>loadImage('./art/riley-smooth-idle/'+i+'.png'))),Promise.all(Array.from({length:17},(_,i)=>loadImage('./assets/images/9084b021-f2cd-5215-a73f-8e4c66f2e445/frames/'+i+'.png')))]);
-const clips={swords:{...sword,idle:swordIdle,scale:1.65,anchorX:100,anchorY:172,durations:sword.frames.map(()=>100/1.5),reach:220,contactFrames:[8,12,16,20],advanceStart:.10,advanceEnd:.24,returnStart:.77},fist:{...fist,idle:fistIdle,scale:2.2,anchorX:60,anchorY:124,durations:fist.meta.durations,reach:300,contactFrames:[7],advanceStart:.27,advanceEnd:.41,returnStart:.69}};
+const clips={swords:{...sword,idle:swordIdle,scale:1.65,anchorX:100,anchorY:172,durations:sword.frames.map(()=>100/1.5),reach:220,contactFrames:[8,12,16,20],advanceStart:.10,advanceEnd:.24,returnStart:.77},fist:{...fist,idle:fistIdle,scale:1.65,anchorX:60,anchorY:124,durations:fist.meta.durations,reach:300,contactFrames:[7],advanceStart:.27,advanceEnd:.41,returnStart:.69}};
 const canvas=document.querySelector('canvas'),ctx=canvas.getContext('2d');ctx.imageSmoothingEnabled=false;
 const startX=150,targetX=570,ground=285;
 let stance='swords',elapsed=0,playing=true,speed=1,last=performance.now(),state={};
