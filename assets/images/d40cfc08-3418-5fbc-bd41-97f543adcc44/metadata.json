@@ -1,0 +1,32 @@
+{
+  "id": "d40cfc08-3418-5fbc-bd41-97f543adcc44",
+  "name": "East-facing focused power-up into one explosive telekinetic",
+  "prompt": "East-facing focused power-up into one explosive telekinetic sword-command strike, then recover. Always face RIGHT, never face camera or left. Start in this power-up pose. First crouch lower and draw elbows back, tense shoulders, white hair lifts sharply UP from energy. Keep mouth CLOSED, intense narrowed focused eyes, controlled anger, no screaming face. Then drive torso and head FORWARD, step right into a deep bent-front-knee lunge and thrust forward hand decisively DOWN and forward as if commanding an enormous overhead sword slash. Rear leg extends, robe and sash whip backward, white hair flies upward throughout strike. Hold low committed follow-through briefly, then straighten and settle back into starting power-up stance. Clear different body silhouettes, strong full-body weight shift, not a standing idle. No swords, no aura, no gold lines, no black speed lines, no background effects, no extra objects. Preserve native character size, outfit and identity.",
+  "width": 640,
+  "height": 512,
+  "model": "animate_with_text_v3",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": {
+    "grid_size": "5x4",
+    "frames": [
+      "frames/0.png",
+      "frames/1.png",
+      "frames/2.png",
+      "frames/3.png",
+      "frames/4.png",
+      "frames/5.png",
+      "frames/6.png",
+      "frames/7.png",
+      "frames/8.png",
+      "frames/9.png",
+      "frames/10.png",
+      "frames/11.png",
+      "frames/12.png",
+      "frames/13.png",
+      "frames/14.png",
+      "frames/15.png",
+      "frames/16.png"
+    ]
+  }
+}
