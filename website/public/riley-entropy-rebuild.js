@@ -22,7 +22,7 @@ function crescent(c,progress,alpha){
 function impact(c,f){if(f<12||f>16)return;const age=f-12;c.save();c.globalAlpha=1-age/5;c.fillStyle='#fff5ce';c.beginPath();for(let i=0;i<12;i++){const a=i*Math.PI/6,r=i%2?4:17-age;c.lineTo(208+Math.cos(a)*r,110+Math.sin(a)*r);}c.closePath();c.fill();c.restore();}
 function enemy(c,f){const t=clamp((f-12)/12),hit=f>=12&&f<24,x=215+Math.sin(t*Math.PI)*13;c.save();c.translate(x,149);c.fillStyle='#192134';c.fillRect(-14,2,28,3);c.fillStyle=hit?'#decaa1':'#63758e';c.fillRect(-9,-47,18,16);c.fillRect(-13,-30,26,27);c.fillRect(-10,-4,7,7);c.fillRect(4,-4,7,7);c.fillStyle='#29364e';c.fillRect(-6,-42,13,4);c.fillStyle='#c38756';c.fillRect(-19,-27,15,22);c.fillStyle='#ecbc69';c.fillRect(-13,-24,3,16);c.restore();}
 export function drawPerformance(c,f){
- c.clearRect(0,0,256,160);enemy(c,f);
+ c.clearRect(0,-24,256,208);enemy(c,f);
  const origins=[[30,36],[93,43],[12,57],[108,64]];
  if(f<7||f>=22){const t=f<7?smooth(f/7):1-smooth((f-22)/9);swords.forEach((im,i)=>{c.save();c.globalAlpha=1-t*.8;c.translate(mix(origins[i][0]+im.width/2,121,t),mix(origins[i][1]+im.height*.88,89,t));c.drawImage(im,-im.width/2,-im.height*.88);c.restore();});}
  drawBody(c,f);

@@ -7,9 +7,9 @@ const [activation,idle,canonical]=await Promise.all([Promise.all(meta.activation
 const ctx=document.querySelector('#entropy').getContext('2d'),ref=document.querySelector('#canonical').getContext('2d'),scrub=document.querySelector('#scrub');ctx.imageSmoothingEnabled=false;ref.imageSmoothingEnabled=false;
 let phase='attack',frame=0,playing=true,speed=1,elapsed=0,last=performance.now(),refElapsed=0,refFrame=0,activationCompleted=0;
 function frames(){return phase==='attack'?attack:phase==='activation'?activation:idle}
-ctx.canvas.width=ref.canvas.width=256;ctx.canvas.height=ref.canvas.height=160;ctx.imageSmoothingEnabled=ref.imageSmoothingEnabled=false;
-function drawImage(c,im){c.clearRect(0,0,256,160);c.drawImage(im,0,28)}
-function draw(){if(phase==='attack')drawGiant(ctx,frame);else drawImage(ctx,frames()[frame]);drawImage(ref,canonical[refFrame]);scrub.max=frames().length-1;scrub.value=frame;document.querySelector('#phase').textContent=phase==='attack'?giantState(frame).stage:phase==='activation'?'Entropy activation':'Entropy floating-sword idle';document.querySelector('#frame').textContent=`${phase} · frame ${frame+1} / ${frames().length} · identical native pixel scale`;}
+ctx.canvas.width=ref.canvas.width=256;ctx.canvas.height=ref.canvas.height=208;ctx.imageSmoothingEnabled=ref.imageSmoothingEnabled=false;
+function drawImage(c,im){c.clearRect(0,0,256,208);c.drawImage(im,0,52)}
+function draw(){if(phase==='attack'){ctx.clearRect(0,0,256,208);ctx.save();ctx.translate(0,24);drawGiant(ctx,frame);ctx.restore();}else drawImage(ctx,frames()[frame]);drawImage(ref,canonical[refFrame]);scrub.max=frames().length-1;scrub.value=frame;document.querySelector('#phase').textContent=phase==='attack'?giantState(frame).stage:phase==='activation'?'Entropy activation':'Entropy floating-sword idle';document.querySelector('#frame').textContent=`${phase} · frame ${frame+1} / ${frames().length} · identical native pixel scale`;}
 function setPhase(p){phase=p;frame=0;elapsed=0;draw()}
 attackButton.onclick=()=>{setPhase('attack');playing=true;document.querySelector('#pause').textContent='Pause'};
 function pause(){playing=false;document.querySelector('#pause').textContent='Play'}
