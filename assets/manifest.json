@@ -13,7 +13,7 @@
     "Riley \u2014 approved candidate 3 \u00b7 standing views approval": "assets/characters/4315e222-eddb-4624-ae3b-b9b23d256f24/"
   },
   "images": {
-    "Minimal cleanup only: remove the stray thin blue dangling th": "assets/images/1d59715f-e6ee-56c1-a2d0-4c8e34aeec38/",
+    "Minimal cleanup: sharpen existing floating gold and blue swo": "assets/images/fcc0d9d1-4222-56dd-b211-b01435d5f7f4/",
     "Local cleanup only: remove the unwanted gray dithered cloud": "assets/images/46b894b3-7855-59a2-9830-40fa39bc3819/",
     "Clean this exact attack frame without moving any part: tidy": "assets/images/1492e2fd-85c6-5615-8f94-611c7bf7e642/",
     "Clean ragged and muddy pixels on the existing gold and blue": "assets/images/e589b527-185c-5e67-b67f-baa01d01a5e6/",
@@ -139,7 +139,7 @@
     "Subtly refine ONLY Riley's torso waist and hip silhouette to": "assets/images/acf22a59-bc4d-5b23-a1a9-6d381f05d949/",
     "Repair ONLY the forward outstretched hand at the end of Rile": "assets/images/d6288b5d-d192-5eea-a992-861cf26e48f3/",
     "Ancient forest": "assets/images/ccee019a-1fe4-51e9-9d0f-6c0159113355/",
-    "Minimal cleanup: sharpen existing floating gold and blue swo": "assets/images/fcc0d9d1-4222-56dd-b211-b01435d5f7f4/"
+    "Minimal cleanup only: remove the stray thin blue dangling th": "assets/images/1d59715f-e6ee-56c1-a2d0-4c8e34aeec38/"
   },
   "maps": {
     "The Verdant Crossing": "assets/maps/284a60d0-b94a-50b2-ac1d-2f869e93608a/"
