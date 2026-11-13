@@ -18,10 +18,10 @@ export function drawGiant(c,f){
  if(f<10||f>=24){
   const t=f<10?ease(f/9):1-ease((f-24)/11);
   swords.forEach((im,i)=>{const [x,y]=origins[i];c.save();c.globalAlpha=1-t*.5;c.translate(lerp(x+im.width/2,146,t),lerp(y+28+im.height*.88,97,t));c.rotate(t*(i-1.5)*.14);c.drawImage(im,-im.width/2,-im.height*.88);c.restore()});
-  if(f>6&&f<10||f>=24&&f<28){c.save();c.globalAlpha=f<10?(f-6)/3:1-(f-24)/4;blade(c,f<10?-.3:2.8,1.8);c.restore()}
+  if(f>6&&f<10||f>=24&&f<28){c.save();c.globalAlpha=f<10?(f-6)/3:1-(f-24)/4;blade(c,f<10?-.3:2.05,1.8);c.restore()}
  }else{
   const swing=clamp((f-16)/3);
-  const angle=f<16?lerp(-.3,-.95,ease((f-10)/5)):lerp(-.95,2.8,1-Math.pow(1-swing,2));
+  const angle=f<16?lerp(-.3,-.95,ease((f-10)/5)):lerp(-.95,2.05,1-Math.pow(1-swing,2));
   if(f>=17&&f<=23)drawSlash(c,Math.max(.15,1-Math.pow(1-swing,2)),f<=19?1:1-(f-19)/5);
   if(f>=17&&f<=19){c.save();c.globalAlpha=.22;blade(c,angle-.48,1.8);c.globalAlpha=.12;blade(c,angle-.9,1.8);c.restore()}
   blade(c,angle,1.8);
