@@ -1,0 +1,27 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Riley · Current animations</title>
+<style>*{box-sizing:border-box}body{margin:0;background:#151b27;color:#e2e8f0;font:16px/1.55 system-ui}main{max-width:1100px;margin:auto;padding:24px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px}section{border:1px solid #465368;border-radius:12px;padding:16px}img{display:block;width:256px;max-width:100%;margin:8px auto;image-rendering:pixelated;background:repeating-conic-gradient(#293348 0% 25%,#222c3d 0% 50%) 0/20px 20px}h2{font-size:18px;margin:0 0 4px}.tag{display:inline-block;font-size:12px;border-radius:999px;padding:2px 10px;border:1px solid #648b96;color:#81e6d9}.wait{border-color:#e7bb78;color:#e7bb78}.small{color:#a0aec0;font-size:14px}button{font:inherit;background:#243f49;color:#e2e8f0;border:1px solid #648b96;border-radius:8px;padding:8px 14px;cursor:pointer}.controls{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}</style></head>
+<body><main id="hud-root"><p class="small">RILEY · LOCKED CANON · NOTHING NEW GENERATED</p><h1>Current Riley — every animation that exists</h1>
+<p>Only the locked Riley (white hair, yellow robe, pink sash, bare feet, green + red held swords, gold + blue floating swords). Attack drafts are left out—none are approved.</p>
+<div class="controls"><button type="button" id="play">Pause all</button><button type="button" id="step">Next frame</button><button type="button" id="speed">Slow</button></div>
+<div class="grid" id="views"></div><p><a style="color:#81e6d9" href="./">Return to game</a></p></main>
+<script>
+const C='./assets/characters/4315e222-eddb-4624-ae3b-b9b23d256f24/idle/';
+const seq=(n,f)=>Array.from({length:n},(_,i)=>f(i));
+const items=[
+ {t:'Master design · candidate 3',s:'Approved design',ok:true,ms:0,frames:['./art/riley-approved-master.png']},
+ {t:'Standing view · east',s:'From approved master · Pro character',ok:true,ms:0,frames:[C+'rotations/east.png']},
+ {t:'Four Sword · breathing idle (east)',s:'Character clip · 4 frames · page still says “awaiting your approval”',ok:false,ms:160,frames:seq(4,i=>C+'animations/idle/east/frame_00'+i+'.png')},
+ {t:'Four Sword · breathing idle (west)',s:'Mirror of east · 4 frames',ok:false,ms:160,frames:seq(4,i=>C+'animations/idle/west/frame_00'+i+'.png')},
+ {t:'Four Sword · bent-knee fighting idle',s:'Smoothed · 33 frames · review preview',ok:false,ms:60,frames:seq(33,i=>'./art/riley-smooth-idle/'+i+'.png')},
+ {t:'Fistblade stance · idle',s:'17 frames · review preview',ok:false,ms:110,frames:seq(17,i=>'./assets/images/9084b021-f2cd-5215-a73f-8e4c66f2e445/frames/'+i+'.png')},
+];
+let playing=true,slow=1,tick=0;const state=[];const root=document.getElementById('views');
+items.forEach((it,k)=>{const s=document.createElement('section');s.innerHTML='<h2>'+it.t+'</h2><span class="tag '+(it.ok?'':'wait')+'">'+(it.ok?'Approved':'Not yet confirmed approved')+'</span><img alt="'+it.t+'"><div class="small">'+it.s+'</div><div class="small" data-f></div>';root.appendChild(s);const img=s.querySelector('img');img.src=it.frames[0];it.frames.forEach(u=>{const p=new Image();p.src=u;});state.push({it,img,f:0,acc:0,lab:s.querySelector('[data-f]')});});
+function draw(){for(const x of state){x.img.src=x.it.frames[x.f];x.lab.textContent=x.it.frames.length>1?'Frame '+(x.f+1)+' / '+x.it.frames.length:'Still';}}
+function adv(){for(const x of state)if(x.it.frames.length>1)x.f=(x.f+1)%x.it.frames.length;}
+let last=performance.now();function loop(now){const d=now-last;last=now;if(playing)for(const x of state){if(x.it.frames.length<2)continue;x.acc+=d;const ms=x.it.ms*slow;while(x.acc>=ms){x.acc-=ms;x.f=(x.f+1)%x.it.frames.length;}}draw();tick++;requestAnimationFrame(loop);}requestAnimationFrame(loop);
+document.getElementById('play').onclick=e=>{playing=!playing;e.target.textContent=playing?'Pause all':'Play all';};
+document.getElementById('step').onclick=()=>{playing=false;document.getElementById('play').textContent='Play all';adv();draw();};
+document.getElementById('speed').onclick=e=>{slow=slow===1?3:1;e.target.textContent=slow===1?'Slow':'Normal speed';};
+window.playtest=()=>({playing,tick,cards:state.map(x=>({title:x.it.t,frames:x.it.frames.length,frame:x.f})),images:[...document.images].map(i=>({alt:i.alt,loaded:i.complete&&i.naturalWidth>0}))});
+</script></body></html>

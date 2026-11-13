@@ -28,3 +28,6 @@ Ships `476945d1-f351-5034-b0af-5a3e362e53ee` (13 clips, two stances), `36e5db22-
 - Put HUD text in `HudOverlay` and clickable UI as DOM in `#hud-root` (playtest clicks DOM, not Phaser canvas). Build features in `website/src/gameplay/`; **never rewrite** `GameScene.ts`, `BootScene.ts`, `PlayerController.ts`, or anything in `pixellab/`.
 
 Deploy with `wrangler deploy` (it builds, smoke-tests, and ships the `worker/` multiplayer bundle when present). Nothing auto-saves — `git add -A && git commit && git push origin main`.
+
+## Riley is locked
+The only Riley is defined in `RILEY_CANON.md`. Read it before any Riley work; never start from other Riley art.
