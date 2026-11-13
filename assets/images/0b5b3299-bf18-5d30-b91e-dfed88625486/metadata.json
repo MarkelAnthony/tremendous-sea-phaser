@@ -1,0 +1,32 @@
+{
+  "id": "0b5b3299-bf18-5d30-b91e-dfed88625486",
+  "name": "One complete explosive heavy straight-punch attack then reco",
+  "prompt": "One complete explosive heavy straight-punch attack then recover. From guard, sharply retract the empty forward fist to the ribs, bend knees and coil hips briefly. Drive off the rear foot and snap hips and shoulder forward into ONE devastating horizontal punch to the right. Cover a short distance in a near-instant burst, like blink-speed movement, with just one brief clean trailing afterimage. Show a readable fully extended fist and braced deep lunge for a short impact beat. Keep natural arm length, no rubber stretching. Recoil, draw fist back and return smoothly to the exact starting guard and position. Four floating swords lag behind the sudden acceleration then settle into their original fan behind the back; they do not swing or replace the fist strike. Clear anticipation, explosive acceleration, heavy contact, quick recovery, not a slow push or repeated flurry. Fixed side camera, no opponent, no scenery, no smoke clouds or giant explosion. Keep face, robe, legs and feet crisp and on",
+  "width": 640,
+  "height": 512,
+  "model": "animate_minimax_h3",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": {
+    "grid_size": "5x4",
+    "frames": [
+      "frames/0.png",
+      "frames/1.png",
+      "frames/2.png",
+      "frames/3.png",
+      "frames/4.png",
+      "frames/5.png",
+      "frames/6.png",
+      "frames/7.png",
+      "frames/8.png",
+      "frames/9.png",
+      "frames/10.png",
+      "frames/11.png",
+      "frames/12.png",
+      "frames/13.png",
+      "frames/14.png",
+      "frames/15.png",
+      "frames/16.png"
+    ]
+  }
+}
