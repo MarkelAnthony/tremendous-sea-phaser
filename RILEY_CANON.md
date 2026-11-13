@@ -16,11 +16,28 @@ and a BLUE sword float behind her (Four Sword Stance).
     = the ONLY starting image for new east-facing Four Sword animations.
 - Fistblade stance still: `assets/images/5bd13a55-12ae-5ef4-9233-e9ac6e5de18b/image.png`
 
-## Existing animations (current Riley)
-- Breathing idle (Four Sword) — character clip, east + west, 4 frames
-- Fighting idle / bent-knee guard (Four Sword) — `assets/images/e1e8728a-681e-5d0b-8111-311e022fd795` (9 frames),
-  smoothed 33-frame version in `website/public/art/riley-smooth-idle/`
-- Fistblade stance idle — `assets/images/9084b021-f2cd-5215-a73f-8e4c66f2e445` (17 frames)
+## Approved keep-list — the ONLY four Riley essentials
+User-approved standard: retain exactly these four items for all future Riley work.
+1. Master design (candidate 3), at the source path above.
+2. Standing side view (east), at the character rotation path above. This is a still, NOT another animation.
+3. Four Sword bent-knee fighting idle — approved smoothed 33-frame version in
+   `website/public/art/riley-smooth-idle/`. Its original source is
+   `assets/images/e1e8728a-681e-5d0b-8111-311e022fd795` (9 frames); use the smoothed version for review/playback.
+4. Fistblade stance idle — approved 17-frame version in
+   `assets/images/9084b021-f2cd-5215-a73f-8e4c66f2e445`.
+
+Only TWO animations are approved: the bent-knee fighting idle and Fistblade idle.
+Breathing idle (east/west), attack attempts, old designs, and all other Riley drafts are RETIRED.
+Do not display, reuse, or treat retired material as a generation reference. Historical files in
+asset sync or git history are not approval. Do not delete shared/live-game assets merely to tidy previews.
+The Fistblade still above is supporting source material, not a fifth approved item.
+
+## Future-work standard
+For Four Sword motion, use the approved bent-knee idle as the stance/motion reference and
+approved standing side view as the identity reference. For Fistblade motion, use the approved
+Fistblade idle. Always preserve the master identity, stance-specific weapons, outfit and colours.
+Do not default back to the retired breathing idle or any attack draft.
+The sole public approval gallery is `website/public/riley-current-animations.html`.
 
 ## Rule before any generation
 Compare the start image with the master side by side (read_image) and confirm hair, robe, sash,
