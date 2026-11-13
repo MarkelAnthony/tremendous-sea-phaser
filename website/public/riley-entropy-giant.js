@@ -1,5 +1,6 @@
 // Review-only choreography. Original Riley pixels remain at native scale.
 import {drawSlash,drawImpact} from './riley-entropy-slash.js';
+import {drawPowerBody,drawPowerAura,powerState} from './riley-entropy-power.js';
 const image=src=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=reject;im.src=src});
 const root='./art/riley-entropy-parts/';
 const [body,...swords]=await Promise.all(['body.png','sword1.png','sword2.png','sword3.png','sword4.png'].map(n=>image(root+n)));
@@ -9,6 +10,13 @@ const lerp=(a,b,t)=>a+(b-a)*t;
 const clamp=t=>Math.max(0,Math.min(1,t));
 const ease=t=>{t=clamp(t);return t*t*(3-2*t)};
 export function giantState(f){return {stage:f<10?'Four blades converge':f<16?'Giant sword winds back':f<19?'Explosive golden crescent':f<24?'Impact and follow-through':'Four blades reform',contact:f>=19,formation:f<10?4:f<24?1:4};}
+export const performanceFrames=60;
+export function performanceState(f){return f<24?{stage:'Riley screams · white hair surges upward',...powerState(f),formation:4,contact:false}:giantState(f-24)}
+export function drawPerformance(c,f){
+ if(f>=24){drawGiant(c,f-24);return}
+ c.clearRect(0,0,256,160);drawPowerAura(c,f);drawPowerBody(c,f);
+ swords.forEach((im,i)=>{const [x,y]=origins[i];c.drawImage(im,x+Math.round(Math.sin(f*.8+i)*2),y+28-Math.round(Math.sin(f*.6+i)*2))});
+}
 export function drawGiant(c,f){
  c.clearRect(0,0,256,160);
  // A visible practice enemy, with a shield and recoil, not a gameplay actor.
