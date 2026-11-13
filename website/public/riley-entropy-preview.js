@@ -1,4 +1,5 @@
 import { giantFrames, giantState, drawGiant } from './riley-entropy-giant.js';
+import { giantDuration } from './riley-entropy-slash.js';
 const loadImage=src=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(Error('Could not load '+src));im.src=src});
 const meta=await fetch('./art/riley-entropy-preview.json').then(r=>{if(!r.ok)throw Error('Missing Entropy preview manifest');return r.json()});
 const attack=Array(giantFrames).fill(null);
@@ -18,7 +19,7 @@ document.querySelector('#idle').onclick=()=>{setPhase('idle');playing=true;docum
 document.querySelector('#pause').onclick=e=>{playing=!playing;e.target.textContent=playing?'Pause':'Play'};
 document.querySelector('#step').onclick=()=>{pause();frame=(frame+1)%frames().length;draw()};
 document.querySelector('#speed').onchange=e=>{speed=Number(e.target.value)};scrub.oninput=()=>{pause();frame=Number(scrub.value);draw()};
-function loop(now){const dt=Math.min(100,now-last);last=now;if(playing){elapsed+=dt*speed;const duration=phase==='activation'?80:100;while(elapsed>=duration){elapsed-=duration;frame++;if(frame>=frames().length){if(phase==='activation'){activationCompleted++;phase='idle'}else if(phase==='attack'){phase='idle'}frame=0}}refElapsed+=dt*speed;while(refElapsed>=100){refElapsed-=100;refFrame=(refFrame+1)%canonical.length}}draw();requestAnimationFrame(loop)}
+function loop(now){const dt=Math.min(100,now-last);last=now;if(playing){elapsed+=dt*speed;const duration=()=>phase==='attack'?giantDuration(frame):phase==='activation'?80:100;while(elapsed>=duration()){elapsed-=duration();frame++;if(frame>=frames().length){if(phase==='activation'){activationCompleted++;phase='idle'}else if(phase==='attack'){phase='idle'}frame=0}}refElapsed+=dt*speed;while(refElapsed>=100){refElapsed-=100;refFrame=(refFrame+1)%canonical.length}}draw();requestAnimationFrame(loop)}
 document.querySelector('#status').textContent=meta.assessment+' Attack: four blades merge into one giant golden sword, slash the practice enemy, then reform. Review-only choreography; not integrated into gameplay.';
 window.playtest=()=>({attackState:phase==='attack'?giantState(frame):null,phase,frame,playing,speed,activationCompleted,attackFrames:attack.length,activationFrames:activation.length,idleFrames:idle.length,nativeSize:[128,128],renderScale:'identical; no frame rescaling',gameIntegration:false,assessment:meta.assessment});
 window.entropyFrame=(p,i)=>{pause();phase=p==='attack'?'attack':p==='idle'?'idle':'activation';frame=Math.max(0,Math.min(frames().length-1,i));elapsed=0;draw();return window.playtest()};draw();requestAnimationFrame(loop);
