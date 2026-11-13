@@ -841,10 +841,10 @@ function resolveCardEffects(idx, target, isRepeatedPlay){
           if (liveTargets.length===0) break;
           hitTarget = liveTargets[Math.floor(Math.random()*liveTargets.length)];
         }
-        // Use the same home-stance multiplier that actually boosts this attack.
-        if (isRiley() && card.homeStance === "FistBlade" && stanceMult > 1 && clarityBasedDmg > 0){
+        // Default stance animation; explicitly dedicated animations retain priority.
+        if (isRiley() && clarityBasedDmg > 0){
           const scene = window.game?.scene.getScenes(true)[0];
-          if (scene?.playerBody) window.playSeaFistBladeAttack(scene, scene.playerBody);
+          if (scene?.playerBody) window.playSeaRileyDefaultAttack?.(scene, scene.playerBody, G.player.stance, G.combat.enemies.indexOf(hitTarget));
         }
         const mult = outgoingMultiplier(G.player);
         let baseDmg = clarityBasedDmg*mult*stanceMult;

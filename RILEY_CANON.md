@@ -45,3 +45,10 @@ bare feet and all four sword colours match BEFORE spending generations.
 
 ## Four Sword attack motion approved
 The user approved the motion of `53f1ea14-fa34-55d7-b659-bd66b069eb28` and requested ONLY local cleanup on displayed frames 9, 11, 12, 14, 17, 18, 26, 28. This attack is an explicit exception to retired attack drafts above: preserve its choreography and 33-frame/10 fps timing. Original review manifest remains intact; cleanup preview uses `website/public/art/riley-four-sword-attack-cleaned.json`. Cleanup pixels await user review. Do not regenerate the motion.
+
+## Live attack integration approved
+The user approved both attacks and the advance/contact/return demonstration, including equal stance sizing.
+Use `website/public/art/riley-four-sword-attack-cleaned.json` (33 frames at 15 fps) and
+`website/public/art/riley-fistblade-attack.json` (17 frames at 65 ms each).
+Both are now approved exceptions to retired attacks. Default stance attacks use these exact frames,
+advance to the selected enemy, and return to the original spot. Approved idle loops resume afterward.
