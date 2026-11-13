@@ -1,0 +1,43 @@
+{
+  "source": "9084b021-f2cd-5215-a73f-8e4c66f2e445/frames/0.png",
+  "assetId": "0b5b3299-bf18-5d30-b91e-dfed88625486",
+  "frames": [
+    "./assets/images/0b5b3299-bf18-5d30-b91e-dfed88625486/frames/0.png",
+    "./assets/images/0b5b3299-bf18-5d30-b91e-dfed88625486/frames/1.png",
+    "./assets/images/0b5b3299-bf18-5d30-b91e-dfed88625486/frames/2.png",
+    "./assets/images/0b5b3299-bf18-5d30-b91e-dfed88625486/frames/3.png",
+    "./assets/images/0b5b3299-bf18-5d30-b91e-dfed88625486/frames/4.png",
+    "./assets/images/0b5b3299-bf18-5d30-b91e-dfed88625486/frames/5.png",
+    "./assets/images/0b5b3299-bf18-5d30-b91e-dfed88625486/frames/6.png",
+    "./assets/images/0b5b3299-bf18-5d30-b91e-dfed88625486/frames/7.png",
+    "./assets/images/0b5b3299-bf18-5d30-b91e-dfed88625486/frames/8.png",
+    "./assets/images/0b5b3299-bf18-5d30-b91e-dfed88625486/frames/9.png",
+    "./assets/images/0b5b3299-bf18-5d30-b91e-dfed88625486/frames/10.png",
+    "./assets/images/0b5b3299-bf18-5d30-b91e-dfed88625486/frames/11.png",
+    "./assets/images/0b5b3299-bf18-5d30-b91e-dfed88625486/frames/12.png",
+    "./assets/images/0b5b3299-bf18-5d30-b91e-dfed88625486/frames/13.png",
+    "./assets/images/0b5b3299-bf18-5d30-b91e-dfed88625486/frames/14.png",
+    "./assets/images/0b5b3299-bf18-5d30-b91e-dfed88625486/frames/15.png",
+    "./assets/images/0b5b3299-bf18-5d30-b91e-dfed88625486/frames/16.png"
+  ],
+  "durations": [
+    65,
+    65,
+    65,
+    65,
+    65,
+    65,
+    65,
+    65,
+    65,
+    65,
+    65,
+    65,
+    65,
+    65,
+    65,
+    65,
+    65
+  ],
+  "assessment": "Draft — not approved. Explosive punch is present, but the extended pose holds too long and recovery is missing. Impact-frame leg ghosting and small leg-area artifacts need review. Approved artwork and gameplay are unchanged."
+}
