@@ -1,5 +1,5 @@
 // Preview-only power-up performance, composited at the existing native scale.
-const pose=new Image();pose.src='./art/riley-entropy-scream.png';
+const pose=new Image();pose.src='./art/riley-entropy-focused.png';
 await pose.decode();
 export function powerState(f){return {screaming:f>=5&&f<23,hair:'white, lifted upward',bodyMotion:'brace, recoil, tremble, release'};}
 export function drawPowerBody(c,f){
