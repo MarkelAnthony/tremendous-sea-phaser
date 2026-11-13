@@ -1,0 +1,11 @@
+{
+  "id": "426fe27d-23a8-52c5-9d76-7520f44a6e27",
+  "name": "Same Riley, same scale feet location and pixel style. Remove",
+  "prompt": "Same Riley, same scale feet location and pixel style. Remove ALL swords (composited separately). Explosive power-up: knees braced bent, fists clenched beside hips, shoulders tensed, head tilted back SCREAMING mouth wide open. White hair blown vertically UP in long jagged spikes, still WHITE not gold. Robe sleeves and pink sash flutter upward. Preserve dark skin gold hoop mustard robe blue zigzag hem bare feet. No aura or background.",
+  "width": 128,
+  "height": 128,
+  "model": "edit_image_pixen",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
