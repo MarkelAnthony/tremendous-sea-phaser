@@ -1,7 +1,7 @@
 // Preview-only power-up performance, composited at the existing native scale.
-const pose=new Image();pose.src='./art/riley-entropy-focused.png';
+const pose=new Image();pose.src='./art/riley-entropy-focused-east.png';
 await pose.decode();
-export function powerState(f){return {screaming:false,expression:'controlled anger, closed mouth, focused glare',poweringUp:f>=5&&f<23,hair:'white, lifted upward',bodyMotion:'brace, recoil, tremble, release'};}
+export function powerState(f){return {screaming:false,facing:'east',backgroundLines:false,expression:'controlled anger, closed mouth, focused glare',poweringUp:f>=5&&f<23,hair:'white, lifted upward',bodyMotion:'brace, recoil, tremble, release'};}
 export function drawPowerBody(c,f){
  const strength=f<5?f/5:f<17?1:Math.max(0,1-(f-17)/7);
  const shake=f>=5&&f<21?(f%2?1:-1):0;
