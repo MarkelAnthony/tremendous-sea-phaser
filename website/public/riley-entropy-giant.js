@@ -10,19 +10,17 @@ const lerp=(a,b,t)=>a+(b-a)*t;
 const clamp=t=>Math.max(0,Math.min(1,t));
 const ease=t=>{t=clamp(t);return t*t*(3-2*t)};
 export function giantState(f){return {stage:f<10?'Four blades converge':f<16?'Giant sword winds back':f<19?'Explosive golden crescent':f<24?'Impact and follow-through':'Four blades reform',contact:f>=19,formation:f<10?4:f<24?1:4};}
-export const performanceFrames=60;
-export function performanceState(f){return f<24?{stage:'Riley screams · white hair surges upward',...powerState(f),formation:4,contact:false}:giantState(f-24)}
-export function drawPerformance(c,f){
- if(f>=24){drawGiant(c,f-24);return}
- c.clearRect(0,0,256,160);drawPowerAura(c,f);drawPowerBody(c,f);
- swords.forEach((im,i)=>{const [x,y]=origins[i];c.drawImage(im,x+Math.round(Math.sin(f*.8+i)*2),y+28-Math.round(Math.sin(f*.6+i)*2))});
-}
+export const performanceFrames=giantFrames;
+const powerFrame=f=>f<5?f:f<24?5+(f-5)%12:17+(f-24);
+export function performanceState(f){return {...giantState(f),...powerState(powerFrame(f)),simultaneousPowerAndSlash:f>=17&&f<=23};}
+export function drawPerformance(c,f){drawGiant(c,f);}
 export function drawGiant(c,f){
  c.clearRect(0,0,256,160);
  // A visible practice enemy, with a shield and recoil, not a gameplay actor.
  const hit=f>=19&&f<29;const recoil=hit?Math.sin((f-19)/10*Math.PI)*11:0;
  c.save();c.translate(215+recoil,149);c.fillStyle='#192134';c.fillRect(-14,2,28,3);c.fillStyle=hit?'#ffe1a1':'#63758e';c.fillRect(-9,-47,18,16);c.fillRect(-13,-30,26,27);c.fillRect(-10,-4,7,7);c.fillRect(4,-4,7,7);c.fillStyle='#29364e';c.fillRect(-6,-42,13,4);c.fillStyle=hit?'#fff5ca':'#c38756';c.fillRect(-19,-27,15,22);c.fillStyle='#ecbc69';c.fillRect(-13,-24,3,16);c.restore();
- c.drawImage(body,0,28);
+ if(f<31){drawPowerAura(c,powerFrame(f));drawPowerBody(c,powerFrame(f));}
+ else c.drawImage(body,0,28);
  if(f<10||f>=24){
   const t=f<10?ease(f/9):1-ease((f-24)/11);
   swords.forEach((im,i)=>{const [x,y]=origins[i];c.save();c.globalAlpha=1-t*.5;c.translate(lerp(x+im.width/2,146,t),lerp(y+28+im.height*.88,97,t));c.rotate(t*(i-1.5)*.14);c.drawImage(im,-im.width/2,-im.height*.88);c.restore()});
