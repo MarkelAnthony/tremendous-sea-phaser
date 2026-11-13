@@ -27,7 +27,9 @@ blade = blade.crop((30, 39, 44, 90))
 # Front lower sword destination matches the existing golden idle arrangement.
 positions = [(54, 39), (70, 38), (86, 37), (101, 37), (107, 37), (107, 37), (107, 37)]
 for i in range(4, 11):
-    im = images[i].copy()
+    # Hold the pre-surge pose for two frames: the original 9/10 briefly
+    # duplicated the red sword. Keep exactly four distinct blades here.
+    im = images[min(i, 8)].copy()
     # This lane is entirely outside Riley; restore the blue sword, not her body.
     im.paste((0, 0, 0, 0), (30, 0, 44, 91))
     im.alpha_composite(blue, (30, 0))
