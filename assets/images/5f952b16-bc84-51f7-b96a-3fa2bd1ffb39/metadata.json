@@ -1,0 +1,11 @@
+{
+  "id": "5f952b16-bc84-51f7-b96a-3fa2bd1ffb39",
+  "name": "Edit ONLY stance and weapons of this exact Riley sprite to h",
+  "prompt": "Edit ONLY stance and weapons of this exact Riley sprite to her Entropy idle key pose. Preserve SAME character body size, head size, feet baseline, spiky WHITE hair (NOT gold), dark skin, gold hoop earring, mustard-yellow robe navy-blue trim zigzag hem, magenta sash, bare feet, same right-facing fighting guard and pixel-art style. ALL EXACTLY FOUR swords now metallic GOLD with bright yellow edges: TWO floating freely in FRONT of her (right of body) and TWO floating freely BEHIND her (left of body). Hands empty and relaxed away from torso, no sword held or attached to arms. Four clearly separated upright blades with distinct gold crossguards, staggered heights in two pairs framing body, all blades fully inside canvas. Lower front pair at chest and waist height, rear pair at head and shoulder height. Subtle small gold glints only, no large aura obscuring anatomy. Same 128x128 transparent canvas and character scale. No extra limbs, no extra swords, no ghost legs, no ground shadow.",
+  "width": 128,
+  "height": 128,
+  "model": "edit-image",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
