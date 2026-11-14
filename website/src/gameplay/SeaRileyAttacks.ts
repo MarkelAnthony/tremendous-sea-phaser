@@ -17,12 +17,17 @@ export function preloadRileyAttacks(scene: Phaser.Scene): void {
     const count = stance === "FourSword" ? 33 : 17;
     for (let i = 0; i < count; i++) scene.load.image(key(stance, true, i), new URL(stance === "FourSword" ? `art/riley-smooth-idle/${i}.png` : `assets/images/9084b021-f2cd-5215-a73f-8e4c66f2e445/frames/${i}.png`, document.baseURI).href);
   }
+  // Entropy floating-sword idle: the same frame sequence as the Entropy review preview.
+  ENTROPY_IDLE_FRAMES.forEach((frame, i) => scene.load.image(`riley-approved-Entropy-idle-${i}`, new URL(`assets/images/31ed9ac0-dce1-5d80-bebd-68aec8d58ddb/frames/${frame}.png`, document.baseURI).href));
 }
+const ENTROPY_IDLE_FRAMES = [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
 export function rileyIdle(scene: Phaser.Scene, sprite: Phaser.GameObjects.Sprite, stance: string): boolean {
-  if (stance !== "FourSword" && stance !== "FistBlade") return false;
+  if (stance !== "FourSword" && stance !== "FistBlade" && stance !== "Entropy") return false;
+  if (stance === "Entropy" && !scene.textures.exists("riley-approved-Entropy-idle-0")) return false;
   const anim = `riley-approved-idle-${stance}`;
-  if (!scene.anims.exists(anim)) scene.anims.create({ key: anim, frames: Array.from({ length: stance === "FourSword" ? 33 : 17 }, (_, i) => ({ key: key(stance, true, i) })), frameRate: 10, repeat: -1 });
+  const count = stance === "FourSword" ? 33 : stance === "Entropy" ? ENTROPY_IDLE_FRAMES.length : 17;
+  if (!scene.anims.exists(anim)) scene.anims.create({ key: anim, frames: Array.from({ length: count }, (_, i) => ({ key: `riley-approved-${stance}-idle-${i}` })), frameRate: 10, repeat: -1 });
   sprite.setOrigin(60 / 128, 124 / 128).setScale(1.35).play(anim);
   sprite.setData("stance", stance).setData("approvedRileyArt", true);
   return true;
