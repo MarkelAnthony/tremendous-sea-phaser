@@ -1,0 +1,11 @@
+{
+  "id": "b18b5f87-3c75-59a4-9832-f83314e1be13",
+  "name": "Pixel art props sheet, side view, six separate props evenly",
+  "prompt": "Pixel art props sheet, side view, six separate props evenly spaced in a row on transparent background, none touching: a tall speaker stack, a spotlight on a stand, a stage monitor speaker wedge, a disco ball made of hard candy, a neon sign shaped like a candy wrapper, a rack of glowing lightsticks. Bold clean style, black outer outlines, darker colored inner lines, dithered shading, light from top-right, about 32 colors.",
+  "width": 512,
+  "height": 128,
+  "model": "pixen",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}

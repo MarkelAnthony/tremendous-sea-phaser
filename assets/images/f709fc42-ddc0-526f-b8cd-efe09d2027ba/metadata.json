@@ -1,0 +1,11 @@
+{
+  "id": "f709fc42-ddc0-526f-b8cd-efe09d2027ba",
+  "name": "Pixel art game background layer, side view. The main deck of",
+  "prompt": "Pixel art game background layer, side view. The main deck of a pirate ship turned into a K-pop dance party stage. A long flat polished wooden dance floor spanning the full width, with glossy light-up dance-floor tiles in yellow, blue and purple set into the planks. Three symbols painted on the floor: two crossed swords with two more floating behind, a raised fist, and one giant golden sword. The ship's wooden rail runs along the back edge, wrapped in candy-colored light strips, confetti scattered on the boards. Bold clean style, black outer outlines, darker colored inner lines, dithered shading, light from top-right, about 32 colors, muted lower contrast. No characters. Empty transparent above the deck.",
+  "width": 512,
+  "height": 128,
+  "model": "pixen",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}

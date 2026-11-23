@@ -1,0 +1,11 @@
+{
+  "id": "755126b6-4723-55b6-905b-8f8ea8a26c4d",
+  "name": "Pixel art game background layer, side view. Behind the deck",
+  "prompt": "Pixel art game background layer, side view. Behind the deck of a pirate ship turned into a K-pop concert stage: tall wooden masts rigged with metal stage trusses, spotlights and hanging speakers, a large glowing screen on the mainsail showing a music note, sails dyed yellow, blue and purple, star-shaped lanterns strung between the masts. Bold clean style, black outer outlines, darker colored inner lines, dithered shading, light from top-right, about 32 colors, dark and muted. No characters. Transparent sky.",
+  "width": 256,
+  "height": 256,
+  "model": "pixen",
+  "no_background": true,
+  "image": "image.png",
+  "spritesheet": null
+}
