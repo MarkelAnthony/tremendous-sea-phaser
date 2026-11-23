@@ -2002,7 +2002,7 @@
     "284a60d0-b94a-50b2-ac1d-2f869e93608a": {
       "updated_at": "2026-10-25T00:47:15.305631+00:00",
       "name": "The Verdant Crossing",
-      "export_version": 14,
+      "export_version": 16,
       "tilesets": {
         "98033b10-af32-513d-a10d-4175e7370594": "2026-10-05T08:41:24.135066+00:00"
       }
@@ -2012,7 +2012,7 @@
     "7007be3e-78ee-4820-8c8e-aa11a26e9bc4": {
       "updated_at": "2026-10-15T04:22:21.569112+00:00",
       "animation_ids": [],
-      "name": "base",
+      "name": "Kindleroot sailing exterior",
       "member_ids": [
         "7007be3e-78ee-4820-8c8e-aa11a26e9bc4"
       ],
@@ -2023,7 +2023,7 @@
     "98033b10-af32-513d-a10d-4175e7370594": {
       "updated_at": "2026-10-05T08:41:24.135066+00:00",
       "name": "Forest grass and stone",
-      "sync_version": 2
+      "sync_version": 3
     }
   },
   "ui_assets": {
